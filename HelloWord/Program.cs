@@ -12,8 +12,6 @@ namespace HelloWord
         static void Main(string[] args)
         {
 
-
-
             var contextFactory = ContextFactory.Instance;
 
             SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
@@ -32,8 +30,6 @@ namespace HelloWord
             var cardContext = ContextFactory.Instance.Establish(SCardScope.System);
             var readerName = e.ReaderName;
             var readerNames = cardContext.GetReaders();
-
-            Console.WriteLine("Reader name: {0}\nCard ART: {1}", readerName, BitConverter.ToString(e.Atr));
 
             using (var reader = new SCardReader(cardContext))
             {
@@ -56,7 +52,8 @@ namespace HelloWord
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
 
-                    var apdu = new CommandApdu(IsoCase.Case4Short, reader.ActiveProtocol)
+
+                    var apdu = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
                     {
                         CLA = 0x00,
                         Instruction = InstructionCode.SelectFile,
@@ -72,9 +69,7 @@ namespace HelloWord
                                         0x01
                                     }// We don't know the ID tag size
                     };
-
                     sc = reader.BeginTransaction();
-
                     if (sc != SCardError.Success)
                     {
                         Console.WriteLine("Could not begin transaction.");
@@ -87,7 +82,7 @@ namespace HelloWord
                     var receivePci = new SCardPCI(); // IO returned protocol control information.
                     var sendPci = SCardPCI.GetPci(reader.ActiveProtocol);
 
-                    var receiveBuffer = new byte[256];
+                    var receiveBuffer = new byte[10];
                     var command = apdu.ToArray();
 
                     sc = reader.Transmit(
@@ -101,11 +96,48 @@ namespace HelloWord
                         Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
                     }
 
-                    var responseApdu = new ResponseApdu(receiveBuffer, IsoCase.Case2Short, reader.ActiveProtocol);
-                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
+                    var responseApdu = new ResponseApdu(receiveBuffer, IsoCase.Case3Short, reader.ActiveProtocol);
+                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
                         responseApdu.SW1,
                         responseApdu.SW2,
                         responseApdu.HasData ? BitConverter.ToString(responseApdu.GetData()) : "No uid received");
+
+
+
+
+
+
+                    var receiveBuffer1 = new byte[256];
+                    var apdu1 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
+                    {
+                        CLA = 0x00,
+                        Instruction = InstructionCode.GetChallenge,
+                        P1 = 0x00,
+                        P2 = 0x00,
+                        Le = 8,
+                    };
+                    var command1 = apdu1.ToArray();
+
+                    sc = reader.Transmit(
+                            sendPci, // Protocol Control Information (T0, T1 or Raw)
+                            command1, // command APDU
+                            receivePci, // returning Protocol Control Information
+                            ref receiveBuffer1); // data buffer
+
+                    if (sc != SCardError.Success)
+                    {
+                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
+                    }
+
+                    var responseApdu1 = new ResponseApdu(receiveBuffer1, IsoCase.Case2Short, reader.ActiveProtocol);
+                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
+                        responseApdu1.SW1,
+                        responseApdu1.SW2,
+                        responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
+
+
+
+
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);
