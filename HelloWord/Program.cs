@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using PCSC;
 using PCSC.Iso7816;
+using HelloWord.Cryptography;
 
 namespace HelloWord
 {
@@ -12,14 +13,39 @@ namespace HelloWord
         static void Main(string[] args)
         {
 
-            var contextFactory = ContextFactory.Instance;
+            //var contextFactory = ContextFactory.Instance;
 
-            SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
-            // Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
-            monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
-            // Start to monitor the reader
-            monitor.Start("ACS CCID USB Reader 0");
+            //SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
+            //// Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
+            //monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
+            //// Start to monitor the reader
+            //monitor.Start("ACS CCID USB Reader 0");
 
+
+            Console.WriteLine(
+                    new Hex(
+                        new SHA1("L898902C<369080619406236")
+                    ).AsString()
+                );
+            Console.WriteLine(
+                    new Hex(
+                        new SHA1("239AB9CB282DAF66231DC5A4DF6BFBAE00000001")
+                    ).AsString()
+                );
+
+
+            Console.WriteLine(
+                    new Hex(
+                        new SHA1(
+                            new D(
+                                new KSeed(
+                                    new SHA1("L898902C<369080619406236")
+                                ),
+                                "00000001"
+                            )
+                        )
+                    ).AsString()
+                );
             Console.ReadKey();
         }
 
