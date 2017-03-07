@@ -53,8 +53,10 @@
     <Compile Include="Cryptography\AdjustedParity.cs" />
     <Compile Include="Cryptography\BinaryHex.cs" />
     <Compile Include="Cryptography\D.cs" />
+    <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Hex.cs" />
     <Compile Include="Cryptography\IBinary.cs" />
+    <Compile Include="Cryptography\IKeys.cs" />
     <Compile Include="Cryptography\IParity.cs" />
     <Compile Include="Cryptography\Kenc.cs" />
     <Compile Include="Cryptography\Kmac.cs" />

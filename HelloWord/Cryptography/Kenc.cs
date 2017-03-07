@@ -14,5 +14,14 @@ namespace HelloWord.Cryptography
         }
 
         public Kenc(KSeed kSeed) : this(new D(kSeed, "00000001")) { }
+
+        public DESKeys Keys()
+        {
+            return new DESKeys(
+                        new SHA1(
+                            this._d
+                        )
+                    );
+        }
     }
 }

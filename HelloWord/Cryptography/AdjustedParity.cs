@@ -7,16 +7,16 @@ namespace HelloWord.Cryptography
 {
     public class AdjustedParity : IBinary
     {
-        private readonly IBinary _binary;
-        public AdjustedParity(IBinary binary)
-        {
-            this._binary = binary;
-        }
+        private readonly byte[] _bites;
 
+        public AdjustedParity(byte[] bites)
+        {
+            this._bites = bites;
+        }
+        public AdjustedParity(IBinary binary) : this(binary.AsBinary()) { }
         public byte[] AsBinary()
         {
-            return this._binary
-               .AsBinary()
+            return this._bites
                .Select(b => new Parity(b).Adjusted().Result())
                .ToArray();
         }

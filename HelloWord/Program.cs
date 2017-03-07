@@ -61,6 +61,47 @@ namespace HelloWord
                         )
                     ).AsString()
                 );
+
+            Console.WriteLine("KEnc");
+            var kEnc = new Kenc(
+                            new KSeed(
+                                new SHA1("L898902C<369080619406236")
+                            )
+                        )
+                        .Keys();
+
+            Console.WriteLine(
+                    new Hex(
+                        kEnc.Ka()
+                    ).AsString()
+                );
+
+            Console.WriteLine(
+                    new Hex(
+                        kEnc.Kb()
+                    ).AsString()
+                );
+
+            Console.WriteLine("KMac");
+            var kMac = new Kmac(
+                            new KSeed(
+                                new SHA1("L898902C<369080619406236")
+                            )
+                        )
+                        .Keys();
+
+            Console.WriteLine(
+                    new Hex(
+                        kMac.Ka()
+                    ).AsString()
+                );
+
+            Console.WriteLine(
+                    new Hex(
+                        kMac.Kb()
+                    ).AsString()
+                );
+
             Console.ReadKey();
         }
 
