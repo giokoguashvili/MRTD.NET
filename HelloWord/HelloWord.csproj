@@ -61,6 +61,7 @@
     <Compile Include="Cryptography\Kenc.cs" />
     <Compile Include="Cryptography\Kmac.cs" />
     <Compile Include="Cryptography\KSeed.cs" />
+    <Compile Include="Cryptography\MRZ.cs" />
     <Compile Include="Cryptography\Parity.cs" />
     <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Program.cs" />
