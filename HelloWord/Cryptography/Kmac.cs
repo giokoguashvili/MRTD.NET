@@ -14,5 +14,6 @@ namespace HelloWord.Cryptography
         }
 
         public Kmac(KSeed kSeed) : this(new D(kSeed, "00000002")) { }
+
     }
 }

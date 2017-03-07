@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class BinaryHex
+    public class BinaryHex : IBinary
     {
         private readonly string _str;
         public BinaryHex(string str)
@@ -13,13 +13,12 @@ namespace HelloWord.Cryptography
             this._str = str;
         }
 
-        public byte[] Result()
+        public byte[] AsBinary()
         {
             return Enumerable.Range(0, this._str.Length)
                     .Where(x => x % 2 == 0)
                     .Select(x => Convert.ToByte(this._str.Substring(x, 2), 16))
                     .ToArray();
-
         }
     }
 }

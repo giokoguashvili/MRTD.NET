@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net40\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="pcsc-sharp">
       <HintPath>..\pcsc-sharp.dll</HintPath>
     </Reference>
@@ -45,17 +48,25 @@
   <ItemGroup>
     <Compile Include="BAC.cs" />
     <Compile Include="CardReader.cs" />
+    <Compile Include="Cryptography\AdjustedEvenParity.cs" />
+    <Compile Include="Cryptography\AdjustedOddParity.cs" />
+    <Compile Include="Cryptography\AdjustedParity.cs" />
     <Compile Include="Cryptography\BinaryHex.cs" />
     <Compile Include="Cryptography\D.cs" />
     <Compile Include="Cryptography\Hex.cs" />
     <Compile Include="Cryptography\IBinary.cs" />
+    <Compile Include="Cryptography\IParity.cs" />
     <Compile Include="Cryptography\Kenc.cs" />
     <Compile Include="Cryptography\Kmac.cs" />
     <Compile Include="Cryptography\KSeed.cs" />
+    <Compile Include="Cryptography\Parity.cs" />
     <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCardStatusResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

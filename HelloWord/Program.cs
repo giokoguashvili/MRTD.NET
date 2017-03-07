@@ -46,6 +46,21 @@ namespace HelloWord
                         )
                     ).AsString()
                 );
+
+            Console.WriteLine(
+                    new Hex(
+                        new AdjustedParity(
+                            new BinaryHex("AB94FCEDF2664EDF")
+                        )
+                    ).AsString()
+                );
+            Console.WriteLine(
+                    new Hex(
+                        new AdjustedParity(
+                            new BinaryHex("B9B291F85D7F77F2")
+                        )
+                    ).AsString()
+                );
             Console.ReadKey();
         }
 
