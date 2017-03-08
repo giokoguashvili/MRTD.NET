@@ -109,10 +109,12 @@ namespace HelloWord
                 );
 
             Console.WriteLine(
-                    new TripleDES().Encrypt(
-                        kEnc.Key().AsBinary(),
-                        new BinaryHex("781723860C06C2264608F919887022120B795240CB7049B01C19B33E32804F0B").AsBinary()
-                    )
+                new Hex(
+                    new TripleDES(
+                            kEnc.Key(),
+                            new BinaryHex("781723860C06C2264608F919887022120B795240CB7049B01C19B33E32804F0B")
+                        )
+                ).AsString()
             );
 
             Console.ReadKey();

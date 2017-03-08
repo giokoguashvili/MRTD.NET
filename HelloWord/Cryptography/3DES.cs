@@ -6,49 +6,29 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class TripleDES
+    public class TripleDES : IBinary
     {
-        public TripleDES()
-        {
-        }
+        private readonly byte[] _keyBytes;
+        private readonly byte[] _textBytes;
 
-        public string Encrypt(byte[] keyArray, byte[] toEncryptArray)
+        public TripleDES(IBinary key, IBinary textForEncrypt) : this(key.AsBinary(), textForEncrypt.AsBinary()) { }
+        public TripleDES(byte[] keyBytes, byte[] textBytes)
+        {
+            this._keyBytes = keyBytes;
+            this._textBytes = textBytes;
+        }
+        public byte[] AsBinary()
         {
             TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
-            //set the secret key for the tripleDES algorithm
-            tdes.Key = keyArray;
-            //mode of operation. there are other 4 modes.
-            //We choose ECB(Electronic code Book)
+            tdes.Key = this._keyBytes;
             tdes.Mode = CipherMode.CBC;
-            //padding mode(if any extra byte added)
-
-
-            tdes.IV = new byte[]
-            {
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00,
-                0x00
-            };
+            tdes.IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             tdes.Padding = PaddingMode.None;
-
             ICryptoTransform cTransform = tdes.CreateEncryptor();
-            //transform the specified region of bytes array to resultArray
-            byte[] resultArray =
-              cTransform.TransformFinalBlock(toEncryptArray, 0,
-              toEncryptArray.Length);
-
-            //Release resources held by TripleDes Encryptor
+            byte[] resultArray = cTransform.TransformFinalBlock(this._textBytes, 0, this._textBytes.Length);
             tdes.Clear();
-            //Return the encrypted data into unreadable string format
-            return new Hex(
-                    resultArray
-                ).AsString();
+            return resultArray;
         }
     }
 }

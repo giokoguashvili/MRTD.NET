@@ -51,6 +51,7 @@
     <Compile Include="ParityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdjustedParityTests.cs" />
+    <Compile Include="3DESTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
