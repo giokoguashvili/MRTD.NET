@@ -82,6 +82,12 @@ namespace HelloWord
                     ).AsString()
                 );
 
+            Console.WriteLine(
+                    new Hex(
+                        kEnc.Key()
+                    ).AsString()
+                );
+
             Console.WriteLine("KMac");
             var kMac = new Kmac(
                             new KSeed(
@@ -101,6 +107,13 @@ namespace HelloWord
                         kMac.Kb()
                     ).AsString()
                 );
+
+            Console.WriteLine(
+                    new TripleDES().Encrypt(
+                        kEnc.Key().AsBinary(),
+                        new BinaryHex("781723860C06C2264608F919887022120B795240CB7049B01C19B33E32804F0B").AsBinary()
+                    )
+            );
 
             Console.ReadKey();
         }

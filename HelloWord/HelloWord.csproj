@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BAC.cs" />
     <Compile Include="CardReader.cs" />
+    <Compile Include="Cryptography\3DES.cs" />
     <Compile Include="Cryptography\AdjustedEvenParity.cs" />
     <Compile Include="Cryptography\AdjustedOddParity.cs" />
     <Compile Include="Cryptography\AdjustedParity.cs" />

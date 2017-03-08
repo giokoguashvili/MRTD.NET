@@ -33,5 +33,15 @@ namespace HelloWord.Cryptography
                         .ToArray()
                 );
         }
+
+        public IBinary Key()
+        {
+            return new AdjustedParity(
+                    this._binary
+                        .AsBinary()
+                        .Take(16)
+                        .ToArray()  
+                );
+        }
     }
 }
