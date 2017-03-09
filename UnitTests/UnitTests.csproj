@@ -48,11 +48,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeObjects\FkKifd.cs" />
+    <Compile Include="FakeObjects\FkRNDic.cs" />
+    <Compile Include="FakeObjects\FkRNDifd.cs" />
     <Compile Include="ParityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdjustedParityTests.cs" />
     <Compile Include="3DESTests.cs" />
     <Compile Include="RandomKeysTests.cs" />
+    <Compile Include="STests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

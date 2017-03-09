@@ -66,6 +66,7 @@
     <Compile Include="Cryptography\MAC3.cs" />
     <Compile Include="Cryptography\MRZ.cs" />
     <Compile Include="Cryptography\Parity.cs" />
+    <Compile Include="Cryptography\RandomKeys\IRandom.cs" />
     <Compile Include="Cryptography\RandomKeys\Kifd.cs" />
     <Compile Include="Cryptography\RandomKeys\RandomBytes.cs" />
     <Compile Include="Cryptography\RandomKeys\RNDic.cs" />
