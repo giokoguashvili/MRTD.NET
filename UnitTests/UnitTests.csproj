@@ -48,8 +48,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeObjects\FkEifd.cs" />
     <Compile Include="FakeObjects\FkKenc.cs" />
     <Compile Include="FakeObjects\FkKifd.cs" />
+    <Compile Include="FakeObjects\FkKmac.cs" />
     <Compile Include="FakeObjects\FkRNDic.cs" />
     <Compile Include="FakeObjects\FkRNDifd.cs" />
     <Compile Include="FakeObjects\FkS.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="RandomKeysTests.cs" />
     <Compile Include="STests.cs" />
     <Compile Include="EifdTests.cs" />
+    <Compile Include="MifdTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
