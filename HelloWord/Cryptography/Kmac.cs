@@ -5,23 +5,28 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class Kmac
+    public class Kmac : IBinary
     {
-        private readonly D _d;
-        public Kmac(D d)
+        private readonly string _c = "00000002";
+        private readonly IBinary _kSeed;
+
+        public Kmac(IBinary kSeed)
         {
-            this._d = d;
+            this._kSeed = kSeed;
         }
 
-        public Kmac(KSeed kSeed) : this(new D(kSeed, "00000002")) { }
-
-        public DESKeys Keys()
+        public byte[] Binary()
         {
-            return new DESKeys(
+            return new AdjustedParity(
                         new SHA1(
-                            this._d
+                            new D(this._kSeed, this._c)
                         )
-                    );
+                        .Binary()
+                        .Skip(0)
+                        .Take(16)
+                        .ToArray()
+                    )
+                    .Binary();
         }
     }
 }

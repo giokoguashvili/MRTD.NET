@@ -5,6 +5,7 @@ using System.Text;
 using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
+using HelloWord.Cryptography.Keys;
 
 namespace HelloWord
 {
@@ -65,24 +66,23 @@ namespace HelloWord
                             new KSeed(
                                 new SHA1("L898902C<369080619406236")
                             )
-                        )
-                        .Keys();
+                        );
 
             Console.WriteLine(
                     new Hex(
-                        kEnc.Ka()
+                        new Ka(kEnc)
                     ).AsString()
                 );
 
             Console.WriteLine(
                     new Hex(
-                        kEnc.Kb()
+                        new Kb(kEnc)
                     ).AsString()
                 );
 
             Console.WriteLine(
                     new Hex(
-                        kEnc.Key()
+                        kEnc
                     ).AsString()
                 );
 
@@ -91,25 +91,24 @@ namespace HelloWord
                             new KSeed(
                                 new SHA1("L898902C<369080619406236")
                             )
-                        )
-                        .Keys();
+                        );
 
             Console.WriteLine(
                     new Hex(
-                        kMac.Ka()
+                        new Ka(kMac)
                     ).AsString()
                 );
 
             Console.WriteLine(
                     new Hex(
-                        kMac.Kb()
+                        new Kb(kMac)
                     ).AsString()
                 );
 
             Console.WriteLine(
                 new Hex(
                     new TripleDES(
-                            kEnc.Key(),
+                            kEnc,
                             new BinaryHex("781723860C06C2264608F919887022120B795240CB7049B01C19B33E32804F0B")
                         )
                 ).AsString()

@@ -5,23 +5,25 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class Kenc
+    public class Kenc : IBinary
     {
-        private readonly D _d;
-        public Kenc(D d)
+        private readonly string _c = "00000001";
+        private readonly IBinary _kSeed;
+
+        public Kenc(IBinary kSeed)
         {
-            this._d = d;
+            this._kSeed = kSeed;
         }
 
-        public Kenc(KSeed kSeed) : this(new D(kSeed, "00000001")) { }
-
-        public DESKeys Keys()
+        public byte[] Binary()
         {
             return new DESKeys(
                         new SHA1(
-                            this._d
+                            new D(this._kSeed, this._c)
                         )
-                    );
+                    )
+                    .Key()
+                    .Binary();
         }
     }
 }

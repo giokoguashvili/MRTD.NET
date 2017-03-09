@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelloWord.Cryptography.RandomKeys
 {
-    public class S
+    public class S : IBinary
     {
         private readonly IBinary _RNDifd;
         private readonly IBinary _RNDic;
@@ -21,15 +21,13 @@ namespace HelloWord.Cryptography.RandomKeys
             this._RNDifd = rndIfd;
         }
 
-        public string Combine()
+        public byte[] Binary()
         {
-            return new Hex(
-                    _RNDifd
+            return _RNDifd
                         .Binary()
                         .Concat(_RNDic.Binary())
                         .Concat(_Kifd.Binary())
-                        .ToArray()
-                ).AsString();
+                        .ToArray();
         }
     }
 }

@@ -61,6 +61,8 @@
     <Compile Include="Cryptography\IKeys.cs" />
     <Compile Include="Cryptography\IParity.cs" />
     <Compile Include="Cryptography\Kenc.cs" />
+    <Compile Include="Cryptography\Keys\Ka.cs" />
+    <Compile Include="Cryptography\Keys\Kb.cs" />
     <Compile Include="Cryptography\Kmac.cs" />
     <Compile Include="Cryptography\KSeed.cs" />
     <Compile Include="Cryptography\MAC3.cs" />
