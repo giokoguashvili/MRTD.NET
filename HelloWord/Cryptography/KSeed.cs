@@ -12,10 +12,10 @@ namespace HelloWord.Cryptography
         {
             this._hash = hash;
         }
-        public byte[] AsBinary()
+        public byte[] Binary()
         {
             return this._hash
-                .AsBinary()
+                .Binary()
                 .Take(16)
                 .ToArray();
         }

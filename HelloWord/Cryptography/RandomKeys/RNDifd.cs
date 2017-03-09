@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace HelloWord.Cryptography.RandomKeys
+{
+    public class RNDifd : IBinary
+    {
+        private readonly int _bytesCount = 8;
+        
+        public byte[] Binary()
+        {
+            return new RandomBytes(this._bytesCount).Binary();
+        }
+    }
+}

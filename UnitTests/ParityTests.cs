@@ -11,7 +11,7 @@ namespace UnitTests
         [DataRow(253, 252)]
         [DataRow(103, 102)]
         [DataRow(79, 78)]
-        public void TestMethod2(int exp, int input)
+        public void Adjust_Parity_Bits_on_Bytes(int exp, int input)
         {
             Assert.AreEqual(
                     exp,

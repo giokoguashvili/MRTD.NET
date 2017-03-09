@@ -5,8 +5,11 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public interface IBinary
+    public class Eifd
     {
-        byte[] Binary();
+        public Eifd()
+        {
+
+        }
     }
 }

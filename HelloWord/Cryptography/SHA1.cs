@@ -10,14 +10,14 @@ namespace HelloWord.Cryptography
     {
         private readonly byte[] _bytes;
 
-        public SHA1(IBinary binary) : this(binary.AsBinary()) { }
+        public SHA1(IBinary binary) : this(binary.Binary()) { }
         public SHA1(string str) : this(Encoding.UTF8.GetBytes(str)) { }
         public SHA1(byte[] bytes)
         {
             _bytes = bytes;
         }
 
-        public byte[] AsBinary()
+        public byte[] Binary()
         {
             using (SHA1Managed sha1 = new SHA1Managed())
             {

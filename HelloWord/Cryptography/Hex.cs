@@ -9,7 +9,7 @@ namespace HelloWord.Cryptography
     {
         private readonly byte[] _bytes;
 
-        public Hex(IBinary binary) : this(binary.AsBinary()) { }
+        public Hex(IBinary binary) : this(binary.Binary()) { }
         public Hex(byte[] bytes)
         {
             this._bytes = bytes;

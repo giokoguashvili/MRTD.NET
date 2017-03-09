@@ -12,7 +12,6 @@ namespace HelloWord
     {
         static void Main(string[] args)
         {
-
             //var contextFactory = ContextFactory.Instance;
 
             //SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
@@ -20,7 +19,6 @@ namespace HelloWord
             //monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
             //// Start to monitor the reader
             //monitor.Start("ACS CCID USB Reader 0");
-
 
             Console.WriteLine(
                     new Hex(

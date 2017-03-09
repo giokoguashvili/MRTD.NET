@@ -13,8 +13,8 @@ namespace HelloWord.Cryptography
         {
             this._bites = bites;
         }
-        public AdjustedParity(IBinary binary) : this(binary.AsBinary()) { }
-        public byte[] AsBinary()
+        public AdjustedParity(IBinary binary) : this(binary.Binary()) { }
+        public byte[] Binary()
         {
             return this._bites
                .Select(b => new Parity(b).Adjusted().Result())

@@ -9,17 +9,17 @@ namespace HelloWord.Cryptography
     {
         private readonly IBinary _kSeed;
         private readonly byte[] _c;
-        public D(IBinary kSeed, string c) : this(kSeed, new BinaryHex(c).AsBinary()) { }
+        public D(IBinary kSeed, string c) : this(kSeed, new BinaryHex(c).Binary()) { }
         public D(IBinary kSeed, byte[] c)
         {
             this._kSeed = kSeed;
             this._c = c;
         }
 
-        public byte[] AsBinary()
+        public byte[] Binary()
         {
             return this._kSeed
-                .AsBinary()
+                .Binary()
                 .Concat(this._c)
                 .ToArray();
         }
