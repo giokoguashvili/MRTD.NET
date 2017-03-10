@@ -9,6 +9,7 @@ namespace HelloWord.Cryptography
     {
         private readonly IBinary _kSeed;
         private readonly byte[] _c;
+        //TODO: Delete this constructor and refactor
         public D(IBinary kSeed, string c) : this(kSeed, new BinaryHex(c).Binary()) { }
         public D(IBinary kSeed, byte[] c)
         {
