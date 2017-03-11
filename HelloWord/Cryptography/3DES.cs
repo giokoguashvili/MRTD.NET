@@ -10,9 +10,7 @@ namespace HelloWord.Cryptography
     /// ICAO Doc 9303
     /// Part 11: Security Mechanisms for MRTDs / Page: 17
     /// http://www.icao.int/publications/pages/publication.aspx?docnum=9303
-    /// 
-    /// 3DES
-    /// 
+    ///
     /// 3DES[FIPS 46 - 3] SHALL be used in Retail-mode according to[ISO / IEC 9797 - 1] MAC algorithm 3 / padding method 2
     /// with block cipher DES and IV = 0.
     /// </summary>
