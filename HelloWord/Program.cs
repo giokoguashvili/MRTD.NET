@@ -6,6 +6,9 @@ using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
 using HelloWord.Cryptography.Keys;
+using HelloWord.SmartCard.DataElements;
+using HelloWord.SmartCard;
+using HelloWord.Cryptography.RandomKeys;
 
 namespace HelloWord
 {
@@ -13,25 +16,17 @@ namespace HelloWord
     {
         static void Main(string[] args)
         {
-            //var contextFactory = ContextFactory.Instance;
-
-            //SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
-            //// Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
-            //monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
-            //// Start to monitor the reader
-            //monitor.Start("ACS CCID USB Reader 0");
-
             Console.WriteLine(
                     new Hex(
                         new SHA1("L898902C<369080619406236")
                     ).AsString()
                 );
+
             Console.WriteLine(
                     new Hex(
                         new SHA1("239AB9CB282DAF66231DC5A4DF6BFBAE00000001")
                     ).AsString()
                 );
-
 
             Console.WriteLine(
                     new Hex(
@@ -53,6 +48,7 @@ namespace HelloWord
                         )
                     ).AsString()
                 );
+
             Console.WriteLine(
                     new Hex(
                         new AdjustedParity(
@@ -60,6 +56,7 @@ namespace HelloWord
                         )
                     ).AsString()
                 );
+
 
             Console.WriteLine("KEnc");
             var kEnc = new Kenc(
@@ -113,6 +110,20 @@ namespace HelloWord
                         )
                 ).AsString()
             );
+
+            var contextFactory = ContextFactory.Instance;
+
+            SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
+            // Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
+            monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
+            // Start to monitor the reader
+            monitor.Start("ACS CCID USB Reader 0");
+
+            //new DG1(
+            //    new MiniLectorEVO(
+            //        () => new IdenitityCard()
+            //    )
+            //).Binary();
 
             Console.ReadKey();
         }
@@ -224,13 +235,73 @@ namespace HelloWord
                     }
 
                     var responseApdu1 = new ResponseApdu(receiveBuffer1, IsoCase.Case2Short, reader.ActiveProtocol);
-                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
+                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
                         responseApdu1.SW1,
                         responseApdu1.SW2,
                         responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
 
 
+                    var kSeed = new KSeed(
+                                    new SHA1("L898902C<369080619406236")
+                                );
+                    var eIfd = new Eifd(
+                            new S(
+                                new RNDifd(),
+                                new RNDic(responseApdu1.GetData()),
+                                new Kifd()
+                            ),
+                            new Kenc(
+                               kSeed
+                            )
+                        );
 
+                    var mIfd = new Mifd(
+                            eIfd,
+                            new Kmac(kSeed)
+                        );
+
+                   ;
+
+                    var cmd_data = new ExternalAuthenticateCmdData(
+                                    eIfd,
+                                    mIfd
+                                ).Binary();
+
+                    Console.WriteLine(
+                            new Hex(
+                                cmd_data
+                            ).AsString()
+                        );
+
+
+                    var receiveBuffer2 = new byte[30];
+                    var apdu2 = new CommandApdu(IsoCase.Case4Short, reader.ActiveProtocol)
+                    {
+                        CLA = 0x00,
+                        Instruction = InstructionCode.ExternalAuthenticate,
+                        P1 = 0x00,
+                        P2 = 0x00,
+                        Data = cmd_data,
+                        Le = 28,
+                    };
+                    var command2 = apdu2.ToArray();
+
+                    sc = reader.Transmit(
+                            sendPci, // Protocol Control Information (T0, T1 or Raw)
+                            command1, // command APDU
+                            receivePci, // returning Protocol Control Information
+                            ref receiveBuffer2); // data buffer
+
+                    if (sc != SCardError.Success)
+                    {
+                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
+                    }
+
+                    var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case2Short, reader.ActiveProtocol);
+                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
+                        responseApdu2.SW1,
+                        responseApdu2.SW2,
+                        responseApdu2.HasData ? BitConverter.ToString(responseApdu2.GetData()) : "No uid received");
 
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);

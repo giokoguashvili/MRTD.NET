@@ -7,9 +7,15 @@ namespace HelloWord.Cryptography.RandomKeys
 {
     public class RNDic : IBinary
     {
+        private readonly byte[] _rndInc;
+        public RNDic(byte[] rndInc)
+        {
+            this._rndInc = rndInc;
+        }
+
         public byte[] Binary()
         {
-            return new BinaryHex("4608F91988702212").Binary();
+            return _rndInc;
         }
     }
 }
