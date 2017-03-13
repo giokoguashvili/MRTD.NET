@@ -16,21 +16,21 @@ namespace HelloWord.Cryptography
     /// </summary>
     public class TripleDES : IBinary
     {
-        private readonly byte[] _keyBytes;
-        private readonly byte[] _textBytes;
+        private readonly IBinary _key;
+        private readonly IBinary _text;
 
-        public TripleDES(IBinary key, IBinary textForEncrypt) : this(key.Binary(), textForEncrypt.Binary()) { }
-        public TripleDES(byte[] keyBytes, byte[] textBytes)
+        public TripleDES(IBinary key, IBinary textForEncrypt)
         {
-            this._keyBytes = keyBytes;
-            this._textBytes = textBytes;
+            this._key = key;
+            this._text = textForEncrypt;
         }
+
         public byte[] Binary()
         {
             using (
                 var tdes = new TripleDESCryptoServiceProvider()
                 {
-                    Key = this._keyBytes,
+                    Key = this._key.Binary(),
                     Mode = CipherMode.CBC,
                     Padding = PaddingMode.None,
                     IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
@@ -38,7 +38,8 @@ namespace HelloWord.Cryptography
             )
             {
                 ICryptoTransform cTransform = tdes.CreateEncryptor();
-                byte[] resultArray = cTransform.TransformFinalBlock(this._textBytes, 0, this._textBytes.Length);
+                var textBytes = this._text.Binary();
+                byte[] resultArray = cTransform.TransformFinalBlock(textBytes, 0, textBytes.Length);
                 //tdes.Clear();
                 return resultArray;
             }

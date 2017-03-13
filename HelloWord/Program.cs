@@ -235,14 +235,14 @@ namespace HelloWord
                     }
 
                     var responseApdu1 = new ResponseApdu(receiveBuffer1, IsoCase.Case2Short, reader.ActiveProtocol);
-                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
+                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
                         responseApdu1.SW1,
                         responseApdu1.SW2,
                         responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
 
 
                     var kSeed = new KSeed(
-                                    new SHA1("L898902C<369080619406236")
+                                    new SHA1("12IB34415792061602210089")
                                 );
                     var eIfd = new Eifd(
                             new S(
@@ -250,9 +250,7 @@ namespace HelloWord
                                 new RNDic(responseApdu1.GetData()),
                                 new Kifd()
                             ),
-                            new Kenc(
-                               kSeed
-                            )
+                            new Kenc(kSeed)
                         );
 
                     var mIfd = new Mifd(
@@ -260,12 +258,12 @@ namespace HelloWord
                             new Kmac(kSeed)
                         );
 
-                   ;
-
                     var cmd_data = new ExternalAuthenticateCmdData(
                                     eIfd,
                                     mIfd
-                                ).Binary();
+                                ).Binary()
+                                .Take(40)
+                                .ToArray();
 
                     Console.WriteLine(
                             new Hex(
@@ -274,21 +272,21 @@ namespace HelloWord
                         );
 
 
-                    var receiveBuffer2 = new byte[30];
-                    var apdu2 = new CommandApdu(IsoCase.Case4Short, reader.ActiveProtocol)
+                    var receiveBuffer2 = new byte[42];
+                    var apdu2 = new CommandApdu(IsoCase.Case4Extended, reader.ActiveProtocol)
                     {
                         CLA = 0x00,
                         Instruction = InstructionCode.ExternalAuthenticate,
                         P1 = 0x00,
                         P2 = 0x00,
                         Data = cmd_data,
-                        Le = 28,
+                        Le = 42,
                     };
                     var command2 = apdu2.ToArray();
 
                     sc = reader.Transmit(
                             sendPci, // Protocol Control Information (T0, T1 or Raw)
-                            command1, // command APDU
+                            command2, // command APDU
                             receivePci, // returning Protocol Control Information
                             ref receiveBuffer2); // data buffer
 
@@ -297,7 +295,7 @@ namespace HelloWord
                         Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
                     }
 
-                    var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case2Short, reader.ActiveProtocol);
+                    var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case4Extended, reader.ActiveProtocol);
                     Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
                         responseApdu2.SW1,
                         responseApdu2.SW2,
