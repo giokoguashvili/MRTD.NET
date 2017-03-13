@@ -52,6 +52,7 @@
     <Compile Include="FakeObjects\FkKenc.cs" />
     <Compile Include="FakeObjects\FkKifd.cs" />
     <Compile Include="FakeObjects\FkKmac.cs" />
+    <Compile Include="FakeObjects\FkMifd.cs" />
     <Compile Include="FakeObjects\FkRNDic.cs" />
     <Compile Include="FakeObjects\FkRNDifd.cs" />
     <Compile Include="FakeObjects\FkS.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="STests.cs" />
     <Compile Include="EifdTests.cs" />
     <Compile Include="MifdTests.cs" />
+    <Compile Include="ExternalAuthenticateCmdDataTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

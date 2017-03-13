@@ -64,7 +64,7 @@ namespace HelloWord.Cryptography
         //        out_Renamed.WriteByte((byte)0x00);
         //    }
         //    byte[] eIfd_padded = out_Renamed.ToArray();
-           
+
 
         //    // Split the blocks
         //    byte[] d1 = new byte[8];
@@ -124,9 +124,11 @@ namespace HelloWord.Cryptography
         //    // Output Transformation 3
         //    byte[] h5decrypt = des2.CreateDecryptor().TransformFinalBlock(h5, 0, 8);
         //    byte[] mIfd = des1.CreateEncryptor().TransformFinalBlock(h5decrypt, 0, 8);
-            
+
         //    return mIfd;
         //}
+
+        /// http://www.programcreek.com/java-api-examples/index.php?api=org.spongycastle.crypto.macs.ISO9797Alg3Mac
         public byte[] Binary()
         {
             var key = this._kMac.Binary();
