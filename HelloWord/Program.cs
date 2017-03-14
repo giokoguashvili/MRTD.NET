@@ -270,13 +270,13 @@ namespace HelloWord
                         responseApdu1.SW2,
                         responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
 
-                    var infoMe  = "12IB34415792061602210089";
-                    var infoGio = "15IC69034696112602606119";
+                    var mrzInfoMy = "12IB34415792061602210089";
+                    var mrzInfoGio = "15IC69034696112602606119";
 
                     var cmd_data = new ExternalAuthenticateCmdData(
-                                    infoGio,
+                                    mrzInfoGio,
                                     new BinaryHex(new Hex(responseApdu1.GetData()).AsString())
-                                ).Binary();
+                                );
 
                     Console.WriteLine(
                             new Hex(
@@ -292,7 +292,7 @@ namespace HelloWord
                         Instruction = InstructionCode.ExternalAuthenticate,
                         P1 = 0x00,
                         P2 = 0x00,
-                        Data = cmd_data,
+                        Data = cmd_data.Binary(),
                         Le = 42,
                     };
                     var command2 = apdu2.ToArray();
