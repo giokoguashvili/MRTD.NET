@@ -8,11 +8,18 @@ namespace HelloWord.Cryptography
     public class MRZ
     {
         private readonly string _documentNumber;
-        private readonly string _dateOfBirth;
-        private readonly string _dateOfExpiry;
-        public MRZ()
+        private readonly DateTime _dateOfBirth;
+        private readonly DateTime _dateOfExpiry;
+        private string _dateFormat = "{0}{1}{2}";
+        public MRZ(
+                string documentNumber,
+                DateTime dateOfBirth,
+                DateTime dateOfExpiry
+            )
         {
-
+            this._dateOfBirth = dateOfBirth;
+            this._dateOfExpiry = dateOfExpiry;
+            this._documentNumber = documentNumber;
         }
 
         public string Info()
@@ -20,8 +27,8 @@ namespace HelloWord.Cryptography
             return String.Format(
                     "{0}{1}{2}",
                     this._documentNumber,
-                    this._dateOfBirth,
-                    this._dateOfExpiry
+                    this._dateOfBirth.ToString(),
+                    this._dateOfExpiry.ToString()
                 );
         }
     }

@@ -157,7 +157,7 @@ namespace HelloWord
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
 
-
+                    Console.WriteLine("\n\nSelectFile: ");
                     var apdu = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
                     {
                         CLA = 0x00,
@@ -209,9 +209,39 @@ namespace HelloWord
 
 
 
+                    // E1
+                    Console.WriteLine("\n\nSelectFile: ");
+                    var receiveBuffer0 = new byte[256];
+                    var apdu0 = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
+                    {
+                        CLA = 0x00,
+                        Instruction = InstructionCode.SelectFile,
+                        P1 = 0x02,
+                        P2 = 0x0C,
+                        Data = new byte[] { 0x01, 0x1E }
+                    };
+                    var command0 = apdu0.ToArray();
+
+                    sc = reader.Transmit(
+                            sendPci, // Protocol Control Information (T0, T1 or Raw)
+                            command0, // command APDU
+                            receivePci, // returning Protocol Control Information
+                            ref receiveBuffer0); // data buffer
+
+                    if (sc != SCardError.Success)
+                    {
+                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
+                    }
+
+                    var responseApdu0 = new ResponseApdu(receiveBuffer0, IsoCase.Case3Short, reader.ActiveProtocol);
+                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
+                        responseApdu0.SW1,
+                        responseApdu0.SW2,
+                        responseApdu0.HasData ? BitConverter.ToString(responseApdu0.GetData()) : "No uid received");
 
 
 
+                    Console.WriteLine("\n\nGetChallenge: ");
                     var receiveBuffer1 = new byte[256];
                     var apdu1 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
                     {
@@ -240,9 +270,11 @@ namespace HelloWord
                         responseApdu1.SW2,
                         responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
 
+                    var infoMe  = "12IB34415792061602210089";
+                    var infoGio = "15IC69034496112612606118";
 
                     var kSeed = new KSeed(
-                                    new SHA1("12IB34415792061602210089")
+                                    new SHA1(infoGio)
                                 );
                     var eIfd = new Eifd(
                             new S(
@@ -261,9 +293,7 @@ namespace HelloWord
                     var cmd_data = new ExternalAuthenticateCmdData(
                                     eIfd,
                                     mIfd
-                                ).Binary()
-                                .Take(40)
-                                .ToArray();
+                                ).Binary();
 
                     Console.WriteLine(
                             new Hex(
@@ -271,7 +301,7 @@ namespace HelloWord
                             ).AsString()
                         );
 
-
+                    Console.WriteLine("\n\nExternalAuthenticate: ");
                     var receiveBuffer2 = new byte[42];
                     var apdu2 = new CommandApdu(IsoCase.Case4Extended, reader.ActiveProtocol)
                     {
