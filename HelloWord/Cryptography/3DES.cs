@@ -40,7 +40,7 @@ namespace HelloWord.Cryptography
                 ICryptoTransform cTransform = tdes.CreateEncryptor();
                 var textBytes = this._text.Binary();
                 byte[] resultArray = cTransform.TransformFinalBlock(textBytes, 0, textBytes.Length);
-                //tdes.Clear();
+                tdes.Clear();
                 return resultArray;
             }
         }

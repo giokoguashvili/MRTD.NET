@@ -271,7 +271,7 @@ namespace HelloWord
                         responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
 
                     var infoMe  = "12IB34415792061602210089";
-                    var infoGio = "15IC69034496112612606118";
+                    var infoGio = "15IC69034696112602606119";
 
                     var kSeed = new KSeed(
                                     new SHA1(infoGio)

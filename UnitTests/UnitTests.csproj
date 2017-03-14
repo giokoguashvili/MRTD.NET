@@ -70,6 +70,7 @@
     <Compile Include="KseedTests.cs" />
     <Compile Include="KencTests.cs" />
     <Compile Include="KmacTests.cs" />
+    <Compile Include="DTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
