@@ -273,26 +273,9 @@ namespace HelloWord
                     var infoMe  = "12IB34415792061602210089";
                     var infoGio = "15IC69034696112602606119";
 
-                    var kSeed = new KSeed(
-                                    new SHA1(infoGio)
-                                );
-                    var eIfd = new Eifd(
-                            new S(
-                                new RNDifd(),
-                                new RNDic(responseApdu1.GetData()),
-                                new Kifd()
-                            ),
-                            new Kenc(kSeed)
-                        );
-
-                    var mIfd = new Mifd(
-                            eIfd,
-                            new Kmac(kSeed)
-                        );
-
                     var cmd_data = new ExternalAuthenticateCmdData(
-                                    eIfd,
-                                    mIfd
+                                    infoGio,
+                                    new BinaryHex(new Hex(responseApdu1.GetData()).AsString())
                                 ).Binary();
 
                     Console.WriteLine(
