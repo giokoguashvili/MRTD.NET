@@ -112,11 +112,8 @@ namespace HelloWord
             );
 
             var contextFactory = ContextFactory.Instance;
-
             SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
-            // Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
             monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
-            // Start to monitor the reader
             monitor.Start("ACS CCID USB Reader 0");
 
             //new DG1(
@@ -147,10 +144,10 @@ namespace HelloWord
                     byte[] atr;
 
                     var sc = reader.Status(
-                                out readerNames, // contains the reader name(s)
-                                out state, // contains the current state (flags)
-                                out proto, // contains the currently used communication protocol
-                                out atr); //            
+                                out readerNames,
+                                out state,
+                                out proto,
+                                out atr);           
 
 
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
@@ -172,7 +169,7 @@ namespace HelloWord
                                         0x47,
                                         0x10,
                                         0x01
-                                    }// We don't know the ID tag size
+                                    }
                     };
                     sc = reader.BeginTransaction();
                     if (sc != SCardError.Success)
@@ -184,17 +181,17 @@ namespace HelloWord
 
                     Console.WriteLine("Retrieving the UID .... ");
 
-                    var receivePci = new SCardPCI(); // IO returned protocol control information.
+                    var receivePci = new SCardPCI();
                     var sendPci = SCardPCI.GetPci(reader.ActiveProtocol);
 
                     var receiveBuffer = new byte[10];
                     var command = apdu.ToArray();
 
                     sc = reader.Transmit(
-                        sendPci, // Protocol Control Information (T0, T1 or Raw)
-                        command, // command APDU
-                        receivePci, // returning Protocol Control Information
-                        ref receiveBuffer); // data buffer
+                        sendPci, 
+                        command,
+                        receivePci, 
+                        ref receiveBuffer);
 
                     if (sc != SCardError.Success)
                     {
@@ -223,10 +220,10 @@ namespace HelloWord
                     var command0 = apdu0.ToArray();
 
                     sc = reader.Transmit(
-                            sendPci, // Protocol Control Information (T0, T1 or Raw)
-                            command0, // command APDU
-                            receivePci, // returning Protocol Control Information
-                            ref receiveBuffer0); // data buffer
+                            sendPci,
+                            command0, 
+                            receivePci,
+                            ref receiveBuffer0);
 
                     if (sc != SCardError.Success)
                     {
@@ -254,10 +251,10 @@ namespace HelloWord
                     var command1 = apdu1.ToArray();
 
                     sc = reader.Transmit(
-                            sendPci, // Protocol Control Information (T0, T1 or Raw)
-                            command1, // command APDU
-                            receivePci, // returning Protocol Control Information
-                            ref receiveBuffer1); // data buffer
+                            sendPci,
+                            command1, 
+                            receivePci,
+                            ref receiveBuffer1);
 
                     if (sc != SCardError.Success)
                     {
@@ -274,9 +271,9 @@ namespace HelloWord
                     var mrzInfoGio = "15IC69034696112602606119";
 
                     var cmd_data = new ExternalAuthenticateCmdData(
-                                    mrzInfoGio,
-                                    new BinaryHex(new Hex(responseApdu1.GetData()).AsString())
-                                );
+                                       mrzInfoGio,
+                                       new BinaryHex(new Hex(responseApdu1.GetData()).AsString())
+                                   );
 
                     Console.WriteLine(
                             new Hex(
