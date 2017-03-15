@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Org.BouncyCastle.Crypto;
 
 namespace HelloWord.Cryptography
 {
@@ -33,7 +34,7 @@ namespace HelloWord.Cryptography
                     Key = this._key.Binary(),
                     Mode = CipherMode.CBC,
                     Padding = PaddingMode.None,
-                    IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }
+                    IV = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 },
                 }
             )
             {

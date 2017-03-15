@@ -5,10 +5,10 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class KSeed : IBinary
+    public class Kseed : IBinary
     {
         private readonly IBinary _hash;
-        public KSeed(IBinary hash)
+        public Kseed(IBinary hash)
         {
             this._hash = hash;
         }

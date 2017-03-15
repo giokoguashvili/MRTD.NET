@@ -18,13 +18,17 @@ namespace HelloWord
         {
             Console.WriteLine(
                     new Hex(
-                        new SHA1("L898902C<369080619406236")
+                        new SHA1(
+                            new UTF8String("L898902C<369080619406236")
+                        )
                     ).AsString()
                 );
 
             Console.WriteLine(
                     new Hex(
-                        new SHA1("239AB9CB282DAF66231DC5A4DF6BFBAE00000001")
+                        new SHA1(
+                            new UTF8String("239AB9CB282DAF66231DC5A4DF6BFBAE00000001")
+                        )
                     ).AsString()
                 );
 
@@ -32,8 +36,10 @@ namespace HelloWord
                     new Hex(
                         new SHA1(
                             new D(
-                                new KSeed(
-                                    new SHA1("L898902C<369080619406236")
+                                new Kseed(
+                                    new SHA1(
+                                        new UTF8String("L898902C<369080619406236")
+                                    )
                                 ),
                                 "00000001"
                             )
@@ -60,8 +66,10 @@ namespace HelloWord
 
             Console.WriteLine("KEnc");
             var kEnc = new Kenc(
-                            new KSeed(
-                                new SHA1("L898902C<369080619406236")
+                            new Kseed(
+                                new SHA1(
+                                    new UTF8String("L898902C<369080619406236")
+                                )
                             )
                         );
 
@@ -85,8 +93,10 @@ namespace HelloWord
 
             Console.WriteLine("KMac");
             var kMac = new Kmac(
-                            new KSeed(
-                                new SHA1("L898902C<369080619406236")
+                            new Kseed(
+                                new SHA1(
+                                    new UTF8String("L898902C<369080619406236")
+                                )
                             )
                         );
 
@@ -290,7 +300,7 @@ namespace HelloWord
                         P1 = 0x00,
                         P2 = 0x00,
                         Data = cmd_data.Binary(),
-                        Le = 42,
+                        Le = 40, // (0x28)
                     };
                     var command2 = apdu2.ToArray();
 

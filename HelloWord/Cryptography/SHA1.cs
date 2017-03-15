@@ -8,21 +8,17 @@ namespace HelloWord.Cryptography
 {
     public class SHA1 : IBinary
     {
-        private readonly byte[] _bytes;
+        private readonly IBinary _binary;
 
-        public SHA1(IBinary binary) : this(binary.Binary()) { }
-        public SHA1(string str) : this(Encoding.UTF8.GetBytes(str)) { }
-        public SHA1(byte[] bytes)
+        public SHA1(IBinary binary)
         {
-            _bytes = bytes;
+            this._binary = binary;
         }
 
         public byte[] Binary()
         {
-            using (SHA1Managed sha1 = new SHA1Managed())
-            {
-                return sha1.ComputeHash(this._bytes);
-            }
+            return new SHA1Managed()
+                .ComputeHash(this._binary.Binary());
         }
     }
 }

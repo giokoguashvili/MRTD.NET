@@ -90,6 +90,7 @@
     <Compile Include="SmartCard\IApduCommand.cs" />
     <Compile Include="SmartCard\MiniLectorEVO.cs" />
     <Compile Include="SmartCard\IdenitityCard.cs" />
+    <Compile Include="UTF8String.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

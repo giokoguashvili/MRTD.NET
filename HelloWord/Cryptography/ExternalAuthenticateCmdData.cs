@@ -33,8 +33,10 @@ namespace HelloWord.Cryptography
 
         public byte[] Binary()
         {
-            var kSeed = new KSeed(
-                            new SHA1(this._mrzInformation)
+            var kSeed = new Kseed(
+                            new SHA1(
+                                new UTF8String(this._mrzInformation)
+                            )
                         );
             var eIfd = new Eifd(
                     new S(
@@ -44,12 +46,10 @@ namespace HelloWord.Cryptography
                     ),
                     new Kenc(kSeed)
                 );
-
             var mIfd = new Mifd(
                     eIfd,
                     new Kmac(kSeed)
                 );
-
             return new CmdData(
                     eIfd,
                     mIfd
