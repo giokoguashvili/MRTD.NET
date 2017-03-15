@@ -19,6 +19,16 @@ namespace UnitTests
                             new RandomBytes(8)
                         ).AsString()
                 );
+
+            var rnd = new RandomBytes(8);
+            Assert.AreEqual(
+                    new Hex(
+                            rnd
+                        ).AsString(),
+                    new Hex(
+                            rnd
+                        ).AsString()
+                );
         }
     }
 }

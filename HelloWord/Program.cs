@@ -164,7 +164,7 @@ namespace HelloWord
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
 
-                    Console.WriteLine("\n\nSelectFile: ");
+                    Console.WriteLine("\n\nSelectFile DF: ");
                     var apdu = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
                     {
                         CLA = 0x00,
@@ -196,7 +196,9 @@ namespace HelloWord
 
                     var receiveBuffer = new byte[10];
                     var command = apdu.ToArray();
-
+                    Console.WriteLine(
+                                String.Format("APDU: {0}\n", new Hex(new Binary(command)).AsString())
+                            );
                     sc = reader.Transmit(
                         sendPci, 
                         command,
@@ -228,7 +230,9 @@ namespace HelloWord
                         Data = new byte[] { 0x01, 0x1E }
                     };
                     var command0 = apdu0.ToArray();
-
+                    Console.WriteLine(
+                                String.Format("APDU: {0}\n", new Hex(new Binary(command0)).AsString())
+                            );
                     sc = reader.Transmit(
                             sendPci,
                             command0, 
@@ -246,8 +250,39 @@ namespace HelloWord
                         responseApdu0.SW2,
                         responseApdu0.HasData ? BitConverter.ToString(responseApdu0.GetData()) : "No uid received");
 
+                    // READ BINARY
+                    Console.WriteLine("\n\nReadBinary: ");
+                    var receiveBuffer00 = new byte[10];
+                    var apdu00 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
+                    {
+                        CLA = 0x00,
+                        Instruction = InstructionCode.ReadBinary,
+                        P1 = 0x00,
+                        P2 = 0x00,
+                        Le = 0x08
+                    };
+                    var command00 = apdu00.ToArray();
+                    Console.WriteLine(
+                                String.Format("APDU: {0}\n", new Hex(new Binary(command00)).AsString())
+                            );
+                    sc = reader.Transmit(
+                            sendPci,
+                            command00,
+                            receivePci,
+                            ref receiveBuffer00);
 
+                    if (sc != SCardError.Success)
+                    {
+                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
+                    }
 
+                    var responseApdu00 = new ResponseApdu(receiveBuffer00, IsoCase.Case2Short, reader.ActiveProtocol);
+                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
+                        responseApdu00.SW1,
+                        responseApdu00.SW2,
+                        responseApdu00.HasData ? BitConverter.ToString(responseApdu00.GetData()) : "No uid received");
+
+                    // GET CHALLENGE
                     Console.WriteLine("\n\nGetChallenge: ");
                     var receiveBuffer1 = new byte[256];
                     var apdu1 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
@@ -259,7 +294,9 @@ namespace HelloWord
                         Le = 8,
                     };
                     var command1 = apdu1.ToArray();
-
+                    Console.WriteLine(
+                                String.Format("APDU: {0}\n", new Hex(new Binary(command1)).AsString())
+                            );
                     sc = reader.Transmit(
                             sendPci,
                             command1, 
@@ -281,7 +318,7 @@ namespace HelloWord
                     var mrzInfoGio = "15IC69034696112602606119";
 
                     var cmd_data = new ExternalAuthenticateCmdData(
-                                       mrzInfoGio,
+                                       mrzInfoMy,
                                        new BinaryHex(
                                            new Hex(
                                                new Binary(responseApdu1.GetData())
@@ -294,10 +331,15 @@ namespace HelloWord
                                 cmd_data
                             ).AsString()
                         );
+                    Console.WriteLine(
+                            new Hex(
+                                cmd_data
+                            ).AsString()
+                        );
 
                     Console.WriteLine("\n\nExternalAuthenticate: ");
                     var receiveBuffer2 = new byte[42];
-                    var apdu2 = new CommandApdu(IsoCase.Case4Extended, reader.ActiveProtocol)
+                    var apdu2 = new CommandApdu(IsoCase.Case4Short, reader.ActiveProtocol)
                     {
                         CLA = 0x00,
                         Instruction = InstructionCode.ExternalAuthenticate,
@@ -306,8 +348,10 @@ namespace HelloWord
                         Data = cmd_data.Bytes(),
                         Le = 40, // (0x28)
                     };
-                    var command2 = apdu2.ToArray();
-
+                    var command2 = apdu2.ToArray(); //.Take(2).Concat(apdu2.ToArray().Skip(4)).ToArray();
+                    Console.WriteLine(
+                                String.Format("APDU: {0}\n", new Hex(new Binary(command2)).AsString())
+                            );
                     sc = reader.Transmit(
                             sendPci, // Protocol Control Information (T0, T1 or Raw)
                             command2, // command APDU
@@ -319,7 +363,7 @@ namespace HelloWord
                         Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
                     }
 
-                    var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case4Extended, reader.ActiveProtocol);
+                    var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case4Short, reader.ActiveProtocol);
                     Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
                         responseApdu2.SW1,
                         responseApdu2.SW2,

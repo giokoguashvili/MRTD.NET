@@ -37,10 +37,6 @@
     <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.6.1\lib\net40\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="pcsc-sharp, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\pcsc-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,12 +54,14 @@
     <Compile Include="Cryptography\AdjustedParity.cs" />
     <Compile Include="Cryptography\BinaryHex.cs" />
     <Compile Include="Cryptography\BinaryWrap.cs" />
+    <Compile Include="Cryptography\CachedBinary.cs" />
     <Compile Include="Cryptography\D.cs" />
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\ExternalAuthenticateCmdData.cs" />
     <Compile Include="Cryptography\Hex.cs" />
     <Compile Include="Cryptography\IBinary.cs" />
+    <Compile Include="Cryptography\ICache.cs" />
     <Compile Include="Cryptography\IKeys.cs" />
     <Compile Include="Cryptography\IParity.cs" />
     <Compile Include="Cryptography\Kenc.cs" />
@@ -75,7 +73,6 @@
     <Compile Include="Cryptography\Mifd.cs" />
     <Compile Include="Cryptography\MRZ.cs" />
     <Compile Include="Cryptography\Parity.cs" />
-    <Compile Include="Cryptography\RandomKeys\IRandom.cs" />
     <Compile Include="Cryptography\RandomKeys\Kifd.cs" />
     <Compile Include="Cryptography\RandomKeys\RandomBytes.cs" />
     <Compile Include="Cryptography\RandomKeys\RNDic.cs" />
@@ -97,6 +94,12 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\github\pcsc-sharp\pcsc-sharp\pcsc-sharp.csproj">
+      <Project>{459e0fb4-af42-4123-9923-7ea68ca01b09}</Project>
+      <Name>pcsc-sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

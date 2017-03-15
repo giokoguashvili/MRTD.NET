@@ -14,7 +14,16 @@ namespace HelloWord.Cryptography
         private readonly IBinary _kIfd;
 
         public ExternalAuthenticateCmdData(string mrzInformation, IBinary rndIc)
-            : this(mrzInformation, rndIc, new RNDifd(), new Kifd())
+            : this(
+                  mrzInformation, 
+                  rndIc, 
+                  new CachedBinary(
+                      new RNDifd()
+                  ), 
+                  new CachedBinary(
+                      new Kifd()
+                  )
+             )
         {
         }
 

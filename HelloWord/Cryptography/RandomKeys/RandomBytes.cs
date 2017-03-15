@@ -8,17 +8,17 @@ namespace HelloWord.Cryptography.RandomKeys
     public class RandomBytes : IBinary
     {
         private static readonly Random rndGenerator = new Random();
-        private readonly int _bytesCount;
+        private readonly byte[] _rndBytes;
         public RandomBytes(int bytesCount)
         {
-            this._bytesCount = bytesCount;
+            this._rndBytes = new byte[bytesCount];
+            rndGenerator.NextBytes(_rndBytes);
         }
+
 
         public byte[] Bytes()
         {
-            var result = new byte[_bytesCount];
-            rndGenerator.NextBytes(result);
-            return result;
+            return this._rndBytes;
         }
     }
 }
