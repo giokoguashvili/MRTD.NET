@@ -13,15 +13,15 @@ namespace HelloWord.Cryptography.Keys
         {
             this._kKey = kKey;
         }
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return new AdjustedParity(
                         this._kKey
-                            .Binary()
+                            .Bytes()
                             .Skip(0)
                             .Take(8)
                             .ToArray()
-                    ).Binary();
+                    ).Bytes();
         }
     }
 }

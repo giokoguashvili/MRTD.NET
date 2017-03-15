@@ -71,6 +71,7 @@
     <Compile Include="KencTests.cs" />
     <Compile Include="KmacTests.cs" />
     <Compile Include="DTests.cs" />
+    <Compile Include="MAC3Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

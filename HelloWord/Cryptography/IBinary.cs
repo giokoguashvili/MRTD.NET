@@ -7,6 +7,6 @@ namespace HelloWord.Cryptography
 {
     public interface IBinary
     {
-        byte[] Binary();
+        byte[] Bytes();
     }
 }

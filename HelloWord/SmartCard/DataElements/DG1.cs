@@ -13,7 +13,7 @@ namespace HelloWord.SmartCard.DataElements
 
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             throw new NotImplementedException();
         }

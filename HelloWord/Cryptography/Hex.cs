@@ -7,21 +7,21 @@ namespace HelloWord.Cryptography
 {
     public class Hex
     {
-        private readonly byte[] _bytes;
+        private readonly IBinary _binary;
 
-        public Hex(IBinary binary) : this(binary.Binary()) { }
-        public Hex(byte[] bytes)
-        {
-            this._bytes = bytes;
+        public Hex(IBinary binary)
+        { 
+            this._binary = binary;
         }
         public string AsString()
         {
-            return this._bytes
-                        .ToList()
-                        .Aggregate(
-                            String.Empty,
-                            (prev, next) => prev + next.ToString("X2")
-                        );
+            return this._binary
+                .Bytes()
+                .ToList()
+                .Aggregate(
+                    String.Empty,
+                    (prev, next) => prev + next.ToString("X2")
+                );
         }
     }
 }

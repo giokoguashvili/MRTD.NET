@@ -15,18 +15,18 @@ namespace HelloWord.Cryptography
             this._kSeed = kSeed;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return new AdjustedParity(
                         new SHA1(
                             new D(this._kSeed, this._c)
                         )
-                        .Binary()
+                        .Bytes()
                         .Skip(0)
                         .Take(16)
                         .ToArray()
                     )
-                    .Binary();
+                    .Bytes();
         }
     }
 }

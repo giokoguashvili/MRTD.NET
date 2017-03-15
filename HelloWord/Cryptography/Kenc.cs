@@ -15,7 +15,7 @@ namespace HelloWord.Cryptography
             this._kSeed = kSeed;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return new DESKeys(
                         new SHA1(
@@ -23,7 +23,7 @@ namespace HelloWord.Cryptography
                         )
                     )
                     .Key()
-                    .Binary();
+                    .Bytes();
         }
     }
 }

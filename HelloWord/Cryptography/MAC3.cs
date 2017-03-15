@@ -129,10 +129,10 @@ namespace HelloWord.Cryptography
         //}
 
         /// http://www.programcreek.com/java-api-examples/index.php?api=org.spongycastle.crypto.macs.ISO9797Alg3Mac
-        public byte[] Binary()
+        public byte[] Bytes()
         {
-            var key = this._kMac.Binary();
-            var data = this._eIfd.Binary();
+            var key = this._kMac.Bytes();
+            var data = this._eIfd.Bytes();
 
             var cipher = new DesEngine();
             var mac = new ISO9797Alg3Mac(cipher, 64, new ISO7816d4Padding());

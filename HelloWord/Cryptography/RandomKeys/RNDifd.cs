@@ -9,9 +9,9 @@ namespace HelloWord.Cryptography.RandomKeys
     {
         private readonly int _bytesCount = 8;
         
-        public byte[] Binary()
+        public byte[] Bytes()
         {
-            return new RandomBytes(this._bytesCount).Binary();
+            return new RandomBytes(this._bytesCount).Bytes();
         }
     }
 }

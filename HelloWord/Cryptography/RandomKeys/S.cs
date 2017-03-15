@@ -21,12 +21,12 @@ namespace HelloWord.Cryptography.RandomKeys
             this._RNDifd = rndIfd;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return _RNDifd
-                        .Binary()
-                        .Concat(_RNDic.Binary())
-                        .Concat(_Kifd.Binary())
+                        .Bytes()
+                        .Concat(_RNDic.Bytes())
+                        .Concat(_Kifd.Bytes())
                         .ToArray();
         }
     }

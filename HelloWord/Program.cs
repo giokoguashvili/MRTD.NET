@@ -282,7 +282,11 @@ namespace HelloWord
 
                     var cmd_data = new ExternalAuthenticateCmdData(
                                        mrzInfoGio,
-                                       new BinaryHex(new Hex(responseApdu1.GetData()).AsString())
+                                       new BinaryHex(
+                                           new Hex(
+                                               new Binary(responseApdu1.GetData())
+                                           ).AsString()
+                                       )
                                    );
 
                     Console.WriteLine(
@@ -299,7 +303,7 @@ namespace HelloWord
                         Instruction = InstructionCode.ExternalAuthenticate,
                         P1 = 0x00,
                         P2 = 0x00,
-                        Data = cmd_data.Binary(),
+                        Data = cmd_data.Bytes(),
                         Le = 40, // (0x28)
                     };
                     var command2 = apdu2.ToArray();

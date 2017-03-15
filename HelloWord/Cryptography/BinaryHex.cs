@@ -13,7 +13,7 @@ namespace HelloWord.Cryptography
             this._str = str;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return Enumerable.Range(0, this._str.Length)
                     .Where(x => x % 2 == 0)

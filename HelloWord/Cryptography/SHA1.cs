@@ -15,10 +15,10 @@ namespace HelloWord.Cryptography
             this._binary = binary;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return new SHA1Managed()
-                .ComputeHash(this._binary.Binary());
+                .ComputeHash(this._binary.Bytes());
         }
     }
 }

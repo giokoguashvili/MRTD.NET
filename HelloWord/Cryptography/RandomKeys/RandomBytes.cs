@@ -14,7 +14,7 @@ namespace HelloWord.Cryptography.RandomKeys
             this._bytesCount = bytesCount;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             var result = new byte[_bytesCount];
             rndGenerator.NextBytes(result);

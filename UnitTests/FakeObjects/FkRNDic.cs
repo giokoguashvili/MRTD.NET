@@ -9,9 +9,9 @@ namespace UnitTests.FakeObjects
 {
     public class FkRNDic : IBinary
     {
-        public byte[] Binary()
+        public byte[] Bytes()
         {
-            return new BinaryHex("4608F91988702212").Binary();
+            return new BinaryHex("4608F91988702212").Bytes();
         }
     }
 }

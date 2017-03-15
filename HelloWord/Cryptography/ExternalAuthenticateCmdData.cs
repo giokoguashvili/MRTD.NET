@@ -31,7 +31,7 @@ namespace HelloWord.Cryptography
         }
    
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             var kSeed = new Kseed(
                             new SHA1(
@@ -53,7 +53,7 @@ namespace HelloWord.Cryptography
             return new CmdData(
                     eIfd,
                     mIfd
-                ).Binary();
+                ).Bytes();
         }
 
 
@@ -67,13 +67,13 @@ namespace HelloWord.Cryptography
                 this._mIfd = mIfd;
             }
 
-            public byte[] Binary()
+            public byte[] Bytes()
             {
                 return this._eIfd
-                    .Binary()
+                    .Bytes()
                     .Concat(
                         this._mIfd
-                        .Binary()
+                        .Bytes()
                     ).ToArray();
             }
         }

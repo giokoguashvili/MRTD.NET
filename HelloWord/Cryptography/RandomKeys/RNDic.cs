@@ -13,7 +13,7 @@ namespace HelloWord.Cryptography.RandomKeys
             this._rndInc = rndInc;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             //return new BinaryHex("4608F91988702212").Binary();
             return _rndInc;

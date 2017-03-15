@@ -17,7 +17,7 @@ namespace HelloWord.Cryptography
         {
             return new AdjustedParity(
                     this._binary
-                        .Binary()
+                        .Bytes()
                         .Take(8)
                         .ToArray()
                 );
@@ -27,7 +27,7 @@ namespace HelloWord.Cryptography
         {
             return new AdjustedParity(
                     this._binary
-                        .Binary()
+                        .Bytes()
                         .Skip(8)
                         .Take(8)
                         .ToArray()
@@ -38,7 +38,7 @@ namespace HelloWord.Cryptography
         {
             return new AdjustedParity(
                     this._binary
-                        .Binary()
+                        .Bytes()
                         .Take(16)
                         .ToArray()  
                 );

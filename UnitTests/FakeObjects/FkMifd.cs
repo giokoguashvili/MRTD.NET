@@ -9,9 +9,9 @@ namespace UnitTests.FakeObjects
 {
     public class FkMifd : IBinary
     {
-        public byte[] Binary()
+        public byte[] Bytes()
         {
-            return new BinaryHex("5F1448EEA8AD90A7").Binary();
+            return new BinaryHex("5F1448EEA8AD90A7").Bytes();
         }
     }
 }

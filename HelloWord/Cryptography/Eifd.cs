@@ -16,12 +16,12 @@ namespace HelloWord.Cryptography
             this._kEnc = kEnc;
         }
 
-        public byte[] Binary()
+        public byte[] Bytes()
         {
             return new TripleDES(
                         this._kEnc,
                         this._s
-                   ).Binary();
+                   ).Bytes();
         }
     }
 }
