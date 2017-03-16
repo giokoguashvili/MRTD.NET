@@ -14,9 +14,5 @@ namespace HelloWord.SmartCard
         {
 
         }
-        public IBinary Execute(IApduCommand command)
-        {
-            throw new NotImplementedException(); 
-        }
     }
 }

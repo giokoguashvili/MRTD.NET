@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HelloWord.APDU
 {
-    public class ResponseAPDU : IResponseAPDU
+    public class ResponseAPDU : IResponseAPDU, IBinary
     {
         private readonly ResponseApdu _parsedResposne;
         public ResponseAPDU(ICommandAPDU executedCommandAPDU)
