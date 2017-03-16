@@ -13,7 +13,7 @@ namespace HelloWord.SmartCard
     {
         private readonly IBinary _commandData;
         private readonly IsoCase _isoCase = PCSC.Iso7816.IsoCase.Case4Short;
-        private readonly int _dataLength = 40; // (0x28)
+        private readonly int _exceptedDataLength = 40; // (0x28)
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
 
         public ExternalAuthenticateCommand(IBinary commandData) 
@@ -30,21 +30,21 @@ namespace HelloWord.SmartCard
                 P1 = 0x00,
                 P2 = 0x00,
                 Data = _commandData.Bytes(),
-                Le = this._dataLength, 
+                Le = this._exceptedDataLength, 
             }.ToArray();
         }
 
-        public int DataLength()
+        public int ExceptedDataLength()
         {
-            return this._dataLength;
+            return this._exceptedDataLength;
         }
 
-        public IsoCase IsoCase()
+        public IsoCase Case()
         {
             return this._isoCase;
         }
 
-        public SCardProtocol ActiveProtocol()
+        public SCardProtocol Protocol()
         {
             return this._activeProtocol;
         }

@@ -10,8 +10,8 @@ namespace HelloWord.APDU
 {
     public interface ICommandAPDU : IBinary
     {
-        IsoCase IsoCase();
-        SCardProtocol ActiveProtocol();
-        int DataLength();
+        IsoCase Case();
+        SCardProtocol Protocol();
+        int ExceptedDataLength();
     }
 }

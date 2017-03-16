@@ -26,7 +26,7 @@ namespace HelloWord.ApduCommands
 
         public byte[] Bytes()
         {
-            var receiveBuffer = new byte[this._commandAPDU.DataLength() + _responseApduTrailerLength];
+            var receiveBuffer = new byte[this._commandAPDU.ExceptedDataLength() + _responseApduTrailerLength];
 
             var receivePci = new SCardPCI();
             var sendPci = SCardPCI.GetPci(this._reader.ActiveProtocol);
@@ -46,19 +46,19 @@ namespace HelloWord.ApduCommands
         }
 
 
-        public SCardProtocol ActiveProtocol()
+        public SCardProtocol Protocol()
         {
-            return this._commandAPDU.ActiveProtocol();
+            return this._commandAPDU.Protocol();
         }
 
-        public int DataLength()
+        public int ExceptedDataLength()
         {
-            return this._commandAPDU.DataLength();
+            return this._commandAPDU.ExceptedDataLength();
         }
 
-        public IsoCase IsoCase()
+        public IsoCase Case()
         {
-            return this._commandAPDU.IsoCase();
+            return this._commandAPDU.Case();
         }
     }
 }

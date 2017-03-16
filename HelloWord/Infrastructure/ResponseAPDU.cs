@@ -14,8 +14,8 @@ namespace HelloWord.APDU
         {
             this._parsedResposne = new ResponseApdu(
                    executedCommandAPDU.Bytes(),
-                   executedCommandAPDU.IsoCase(),
-                   executedCommandAPDU.ActiveProtocol()
+                   executedCommandAPDU.Case(),
+                   executedCommandAPDU.Protocol()
                );
         }
 

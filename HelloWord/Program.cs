@@ -5,6 +5,7 @@ using HelloWord.Cryptography;
 using HelloWord.SmartCard;
 using HelloWord.ApduCommands;
 using HelloWord.APDU;
+using HelloWord.CommandAPDU;
 
 namespace HelloWord
 {
@@ -51,22 +52,7 @@ namespace HelloWord
 
 
                     Console.WriteLine("\n\nSelectFile DF: ");
-                    var apdu = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
-                    {
-                        CLA = 0x00,
-                        Instruction = InstructionCode.SelectFile,
-                        P1 = 0x04,
-                        P2 = 0x0C,
-                        Data = new byte[] {
-                                        0xA0,
-                                        0x00,
-                                        0x00,
-                                        0x02,
-                                        0x47,
-                                        0x10,
-                                        0x01
-                                    }
-                    };
+                   
                     sc = reader.BeginTransaction();
                     if (sc != SCardError.Success)
                     {
@@ -80,29 +66,19 @@ namespace HelloWord
                     var receivePci = new SCardPCI();
                     var sendPci = SCardPCI.GetPci(reader.ActiveProtocol);
 
-                    var receiveBuffer = new byte[10];
-                    var command = apdu.ToArray();
                     Console.WriteLine(
-                                String.Format("APDU: {0}\n", new Hex(new Binary(command)).AsString())
-                            );
-                    sc = reader.Transmit(
-                        sendPci,
-                        command,
-                        receivePci,
-                        ref receiveBuffer);
-
-                    if (sc != SCardError.Success)
-                    {
-                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
-                    }
-
-                    var responseApdu = new ResponseApdu(receiveBuffer, IsoCase.Case3Short, reader.ActiveProtocol);
-                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
-                        responseApdu.SW1,
-                        responseApdu.SW2,
-                        responseApdu.HasData ? BitConverter.ToString(responseApdu.GetData()) : "No uid received");
-
-
+                        String.Format(
+                            "ResponseAPDU: {0}",
+                            new Hex(
+                                new ResponseAPDU(
+                                    new ExecutedCommandAPDU(
+                                        new SelectApplicationCommand(),
+                                        reader
+                                    )
+                                )
+                            ).AsString()
+                        )  
+                    );
 
                     // E1
                     Console.WriteLine("\n\nSelectFile: ");
