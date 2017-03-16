@@ -24,9 +24,9 @@ namespace HelloWord.APDU
             return new Binary(this._parsedResposne.GetData());
         }
 
-        public IBinary FullData()
+        public byte[] Bytes()
         {
-            return new Binary(this._parsedResposne.FullApdu);
+            return this._parsedResposne.FullApdu;
         }
 
         public IBinary Trailer()

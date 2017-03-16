@@ -2,10 +2,9 @@
 
 namespace HelloWord.APDU
 {
-    public interface IResponseAPDU
+    public interface IResponseAPDU : IBinary
     {
         IBinary Body();
         IBinary Trailer();
-        IBinary FullData();
     }
 }

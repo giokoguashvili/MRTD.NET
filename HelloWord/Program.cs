@@ -366,7 +366,7 @@ namespace HelloWord
                                         ),
                                         reader
                                     )
-                                ).FullData()
+                                )
                             ).AsString()
                         );
 
