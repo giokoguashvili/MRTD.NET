@@ -6,14 +6,14 @@ using System.Text;
 
 namespace HelloWord.Cryptography
 {
-    public class ExternalAuthenticateCmdData : IBinary
+    public class ExternalAuthenticateCommandData : IBinary
     {
         private readonly string _mrzInformation;
         private readonly IBinary _rndIc;
         private readonly IBinary _rndIfd;
         private readonly IBinary _kIfd;
 
-        public ExternalAuthenticateCmdData(string mrzInformation, IBinary rndIc)
+        public ExternalAuthenticateCommandData(string mrzInformation, IBinary rndIc)
             : this(
                   mrzInformation, 
                   rndIc, 
@@ -27,7 +27,7 @@ namespace HelloWord.Cryptography
         {
         }
 
-        public ExternalAuthenticateCmdData(
+        public ExternalAuthenticateCommandData(
             string mrzInformation, 
             IBinary rndIc, 
             IBinary rndIfd, 

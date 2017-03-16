@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APDU\ExternalAuthenticateResponse.cs" />
+    <Compile Include="APDU\IApduCommandResponse.cs" />
+    <Compile Include="APDU\ICommandAPDU.cs" />
+    <Compile Include="APDU\IReponseAPDU.cs" />
+    <Compile Include="APDU\IResponseStatus.cs" />
+    <Compile Include="APDU\ExecutedApduCommand.cs" />
+    <Compile Include="APDU\IApduCommand.cs" />
+    <Compile Include="APDU\ResponseAPDU.cs" />
     <Compile Include="BAC.cs" />
     <Compile Include="CardReader.cs" />
     <Compile Include="Cryptography\3DES.cs" />
@@ -53,15 +61,18 @@
     <Compile Include="Cryptography\AdjustedOddParity.cs" />
     <Compile Include="Cryptography\AdjustedParity.cs" />
     <Compile Include="Cryptography\BinaryHex.cs" />
-    <Compile Include="Cryptography\BinaryWrap.cs" />
-    <Compile Include="Cryptography\CachedBinary.cs" />
+    <Compile Include="BinaryWrap.cs" />
+    <Compile Include="CachedBinary.cs" />
     <Compile Include="Cryptography\D.cs" />
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
-    <Compile Include="Cryptography\ExternalAuthenticateCmdData.cs" />
+    <Compile Include="Cryptography\Encrypted3DES.cs" />
+    <Compile Include="SmartCard\DecryptedExternalAuthenticateRespData.cs" />
+    <Compile Include="SmartCard\ExternalAuthenticateCmdData.cs" />
     <Compile Include="Cryptography\Hex.cs" />
-    <Compile Include="Cryptography\IBinary.cs" />
-    <Compile Include="Cryptography\ICache.cs" />
+    <Compile Include="IBinary.cs" />
+    <Compile Include="ICache.cs" />
+    <Compile Include="Cryptography\ICryptographer.cs" />
     <Compile Include="Cryptography\IKeys.cs" />
     <Compile Include="Cryptography\IParity.cs" />
     <Compile Include="Cryptography\Kenc.cs" />
@@ -82,10 +93,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCardStatusResponse.cs" />
-    <Compile Include="SmartCard\ComExternalAuthenticate.cs" />
     <Compile Include="SmartCard\ComSelectApplication.cs" />
     <Compile Include="SmartCard\DataElements\DG1.cs" />
-    <Compile Include="SmartCard\IApduCommand.cs" />
+    <Compile Include="APDU\ExternalAuthenticateCommand.cs" />
+    <Compile Include="SmartCard\ExternalAuthenticateRespData.cs" />
     <Compile Include="SmartCard\MiniLectorEVO.cs" />
     <Compile Include="SmartCard\IdenitityCard.cs" />
     <Compile Include="UTF8String.cs" />

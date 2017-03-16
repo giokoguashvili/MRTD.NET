@@ -11,7 +11,7 @@ namespace UnitTests
         [TestMethod]
         public void Generate_cmd_data_with_MIFD_and_EIFD()
         {
-            var act = new ExternalAuthenticateCmdData(
+            var act = new ExternalAuthenticateCommandData(
                             "L898902C<369080619406236",
                             new BinaryHex("4608F91988702212"),
                             new FkRNDifd(),

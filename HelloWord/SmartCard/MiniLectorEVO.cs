@@ -1,4 +1,5 @@
-﻿using HelloWord.Cryptography;
+﻿using HelloWord.ApduCommands;
+using HelloWord.Cryptography;
 using System;
 using System.Collections.Generic;
 using System.Linq;

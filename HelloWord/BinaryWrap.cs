@@ -8,6 +8,8 @@ namespace HelloWord.Cryptography
     public class Binary : IBinary
     {
         private readonly byte[] _bytes;
+
+        public Binary() : this(new byte[0]) {}
         public Binary(byte[] bytes)
         {
             this._bytes = bytes;

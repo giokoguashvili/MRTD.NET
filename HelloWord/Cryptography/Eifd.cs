@@ -21,7 +21,9 @@ namespace HelloWord.Cryptography
             return new TripleDES(
                         this._kEnc,
                         this._s
-                   ).Bytes();
+                   )
+                   .Encrypted()
+                   .Bytes();
         }
     }
 }
