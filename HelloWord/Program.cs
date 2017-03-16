@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
-using HelloWord.Cryptography.Keys;
-using HelloWord.SmartCard.DataElements;
 using HelloWord.SmartCard;
-using HelloWord.Cryptography.RandomKeys;
 using HelloWord.ApduCommands;
-using HelloWord.ApduCommandsResponses;
 using HelloWord.APDU;
 
 namespace HelloWord
