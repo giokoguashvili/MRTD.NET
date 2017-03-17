@@ -93,35 +93,19 @@ namespace HelloWord
 
                     // READ BINARY
                     Console.WriteLine("\n\nReadBinary: ");
-                    var receiveBuffer00 = new byte[10];
-                    var apdu00 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
-                    {
-                        CLA = 0x00,
-                        Instruction = InstructionCode.ReadBinary,
-                        P1 = 0x00,
-                        P2 = 0x00,
-                        Le = 0x08
-                    };
-                    var command00 = apdu00.ToArray();
                     Console.WriteLine(
-                                String.Format("APDU: {0}\n", new Hex(new Binary(command00)).AsString())
-                            );
-                    sc = reader.Transmit(
-                            sendPci,
-                            command00,
-                            receivePci,
-                            ref receiveBuffer00);
-
-                    if (sc != SCardError.Success)
-                    {
-                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
-                    }
-
-                    var responseApdu00 = new ResponseApdu(receiveBuffer00, IsoCase.Case2Short, reader.ActiveProtocol);
-                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
-                        responseApdu00.SW1,
-                        responseApdu00.SW2,
-                        responseApdu00.HasData ? BitConverter.ToString(responseApdu00.GetData()) : "No uid received");
+                        String.Format(
+                            "ResponseAPDU: {0}",
+                            new Hex(
+                                new ResponseAPDU(
+                                    new ExecutedCommandAPDU(
+                                        new ReadBinaryCommand(),
+                                        reader
+                                    )
+                                )
+                            ).AsString()
+                        )
+                    );
 
                     // GET CHALLENGE
                     Console.WriteLine("\n\nGetChallenge: ");

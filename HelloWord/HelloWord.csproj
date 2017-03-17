@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandAPDU\ReadBinaryCommand.cs" />
     <Compile Include="CommandAPDU\SelectMRTDApplicationCommand.cs" />
     <Compile Include="CommandAPDU\SelectEFCOMApplicationCommand.cs" />
     <Compile Include="Infrastructure\ICommandAPDU.cs" />
