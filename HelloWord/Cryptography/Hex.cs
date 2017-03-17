@@ -13,7 +13,7 @@ namespace HelloWord.Cryptography
         { 
             this._binary = binary;
         }
-        public string AsString()
+        public override string ToString()
         {
             return this._binary
                 .Bytes()

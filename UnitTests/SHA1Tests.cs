@@ -17,7 +17,7 @@ namespace UnitTests
                         new SHA1(
                             new UTF8String("L898902C<369080619406236")
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
 
@@ -32,7 +32,7 @@ namespace UnitTests
                         new SHA1(
                             new BinaryHex(inputD)
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

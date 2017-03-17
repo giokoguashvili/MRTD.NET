@@ -18,7 +18,7 @@ namespace UnitTests
                         new AdjustedParity(
                             new BinaryHex(input)
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

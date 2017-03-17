@@ -17,7 +17,7 @@ namespace UnitTests
                         new Kenc(
                             new FkKSeed()
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

@@ -18,7 +18,7 @@ namespace UnitTests
                             new FkEifd(),
                             new FkKmac()
                         )           
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

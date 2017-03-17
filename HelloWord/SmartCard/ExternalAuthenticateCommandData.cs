@@ -15,8 +15,8 @@ namespace HelloWord.Cryptography
 
         public ExternalAuthenticateCommandData(string mrzInformation, IBinary rndIc)
             : this(
-                  mrzInformation, 
-                  rndIc, 
+                  mrzInformation,
+                  new CachedBinary(rndIc), 
                   new CachedBinary(
                       new RNDifd()
                   ), 

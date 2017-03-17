@@ -17,7 +17,7 @@ namespace UnitTests
                         new Kmac(
                             new FkKSeed()
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

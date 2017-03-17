@@ -18,7 +18,7 @@ namespace UnitTests
                             new FkKSeed(),
                             "00000002"
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
 
@@ -32,7 +32,7 @@ namespace UnitTests
                             new FkKSeed(),
                             "00000001"
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using HelloWord.APDU;
+using HelloWord.ApduCommands;
+using HelloWord.CommandAPDU;
+using PCSC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +11,27 @@ namespace HelloWord.Cryptography.RandomKeys
 {
     public class RNDic : IBinary
     {
-        private readonly byte[] _rndInc;
-        public RNDic(byte[] rndInc)
+        private ICommandAPDU _executedGetChallengeCommand;
+        private readonly ISCardReader _reader;
+        private RNDic(ICommandAPDU executedGetChallengeCommand)
         {
-            this._rndInc = rndInc;
+            this._executedGetChallengeCommand = executedGetChallengeCommand;
         }
+
+        public RNDic(ISCardReader reader)
+            : this(
+                        new ExecutedCommandAPDU(
+                            new GetChallengeCommand(),
+                            reader
+                        )
+                  )
+        { }
 
         public byte[] Bytes()
         {
-            //return new BinaryHex("4608F91988702212").Binary();
-            return _rndInc;
+            return new ResponseAPDU(this._executedGetChallengeCommand)
+                .Body()
+                .Bytes();
         }
     }
 }

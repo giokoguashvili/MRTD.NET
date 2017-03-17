@@ -20,7 +20,7 @@ namespace UnitTests
                             new FkRNDic(),
                             new FkKifd()
                         )
-                    ).AsString()
+                    ).ToString()
                 );
         }
     }

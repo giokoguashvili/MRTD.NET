@@ -21,14 +21,14 @@ namespace UnitTests
                     "72C29C2371CC9BDB65B779B8E8D37B29ECC154AA56A8799FAE2F498F76ED92F25F1448EEA8AD90A7",
                     new Hex(
                         act
-                    ).AsString()
+                    ).ToString()
                 );
 
             Assert.AreEqual(
                    "72C29C2371CC9BDB65B779B8E8D37B29ECC154AA56A8799FAE2F498F76ED92F25F1448EEA8AD90A7",
                    new Hex(
                         act
-                    ).AsString()
+                    ).ToString()
                );
         }
     }

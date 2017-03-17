@@ -22,7 +22,7 @@ namespace UnitTests
                             new BinaryHex(kEnc),
                             new BinaryHex(s)
                         ).Encrypted()
-                    ).AsString()
+                    ).ToString()
             );
         }
 
@@ -41,7 +41,7 @@ namespace UnitTests
                             new BinaryHex(kEnc),
                             new BinaryHex(eIc)
                         ).Decrypted()
-                    ).AsString()
+                    ).ToString()
             );
         }
     }

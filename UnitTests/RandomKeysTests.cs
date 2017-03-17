@@ -14,20 +14,20 @@ namespace UnitTests
             Assert.AreNotEqual(
                     new Hex(
                             new RandomBytes(8)
-                        ).AsString(),
+                        ).ToString(),
                     new Hex(
                             new RandomBytes(8)
-                        ).AsString()
+                        ).ToString()
                 );
 
             var rnd = new RandomBytes(8);
             Assert.AreEqual(
                     new Hex(
                             rnd
-                        ).AsString(),
+                        ).ToString(),
                     new Hex(
                             rnd
-                        ).AsString()
+                        ).ToString()
                 );
         }
     }

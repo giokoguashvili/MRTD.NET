@@ -6,6 +6,7 @@ using HelloWord.SmartCard;
 using HelloWord.ApduCommands;
 using HelloWord.APDU;
 using HelloWord.CommandAPDU;
+using HelloWord.Cryptography.RandomKeys;
 
 namespace HelloWord
 {
@@ -71,7 +72,7 @@ namespace HelloWord
                                         reader
                                     )
                                 )
-                            ).AsString()
+                            )
                         )
                     );
 
@@ -86,7 +87,7 @@ namespace HelloWord
                                           reader
                                       )
                                   )
-                              ).AsString()
+                              )
                           )
                       );
 
@@ -103,24 +104,8 @@ namespace HelloWord
                                         reader
                                     )
                                 )
-                            ).AsString()
+                            )
                         )
-                    );
-
-                    // GET CHALLENGE
-                    Console.WriteLine("\n\nGetChallenge: ");
-                    var getChallengeResponseAPDU = new Hex(
-                                                       new ResponseAPDU(
-                                                           new ExecutedCommandAPDU(
-                                                               new GetChallengeCommand(),
-                                                               reader
-                                                           )
-                                                       ).Body()
-                                                   ).AsString();
-                    Console.WriteLine(
-                       String.Format(
-                           "ResponseAPDU: {0}", getChallengeResponseAPDU
-                       )
                     );
 
                     var mrzInfoMy = "12IB34415792061602210089";
@@ -133,14 +118,14 @@ namespace HelloWord
                                     new ExecutedCommandAPDU(
                                         new ExternalAuthenticateCommand(
                                             new ExternalAuthenticateCommandData(
-                                                   mrzInfoMy,
-                                                   new BinaryHex(getChallengeResponseAPDU)
-                                               )
+                                                mrzInfoMy,
+                                                new RNDic(reader)
+                                            )
                                         ),
                                         reader
                                     )
                                 )
-                            ).AsString()
+                            )
                         );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
