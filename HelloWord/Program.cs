@@ -45,14 +45,6 @@ namespace HelloWord
                                 out state,
                                 out proto,
                                 out atr);
-
-
-                    Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
-                    Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
-
-
-                    Console.WriteLine("\n\nSelectFile DF: ");
-                   
                     sc = reader.BeginTransaction();
                     if (sc != SCardError.Success)
                     {
@@ -61,6 +53,9 @@ namespace HelloWord
                         return;
                     }
 
+                    Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
+                    Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
+                    Console.WriteLine("\n\nSelectFile DF: ");
                     Console.WriteLine("Retrieving the UID .... ");
 
                     var receivePci = new SCardPCI();
@@ -72,45 +67,29 @@ namespace HelloWord
                             new Hex(
                                 new ResponseAPDU(
                                     new ExecutedCommandAPDU(
-                                        new SelectApplicationCommand(),
+                                        new SelectMRTDApplicationCommand(),
                                         reader
                                     )
                                 )
                             ).AsString()
-                        )  
+                        )
                     );
 
-                    // E1
                     Console.WriteLine("\n\nSelectFile: ");
-                    var receiveBuffer0 = new byte[256];
-                    var apdu0 = new CommandApdu(IsoCase.Case3Short, reader.ActiveProtocol)
-                    {
-                        CLA = 0x00,
-                        Instruction = InstructionCode.SelectFile,
-                        P1 = 0x02,
-                        P2 = 0x0C,
-                        Data = new byte[] { 0x01, 0x1E }
-                    };
-                    var command0 = apdu0.ToArray();
                     Console.WriteLine(
-                                String.Format("APDU: {0}\n", new Hex(new Binary(command0)).AsString())
-                            );
-                    sc = reader.Transmit(
-                            sendPci,
-                            command0,
-                            receivePci,
-                            ref receiveBuffer0);
+                          String.Format(
+                              "ResponseAPDU: {0}",
+                              new Hex(
+                                  new ResponseAPDU(
+                                      new ExecutedCommandAPDU(
+                                          new SelectEFCOMApplicationCommand(),
+                                          reader
+                                      )
+                                  )
+                              ).AsString()
+                          )
+                      );
 
-                    if (sc != SCardError.Success)
-                    {
-                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
-                    }
-
-                    var responseApdu0 = new ResponseApdu(receiveBuffer0, IsoCase.Case3Short, reader.ActiveProtocol);
-                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
-                        responseApdu0.SW1,
-                        responseApdu0.SW2,
-                        responseApdu0.HasData ? BitConverter.ToString(responseApdu0.GetData()) : "No uid received");
 
                     // READ BINARY
                     Console.WriteLine("\n\nReadBinary: ");
@@ -179,36 +158,7 @@ namespace HelloWord
                     var mrzInfoMy = "12IB34415792061602210089";
                     var mrzInfoGio = "15IC69034696112602606119";
 
-                    //var cmd_data = ;
-
-                    //Console.WriteLine(
-                    //        new Hex(
-                    //            cmd_data
-                    //        ).AsString()
-                    //    );
-                    //Console.WriteLine(
-                    //        new Hex(
-                    //            cmd_data
-                    //        ).AsString()
-                    //    );
-
                     Console.WriteLine("\n\nExternalAuthenticate: ");
-                    //var receiveBuffer2 = new byte[42];
-                    //var apdu2 = new CommandApdu(IsoCase.Case4Short, reader.ActiveProtocol)
-                    //{
-                    //    CLA = 0x00,
-                    //    Instruction = InstructionCode.ExternalAuthenticate,
-                    //    P1 = 0x00,
-                    //    P2 = 0x00,
-                    //    Data = cmd_data.Bytes(),
-                    //    Le = 40, // (0x28)
-                    //};
-                    //var command2 = apdu2.ToArray(); //.Take(2).Concat(apdu2.ToArray().Skip(4)).ToArray();
-
-                    //Console.WriteLine(
-                    //            String.Format("APDU: {0}\n", new Hex(new Binary(command2)).AsString())
-                    //        );
-
                     Console.WriteLine(
                             new Hex(
                                 new ResponseAPDU(
@@ -228,24 +178,6 @@ namespace HelloWord
                                 )
                             ).AsString()
                         );
-
-                    //sc = reader.Transmit(
-                    //        sendPci, // Protocol Control Information (T0, T1 or Raw)
-                    //        command2, // command APDU
-                    //        receivePci, // returning Protocol Control Information
-                    //        ref receiveBuffer2); // data buffer
-
-                    //if (sc != SCardError.Success)
-                    //{
-                    //    Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
-                    //}
-
-                    //var responseApdu2 = new ResponseApdu(receiveBuffer2, IsoCase.Case4Short, reader.ActiveProtocol);
-                    //Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
-                    //    responseApdu2.SW1,
-                    //    responseApdu2.SW2,
-                    //    responseApdu2.HasData ? BitConverter.ToString(responseApdu2.GetData()) : "No uid received");
-
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);
