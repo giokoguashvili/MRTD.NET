@@ -1,6 +1,4 @@
-﻿using HelloWord.Cryptography;
-
-namespace HelloWord.APDU
+﻿namespace HelloWord.Infrastructure
 {
     public interface IResponseAPDU
     {

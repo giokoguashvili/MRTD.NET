@@ -1,11 +1,6 @@
-﻿using HelloWord.Cryptography;
-using PCSC.Iso7816;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using PCSC.Iso7816;
 
-namespace HelloWord.APDU
+namespace HelloWord.Infrastructure
 {
     public class ResponseAPDU : IResponseAPDU, IBinary
     {

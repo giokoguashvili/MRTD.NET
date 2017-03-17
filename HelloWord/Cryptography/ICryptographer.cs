@@ -1,4 +1,6 @@
-﻿namespace HelloWord.Cryptography
+﻿using HelloWord.Infrastructure;
+
+namespace HelloWord.Cryptography
 {
     public interface ICryptographer
     {

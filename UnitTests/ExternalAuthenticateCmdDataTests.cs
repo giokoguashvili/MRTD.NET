@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HelloWord.Cryptography;
+using HelloWord.SmartCard;
 using UnitTests.FakeObjects;
 
 namespace UnitTests

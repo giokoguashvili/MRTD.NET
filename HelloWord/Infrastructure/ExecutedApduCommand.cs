@@ -1,14 +1,8 @@
-﻿using HelloWord.SmartCard;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Cryptography;
-using HelloWord.APDU;
+﻿using System;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.ApduCommands
+namespace HelloWord.Infrastructure
 {
     public class ExecutedCommandAPDU : ICommandAPDU
     {

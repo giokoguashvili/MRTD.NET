@@ -1,11 +1,11 @@
-﻿using HelloWord.APDU;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
 
 namespace HelloWord.CommandAPDU
 {

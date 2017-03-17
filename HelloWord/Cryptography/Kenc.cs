@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.Infrastructure;
 
 namespace HelloWord.Cryptography
 {
@@ -10,6 +11,15 @@ namespace HelloWord.Cryptography
         private readonly string _c = "00000001";
         private readonly IBinary _kSeed;
 
+        public Kenc(string mrzInformation)
+            : this(
+                  new Kseed(
+                        new SHA1(
+                            new UTF8String(mrzInformation)
+                        )
+                    )
+               )
+        {}
         public Kenc(IBinary kSeed)
         {
             this._kSeed = kSeed;

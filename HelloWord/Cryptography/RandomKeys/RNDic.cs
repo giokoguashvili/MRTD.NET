@@ -1,11 +1,10 @@
-﻿using HelloWord.APDU;
-using HelloWord.ApduCommands;
-using HelloWord.CommandAPDU;
+﻿using HelloWord.CommandAPDU;
 using PCSC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.Infrastructure;
 
 namespace HelloWord.Cryptography.RandomKeys
 {

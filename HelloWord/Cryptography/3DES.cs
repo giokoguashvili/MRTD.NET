@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using HelloWord.Infrastructure;
 using Org.BouncyCastle.Crypto;
 
 namespace HelloWord.Cryptography

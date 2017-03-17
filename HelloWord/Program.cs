@@ -3,10 +3,9 @@ using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
 using HelloWord.SmartCard;
-using HelloWord.ApduCommands;
-using HelloWord.APDU;
 using HelloWord.CommandAPDU;
 using HelloWord.Cryptography.RandomKeys;
+using HelloWord.Infrastructure;
 
 namespace HelloWord
 {
@@ -36,7 +35,6 @@ namespace HelloWord
                 var cardError = reader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
                 if (cardError == SCardError.Success)
                 {
-                    string[] names;
                     SCardProtocol proto;
                     SCardState state;
                     byte[] atr;
@@ -59,74 +57,62 @@ namespace HelloWord
                     Console.WriteLine("\n\nSelectFile DF: ");
                     Console.WriteLine("Retrieving the UID .... ");
 
-                    var receivePci = new SCardPCI();
-                    var sendPci = SCardPCI.GetPci(reader.ActiveProtocol);
-
+                    Console.WriteLine("\nSelectMRTDApplication\nResponseAPDU: ");
                     Console.WriteLine(
-                        String.Format(
-                            "ResponseAPDU: {0}",
-                            new Hex(
-                                new ResponseAPDU(
-                                    new ExecutedCommandAPDU(
-                                        new SelectMRTDApplicationCommand(),
-                                        reader
-                                    )
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new SelectMRTDApplicationCommand(),
+                                    reader
                                 )
                             )
                         )
                     );
 
-                    Console.WriteLine("\n\nSelectFile: ");
+                    Console.WriteLine("\nSelectEFCOMApplication\nResponseAPDU: ");
                     Console.WriteLine(
-                          String.Format(
-                              "ResponseAPDU: {0}",
-                              new Hex(
-                                  new ResponseAPDU(
-                                      new ExecutedCommandAPDU(
-                                          new SelectEFCOMApplicationCommand(),
-                                          reader
-                                      )
-                                  )
-                              )
-                          )
-                      );
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new SelectEFCOMApplicationCommand(),
+                                    reader
+                                )
+                            )
+                        )
+                     );
 
-
-                    // READ BINARY
-                    Console.WriteLine("\n\nReadBinary: ");
+                    Console.WriteLine("\nReadBinary\nResponseAPDU: ");
                     Console.WriteLine(
-                        String.Format(
-                            "ResponseAPDU: {0}",
-                            new Hex(
-                                new ResponseAPDU(
-                                    new ExecutedCommandAPDU(
-                                        new ReadBinaryCommand(),
-                                        reader
-                                    )
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new ReadBinaryCommand(),
+                                    reader
                                 )
                             )
                         )
                     );
 
-                    var mrzInfoMy = "12IB34415792061602210089";
-                    var mrzInfoGio = "15IC69034696112602606119";
+                    var mrzInfo = "12IB34415792061602210089"; // Bagdavadze
+                    //var mrzInfo = "15IC69034696112602606119"; // K
+                    //var mrzInfo = "13ID37063295110732402055"; // Shako
 
-                    Console.WriteLine("\n\nExternalAuthenticate: ");
+                    Console.WriteLine("\nExternalAuthenticate\nResponseAPDU: ");
                     Console.WriteLine(
-                            new Hex(
-                                new ResponseAPDU(
-                                    new ExecutedCommandAPDU(
-                                        new ExternalAuthenticateCommand(
-                                            new ExternalAuthenticateCommandData(
-                                                mrzInfoMy,
-                                                new RNDic(reader)
-                                            )
-                                        ),
-                                        reader
-                                    )
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new ExternalAuthenticateCommand(
+                                        new ExternalAuthenticateCommandData(
+                                            mrzInfo,
+                                            new RNDic(reader)
+                                        )
+                                    ),
+                                    reader
                                 )
                             )
-                        );
+                        )
+                    );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);

@@ -1,4 +1,4 @@
-﻿namespace HelloWord.Cryptography
+﻿namespace HelloWord.Infrastructure
 {
     public interface ICache
     {

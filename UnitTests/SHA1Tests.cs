@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HelloWord.Cryptography;
 using HelloWord;
+using HelloWord.Infrastructure;
 
 namespace UnitTests
 {
