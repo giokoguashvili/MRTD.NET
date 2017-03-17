@@ -73,6 +73,7 @@
     <Compile Include="DTests.cs" />
     <Compile Include="MAC3Tests.cs" />
     <Compile Include="EicTests.cs" />
+    <Compile Include="DecryptedExternalAuthenticateResponseDataTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

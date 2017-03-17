@@ -24,7 +24,7 @@ namespace HelloWord.SmartCard
         {
             return new TripleDES(
                     new Kenc(_mrzInformation),
-                    _externalAuthRespData
+                    new Eic(_externalAuthRespData)
                 )
                 .Decrypted()
                 .Bytes();
