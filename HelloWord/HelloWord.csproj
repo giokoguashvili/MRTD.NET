@@ -43,6 +43,7 @@
     <Compile Include="CommandAPDU\ReadBinaryCommand.cs" />
     <Compile Include="CommandAPDU\SelectMRTDApplicationCommand.cs" />
     <Compile Include="CommandAPDU\SelectEFCOMApplicationCommand.cs" />
+    <Compile Include="Cryptography\Eic.cs" />
     <Compile Include="Infrastructure\ICommandAPDU.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />

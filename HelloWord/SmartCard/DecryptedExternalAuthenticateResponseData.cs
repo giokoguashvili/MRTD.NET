@@ -10,20 +10,24 @@ namespace HelloWord.SmartCard
     public class DecryptedExternalAuthenticateResponseData : IBinary
     {
         private readonly IBinary _externalAuthRespData;
+        private readonly string _mrzInformation;
+
         public DecryptedExternalAuthenticateResponseData(
-                IBinary externalAuthRespData
+                IBinary externalAuthRespData,
+                string mrzInformation
             )
         {
-            this._externalAuthRespData = externalAuthRespData;
+            _externalAuthRespData = externalAuthRespData;
+            _mrzInformation = mrzInformation;
         }
         public byte[] Bytes()
         {
-            throw new NotImplementedException();
-            //return new TripleDES(
-                    
-            //    )
-            //    .Decrypted()
-            //    .Bytes();
+            return new TripleDES(
+                    new Kenc(_mrzInformation),
+                    _externalAuthRespData
+                )
+                .Decrypted()
+                .Bytes();
         }
     }
 }
