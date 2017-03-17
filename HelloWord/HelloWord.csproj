@@ -44,6 +44,8 @@
     <Compile Include="CommandAPDU\SelectMRTDApplicationCommand.cs" />
     <Compile Include="CommandAPDU\SelectEFCOMApplicationCommand.cs" />
     <Compile Include="Cryptography\Eic.cs" />
+    <Compile Include="Cryptography\Kic.cs" />
+    <Compile Include="Cryptography\KseedIc.cs" />
     <Compile Include="Infrastructure\ICommandAPDU.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />

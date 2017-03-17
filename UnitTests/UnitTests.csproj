@@ -74,6 +74,7 @@
     <Compile Include="MAC3Tests.cs" />
     <Compile Include="EicTests.cs" />
     <Compile Include="DecryptedExternalAuthenticateResponseDataTests.cs" />
+    <Compile Include="KseedIcTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
