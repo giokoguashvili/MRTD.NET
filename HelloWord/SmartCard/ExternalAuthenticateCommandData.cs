@@ -12,16 +12,14 @@ namespace HelloWord.SmartCard
         private readonly IBinary _rndIfd;
         private readonly IBinary _kIfd;
 
-        public ExternalAuthenticateCommandData(string mrzInformation, IBinary rndIc)
+        public ExternalAuthenticateCommandData(
+            string mrzInformation,
+            IBinary rndIc)
             : this(
                   mrzInformation,
                   new CachedBinary(rndIc), 
-                  new CachedBinary(
-                      new RNDifd()
-                  ), 
-                  new CachedBinary(
-                      new Kifd()
-                  )
+                  new CachedBinary(new RNDifd()), 
+                  new CachedBinary(new Kifd())
              )
         {
         }

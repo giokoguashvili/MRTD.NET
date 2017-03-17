@@ -48,6 +48,7 @@
     <Compile Include="Cryptography\KseedIc.cs" />
     <Compile Include="Cryptography\KSenc.cs" />
     <Compile Include="Cryptography\KSmac.cs" />
+    <Compile Include="Cryptography\SSC.cs" />
     <Compile Include="Infrastructure\ICommandAPDU.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
