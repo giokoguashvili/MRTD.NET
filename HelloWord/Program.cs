@@ -109,35 +109,19 @@ namespace HelloWord
 
                     // GET CHALLENGE
                     Console.WriteLine("\n\nGetChallenge: ");
-                    var receiveBuffer1 = new byte[256];
-                    var apdu1 = new CommandApdu(IsoCase.Case2Short, reader.ActiveProtocol)
-                    {
-                        CLA = 0x00,
-                        Instruction = InstructionCode.GetChallenge,
-                        P1 = 0x00,
-                        P2 = 0x00,
-                        Le = 8,
-                    };
-                    var command1 = apdu1.ToArray();
+                    var getChallengeResponseAPDU = new Hex(
+                                                       new ResponseAPDU(
+                                                           new ExecutedCommandAPDU(
+                                                               new GetChallengeCommand(),
+                                                               reader
+                                                           )
+                                                       ).Body()
+                                                   ).AsString();
                     Console.WriteLine(
-                                String.Format("APDU: {0}\n", new Hex(new Binary(command1)).AsString())
-                            );
-                    sc = reader.Transmit(
-                            sendPci,
-                            command1,
-                            receivePci,
-                            ref receiveBuffer1);
-
-                    if (sc != SCardError.Success)
-                    {
-                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
-                    }
-
-                    var responseApdu1 = new ResponseApdu(receiveBuffer1, IsoCase.Case2Short, reader.ActiveProtocol);
-                    Console.Write("RND SW1: {0:X2}, SW2: {1:X2}\nUid: {2}\n",
-                        responseApdu1.SW1,
-                        responseApdu1.SW2,
-                        responseApdu1.HasData ? BitConverter.ToString(responseApdu1.GetData()) : "No uid received");
+                       String.Format(
+                           "ResponseAPDU: {0}", getChallengeResponseAPDU
+                       )
+                    );
 
                     var mrzInfoMy = "12IB34415792061602210089";
                     var mrzInfoGio = "15IC69034696112602606119";
@@ -150,11 +134,7 @@ namespace HelloWord
                                         new ExternalAuthenticateCommand(
                                             new ExternalAuthenticateCommandData(
                                                    mrzInfoMy,
-                                                   new BinaryHex(
-                                                       new Hex(
-                                                           new Binary(responseApdu1.GetData())
-                                                       ).AsString()
-                                                   )
+                                                   new BinaryHex(getChallengeResponseAPDU)
                                                )
                                         ),
                                         reader
