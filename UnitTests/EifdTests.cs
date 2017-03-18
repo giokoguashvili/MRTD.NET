@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using HelloWord.Cryptography.RandomKeys;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class EifdTests
     {
-        [TestMethod]
+        [Test]
         public void Eifd_generation_from_S_Kenc_with_3DES()
         { 
             Assert.AreEqual(

@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class MifdTests
     {
-        [TestMethod]
+        [Test]
         public void Mifd_generation_from_Eifd_Kmac_with_MAC3()
         {
             Assert.AreEqual(

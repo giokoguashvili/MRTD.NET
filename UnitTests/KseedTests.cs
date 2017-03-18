@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class KseedTests
     {
-        [TestMethod]
+        [Test]
         public void Take_the_most_significant_16_bytes_to_form_the_Kseed()
         {
             Assert.AreEqual(

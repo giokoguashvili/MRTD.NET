@@ -1,15 +1,15 @@
 ﻿using System;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class EicTests
     {
-        [TestMethod]
-        [DataRow(
+        [Test]
+        [TestCase(
             "46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F", 
             "46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F2F2D235D074D7449"
             )]

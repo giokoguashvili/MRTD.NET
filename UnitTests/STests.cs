@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography.RandomKeys;
 using UnitTests.FakeObjects;
 using HelloWord.Cryptography;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class STests
     {
-        [TestMethod]
+        [Test]
         public void Combine_RNDifd_RNDic_Kifd()
         {
             Assert.AreEqual(

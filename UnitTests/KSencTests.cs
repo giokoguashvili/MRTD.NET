@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using HelloWord.Cryptography;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,10 @@ using UnitTests.FakeObjects;
 
 namespace HelloWord.Cryptography.Tests
 {
-    [TestClass()]
+    [TestFixture]
     public class KSencTests
     {
-        [TestMethod()]
+        [Test]
         public void Calculate_session_key_KSenc_with_KSeedIc()
         {
             Assert.AreEqual(

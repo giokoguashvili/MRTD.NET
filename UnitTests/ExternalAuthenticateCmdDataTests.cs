@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using HelloWord.SmartCard;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class ExternalAuthenticateCmdDataTests
     {
-        [TestMethod]
+        [Test]
         public void Generate_cmd_data_with_MIFD_and_EIFD()
         {
             var act = new ExternalAuthenticateCommandData(

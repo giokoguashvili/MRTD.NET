@@ -1,15 +1,15 @@
 ﻿using System;
 using HelloWord.Cryptography;
 using HelloWord.SmartCard;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class DecryptedExternalAuthenticateResponseDataTests
     {
-        [TestMethod]
-        [DataRow(
+        [Test]
+        [TestCase(
             "4608F91988702212781723860C06C2260B4F80323EB3191CB04970CB4052790B",
             "46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F2F2D235D074D7449",
             "L898902C<369080619406236"

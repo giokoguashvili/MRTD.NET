@@ -1,16 +1,16 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class ParityTests
     {
-        [TestMethod]
-        [DataRow(253, 252)]
-        [DataRow(103, 102)]
-        [DataRow(79, 78)]
+        [Test]
+        [TestCase(253, 252)]
+        [TestCase(103, 102)]
+        [TestCase(79, 78)]
         public void Adjust_Parity_Bits_on_Bytes(int exp, int input)
         {
             Assert.AreEqual(

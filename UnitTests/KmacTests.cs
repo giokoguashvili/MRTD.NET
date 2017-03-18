@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class KmacTests
     {
-        [TestMethod]
+        [Test]
         public void Calculate_the_basic_access_key_Kmac()
         {
             Assert.AreEqual(

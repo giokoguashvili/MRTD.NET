@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class MAC3Tests
     {
-        [TestMethod]
+        [Test]
         public void Compute_MAC_Algorithm_3()
         {
             Assert.AreEqual(

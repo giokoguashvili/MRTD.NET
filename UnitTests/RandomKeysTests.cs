@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using HelloWord.Cryptography.RandomKeys;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class RandomKeysTests
     {
-        [TestMethod]
+        [Test]
         public void GenerateRandomBytes()
         {
             Assert.AreNotEqual(

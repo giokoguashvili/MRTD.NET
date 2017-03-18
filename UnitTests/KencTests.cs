@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class KencTests
     {
-        [TestMethod]
+        [Test]
         public void Calculate_the_basic_access_key_Kenc()
         {
             Assert.AreEqual(
@@ -21,8 +21,8 @@ namespace UnitTests
                 );
         }
 
-        [TestMethod]
-        [DataRow("AB94FDECF2674FDFB9B391F85D7F76F2", "L898902C<369080619406236")]
+        [Test]
+        [TestCase("AB94FDECF2674FDFB9B391F85D7F76F2", "L898902C<369080619406236")]
         public void Calculate_the_basic_access_key_Kenc_from_mrzInfo(string act, string mrzInfo)
         {
             Assert.AreEqual(

@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using HelloWord.Cryptography;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class DTests
     {
-        [TestMethod]
+        [Test]
         public void Concatenate_Kseed_and_c_for_kEnc()
         {
             Assert.AreEqual(
@@ -22,7 +22,7 @@ namespace UnitTests
                 );
         }
 
-        [TestMethod]
+        [Test]
         public void Concatenate_Kseed_and_c_for_kMac()
         {
             Assert.AreEqual(
