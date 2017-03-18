@@ -35,7 +35,10 @@
       <HintPath>..\packages\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\packages\BouncyCastle.Crypto.dll</HintPath>
+      <HintPath>..\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="pcsc-sharp">
+      <HintPath>..\pcsc-sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -97,12 +100,6 @@
     <Compile Include="SmartCard\MiniLectorEVO.cs" />
     <Compile Include="SmartCard\IdenitityCard.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\pcsc-sharp\pcsc-sharp\pcsc-sharp.csproj">
-      <Project>{459e0fb4-af42-4123-9923-7ea68ca01b09}</Project>
-      <Name>pcsc-sharp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
