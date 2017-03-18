@@ -3,11 +3,10 @@ configuration: Release
 before_build:
   - nuget restore
 
-
 build:
   verbosity: minimal
 
 test:
   assemblies:
-    - '**\bin\debug\UnitTests.dll'
+    - 'UnitTests\bin\debug\UnitTests.dll'
   
