@@ -95,9 +95,7 @@
     <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SmartCard\DataElements\DG1.cs" />
     <Compile Include="CommandAPDU\ExternalAuthenticateCommand.cs" />
-    <Compile Include="SmartCard\MiniLectorEVO.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
