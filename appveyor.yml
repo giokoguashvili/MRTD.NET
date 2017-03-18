@@ -3,6 +3,11 @@ configuration: Release
 before_build:
   - nuget restore
 
+
 build:
   verbosity: minimal
+
+test:
+  assemblies:
+    - UnitTests.dll
   
