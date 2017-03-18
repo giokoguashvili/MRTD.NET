@@ -98,7 +98,6 @@
     <Compile Include="SmartCard\DataElements\DG1.cs" />
     <Compile Include="CommandAPDU\ExternalAuthenticateCommand.cs" />
     <Compile Include="SmartCard\MiniLectorEVO.cs" />
-    <Compile Include="SmartCard\IdenitityCard.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
