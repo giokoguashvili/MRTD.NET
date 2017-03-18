@@ -9,5 +9,5 @@ build:
 
 test:
   assemblies:
-    - UnitTests.dll
+    - '**\bin\debug\UnitTests.dll'
   
