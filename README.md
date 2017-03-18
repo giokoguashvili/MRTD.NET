@@ -1,3 +1,3 @@
 # SmartCardSamples
 
-[![Build Status](https://travis-ci.org/kogoia/SmartCardSamples.svg?branch=master)](https://travis-ci.org/kogoia/SmartCardSamples)
+[![Build status](https://ci.appveyor.com/api/projects/status/ki0q2h4ekc8wfttv?svg=true)](https://ci.appveyor.com/project/kogoia/smartcardsamples)
