@@ -34,6 +34,9 @@
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>..\packages\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
@@ -96,7 +99,7 @@
     <Compile Include="Infrastructure\UTF8String.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\github\pcsc-sharp\pcsc-sharp\pcsc-sharp.csproj">
+    <ProjectReference Include="..\pcsc-sharp\pcsc-sharp\pcsc-sharp.csproj">
       <Project>{459e0fb4-af42-4123-9923-7ea68ca01b09}</Project>
       <Name>pcsc-sharp</Name>
     </ProjectReference>
