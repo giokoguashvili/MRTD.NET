@@ -52,7 +52,10 @@
     <Compile Include="Cryptography\KSenc.cs" />
     <Compile Include="Cryptography\KSmac.cs" />
     <Compile Include="Cryptography\SSC.cs" />
+    <Compile Include="FileIds\EF_COM.cs" />
+    <Compile Include="Infrastructure\CommandHeader.cs" />
     <Compile Include="Infrastructure\ICommandAPDU.cs" />
+    <Compile Include="Infrastructure\ICommandHeader.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
     <Compile Include="Infrastructure\ResponseAPDU.cs" />
@@ -67,6 +70,13 @@
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\Encrypted3DES.cs" />
+    <Compile Include="SecureMessaging\DO87.cs" />
+    <Compile Include="SecureMessaging\EncryptedCommandData.cs" />
+    <Compile Include="SecureMessaging\M.cs" />
+    <Compile Include="SecureMessaging\MaskedCLA.cs" />
+    <Compile Include="SecureMessaging\PadedCommandHeader.cs" />
+    <Compile Include="SecureMessaging\PadedCommandData.cs" />
+    <Compile Include="SecureMessaging\ProtectedCommandHeader.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="Cryptography\Hex.cs" />
@@ -98,5 +108,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

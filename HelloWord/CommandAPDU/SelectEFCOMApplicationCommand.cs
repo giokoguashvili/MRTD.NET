@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.FileIds;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.CommandAPDU
@@ -14,7 +15,7 @@ namespace HelloWord.CommandAPDU
         private readonly IsoCase _isoCase = IsoCase.Case3Short;
         private readonly int _expectedDataLength = 0;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
-        private readonly IBinary _applicationIdentifier = new BinaryHex("011E"); // 0x01 0x1E
+        private readonly IBinary _applicationIdentifier = new EF_COM(); // 0x01 0x1E
         public byte[] Bytes()
         {
             return new CommandApdu(this._isoCase, this._activeProtocol)

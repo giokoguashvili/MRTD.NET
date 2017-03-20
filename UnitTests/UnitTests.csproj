@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeObjects\FkKSenc.cs" />
     <Compile Include="KSencTests.cs" />
     <Compile Include="FakeObjects\FkEifd.cs" />
     <Compile Include="FakeObjects\FkKenc.cs" />
@@ -81,6 +82,8 @@
     <Compile Include="KseedIcTests.cs" />
     <Compile Include="KSmacTests.cs" />
     <Compile Include="SCCTests.cs" />
+    <Compile Include="EncryptedDataTests.cs" />
+    <Compile Include="MTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
