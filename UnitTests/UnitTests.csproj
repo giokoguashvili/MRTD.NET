@@ -84,6 +84,7 @@
     <Compile Include="SCCTests.cs" />
     <Compile Include="EncryptedDataTests.cs" />
     <Compile Include="MTests.cs" />
+    <Compile Include="CommandHeaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

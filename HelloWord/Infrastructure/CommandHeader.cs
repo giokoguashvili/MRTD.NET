@@ -19,7 +19,7 @@ namespace HelloWord.Infrastructure
             return new Binary(
                         _rawCommandApdu
                         .Bytes()
-                        .Take(2)
+                        .Take(1)
                         .ToArray()
                     );
         }
@@ -29,8 +29,8 @@ namespace HelloWord.Infrastructure
             return new Binary(
                         _rawCommandApdu
                         .Bytes()
-                        .Skip(2)
-                        .Take(2)
+                        .Skip(1)
+                        .Take(1)
                         .ToArray()
                     );
         }
@@ -40,8 +40,8 @@ namespace HelloWord.Infrastructure
             return new Binary(
                         _rawCommandApdu
                         .Bytes()
-                        .Skip(4)
-                        .Take(2)
+                        .Skip(2)
+                        .Take(1)
                         .ToArray()
                     );
         }
@@ -51,8 +51,8 @@ namespace HelloWord.Infrastructure
             return new Binary(
                         _rawCommandApdu
                         .Bytes()
-                        .Skip(6)
-                        .Take(2)
+                        .Skip(3)
+                        .Take(1)
                         .ToArray()
                     );
         }
@@ -62,7 +62,7 @@ namespace HelloWord.Infrastructure
             return new Binary(
                     _rawCommandApdu
                     .Bytes()
-                    .Take(8)
+                    .Take(4)
                     .ToArray()
                 );
         }
@@ -73,7 +73,7 @@ namespace HelloWord.Infrastructure
                         cla
                         .Bytes()
                         .Concat(
-                            _rawCommandApdu.Bytes().Skip(2).Take(6).ToArray()
+                            _rawCommandApdu.Bytes().Skip(1).Take(3).ToArray()
                         ).ToArray()
                     );
         }
