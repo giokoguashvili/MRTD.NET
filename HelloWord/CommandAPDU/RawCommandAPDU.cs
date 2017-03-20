@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Cryptography;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.CommandAPDU
 {
     public class RawCommandAPDU : IBinary
     {

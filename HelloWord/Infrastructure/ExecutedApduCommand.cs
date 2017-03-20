@@ -1,4 +1,5 @@
 ﻿using System;
+using HelloWord.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
 

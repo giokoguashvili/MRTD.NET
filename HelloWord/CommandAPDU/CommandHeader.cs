@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Cryptography;
+﻿using System.Linq;
+using HelloWord.Infrastructure;
 
-namespace HelloWord.Infrastructure
+namespace HelloWord.CommandAPDU
 {
     public class CommandHeader : ICommandAPDUHeader
     {

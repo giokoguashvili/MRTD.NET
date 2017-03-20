@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+using HelloWord.Infrastructure;
 
-namespace HelloWord.Infrastructure
+namespace HelloWord.CommandAPDU.Header
 {
     public class CLA : IBinary
     {

@@ -1,4 +1,6 @@
-﻿namespace HelloWord.Infrastructure
+﻿using HelloWord.Infrastructure;
+
+namespace HelloWord.CommandAPDU
 {
     public interface ICommandAPDUHeader
     {

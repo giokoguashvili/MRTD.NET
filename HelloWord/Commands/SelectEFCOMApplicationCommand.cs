@@ -1,14 +1,10 @@
-﻿using HelloWord.Cryptography;
-using PCSC;
-using PCSC.Iso7816;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HelloWord.CommandAPDU;
 using HelloWord.FileIds;
 using HelloWord.Infrastructure;
+using PCSC;
+using PCSC.Iso7816;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.Commands
 {
     public class SelectEFCOMApplicationCommand : ICommandAPDU
     {

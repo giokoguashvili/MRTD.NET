@@ -1,4 +1,5 @@
 ﻿using System;
+using HelloWord.CommandAPDU;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;

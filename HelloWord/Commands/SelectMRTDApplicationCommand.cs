@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PCSC;
-using PCSC.Iso7816;
+﻿using HelloWord.CommandAPDU;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using PCSC;
+using PCSC.Iso7816;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.Commands
 {
     public class SelectMRTDApplicationCommand : ICommandAPDU
     {

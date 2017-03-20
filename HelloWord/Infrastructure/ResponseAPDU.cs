@@ -1,4 +1,5 @@
-﻿using PCSC.Iso7816;
+﻿using HelloWord.CommandAPDU;
+using PCSC.Iso7816;
 
 namespace HelloWord.Infrastructure
 {
