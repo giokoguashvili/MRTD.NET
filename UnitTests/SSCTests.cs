@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace UnitTests
 {
     [TestFixture]
-    public class SCCTests
+    public class SSCTests
     {
         [Test]
         [TestCase("887022120C06C226", "4608F91988702212", "781723860C06C226")]
