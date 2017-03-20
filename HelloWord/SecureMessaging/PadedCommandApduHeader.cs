@@ -6,17 +6,17 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class PadedCommandHeader : IBinary
+    public class PadedCommandApduHeader : IBinary
     {
-        private readonly IBinary _commandData;
+        private readonly IBinary _commandApduData;
         private readonly byte[] _pad = new byte[] { 0x80, 0x00, 0x00, 0x00 };
-        public PadedCommandHeader(IBinary commandData)
+        public PadedCommandApduHeader(IBinary commandApduData)
         {
-            _commandData = commandData;
+            _commandApduData = commandApduData;
         }
         public byte[] Bytes()
         {
-            return _commandData
+            return _commandApduData
                 .Bytes()
                 .Concat(_pad)
                 .ToArray();

@@ -21,13 +21,13 @@ namespace UnitTests
                     "0CA4020C800000008709016375432908C044F6",
                     new Hex(
                         new M(
-                            new ProtectedCommandHeader(
-                                new CommandAPDUHeader(rawCommandApdu)
+                            new ProtectedCommandApduHeader(
+                                new CommandApduHeader(rawCommandApdu)
                             ),
                             new DO87(
-                                new EncryptedCommandData(
+                                new EncryptedCommandApduData(
                                     new FkKSenc(), 
-                                    new PadedCommandData(
+                                    new PadedCommandApduData(
                                         new CommandData(
                                             new CommandApduBody(rawCommandApdu)
                                         )

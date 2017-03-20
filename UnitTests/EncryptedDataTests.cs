@@ -16,7 +16,7 @@ namespace UnitTests
             Assert.AreEqual(
                     "6375432908C044F6",
                     new Hex(
-                        new EncryptedCommandData(
+                        new EncryptedCommandApduData(
                             new FkKSenc(),
                             new BinaryHex("011E800000000000")
                         )

@@ -79,12 +79,12 @@
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\Encrypted3DES.cs" />
     <Compile Include="SecureMessaging\DO87.cs" />
-    <Compile Include="SecureMessaging\EncryptedCommandData.cs" />
+    <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\M.cs" />
     <Compile Include="SecureMessaging\MaskedCLA.cs" />
-    <Compile Include="SecureMessaging\PadedCommandHeader.cs" />
-    <Compile Include="SecureMessaging\PadedCommandData.cs" />
-    <Compile Include="SecureMessaging\ProtectedCommandHeader.cs" />
+    <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
+    <Compile Include="SecureMessaging\PadedCommandApduData.cs" />
+    <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />

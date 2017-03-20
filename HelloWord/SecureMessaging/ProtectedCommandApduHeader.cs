@@ -9,10 +9,10 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class ProtectedCommandHeader : IBinary
+    public class ProtectedCommandApduHeader : IBinary
     {
         private readonly IBinary _commandApduHeader;
-        public ProtectedCommandHeader(IBinary commandApduHeader)
+        public ProtectedCommandApduHeader(IBinary commandApduHeader)
         {
             _commandApduHeader = commandApduHeader;
 
@@ -20,7 +20,7 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             return
-                new PadedCommandHeader(
+                new PadedCommandApduHeader(
                     new Binary(
                         new MaskedCLA(
                             new CLA(_commandApduHeader)

@@ -7,12 +7,12 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class EncryptedCommandData : IBinary
+    public class EncryptedCommandApduData : IBinary
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _dataForEncrypt;
 
-        public EncryptedCommandData(
+        public EncryptedCommandApduData(
             IBinary kSenc,
             IBinary dataForEncrypt)
         {
