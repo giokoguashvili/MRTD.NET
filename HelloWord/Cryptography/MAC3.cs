@@ -19,22 +19,22 @@ namespace HelloWord.Cryptography
     /// </summary>
     public class MAC3 : IBinary
     {
-        private readonly IBinary _eIfd;
-        private readonly IBinary _kMac;
-        public MAC3(IBinary eIfd, IBinary kMac)
+        private readonly IBinary _data;
+        private readonly IBinary _key;
+        public MAC3(IBinary data, IBinary key)
         {
-            this._eIfd = eIfd;
-            this._kMac = kMac;
+            _data = data;
+            _key = key;
         }
 
-        //public byte[] Binary()
+        //public byte[] Bytes()
         //{
         //    MACTripleDES mac = new MACTripleDES();
         //    mac.Initialize();
-        //    mac.Padding = PaddingMode.None;
-        //    mac.Key = this._kMac.Binary();
+        //    mac.Padding = PaddingMode.Zeros;
+        //    mac.Key = this._kMac.Bytes();
 
-        //    var eIfd = this._eIfd.Binary();
+        //    var eIfd = this._eIfd.Bytes();
         //    var mIfd = mac.TransformFinalBlock(eIfd, 0, eIfd.Length);
         //    return mIfd;
         //}
@@ -44,10 +44,10 @@ namespace HelloWord.Cryptography
         /// http://stackoverflow.com/questions/20312646/c-sharp-implementation-of-retail-mac-calculation-isoiec-9797-1-mac-algorithm-3
         /// </summary>
         /// <returns></returns>
-        //public byte[] Binary()
+        //public byte[] Bytes()
         //{
-        //    var kMAC = this._kMac.Binary();
-        //    var eIfd = this._eIfd.Binary();
+        //    var kMAC = this._kMac.Bytes();
+        //    var eIfd = this._eIfd.Bytes();
 
         //    // Split the 16 byte MAC key into two keys
         //    byte[] key1 = new byte[8];
@@ -129,17 +129,14 @@ namespace HelloWord.Cryptography
         //    return mIfd;
         //}
 
-        /// http://www.programcreek.com/java-api-examples/index.php?api=org.spongycastle.crypto.macs.ISO9797Alg3Mac
+        // http://www.programcreek.com/java-api-examples/index.php?api=org.spongycastle.crypto.macs.ISO9797Alg3Mac
         public byte[] Bytes()
         {
-            var key = this._kMac.Bytes();
-            var data = this._eIfd.Bytes();
-
             var cipher = new DesEngine();
             var mac = new ISO9797Alg3Mac(cipher, 64, new ISO7816d4Padding());
-            KeyParameter keyP = new KeyParameter(key);
+            KeyParameter keyP = new KeyParameter(_key.Bytes());
             mac.Init(keyP);
-            mac.BlockUpdate(data, 0, data.Length);
+            mac.BlockUpdate(_data.Bytes(), 0, _data.Bytes().Length);
             byte[] _out = new byte[8];
             mac.DoFinal(_out, 0);
             return _out;

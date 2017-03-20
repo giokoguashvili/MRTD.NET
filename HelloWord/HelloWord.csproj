@@ -78,6 +78,7 @@
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\Encrypted3DES.cs" />
+    <Compile Include="SecureMessaging\CC.cs" />
     <Compile Include="SecureMessaging\DO87.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
