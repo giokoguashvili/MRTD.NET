@@ -86,6 +86,7 @@
     <Compile Include="MTests.cs" />
     <Compile Include="CommandHeaderTests.cs" />
     <Compile Include="IncrementedSSCTests.cs" />
+    <Compile Include="NTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

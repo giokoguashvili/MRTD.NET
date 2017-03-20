@@ -17,15 +17,27 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             // icnrement last 4 byte by 0x01
-            return BitConverter
-                .GetBytes(
-                    BitConverter.ToInt32(_ssc
-                        .Bytes()
-                        .Skip(4)
-                        .Reverse()
-                        .ToArray()
-                        , 0) + 1
-                );
+            return
+                _ssc
+                    .Bytes()
+                    .Take(4)
+                    .Concat(
+                        BitConverter
+                            .GetBytes(
+                                BitConverter.ToInt32(
+                                        _ssc
+                                        .Bytes()
+                                        .Skip(4)
+                                        .Reverse()
+                                        .ToArray()
+                                        , 0
+                                    ) + 1
+                            )
+                            .Reverse()
+                            .ToArray()
+                    )
+                    .ToArray();
+                
         }
     }
 }
