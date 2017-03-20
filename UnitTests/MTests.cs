@@ -13,6 +13,7 @@ namespace UnitTests
         [TestMethod]
         public void Generate_M_Concatenate_CmdHeader_and_DO87()
         {
+            var rawCommandData = new RawCommandAPDU("");
             Assert.AreEqual(
                     "0CA4020C800000008709016375432908C044F6",
                     new Hex(

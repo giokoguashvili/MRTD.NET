@@ -1,12 +1,15 @@
 ﻿namespace HelloWord.Infrastructure
 {
-    public interface ICommandHeader
+    public interface ICommandAPDUHeader
     {
         IBinary Header();
         IBinary CLA();
         IBinary INS();
         IBinary P1();
         IBinary P2();
-        IBinary WithCLA(IBinary cla);
+        //IBinary Lc();
+        //IBinary Data();
+        //IBinary Le();
+        //IBinary WithCLA(IBinary cla);
     }
 }

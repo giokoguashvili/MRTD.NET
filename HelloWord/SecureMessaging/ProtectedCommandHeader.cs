@@ -8,9 +8,9 @@ namespace HelloWord.SecureMessaging
 {
     public class ProtectedCommandHeader : IBinary
     {
-        private readonly ICommandHeader _commandHeader;
+        private readonly ICommandAPDUHeader _commandHeader;
 
-        public ProtectedCommandHeader(ICommandHeader commandHeader)
+        public ProtectedCommandHeader(ICommandAPDUHeader commandHeader)
         {
             _commandHeader = commandHeader;
         }

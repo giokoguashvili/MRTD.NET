@@ -6,7 +6,7 @@ using HelloWord.Cryptography;
 
 namespace HelloWord.Infrastructure
 {
-    public class CommandHeader : ICommandHeader
+    public class CommandHeader : ICommandAPDUHeader
     {
         private readonly IBinary _rawCommandApdu;
 
@@ -77,5 +77,27 @@ namespace HelloWord.Infrastructure
                         ).ToArray()
                     );
         }
+
+        //public IBinary Lc()
+        //{
+        //    return new Binary(
+        //                _rawCommandApdu
+        //                .Bytes()
+        //                .Skip(4)
+        //                .Take(1)
+        //                .ToArray()
+        //            );
+        //}
+
+        //public IBinary Data()
+        //{
+        //    return new Binary(
+        //                _rawCommandApdu
+        //                .Bytes()
+        //                .Skip(5)
+        //                .Take(BitConverter.ToInt32(Lc().Bytes(), 0))
+        //                .ToArray()
+        //            );
+        //}
     }
 }
