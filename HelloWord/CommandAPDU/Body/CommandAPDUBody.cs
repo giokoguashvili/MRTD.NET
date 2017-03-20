@@ -6,13 +6,13 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.CommandAPDU.Body
 {
-    public class CommandAPDUBody : IBinary
+    public class CommandApduBody : IBinary
     {
         private readonly IBinary _rawCommandApdu;
 
-        public CommandAPDUBody(IBinary rawCommandAPDU)
+        public CommandApduBody(IBinary rawCommandApdu)
         {
-            _rawCommandApdu = rawCommandAPDU;
+            _rawCommandApdu = rawCommandApdu;
         }
         public byte[] Bytes()
         {

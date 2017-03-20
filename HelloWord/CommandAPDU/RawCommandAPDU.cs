@@ -3,13 +3,13 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.CommandAPDU
 {
-    public class RawCommandAPDU : IBinary
+    public class RawCommandApdu : IBinary
     {
         private readonly string _commandApdu;
 
-        public RawCommandAPDU(string commandAPDU)
+        public RawCommandApdu(string commandApdu)
         {
-            _commandApdu = commandAPDU;
+            _commandApdu = commandApdu;
         }
         public byte[] Bytes()
         {

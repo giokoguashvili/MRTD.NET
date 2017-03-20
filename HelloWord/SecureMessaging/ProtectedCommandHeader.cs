@@ -3,24 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.CommandAPDU;
+using HelloWord.CommandAPDU.Header;
+using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
     public class ProtectedCommandHeader : IBinary
     {
-        private readonly ICommandAPDUHeader _commandHeader;
-
-        public ProtectedCommandHeader(ICommandAPDUHeader commandHeader)
+        private readonly IBinary _commandApduHeader;
+        public ProtectedCommandHeader(IBinary commandApduHeader)
         {
-            _commandHeader = commandHeader;
+            _commandApduHeader = commandApduHeader;
+
         }
         public byte[] Bytes()
         {
             return
                 new PadedCommandHeader(
-                        _commandHeader
-                            .WithCLA(new MaskedCLA(_commandHeader.CLA()))
+                    new Binary(
+                        new MaskedCLA(
+                            new CLA(_commandApduHeader)
+                        )
+                        .Bytes()
+                        .Concat(_commandApduHeader.Bytes().Skip(1))
+                        .ToArray()
+                    )
                  ).Bytes();
         }
     }

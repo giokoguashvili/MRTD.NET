@@ -1,5 +1,6 @@
 ﻿using System;
 using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
 using NUnit.Framework;
 

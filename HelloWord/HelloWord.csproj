@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandAPDU\Body\CommandAPDUBody.cs" />
-    <Compile Include="CommandAPDU\Body\Data.cs" />
+    <Compile Include="CommandAPDU\Body\CommandData.cs" />
     <Compile Include="CommandAPDU\Body\Lc.cs" />
     <Compile Include="CommandAPDU\Header\P1.cs" />
     <Compile Include="CommandAPDU\Header\P2.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="Cryptography\AdjustedEvenParity.cs" />
     <Compile Include="Cryptography\AdjustedOddParity.cs" />
     <Compile Include="Cryptography\AdjustedParity.cs" />
-    <Compile Include="Cryptography\BinaryHex.cs" />
+    <Compile Include="Infrastructure\BinaryHex.cs" />
     <Compile Include="Infrastructure\BinaryWrap.cs" />
     <Compile Include="Infrastructure\CachedBinary.cs" />
     <Compile Include="Cryptography\D.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
-    <Compile Include="Cryptography\Hex.cs" />
+    <Compile Include="Infrastructure\Hex.cs" />
     <Compile Include="Infrastructure\IBinary.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Cryptography\ICryptographer.cs" />

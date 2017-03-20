@@ -3,6 +3,7 @@ using NUnit.Framework;
 using HelloWord.Cryptography.RandomKeys;
 using UnitTests.FakeObjects;
 using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
 
 namespace UnitTests
 {

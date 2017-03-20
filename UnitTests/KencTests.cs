@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
 using UnitTests.FakeObjects;
 
 namespace UnitTests

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
 
-namespace HelloWord.Cryptography
+namespace HelloWord.Infrastructure
 {
     public class Hex
     {
@@ -24,5 +21,13 @@ namespace HelloWord.Cryptography
                     (prev, next) => prev + next.ToString("X2")
                 );
         }
+
+        public int ToInt()
+        {
+            return Int32.Parse(
+               new Hex(_binary).ToString(),
+               System.Globalization.NumberStyles.HexNumber
+           );
+        } 
     }
 }
