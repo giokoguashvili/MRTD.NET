@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using HelloWord.Infrastructure;
+using PCSC.Iso7816;
 
 namespace HelloWord.Cryptography
 {
@@ -133,6 +134,7 @@ namespace HelloWord.Cryptography
         public byte[] Bytes()
         {
             var cipher = new DesEngine();
+            
             var mac = new ISO9797Alg3Mac(cipher, 64, new ISO7816d4Padding());
             KeyParameter keyP = new KeyParameter(_key.Bytes());
             mac.Init(keyP);

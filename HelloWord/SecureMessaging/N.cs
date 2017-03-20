@@ -21,6 +21,7 @@ namespace HelloWord.SecureMessaging
             _incrementedSsc = incrementedSSC;
             _m = m;
         }
+        //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
         public byte[] Bytes()
         {
             return _incrementedSsc
@@ -28,7 +29,7 @@ namespace HelloWord.SecureMessaging
                 .Concat(
                     _m.Bytes()
                 )
-                .Concat(_pad)
+                //.Concat(_pad)
                 .ToArray();
         }
     }
