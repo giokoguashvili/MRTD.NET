@@ -8,7 +8,7 @@ namespace HelloWord.SecureMessaging
 {
     public class ConstructedProtectedCommandApdu : IBinary
     {
-        private readonly IBinary _rawCommandApduHeader;
+        private readonly IBinary _maskedCommandApduHeader;
         private readonly IBinary _do87;
         private readonly IBinary _do8E;
         private readonly byte[] _commandDataLength = new byte[] { 0x15 }; //21 len(DO8E) + len(DO87)
@@ -20,13 +20,13 @@ namespace HelloWord.SecureMessaging
               IBinary do8e
           )
         {
-            _rawCommandApduHeader = rawCommandApduHeader;
+            _maskedCommandApduHeader = rawCommandApduHeader;
             _do87 = do87;
             _do8E = do8e;
         }
         public byte[] Bytes()
         {
-            return _rawCommandApduHeader
+            return _maskedCommandApduHeader
             .Bytes()
             .Concat(_commandDataLength)
             .Concat(

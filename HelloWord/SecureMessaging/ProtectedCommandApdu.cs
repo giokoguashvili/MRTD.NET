@@ -12,47 +12,52 @@ namespace HelloWord.SecureMessaging
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
-        private readonly IBinary _ssc;
-        private readonly IBinary _rawCommandApduHeader;
+        private readonly IBinary _incrementedSsc;
+        private readonly IBinary _rawCommandApdu;
 
 
         public ProtectedCommandApdu(
                 IBinary rawCommandApduHeader,
                 IBinary kSenc,
                 IBinary kSmac,
-                IBinary ssc
+                IBinary incrementedSsc
             ) 
         {
-            _rawCommandApduHeader = rawCommandApduHeader;
+            _rawCommandApdu = rawCommandApduHeader;
             _kSenc = kSenc;
             _kSmac = kSmac;
-            _ssc = ssc;
+            _incrementedSsc = incrementedSsc;
         }
 
         public byte[] Bytes()
         {
+            var commandApduHeader = new CommandApduHeader(_rawCommandApdu);
             var do87 = new DO87(
-                new EncryptedCommandApduData(
-                    _kSenc,
-                    new CommandData(
-                        new CommandApduBody(_rawCommandApduHeader)
-                    )
-                )
-            );
+                            new EncryptedCommandApduData(
+                                _kSenc,
+                                new PadedCommandApduData(
+                                    new CommandData(
+                                        new CommandApduBody(_rawCommandApdu)
+                                    )   
+                                )
+                            )
+                        );
             var do8e = new DO8E(
-                new CC(
-                    new N(
-                        _ssc,
-                        new M(
-                            new CommandApduHeader(_rawCommandApduHeader),
-                            do87
-                        )
-                    ),
-                    _kSmac
-                )
-            );
+                            new CC(
+                                new N(
+                                    _incrementedSsc,
+                                    new M(
+                                         new ProtectedCommandApduHeader(
+                                             commandApduHeader
+                                        ),
+                                        do87
+                                    )
+                                ),
+                                _kSmac
+                            )
+                        );
             return new ConstructedProtectedCommandApdu(
-                    _rawCommandApduHeader,
+                    new MaskedCommandApduHeader(commandApduHeader),
                     do87,
                     do8e
                 ).Bytes();

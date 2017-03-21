@@ -7,11 +7,11 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class MasketCommandApduHeader : IBinary
+    public class MaskedCommandApduHeader : IBinary
     {
         private readonly IBinary _commandApduHeader;
 
-        public MasketCommandApduHeader(IBinary commandApduHeader)
+        public MaskedCommandApduHeader(IBinary commandApduHeader)
         {
             _commandApduHeader = commandApduHeader;
         }

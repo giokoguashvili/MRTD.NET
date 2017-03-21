@@ -21,7 +21,7 @@ namespace HelloWord.SecureMessaging
         {
             return
                 new PadedCommandApduHeader(
-                    new MasketCommandApduHeader(_commandApduHeader)
+                    new MaskedCommandApduHeader(_commandApduHeader)
                  ).Bytes();
         }
     }
