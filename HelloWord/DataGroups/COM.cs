@@ -15,32 +15,34 @@ namespace HelloWord.DataGroups
         private readonly IReader _reader;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
-        private readonly IBinary _incrementedSsc;
+        private readonly IBinary _ssc;
 
         public COM(
                 IBinary kSenc,
                 IBinary kSmac,
-                IBinary incrementedSsc,
+                IBinary ssc,
                 IReader reader
             )
         {
             _reader = reader;
             _kSenc = kSenc;
             _kSmac = kSmac;
-            _incrementedSsc = incrementedSsc;
+            _ssc = ssc;
         }
         public byte[] Bytes()
         {
-            return new ExecutedCommandAPDU(
-                        new ProtectedCommandApdu(
-                            new SelectEFCOMApplicationCommand(),
-                            _kSenc,
-                            _kSmac,
-                            new IncrementedSSC(
-                                _incrementedSsc
-                            )
-                        ), 
-                        _reader
+            return new ResponseAPDU(
+                        new ExecutedCommandAPDU(
+                            new ProtectedCommandApdu(
+                                new SelectEFCOMApplicationCommand(),
+                                _kSenc,
+                                _kSmac,
+                                new IncrementedSSC(
+                                    _ssc
+                                )
+                            ), 
+                            _reader
+                        )
                     ).Bytes();
         }
     }

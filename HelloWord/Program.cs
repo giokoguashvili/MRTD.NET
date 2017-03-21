@@ -73,7 +73,18 @@ namespace HelloWord
                         )
                     );
 
-           
+
+                    Console.WriteLine("\nSelectEFCOMApplication\nResponseAPDU: ");
+                    Console.WriteLine(
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new SelectEFCOMApplicationCommand(),
+                                    _reader
+                                )
+                            )
+                        )
+                     );
 
                     Console.WriteLine("\nReadBinary\nResponseAPDU: ");
                     Console.WriteLine(
@@ -98,36 +109,24 @@ namespace HelloWord
                     var rndIfd = new CachedBinary(new RNDifd());
 
                     var externalAuthRespData = new ResponseAPDU(
-                        new ExecutedCommandAPDU(
-                            new ExternalAuthenticateCommand(
-                                new ExternalAuthenticateCommandData(
-                                    mrzInfo,
-                                    rndIc,
-                                    rndIfd,
-                                    kIfd
-                                )
-                            ),
-                            _reader
-                        )
-                    ).Body();
+                                                    new ExecutedCommandAPDU(
+                                                        new ExternalAuthenticateCommand(
+                                                            new ExternalAuthenticateCommandData(
+                                                                mrzInfo,
+                                                                rndIc,
+                                                                rndIfd,
+                                                                kIfd
+                                                            )
+                                                        ),
+                                                        _reader
+                                                    )
+                                                ).Body();
 
                     Console.WriteLine(
                         new Hex(
                             externalAuthRespData
                         )
                     );
-
-                    Console.WriteLine("\nSelectEFCOMApplication\nResponseAPDU: ");
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new SelectEFCOMApplicationCommand(),
-                                    _reader
-                                )
-                            )
-                        )
-                     );
 
                     Console.WriteLine("\nSecure Messaging");
 
@@ -146,11 +145,9 @@ namespace HelloWord
                                 new COM(
                                     new KSenc(kSeedIc),
                                     new KSmac(kSeedIc),
-                                    new IncrementedSSC(
-                                        new SSC(
+                                    new SSC(
                                             rndIc,
                                             rndIfd
-                                        )
                                     ),
                                     _reader
                                 )

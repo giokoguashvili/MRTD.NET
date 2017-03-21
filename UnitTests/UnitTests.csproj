@@ -93,6 +93,7 @@
     <Compile Include="ConstructedProtectedCommandApduTests.cs" />
     <Compile Include="ProtectedCommandApduTests.cs" />
     <Compile Include="DO8ETests.cs" />
+    <Compile Include="COMTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

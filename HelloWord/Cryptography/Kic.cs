@@ -18,7 +18,7 @@ namespace HelloWord.Cryptography
         {
             return _r
                 .Bytes()
-                .Skip(32)
+                .Skip(16)
                 .ToArray();
         }
     }

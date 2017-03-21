@@ -73,7 +73,7 @@ namespace HelloWord.SecureMessaging
 
         public int ExceptedDataLength()
         {
-            return 0; //this._rawCommandApdu.ExceptedDataLength();
+            return 32; //this._rawCommandApdu.ExceptedDataLength();
         }
 
         public IsoCase Case()
