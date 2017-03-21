@@ -2,40 +2,60 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.CommandAPDU.Body;
+using HelloWord.CommandAPDU.Header;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
     public class ProtectedCommandApdu : IBinary
     {
+        private readonly IBinary _kSenc;
+        private readonly IBinary _kSmac;
+        private readonly IBinary _ssc;
         private readonly IBinary _rawCommandApduHeader;
-        private readonly IBinary _DO8E;
-        private readonly IBinary _DO87;
-        private readonly byte[] _commandDataLength = new byte[] { 0x15 }; //21 len(DO8E) + len(DO87)
-        private readonly byte[] _exceptedDataLength = new byte[] { 0x00 }; 
+
 
         public ProtectedCommandApdu(
                 IBinary rawCommandApduHeader,
-                IBinary do8e,
-                IBinary do87
-            )
+                IBinary kSenc,
+                IBinary kSmac,
+                IBinary ssc
+            ) 
         {
             _rawCommandApduHeader = rawCommandApduHeader;
-            _DO8E = do8e;
-            _DO87 = do87;
+            _kSenc = kSenc;
+            _kSmac = kSmac;
+            _ssc = ssc;
         }
+
         public byte[] Bytes()
         {
-            return _rawCommandApduHeader
-                .Bytes()
-                .Concat(_commandDataLength)
-                .Concat(
-                    _DO87
-                        .Bytes()
-                        .Concat(_DO8E.Bytes())
+            var do87 = new DO87(
+                new EncryptedCommandApduData(
+                    _kSenc,
+                    new CommandData(
+                        new CommandApduBody(_rawCommandApduHeader)
+                    )
                 )
-                .Concat(_exceptedDataLength)
-                .ToArray();
+            );
+            var do8e = new DO8E(
+                new CC(
+                    new N(
+                        _ssc,
+                        new M(
+                            new CommandApduHeader(_rawCommandApduHeader),
+                            do87
+                        )
+                    ),
+                    _kSmac
+                )
+            );
+            return new ConstructedProtectedCommandApdu(
+                    _rawCommandApduHeader,
+                    do87,
+                    do8e
+                ).Bytes();
         }
     }
 }

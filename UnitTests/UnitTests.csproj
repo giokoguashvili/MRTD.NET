@@ -88,7 +88,7 @@
     <Compile Include="IncrementedSSCTests.cs" />
     <Compile Include="NTests.cs" />
     <Compile Include="CCTests.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="ConstructedProtectedCommandApduTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
