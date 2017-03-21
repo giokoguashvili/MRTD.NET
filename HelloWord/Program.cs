@@ -6,7 +6,9 @@ using HelloWord.SmartCard;
 using HelloWord.CommandAPDU;
 using HelloWord.Commands;
 using HelloWord.Cryptography.RandomKeys;
+using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging;
 
 namespace HelloWord
 {
@@ -53,6 +55,7 @@ namespace HelloWord
                         return;
                     }
 
+                    var _reader = new LogedReader(reader);
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
                     Console.WriteLine("\n\nSelectFile DF: ");
@@ -64,9 +67,53 @@ namespace HelloWord
                             new ResponseAPDU(
                                 new ExecutedCommandAPDU(
                                     new SelectMRTDApplicationCommand(),
-                                    reader
+                                    _reader
                                 )
                             )
+                        )
+                    );
+
+           
+
+                    Console.WriteLine("\nReadBinary\nResponseAPDU: ");
+                    Console.WriteLine(
+                        new Hex(
+                            new ResponseAPDU(
+                                new ExecutedCommandAPDU(
+                                    new ReadBinaryCommand(),
+                                    _reader
+                                )
+                            )
+                        )
+                    );
+
+                    var mrzInfo = "12IB34415792061602210089"; // K
+                    //var mrzInfo = "15IC69034696112602606119"; // Bagdavadze
+                    //var mrzInfo = "13ID37063295110732402055"; // Shako
+
+                    Console.WriteLine("\nExternalAuthenticate\nResponseAPDU: ");
+
+                    var kIfd = new CachedBinary(new Kifd());
+                    var rndIc = new CachedBinary(new RNDic(_reader));
+                    var rndIfd = new CachedBinary(new RNDifd());
+
+                    var externalAuthRespData = new ResponseAPDU(
+                        new ExecutedCommandAPDU(
+                            new ExternalAuthenticateCommand(
+                                new ExternalAuthenticateCommandData(
+                                    mrzInfo,
+                                    rndIc,
+                                    rndIfd,
+                                    kIfd
+                                )
+                            ),
+                            _reader
+                        )
+                    ).Body();
+
+                    Console.WriteLine(
+                        new Hex(
+                            externalAuthRespData
                         )
                     );
 
@@ -76,44 +123,39 @@ namespace HelloWord
                             new ResponseAPDU(
                                 new ExecutedCommandAPDU(
                                     new SelectEFCOMApplicationCommand(),
-                                    reader
+                                    _reader
                                 )
                             )
                         )
                      );
 
-                    Console.WriteLine("\nReadBinary\nResponseAPDU: ");
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new ReadBinaryCommand(),
-                                    reader
-                                )
-                            )
-                        )
-                    );
+                    Console.WriteLine("\nSecure Messaging");
 
-                    var mrzInfo = "12IB34415792061602210089"; // Bagdavadze
-                    //var mrzInfo = "15IC69034696112602606119"; // K
-                    //var mrzInfo = "13ID37063295110732402055"; // Shako
+                    var kSeedIc = new KseedIc(
+                                        kIfd,
+                                        new Kic(
+                                            new R(
+                                                externalAuthRespData,
+                                                mrzInfo
+                                            )
+                                        )
+                                    );
 
-                    Console.WriteLine("\nExternalAuthenticate\nResponseAPDU: ");
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new ExternalAuthenticateCommand(
-                                        new ExternalAuthenticateCommandData(
-                                            mrzInfo,
-                                            new RNDic(reader)
+                    Console.Write(
+                            new Hex(
+                                new COM(
+                                    new KSenc(kSeedIc),
+                                    new KSmac(kSeedIc),
+                                    new IncrementedSSC(
+                                        new SSC(
+                                            rndIc,
+                                            rndIfd
                                         )
                                     ),
-                                    reader
+                                    _reader
                                 )
-                            )
-                        )
-                    );
+                            ).ToString()
+                        );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);

@@ -6,19 +6,20 @@ using System.Linq;
 using System.Text;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
+using HelloWord.SmartCard;
 
 namespace HelloWord.Cryptography.RandomKeys
 {
     public class RNDic : IBinary
     {
         private ICommandAPDU _executedGetChallengeCommand;
-        private readonly ISCardReader _reader;
+        private readonly IReader _reader;
         private RNDic(ICommandAPDU executedGetChallengeCommand)
         {
             this._executedGetChallengeCommand = executedGetChallengeCommand;
         }
 
-        public RNDic(ISCardReader reader)
+        public RNDic(IReader reader)
             : this(
                         new ExecutedCommandAPDU(
                             new GetChallengeCommand(),

@@ -56,8 +56,10 @@
     <Compile Include="Cryptography\KseedIc.cs" />
     <Compile Include="Cryptography\KSenc.cs" />
     <Compile Include="Cryptography\KSmac.cs" />
+    <Compile Include="Cryptography\R.cs" />
     <Compile Include="Cryptography\SSC.cs" />
-    <Compile Include="FileIds\EF_COM.cs" />
+    <Compile Include="DataGroups\COM.cs" />
+    <Compile Include="DataGroups\FileIds\EF_COM.cs" />
     <Compile Include="CommandAPDU\Header\CLA.cs" />
     <Compile Include="CommandAPDU\CommandHeader.cs" />
     <Compile Include="CommandAPDU\Header\CommandAPDUHeader.cs" />
@@ -120,6 +122,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\ExternalAuthenticateCommand.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
+    <Compile Include="SmartCard\IReader.cs" />
+    <Compile Include="SmartCard\LogedReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
