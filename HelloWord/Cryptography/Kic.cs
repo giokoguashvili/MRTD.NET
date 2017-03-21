@@ -8,9 +8,18 @@ namespace HelloWord.Cryptography
 {
     public class Kic : IBinary
     {
+        private readonly IBinary _r;
+
+        public Kic(IBinary r)
+        {
+            _r = r;
+        }
         public byte[] Bytes()
         {
-            throw new NotImplementedException();
+            return _r
+                .Bytes()
+                .Skip(16)
+                .ToArray();
         }
     }
 }

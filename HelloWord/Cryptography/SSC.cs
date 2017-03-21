@@ -9,22 +9,22 @@ namespace HelloWord.Cryptography
     public class SSC : IBinary
     {
         private readonly IBinary _rndIc;
-        private readonly IBinary _rndIf;
+        private readonly IBinary _rndIfd;
 
         public SSC(
                 IBinary rndIc,
-                IBinary rndIf
+                IBinary rndIfd
             )
         {
             _rndIc = rndIc;
-            _rndIf = rndIf;
+            _rndIfd = rndIfd;
         }
         public byte[] Bytes()
         {
             return new LastSignificantBytes(_rndIc)
                 .Bytes()
                 .Concat(
-                    new LastSignificantBytes(_rndIf)
+                    new LastSignificantBytes(_rndIfd)
                         .Bytes()
                 ).ToArray();
         }

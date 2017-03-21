@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FakeObjects\FkKSenc.cs" />
+    <Compile Include="FakeObjects\FkKSmac.cs" />
+    <Compile Include="FakeObjects\FkSSC.cs" />
     <Compile Include="KSencTests.cs" />
     <Compile Include="FakeObjects\FkEifd.cs" />
     <Compile Include="FakeObjects\FkKenc.cs" />
@@ -88,6 +90,10 @@
     <Compile Include="IncrementedSSCTests.cs" />
     <Compile Include="NTests.cs" />
     <Compile Include="CCTests.cs" />
+    <Compile Include="ConstructedProtectedCommandApduTests.cs" />
+    <Compile Include="ProtectedCommandApduTests.cs" />
+    <Compile Include="DO8ETests.cs" />
+    <Compile Include="COMTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
