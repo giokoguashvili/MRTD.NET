@@ -4,6 +4,7 @@ using PCSC.Iso7816;
 using HelloWord.Cryptography;
 using HelloWord.SmartCard;
 using HelloWord.CommandAPDU;
+using HelloWord.Commands;
 using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 

@@ -1,0 +1,25 @@
+﻿using System;
+using HelloWord.CommandAPDU;
+using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace UnitTests
+{
+    [TestClass]
+    public class CommandHeaderTests
+    {
+        [TestMethod]
+        public void Extract_CLA_from_rawCommandAPDU()
+        {
+            Assert.AreEqual(
+                    "00",
+                    new Hex(
+                        new CommandHeader(
+                            new BinaryHex("00A4020C")
+                        ).CLA()
+                    ).ToString()
+                );
+        }
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using HelloWord.Cryptography;
+using HelloWord.Infrastructure;
 using NUnit.Framework;
 
 namespace UnitTests

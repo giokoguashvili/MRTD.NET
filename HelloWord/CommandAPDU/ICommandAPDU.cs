@@ -1,7 +1,8 @@
-﻿using PCSC;
+﻿using HelloWord.Infrastructure;
+using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.Infrastructure
+namespace HelloWord.CommandAPDU
 {
     public interface ICommandAPDU : IBinary
     {

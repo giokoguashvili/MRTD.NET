@@ -1,13 +1,8 @@
-﻿using HelloWord.Cryptography;
+﻿using HelloWord.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.Commands
 {
     public class ReadBinaryCommand : ICommandAPDU
     {

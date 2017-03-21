@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeObjects\FkKSenc.cs" />
     <Compile Include="KSencTests.cs" />
     <Compile Include="FakeObjects\FkEifd.cs" />
     <Compile Include="FakeObjects\FkKenc.cs" />
@@ -80,7 +81,13 @@
     <Compile Include="DecryptedExternalAuthenticateResponseDataTests.cs" />
     <Compile Include="KseedIcTests.cs" />
     <Compile Include="KSmacTests.cs" />
-    <Compile Include="SCCTests.cs" />
+    <Compile Include="SSCTests.cs" />
+    <Compile Include="EncryptedDataTests.cs" />
+    <Compile Include="MTests.cs" />
+    <Compile Include="CommandHeaderTests.cs" />
+    <Compile Include="IncrementedSSCTests.cs" />
+    <Compile Include="NTests.cs" />
+    <Compile Include="CCTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
