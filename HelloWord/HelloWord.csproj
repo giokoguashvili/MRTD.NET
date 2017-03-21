@@ -85,6 +85,7 @@
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
     <Compile Include="SecureMessaging\M.cs" />
     <Compile Include="SecureMessaging\MaskedCLA.cs" />
+    <Compile Include="SecureMessaging\MasketCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\N.cs" />
     <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\PadedCommandApduData.cs" />
