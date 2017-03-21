@@ -29,7 +29,7 @@ namespace HelloWord.SecureMessaging
                 .Concat(
                     _m.Bytes()
                 )
-                //.Concat(_pad)
+                .Concat(_pad)
                 .ToArray();
         }
     }
