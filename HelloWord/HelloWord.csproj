@@ -42,17 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandAPDU\GetChallengeCommand.cs" />
-    <Compile Include="CommandAPDU\ReadBinaryCommand.cs" />
-    <Compile Include="CommandAPDU\SelectMRTDApplicationCommand.cs" />
-    <Compile Include="CommandAPDU\SelectEFCOMApplicationCommand.cs" />
+    <Compile Include="CommandAPDU\Body\CommandAPDUBody.cs" />
+    <Compile Include="CommandAPDU\Body\CommandData.cs" />
+    <Compile Include="CommandAPDU\Body\Lc.cs" />
+    <Compile Include="CommandAPDU\Header\P1.cs" />
+    <Compile Include="CommandAPDU\Header\P2.cs" />
+    <Compile Include="Commands\GetChallengeCommand.cs" />
+    <Compile Include="Commands\ReadBinaryCommand.cs" />
+    <Compile Include="Commands\SelectMRTDApplicationCommand.cs" />
+    <Compile Include="Commands\SelectEFCOMApplicationCommand.cs" />
     <Compile Include="Cryptography\Eic.cs" />
     <Compile Include="Cryptography\Kic.cs" />
     <Compile Include="Cryptography\KseedIc.cs" />
     <Compile Include="Cryptography\KSenc.cs" />
     <Compile Include="Cryptography\KSmac.cs" />
     <Compile Include="Cryptography\SSC.cs" />
-    <Compile Include="Infrastructure\ICommandAPDU.cs" />
+    <Compile Include="FileIds\EF_COM.cs" />
+    <Compile Include="CommandAPDU\Header\CLA.cs" />
+    <Compile Include="CommandAPDU\CommandHeader.cs" />
+    <Compile Include="CommandAPDU\Header\CommandAPDUHeader.cs" />
+    <Compile Include="CommandAPDU\ICommandAPDU.cs" />
+    <Compile Include="CommandAPDU\ICommandHeader.cs" />
+    <Compile Include="CommandAPDU\Header\INS.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
     <Compile Include="Infrastructure\ResponseAPDU.cs" />
@@ -60,16 +71,27 @@
     <Compile Include="Cryptography\AdjustedEvenParity.cs" />
     <Compile Include="Cryptography\AdjustedOddParity.cs" />
     <Compile Include="Cryptography\AdjustedParity.cs" />
-    <Compile Include="Cryptography\BinaryHex.cs" />
+    <Compile Include="Infrastructure\BinaryHex.cs" />
     <Compile Include="Infrastructure\BinaryWrap.cs" />
     <Compile Include="Infrastructure\CachedBinary.cs" />
     <Compile Include="Cryptography\D.cs" />
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\Encrypted3DES.cs" />
+    <Compile Include="SecureMessaging\CC.cs" />
+    <Compile Include="SecureMessaging\DO87.cs" />
+    <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
+    <Compile Include="SecureMessaging\IncrementedSSC.cs" />
+    <Compile Include="SecureMessaging\M.cs" />
+    <Compile Include="SecureMessaging\MaskedCLA.cs" />
+    <Compile Include="SecureMessaging\N.cs" />
+    <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
+    <Compile Include="SecureMessaging\PadedCommandApduData.cs" />
+    <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
+    <Compile Include="CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
-    <Compile Include="Cryptography\Hex.cs" />
+    <Compile Include="Infrastructure\Hex.cs" />
     <Compile Include="Infrastructure\IBinary.cs" />
     <Compile Include="Infrastructure\ICache.cs" />
     <Compile Include="Cryptography\ICryptographer.cs" />
@@ -92,11 +114,12 @@
     <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommandAPDU\ExternalAuthenticateCommand.cs" />
+    <Compile Include="Commands\ExternalAuthenticateCommand.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

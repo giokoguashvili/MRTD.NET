@@ -1,8 +1,9 @@
-﻿using HelloWord.Infrastructure;
+﻿using HelloWord.CommandAPDU;
+using HelloWord.Infrastructure;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.Commands
 {
     public class ExternalAuthenticateCommand : ICommandAPDU
     {
