@@ -13,38 +13,29 @@ namespace HelloWord.SecureMessaging
 {
     public class ProtectedCommandApdu : ICommandAPDU
     {
-        private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _incrementedSsc;
+        private readonly IBinary _do87Or97;
         private readonly ICommandAPDU _rawCommandApdu;
 
 
         public ProtectedCommandApdu(
                 ICommandAPDU rawCommandApduHeader,
-                IBinary kSenc,
                 IBinary kSmac,
-                IBinary incrementedSsc
-            ) 
+                IBinary incrementedSsc,
+                IBinary do87or97
+            )
         {
             _rawCommandApdu = rawCommandApduHeader;
-            _kSenc = kSenc;
             _kSmac = kSmac;
             _incrementedSsc = incrementedSsc;
+            _do87Or97 = do87or97;
         }
 
         public byte[] Bytes()
         {
             var commandApduHeader = new CommandApduHeader(_rawCommandApdu);
-            var do87 = new DO87(
-                            new EncryptedCommandApduData(
-                                _kSenc,
-                                new PadedCommandApduData(
-                                    new CommandData(
-                                        new CommandApduBody(_rawCommandApdu)
-                                    )   
-                                )
-                            )
-                        );
+
             var do8e = new DO8E(
                             new CC(
                                 new N(
@@ -53,7 +44,7 @@ namespace HelloWord.SecureMessaging
                                          new ProtectedCommandApduHeader(
                                              commandApduHeader
                                         ),
-                                        do87
+                                        _do87Or97
                                     )
                                 ),
                                 _kSmac
@@ -61,7 +52,7 @@ namespace HelloWord.SecureMessaging
                         );
             return new ConstructedProtectedCommandApdu(
                     new MaskedCommandApduHeader(commandApduHeader),
-                    do87,
+                    _do87Or97,
                     do8e
                 ).Bytes();
         }
@@ -78,7 +69,7 @@ namespace HelloWord.SecureMessaging
 
         public IsoCase Case()
         {
-            return IsoCase.Case4Extended;//this._rawCommandApdu.Case();
+            return IsoCase.Case4Short; //this._rawCommandApdu.Case();
         }
     }
 }

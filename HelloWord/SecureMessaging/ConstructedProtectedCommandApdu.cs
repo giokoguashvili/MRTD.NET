@@ -3,36 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
+using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging
 {
     public class ConstructedProtectedCommandApdu : IBinary
     {
         private readonly IBinary _maskedCommandApduHeader;
-        private readonly IBinary _do87;
-        private readonly IBinary _do8E;
+        private readonly IBinary _do87or97;
+        private readonly IBinary _do8e;
         private readonly byte[] _commandDataLength = new byte[] { 0x15 }; //21 len(DO8E) + len(DO87)
         private readonly byte[] _exceptedDataLength = new byte[] { 0x00 };
 
         public ConstructedProtectedCommandApdu(
               IBinary rawCommandApduHeader,
-              IBinary do87,
+              IBinary do87or97,
               IBinary do8e
           )
         {
             _maskedCommandApduHeader = rawCommandApduHeader;
-            _do87 = do87;
-            _do8E = do8e;
+            _do87or97 = do87or97;
+            _do8e = do8e;
         }
         public byte[] Bytes()
         {
+            var commandData = new ProtectedCommandApduData(
+                                    _do87or97,
+                                    _do8e
+                                );
+            var commandDataLengthAsBinaryHex = new BinaryHex(
+                                                commandData
+                                                .Bytes()
+                                                .Length
+                                                .ToString("X")
+                                          );
             return new ConcatenatedBinaries(
                     _maskedCommandApduHeader,
-                    new Binary(_commandDataLength),
-                    new ConcatenatedBinaries(
-                        _do87,
-                        _do8E
-                    ),
+                    commandDataLengthAsBinaryHex,
+                    commandData,
                     new Binary(_exceptedDataLength)
                 ).Bytes();
         }

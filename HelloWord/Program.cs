@@ -86,17 +86,17 @@ namespace HelloWord
                         )
                      );
 
-                    Console.WriteLine("\nReadBinary\nResponseAPDU: ");
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new ReadBinaryCommand(),
-                                    _reader
-                                )
-                            )
-                        )
-                    );
+                    //Console.WriteLine("\nReadBinary\nResponseAPDU: ");
+                    //Console.WriteLine(
+                    //    new Hex(
+                    //        new ResponseAPDU(
+                    //            new ExecutedCommandAPDU(
+                    //                new ReadBinaryCommand(),
+                    //                _reader
+                    //            )
+                    //        )
+                    //    )
+                    //);
 
                     //var mrzInfo = "12IB34415792061602210089"; // K
                     //var mrzInfo = "15IC69034696112602606119"; // Bagdavadze

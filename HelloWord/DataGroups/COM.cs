@@ -35,7 +35,7 @@ namespace HelloWord.DataGroups
                 new VerifiedResponseApdu(
                     new ResponseAPDU(
                         new ExecutedCommandAPDU(
-                            new ProtectedCommandApdu(
+                            new DO87ProtectedCommandApdu(
                                 new SelectEFCOMApplicationCommand(),
                                 _kSenc,
                                 _kSmac,

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.CodeDom;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Commands;
 using HelloWord.Cryptography;
-using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,28 +9,28 @@ using UnitTests.FakeObjects;
 namespace UnitTests
 {
     [TestClass]
-    public class ProtectedCommandApduTests
+    public class DO87ProtectedCommandApduTests
     {
         [TestMethod]
-        public void Generate_protected_APDU()
+        public void Generate_DO87_protected_APDU()
         {
             Assert.AreEqual(
                     "0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800",
                     new Hex(
-                        new ProtectedCommandApdu(
-                            new SelectEFCOMApplicationCommand(), 
+                        new DO87ProtectedCommandApdu(
+                            new SelectEFCOMApplicationCommand(),
+                            new FkKSenc(),
                             new FkKSmac(),
                             new IncrementedSSC(
                                 new FkSSC()
-                            ),
-                            new BinaryHex("8709016375432908C044F6") // DO87
+                            )
                         )
                     ).ToString()
                 );
         }
 
         [TestMethod]
-        public void Generate_protected_APDU2()
+        public void Generate_DO87_protected_APDU2()
         {
             var kIfd = new BinaryHex("0B795240CB7049B01C19B33E32804F0B"); //new CachedBinary(new Kifd()));
             var rndIc = new FkRNDic(); //new CachedBinary(new RNDic(_reader));
@@ -52,16 +48,16 @@ namespace UnitTests
             Assert.AreEqual(
                     "0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800",
                     new Hex(
-                        new ProtectedCommandApdu(
+                        new DO87ProtectedCommandApdu(
                             new SelectEFCOMApplicationCommand(),
+                            new KSenc(kSeedIc),
                             new KSmac(kSeedIc),
                             new IncrementedSSC(
                                 new SSC(
                                     rndIc,
                                     rndIfd
                                 )
-                            ),
-                            new BinaryHex("8709016375432908C044F6") // DO87
+                            )
                         )
                     ).ToString()
                 );

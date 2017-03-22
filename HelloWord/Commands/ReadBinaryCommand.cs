@@ -7,8 +7,13 @@ namespace HelloWord.Commands
     public class ReadBinaryCommand : ICommandAPDU
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
-        private readonly int _expectedDataLength = 8;
+        private readonly int _expectedDataLength;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
+
+        public ReadBinaryCommand(int expectedDataLength)
+        {
+            _expectedDataLength = expectedDataLength;
+        }
         public byte[] Bytes()
         {
             return new CommandApdu(this._isoCase, this._activeProtocol)

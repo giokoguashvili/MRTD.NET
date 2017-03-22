@@ -11,20 +11,20 @@ namespace HelloWord.SecureMessaging
     public class M : IBinary
     {
         private readonly IBinary _protectedCommandHeader;
-        private readonly IBinary _do87;
+        private readonly IBinary _do87or97;
         public M(
                 IBinary protectedCommandHeader,
-                IBinary do87
+                IBinary do87or97
             )
         {
             _protectedCommandHeader = protectedCommandHeader;
-            _do87 = do87;
+            _do87or97 = do87or97;
         }
         public byte[] Bytes()
         {
             return new ConcatenatedBinaries(
                     _protectedCommandHeader,
-                    _do87
+                    _do87or97
                 ).Bytes();
         }
     }
