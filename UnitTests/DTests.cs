@@ -17,7 +17,7 @@ namespace UnitTests
                     new Hex(
                         new D(
                             new FkKSeed(),
-                            "00000002"
+                            new BinaryHex("00000002")
                         )
                     ).ToString()
                 );
@@ -31,7 +31,7 @@ namespace UnitTests
                     new Hex(
                         new D(
                             new FkKSeed(),
-                            "00000001"
+                             new BinaryHex("00000001")
                         )
                     ).ToString()
                 );

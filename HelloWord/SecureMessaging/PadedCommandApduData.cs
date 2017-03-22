@@ -17,10 +17,10 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return _commandApduData
-                .Bytes()
-                .Concat(_pad)
-                .ToArray();
+            return new ConcatenatedBinaries(
+                    _commandApduData,
+                    new Binary(_pad)
+                ).Bytes();
         }
     }
 }

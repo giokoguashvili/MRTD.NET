@@ -66,13 +66,11 @@ namespace HelloWord.CommandAPDU
 
         public IBinary WithCLA(IBinary cla)
         {
-            return new Binary(
-                        cla
-                        .Bytes()
-                        .Concat(
-                            _rawCommandApdu.Bytes().Skip(1).Take(3).ToArray()
-                        ).ToArray()
-                    );
+            return 
+                new ConcatenatedBinaries(
+                    cla, 
+                    new Binary(_rawCommandApdu.Bytes().Skip(1).Take(3).ToArray())
+                );
         }
 
         //public IBinary Lc()

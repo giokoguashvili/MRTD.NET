@@ -24,11 +24,11 @@ namespace HelloWord.Cryptography.RandomKeys
 
         public byte[] Bytes()
         {
-            return _RNDifd
-                        .Bytes()
-                        .Concat(_RNDic.Bytes())
-                        .Concat(_Kifd.Bytes())
-                        .ToArray();
+            return new ConcatenatedBinaries(
+                    _RNDifd,
+                    _RNDic,
+                    _Kifd
+                ).Bytes();
         }
     }
 }

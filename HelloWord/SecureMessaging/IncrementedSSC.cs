@@ -17,11 +17,9 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             // icnrement last 4 byte by 0x01
-            return
-                _ssc
-                    .Bytes()
-                    .Take(4)
-                    .Concat(
+            return new ConcatenatedBinaries(
+                    new Binary(_ssc.Bytes().Take(4)),
+                    new Binary(
                         BitConverter
                             .GetBytes(
                                 BitConverter.ToInt32(
@@ -36,8 +34,7 @@ namespace HelloWord.SecureMessaging
                             .Reverse()
                             .ToArray()
                     )
-                    .ToArray();
-                
+                ).Bytes();
         }
     }
 }

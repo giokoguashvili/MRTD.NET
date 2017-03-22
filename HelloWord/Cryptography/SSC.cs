@@ -21,12 +21,10 @@ namespace HelloWord.Cryptography
         }
         public byte[] Bytes()
         {
-            return new LastSignificantBytes(_rndIc)
-                .Bytes()
-                .Concat(
+            return new ConcatenatedBinaries(
+                    new LastSignificantBytes(_rndIc),
                     new LastSignificantBytes(_rndIfd)
-                        .Bytes()
-                ).ToArray();
+                ).Bytes();
         }
 
         private class LastSignificantBytes : IBinary

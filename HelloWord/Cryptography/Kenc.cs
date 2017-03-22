@@ -8,7 +8,7 @@ namespace HelloWord.Cryptography
 {
     public class Kenc : IBinary
     {
-        private readonly string _c = "00000001";
+        private readonly IBinary _c = new BinaryHex("00000001");
         private readonly IBinary _kSeed;
 
         public Kenc(string mrzInformation)

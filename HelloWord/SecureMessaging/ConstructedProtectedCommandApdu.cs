@@ -26,16 +26,15 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return _maskedCommandApduHeader
-            .Bytes()
-            .Concat(_commandDataLength)
-            .Concat(
-                _do87
-                    .Bytes()
-                    .Concat(_do8E.Bytes())
-            )
-            .Concat(_exceptedDataLength)
-            .ToArray();
+            return new ConcatenatedBinaries(
+                    _maskedCommandApduHeader,
+                    new Binary(_commandDataLength),
+                    new ConcatenatedBinaries(
+                        _do87,
+                        _do8E
+                    ),
+                    new Binary(_exceptedDataLength)
+                ).Bytes();
         }
     }
 }

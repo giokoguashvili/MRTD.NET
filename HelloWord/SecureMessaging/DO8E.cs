@@ -17,9 +17,10 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return _do8e
-                .Concat(_cc.Bytes())
-                .ToArray();
+            return new ConcatenatedBinaries(
+                        new Binary(_do8e),
+                        _cc
+                    ).Bytes();
         }
     }
 }

@@ -22,10 +22,10 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return _protectedCommandHeader
-                .Bytes()
-                .Concat(_do87.Bytes())
-                .ToArray();
+            return new ConcatenatedBinaries(
+                    _protectedCommandHeader,
+                    _do87
+                ).Bytes();
         }
     }
 }

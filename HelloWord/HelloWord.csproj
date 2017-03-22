@@ -66,6 +66,7 @@
     <Compile Include="CommandAPDU\ICommandAPDU.cs" />
     <Compile Include="CommandAPDU\ICommandHeader.cs" />
     <Compile Include="CommandAPDU\Header\INS.cs" />
+    <Compile Include="Infrastructure\ConcatenatedBinaries.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
     <Compile Include="Infrastructure\ResponseAPDU.cs" />
@@ -84,8 +85,10 @@
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\DO87.cs" />
     <Compile Include="SecureMessaging\DO8E.cs" />
+    <Compile Include="SecureMessaging\DO99.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
+    <Compile Include="SecureMessaging\K.cs" />
     <Compile Include="SecureMessaging\M.cs" />
     <Compile Include="SecureMessaging\MaskedCLA.cs" />
     <Compile Include="SecureMessaging\MasketCommandApduHeader.cs" />

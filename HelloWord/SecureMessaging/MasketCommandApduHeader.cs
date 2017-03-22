@@ -17,12 +17,16 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return new MaskedCLA(
+            return new ConcatenatedBinaries(
+                new MaskedCLA(
                     new CLA(_commandApduHeader)
+                ),
+                new Binary(
+                    _commandApduHeader
+                        .Bytes()
+                        .Skip(1)
                 )
-                .Bytes()
-                .Concat(_commandApduHeader.Bytes().Skip(1))
-                .ToArray();
+            ).Bytes();
         }
     }
 }

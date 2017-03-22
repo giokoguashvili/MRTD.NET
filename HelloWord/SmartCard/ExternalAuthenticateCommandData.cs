@@ -63,12 +63,10 @@ namespace HelloWord.SmartCard
 
             public byte[] Bytes()
             {
-                return this._eIfd
-                    .Bytes()
-                    .Concat(
-                        this._mIfd
-                        .Bytes()
-                    ).ToArray();
+                return new ConcatenatedBinaries(
+                        _eIfd,
+                        _mIfd
+                    ).Bytes();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace HelloWord.Cryptography
 {
     public class Kmac : IBinary
     {
-        private readonly string _c = "00000002";
+        private readonly IBinary _c = new BinaryHex("00000002");
         private readonly IBinary _kSeed;
 
         public Kmac(IBinary kSeed)
