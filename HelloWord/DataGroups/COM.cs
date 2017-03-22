@@ -31,7 +31,9 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            return new ResponseAPDU(
+            return 
+                new VerifiedResponseApdu(
+                    new ResponseAPDU(
                         new ExecutedCommandAPDU(
                             new ProtectedCommandApdu(
                                 new SelectEFCOMApplicationCommand(),
@@ -40,10 +42,18 @@ namespace HelloWord.DataGroups
                                 new IncrementedSSC(
                                     _ssc
                                 )
-                            ), 
+                            ),
                             _reader
                         )
-                    ).Bytes();
+                    ),
+                    new IncrementedSSC(
+                        new IncrementedSSC(
+                            _ssc
+                        )
+                    ),
+                    _kSmac
+                )
+                .Bytes();
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="CommandAPDU\ICommandHeader.cs" />
     <Compile Include="CommandAPDU\Header\INS.cs" />
     <Compile Include="Infrastructure\ConcatenatedBinaries.cs" />
+    <Compile Include="Infrastructure\If.cs" />
     <Compile Include="Infrastructure\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
     <Compile Include="Infrastructure\ResponseAPDU.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\DO87.cs" />
     <Compile Include="SecureMessaging\DO8E.cs" />
-    <Compile Include="SecureMessaging\DO99.cs" />
+    <Compile Include="SecureMessaging\ResponseApduDO99.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
     <Compile Include="SecureMessaging\K.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="CommandAPDU\RawCommandAPDU.cs" />
+    <Compile Include="SecureMessaging\ResponseApduDO8E.cs" />
+    <Compile Include="SecureMessaging\VerifiedResponseApdu.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
