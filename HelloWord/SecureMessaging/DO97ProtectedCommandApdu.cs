@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Body;
@@ -32,12 +33,11 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            var do97 = new BinaryHex("970104");
             return new ProtectedCommandApdu(
                     _rawCommandApdu,
                     _kSmac,
                     _incrementedSsc,
-                    do97
+                    new DO97(_rawCommandApdu)
                 ).Bytes();
         }
 

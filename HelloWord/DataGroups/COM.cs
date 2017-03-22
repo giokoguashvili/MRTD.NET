@@ -61,7 +61,7 @@ namespace HelloWord.DataGroups
                         new CachedBinary(
                             new ExecutedCommandApdu(
                                 new DO97ProtectedCommandApdu(
-                                    new SelectEFCOMApplicationCommand(),
+                                    new ReadBinaryCommand(4), 
                                     _kSenc,
                                     _kSmac,
                                     new IncrementedSSC(

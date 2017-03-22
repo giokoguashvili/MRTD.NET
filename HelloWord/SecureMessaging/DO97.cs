@@ -15,10 +15,14 @@ namespace HelloWord.SecureMessaging
 
         public DO97(ICommandApdu rawCommandApdu)
         {
-            rawCommandApdu = rawCommandApdu;
+            _rawCommandApdu = rawCommandApdu;
         }
         public byte[] Bytes()
         {
+            var le = new Hex(new Le(
+                        new CommandApduBody(_rawCommandApdu)
+                    )).ToString();
+
             return new ConcatenatedBinaries(
                     _do97,
                     new Le(
