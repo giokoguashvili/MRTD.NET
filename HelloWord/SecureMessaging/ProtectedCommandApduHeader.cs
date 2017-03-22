@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 

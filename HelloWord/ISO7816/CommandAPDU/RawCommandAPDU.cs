@@ -1,7 +1,6 @@
-﻿using HelloWord.Cryptography;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.ISO7816.CommandAPDU
 {
     public class RawCommandApdu : IBinary
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU.Header
+namespace HelloWord.ISO7816.CommandAPDU.Header
 {
     public class P2 : IBinary
     {

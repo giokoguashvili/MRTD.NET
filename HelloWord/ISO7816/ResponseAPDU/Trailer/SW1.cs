@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU.Body
+namespace HelloWord.ISO7816.ResponseAPDU.Trailer
 {
-    public class Lc : IBinary
+    public class SW1 : IBinary
     {
-        private readonly IBinary _commandApduBody;
+        private readonly IBinary _responseApduTrailer;
 
-        public Lc(IBinary commandAPDUBody)
+        public SW1(IBinary responseApduTrailer)
         {
-            _commandApduBody = commandAPDUBody;
+            _responseApduTrailer = responseApduTrailer;
         }
         public byte[] Bytes()
         {
-            return _commandApduBody
+            return _responseApduTrailer
                 .Bytes()
                 .Take(1)
                 .ToArray();

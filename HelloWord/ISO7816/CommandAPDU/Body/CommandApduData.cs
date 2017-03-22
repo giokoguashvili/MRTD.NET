@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Cryptography;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU.Body
+namespace HelloWord.ISO7816.CommandAPDU.Body
 {
-    public class CommandData : IBinary
+    public class CommandApduData : IBinary
     {
         private readonly IBinary _commandApduBody;
 
-        public CommandData(IBinary commandApduBody)
+        public CommandApduData(IBinary commandApduBody)
         {
             _commandApduBody = commandApduBody;
         }

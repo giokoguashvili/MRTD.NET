@@ -1,7 +1,5 @@
 ﻿using System;
 using System.CodeDom;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Commands;
 using HelloWord.Cryptography;
 using HelloWord.Cryptography.RandomKeys;

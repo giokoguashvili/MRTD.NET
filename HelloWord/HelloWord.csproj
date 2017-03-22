@@ -42,11 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandAPDU\Body\CommandAPDUBody.cs" />
-    <Compile Include="CommandAPDU\Body\CommandData.cs" />
-    <Compile Include="CommandAPDU\Body\Lc.cs" />
-    <Compile Include="CommandAPDU\Header\P1.cs" />
-    <Compile Include="CommandAPDU\Header\P2.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Body\Lc.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Body\Le.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Header\P1.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Header\P2.cs" />
     <Compile Include="Commands\GetChallengeCommand.cs" />
     <Compile Include="Commands\ReadBinaryCommand.cs" />
     <Compile Include="Commands\SelectMRTDApplicationCommand.cs" />
@@ -60,17 +61,19 @@
     <Compile Include="Cryptography\SSC.cs" />
     <Compile Include="DataGroups\COM.cs" />
     <Compile Include="DataGroups\FileIds\EF_COM.cs" />
-    <Compile Include="CommandAPDU\Header\CLA.cs" />
-    <Compile Include="CommandAPDU\CommandHeader.cs" />
-    <Compile Include="CommandAPDU\Header\CommandAPDUHeader.cs" />
-    <Compile Include="CommandAPDU\ICommandAPDU.cs" />
-    <Compile Include="CommandAPDU\ICommandHeader.cs" />
-    <Compile Include="CommandAPDU\Header\INS.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Header\CLA.cs" />
+    <Compile Include="ISO7816\CommandAPDU\CommandHeader.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Header\CommandAPDUHeader.cs" />
+    <Compile Include="ISO7816\CommandAPDU\ICommandApdu.cs" />
+    <Compile Include="ISO7816\CommandAPDU\ICommandHeader.cs" />
+    <Compile Include="ISO7816\CommandAPDU\Header\INS.cs" />
     <Compile Include="Infrastructure\ConcatenatedBinaries.cs" />
     <Compile Include="Infrastructure\If.cs" />
-    <Compile Include="Infrastructure\IReponseAPDU.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\Body\ResponseApduData.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\ResponseApdu.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\Trailer\ResponseApduTrailer.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\IReponseAPDU.cs" />
     <Compile Include="Infrastructure\ExecutedApduCommand.cs" />
-    <Compile Include="Infrastructure\ResponseAPDU.cs" />
     <Compile Include="Cryptography\3DES.cs" />
     <Compile Include="Cryptography\AdjustedEvenParity.cs" />
     <Compile Include="Cryptography\AdjustedOddParity.cs" />
@@ -82,6 +85,8 @@
     <Compile Include="Cryptography\DESKeys.cs" />
     <Compile Include="Cryptography\Eifd.cs" />
     <Compile Include="Cryptography\Encrypted3DES.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\Trailer\SW1.cs" />
+    <Compile Include="ISO7816\ResponseAPDU\Trailer\SW2.cs" />
     <Compile Include="SecureMessaging\CC.cs" />
     <Compile Include="SecureMessaging\COMFileStructureLength.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
@@ -102,7 +107,7 @@
     <Compile Include="SecureMessaging\PadedCommandApduData.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
-    <Compile Include="CommandAPDU\RawCommandAPDU.cs" />
+    <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SecureMessaging\ResponseApduDO8E.cs" />
     <Compile Include="SecureMessaging\VerifiedResponseApdu.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />

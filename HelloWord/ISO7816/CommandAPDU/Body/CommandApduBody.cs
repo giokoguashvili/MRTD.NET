@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU.Header
+namespace HelloWord.ISO7816.CommandAPDU.Body
 {
-    public class CommandApduHeader : IBinary
+    public class CommandApduBody : IBinary
     {
         private readonly IBinary _rawCommandApdu;
 
-        public CommandApduHeader(IBinary rawCommandApdu)
+        public CommandApduBody(IBinary rawCommandApdu)
         {
             _rawCommandApdu = rawCommandApdu;
         }
@@ -15,7 +15,7 @@ namespace HelloWord.CommandAPDU.Header
         {
             return _rawCommandApdu
                 .Bytes()
-                .Take(4)
+                .Skip(4)
                 .ToArray();
         }
     }

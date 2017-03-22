@@ -1,10 +1,10 @@
-﻿using HelloWord.CommandAPDU;
+﻿using HelloWord.ISO7816.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class ReadBinaryCommand : ICommandAPDU
+    public class ReadBinaryCommand : ICommandApdu
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
         private readonly int _expectedDataLength;
@@ -36,7 +36,7 @@ namespace HelloWord.Commands
             return this._isoCase;
         }
 
-        public SCardProtocol Protocol()
+        public SCardProtocol ActiveProtocol()
         {
             return this._activeProtocol;
         }

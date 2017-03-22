@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Cryptography;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.FileIds
+namespace HelloWord.DataGroups.FileIds
 {
     public class EF_COM : IBinary
     {

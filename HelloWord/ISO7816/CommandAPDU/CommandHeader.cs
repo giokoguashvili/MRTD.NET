@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.ISO7816.CommandAPDU
 {
     public class CommandHeader : ICommandAPDUHeader
     {

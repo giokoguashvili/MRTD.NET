@@ -1,9 +1,9 @@
 ﻿using System;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Body;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
+using HelloWord.ISO7816.CommandAPDU.Body;
+using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.FakeObjects;
@@ -28,7 +28,7 @@ namespace UnitTests
                                 new EncryptedCommandApduData(
                                     new FkKSenc(), 
                                     new PadedCommandApduData(
-                                        new CommandData(
+                                        new CommandApduData(
                                             new CommandApduBody(rawCommandApdu)
                                         )
                                     )

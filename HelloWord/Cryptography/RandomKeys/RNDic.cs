@@ -1,38 +1,39 @@
-﻿using HelloWord.CommandAPDU;
-using PCSC;
+﻿using PCSC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SmartCard;
 
 namespace HelloWord.Cryptography.RandomKeys
 {
     public class RNDic : IBinary
     {
-        private ICommandAPDU _executedGetChallengeCommand;
+        private IBinary _executedGetChallengeCommand;
         private readonly IReader _reader;
-        private RNDic(ICommandAPDU executedGetChallengeCommand)
+        private RNDic(IBinary executedGetChallengeCommand)
         {
             this._executedGetChallengeCommand = executedGetChallengeCommand;
         }
 
         public RNDic(IReader reader)
             : this(
-                        new ExecutedCommandAPDU(
-                            new GetChallengeCommand(),
-                            reader
+                        new CachedBinary(
+                            new ExecutedCommandApdu(
+                                new GetChallengeCommand(),
+                                reader
+                            )
                         )
                   )
         { }
 
         public byte[] Bytes()
         {
-            return new ResponseAPDU(this._executedGetChallengeCommand)
-                .Body()
-                .Bytes();
+            return new ResponseApduData(_executedGetChallengeCommand)
+                    .Bytes();
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using HelloWord.CommandAPDU;
-using HelloWord.Cryptography;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class GetChallengeCommand : ICommandAPDU
+    public class GetChallengeCommand : ICommandApdu
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
         private readonly int _expectedDataLength = 8;
@@ -34,7 +34,7 @@ namespace HelloWord.Commands
             return this._isoCase;
         }
 
-        public SCardProtocol Protocol()
+        public SCardProtocol ActiveProtocol()
         {
             return this._activeProtocol;
         }

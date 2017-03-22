@@ -22,18 +22,23 @@ namespace HelloWord.SmartCard
 
         public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer)
         {
-            Console.WriteLine(
-                "APDU: {0}",
-                new Hex(
-                    new Binary(sendBuffer)
-                )
-            );
-            return _reader.Transmit(
+            var sce = _reader.Transmit(
                         sendPci,
                         sendBuffer,
                         receivePci,
                         ref receiveBuffer
                    );
+            Console.WriteLine(
+                "\nCAPDU: {0}\nRAPDU: {2}\nLe: {1}",
+                new Hex(
+                    new Binary(sendBuffer)
+                ),
+                receiveBuffer.Length,
+                new Hex(
+                    new Binary(receiveBuffer)
+                )
+            );
+            return sce;
         }
     }
 }

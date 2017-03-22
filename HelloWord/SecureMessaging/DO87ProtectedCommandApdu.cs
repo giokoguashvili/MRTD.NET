@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Body;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
+using HelloWord.ISO7816.CommandAPDU.Body;
 using PCSC;
 using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging
 {
-    public class DO87ProtectedCommandApdu : ICommandAPDU
+    public class DO87ProtectedCommandApdu : ICommandApdu
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _incrementedSsc;
-        private readonly ICommandAPDU _rawCommandApdu;
+        private readonly ICommandApdu _rawCommandApdu;
 
 
         public DO87ProtectedCommandApdu(
-                ICommandAPDU rawCommandApduHeader,
+                ICommandApdu rawCommandApduHeader,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary incrementedSsc
@@ -36,7 +37,7 @@ namespace HelloWord.SecureMessaging
                            new EncryptedCommandApduData(
                                _kSenc,
                                new PadedCommandApduData(
-                                   new CommandData(
+                                   new CommandApduData(
                                        new CommandApduBody(_rawCommandApdu)
                                    )
                                )
@@ -52,17 +53,17 @@ namespace HelloWord.SecureMessaging
 
         public IsoCase Case()
         {
-            throw new NotImplementedException();
+            return _rawCommandApdu.Case();
         }
 
-        public SCardProtocol Protocol()
+        public SCardProtocol ActiveProtocol()
         {
-            throw new NotImplementedException();
+            return _rawCommandApdu.ActiveProtocol();
         }
 
         public int ExceptedDataLength()
         {
-            throw new NotImplementedException();
+            return 32;
         }
     }
 }

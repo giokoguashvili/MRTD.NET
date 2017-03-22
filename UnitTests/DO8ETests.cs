@@ -1,7 +1,7 @@
 ﻿using System;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
+using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.FakeObjects;

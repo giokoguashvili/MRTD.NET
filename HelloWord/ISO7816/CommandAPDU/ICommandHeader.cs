@@ -1,6 +1,6 @@
 ﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.ISO7816.CommandAPDU
 {
     public interface ICommandAPDUHeader
     {

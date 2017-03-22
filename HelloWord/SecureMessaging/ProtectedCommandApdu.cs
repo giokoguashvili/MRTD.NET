@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HelloWord.CommandAPDU;
-using HelloWord.CommandAPDU.Body;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
+using HelloWord.ISO7816.CommandAPDU.Header;
 using PCSC;
 using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging
 {
-    public class ProtectedCommandApdu : ICommandAPDU
+    public class ProtectedCommandApdu : ICommandApdu
     {
         private readonly IBinary _kSmac;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _do87Or97;
-        private readonly ICommandAPDU _rawCommandApdu;
+        private readonly ICommandApdu _rawCommandApdu;
 
 
         public ProtectedCommandApdu(
-                ICommandAPDU rawCommandApduHeader,
+                ICommandApdu rawCommandApduHeader,
                 IBinary kSmac,
                 IBinary incrementedSsc,
                 IBinary do87or97
@@ -57,14 +56,14 @@ namespace HelloWord.SecureMessaging
                 ).Bytes();
         }
 
-        public SCardProtocol Protocol()
+        public SCardProtocol ActiveProtocol()
         {
-            return this._rawCommandApdu.Protocol();
+            return this._rawCommandApdu.ActiveProtocol();
         }
 
         public int ExceptedDataLength()
         {
-            return 32; //this._rawCommandApdu.ExceptedDataLength();
+            return this._rawCommandApdu.ExceptedDataLength();
         }
 
         public IsoCase Case()

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HelloWord.CommandAPDU.Body;
-using HelloWord.CommandAPDU.Header;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging

@@ -1,11 +1,11 @@
-﻿using HelloWord.CommandAPDU;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class ExternalAuthenticateCommand : ICommandAPDU
+    public class ExternalAuthenticateCommand : ICommandApdu
     {
         private readonly IBinary _commandData;
         private readonly IsoCase _isoCase = PCSC.Iso7816.IsoCase.Case4Short;
@@ -40,7 +40,7 @@ namespace HelloWord.Commands
             return this._isoCase;
         }
 
-        public SCardProtocol Protocol()
+        public SCardProtocol ActiveProtocol()
         {
             return this._activeProtocol;
         }

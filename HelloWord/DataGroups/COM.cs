@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 using PCSC;
@@ -33,17 +34,19 @@ namespace HelloWord.DataGroups
         {
             return 
                 new VerifiedResponseApdu(
-                    new ResponseAPDU(
-                        new ExecutedCommandAPDU(
-                            new DO87ProtectedCommandApdu(
-                                new SelectEFCOMApplicationCommand(),
-                                _kSenc,
-                                _kSmac,
-                                new IncrementedSSC(
-                                    _ssc
-                                )
-                            ),
-                            _reader
+                    new ResponseApduData(
+                        new CachedBinary(
+                            new ExecutedCommandApdu(
+                                new DO87ProtectedCommandApdu(
+                                    new SelectEFCOMApplicationCommand(),
+                                    _kSenc,
+                                    _kSmac,
+                                    new IncrementedSSC(
+                                        _ssc
+                                    )
+                                ),
+                                _reader
+                            )
                         )
                     ),
                     new IncrementedSSC(

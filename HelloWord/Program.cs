@@ -3,11 +3,11 @@ using PCSC;
 using PCSC.Iso7816;
 using HelloWord.Cryptography;
 using HelloWord.SmartCard;
-using HelloWord.CommandAPDU;
 using HelloWord.Commands;
 using HelloWord.Cryptography.RandomKeys;
 using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
 
 namespace HelloWord
@@ -61,26 +61,30 @@ namespace HelloWord
                     Console.WriteLine("\n\nSelectFile DF: ");
                     Console.WriteLine("Retrieving the UID .... ");
 
-                    Console.WriteLine("\nSelectMRTDApplication\nResponseAPDU: ");
+                    Console.WriteLine("\nSelectMRTDApplication: ");
                     Console.WriteLine(
                         new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new SelectMRTDApplicationCommand(),
-                                    _reader
+                            new ResponseApduData(
+                                new CachedBinary(
+                                    new ExecutedCommandApdu(
+                                        new SelectMRTDApplicationCommand(),
+                                        _reader
+                                    )
                                 )
                             )
                         )
                     );
 
 
-                    Console.WriteLine("\nSelectEFCOMApplication\nResponseAPDU: ");
+                    Console.WriteLine("\nSelectEFCOMApplication: ");
                     Console.WriteLine(
                         new Hex(
-                            new ResponseAPDU(
-                                new ExecutedCommandAPDU(
-                                    new SelectEFCOMApplicationCommand(),
-                                    _reader
+                            new ResponseApduData(
+                                new CachedBinary(
+                                    new ExecutedCommandApdu(
+                                        new SelectEFCOMApplicationCommand(),
+                                        _reader
+                                    )
                                 )
                             )
                         )
@@ -102,31 +106,27 @@ namespace HelloWord
                     //var mrzInfo = "15IC69034696112602606119"; // Bagdavadze
                     var mrzInfo = "13ID37063295110732402055"; // Shako
 
-                    Console.WriteLine("\nExternalAuthenticate\nResponseAPDU: ");
+                    Console.WriteLine("\nExternalAuthenticate: ");
 
                     var kIfd = new CachedBinary(new Kifd());
                     var rndIc = new CachedBinary(new RNDic(_reader));
                     var rndIfd = new CachedBinary(new RNDifd());
 
-                    var externalAuthRespData = new ResponseAPDU(
-                                                    new ExecutedCommandAPDU(
-                                                        new ExternalAuthenticateCommand(
-                                                            new ExternalAuthenticateCommandData(
-                                                                mrzInfo,
-                                                                rndIc,
-                                                                rndIfd,
-                                                                kIfd
-                                                            )
-                                                        ),
+                    var externalAuthRespData = new ResponseApduData(
+                                                    new CachedBinary(
+                                                        new ExecutedCommandApdu(
+                                                            new ExternalAuthenticateCommand(
+                                                                new ExternalAuthenticateCommandData(
+                                                                    mrzInfo,
+                                                                    rndIc,
+                                                                    rndIfd,
+                                                                    kIfd
+                                                                )
+                                                            ),
                                                         _reader
+                                                        )
                                                     )
-                                                ).Body();
-
-                    Console.WriteLine(
-                        new Hex(
-                            externalAuthRespData
-                        )
-                    );
+                                                );
 
                     Console.WriteLine("\nSecure Messaging");
 

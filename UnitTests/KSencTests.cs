@@ -1,14 +1,8 @@
-﻿using NUnit.Framework;
-using HelloWord.Cryptography;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
-using UnitTests.FakeObjects;
+using NUnit.Framework;
 
-namespace HelloWord.Cryptography.Tests
+namespace UnitTests
 {
     [TestFixture]
     public class KSencTests

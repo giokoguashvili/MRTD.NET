@@ -2,12 +2,12 @@
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.CommandAPDU
+namespace HelloWord.ISO7816.CommandAPDU
 {
-    public interface ICommandAPDU : IBinary
+    public interface ICommandApdu : IBinary
     {
         IsoCase Case();
-        SCardProtocol Protocol();
+        SCardProtocol ActiveProtocol();
         int ExceptedDataLength();
     }
 }
