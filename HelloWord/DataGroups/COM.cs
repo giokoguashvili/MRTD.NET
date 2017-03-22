@@ -32,7 +32,7 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            return 
+            //return 
                 new VerifiedResponseApdu(
                     new ResponseApduData(
                         new CachedBinary(
@@ -55,8 +55,27 @@ namespace HelloWord.DataGroups
                         )
                     ),
                     _kSmac
-                )
-                .Bytes();
+                ).Bytes();
+
+            return new ResponseApduData(
+                        new CachedBinary(
+                            new ExecutedCommandApdu(
+                                new DO97ProtectedCommandApdu(
+                                    new SelectEFCOMApplicationCommand(),
+                                    _kSenc,
+                                    _kSmac,
+                                    new IncrementedSSC(
+                                        new IncrementedSSC(
+                                            new IncrementedSSC(
+                                                _ssc
+                                            )
+                                        )
+                                    )
+                                ),
+                                _reader
+                            )
+                        )
+                    ).Bytes();
         }
     }
 }

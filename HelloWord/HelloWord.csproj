@@ -93,6 +93,7 @@
     <Compile Include="SecureMessaging\DO87.cs" />
     <Compile Include="SecureMessaging\DO87ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\DO8E.cs" />
+    <Compile Include="SecureMessaging\DO97.cs" />
     <Compile Include="SecureMessaging\DO97ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />
     <Compile Include="SecureMessaging\ResponseApduDO99.cs" />

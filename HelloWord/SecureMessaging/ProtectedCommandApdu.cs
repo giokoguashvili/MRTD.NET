@@ -19,13 +19,13 @@ namespace HelloWord.SecureMessaging
 
 
         public ProtectedCommandApdu(
-                ICommandApdu rawCommandApduHeader,
+                ICommandApdu rawCommandApdu,
                 IBinary kSmac,
                 IBinary incrementedSsc,
                 IBinary do87or97
             )
         {
-            _rawCommandApdu = rawCommandApduHeader;
+            _rawCommandApdu = rawCommandApdu;
             _kSmac = kSmac;
             _incrementedSsc = incrementedSsc;
             _do87Or97 = do87or97;

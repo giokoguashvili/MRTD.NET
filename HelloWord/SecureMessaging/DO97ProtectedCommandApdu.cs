@@ -10,7 +10,7 @@ using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging
 {
-    public class DO97ProtectedCommandApdu : IBinary
+    public class DO97ProtectedCommandApdu : ICommandApdu
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
@@ -19,13 +19,13 @@ namespace HelloWord.SecureMessaging
 
 
         public DO97ProtectedCommandApdu(
-                ICommandApdu rawCommandApduHeader,
+                ICommandApdu rawCommandApdu,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary incrementedSsc
             )
         {
-            _rawCommandApdu = rawCommandApduHeader;
+            _rawCommandApdu = rawCommandApdu;
             _kSenc = kSenc;
             _kSmac = kSmac;
             _incrementedSsc = incrementedSsc;
