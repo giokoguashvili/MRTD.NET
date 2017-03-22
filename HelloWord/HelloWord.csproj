@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\ChainedCommand.cs" />
+    <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\Lc.cs" />

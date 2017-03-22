@@ -123,7 +123,7 @@ namespace HelloWord
                                                                     kIfd
                                                                 )
                                                             ),
-                                                        _reader
+                                                            _reader
                                                         )
                                                     )
                                                 );
@@ -154,6 +154,7 @@ namespace HelloWord
                             ).ToString()
                         );
 
+                 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);
 
