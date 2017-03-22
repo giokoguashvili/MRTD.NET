@@ -34,6 +34,23 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             var commandApduHeader = new CommandApduHeader(_rawCommandApdu);
+            var n = new Hex(new N(
+                _incrementedSsc,
+                new M(
+                    new ProtectedCommandApduHeader(
+                        commandApduHeader
+                    ),
+                    _do87Or97
+                )
+            )).ToString();
+
+            var ssc = new Hex(_incrementedSsc).ToString();
+            var m = new Hex(new M(
+                                         new ProtectedCommandApduHeader(
+                                             commandApduHeader
+                                        ),
+                                        _do87Or97
+                                    )).ToString();
 
             var do8e = new DO8E(
                             new CC(

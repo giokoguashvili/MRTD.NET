@@ -35,7 +35,7 @@ namespace HelloWord.SecureMessaging
                                                 commandData
                                                 .Bytes()
                                                 .Length
-                                                .ToString("X")
+                                                .ToString("X2")
                                           );
             return new ConcatenatedBinaries(
                     _maskedCommandApduHeader,

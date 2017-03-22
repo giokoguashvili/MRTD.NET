@@ -11,6 +11,7 @@ namespace UnitTests
     [TestClass]
     public class DO87ProtectedCommandApduTests
     {
+
         [TestMethod]
         public void Generate_DO87_protected_APDU()
         {

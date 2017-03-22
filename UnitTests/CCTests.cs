@@ -39,5 +39,20 @@ namespace UnitTests
                     ).ToString()
                 );
         }
+
+        [TestMethod]
+        public void Compute_MAC_over_N_with_KSmac2()
+        {
+            //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
+            Assert.AreEqual(
+                    "ED6705417E96BA55",
+                    new Hex(
+                        new CC(
+                            new BinaryHex("887022120C06C2290CB0000080000000970104"), // N - 80000000 without pad
+                            new BinaryHex("F1CB1F1FB5ADF208806B89DC579DC1F8") // KSmac
+                        )
+                    ).ToString()
+                );
+        }
     }
 }
