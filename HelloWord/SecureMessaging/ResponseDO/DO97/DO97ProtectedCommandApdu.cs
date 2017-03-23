@@ -3,7 +3,7 @@ using HelloWord.ISO7816.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging.ResponseDO.DO97
 {
     public class DO97ProtectedCommandApdu : ICommandApdu
     {
@@ -31,7 +31,7 @@ namespace HelloWord.SecureMessaging.DO
                     _rawCommandApdu,
                     _kSmac,
                     _incrementedSsc,
-                    new DO97(_rawCommandApdu)
+                    new CommandDO.DO97(_rawCommandApdu)
                 ).Bytes();
         }
 

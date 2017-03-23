@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory
 {
     public interface IProtectedCommandResponseDOFactory
     {

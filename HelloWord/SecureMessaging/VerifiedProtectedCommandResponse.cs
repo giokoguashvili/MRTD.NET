@@ -1,39 +1,40 @@
 ﻿using System;
 using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging
 {
     public class VerifiedProtectedCommandResponse : IBinary
     {
         private readonly IBinary _responseApdu;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _kSmac;
-        private readonly IProtectedCommandResponseDOFactory _protectedCommandResponseDO;
+        private readonly IProtectedCommandResponseDOFactory _protectedCommandResponseDoFactory;
 
         public VerifiedProtectedCommandResponse(
                 IBinary responseApdu,
                 IBinary incrementedSsc,
                 IBinary kSmac,
-                IProtectedCommandResponseDOFactory protectedCommandResponseDO
+                IProtectedCommandResponseDOFactory protectedCommandResponseDoFactory
             )
         {
             _responseApdu = responseApdu;
             _incrementedSsc = incrementedSsc;
             _kSmac = kSmac;
-            _protectedCommandResponseDO = protectedCommandResponseDO;
+            _protectedCommandResponseDoFactory = protectedCommandResponseDoFactory;
         }
         public byte[] Bytes()
         {
             var protectedCommandResponseCC = new CC(
                     new K(
                         _incrementedSsc,
-                        _protectedCommandResponseDO.DO(_responseApdu)
+                        _protectedCommandResponseDoFactory.DO(_responseApdu)
                      ),
                     _kSmac
                 ).Bytes();
 
-            var protectedCommandResponseDO8E = _protectedCommandResponseDO.DO8E(_responseApdu)
+            var protectedCommandResponseDO8E = _protectedCommandResponseDoFactory.DO8E(_responseApdu)
                 .Bytes();
             if (
                 !protectedCommandResponseCC

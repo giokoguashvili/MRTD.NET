@@ -6,8 +6,10 @@ using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
-using HelloWord.SecureMessaging.DO;
 using HelloWord.SecureMessaging.ResponseDO;
+using HelloWord.SecureMessaging.ResponseDO.DO87;
+using HelloWord.SecureMessaging.ResponseDO.DO97;
+using HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory;
 using HelloWord.SmartCard;
 using PCSC;
 

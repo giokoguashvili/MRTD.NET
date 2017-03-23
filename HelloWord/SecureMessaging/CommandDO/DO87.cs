@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.CommandDO
 {
     public class DO87 : IBinary
     {

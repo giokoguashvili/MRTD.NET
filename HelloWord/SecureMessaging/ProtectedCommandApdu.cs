@@ -5,6 +5,7 @@ using System.Text;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Header;
+using HelloWord.SecureMessaging.CommandDO;
 using PCSC;
 using PCSC.Iso7816;
 
@@ -34,24 +35,6 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             var commandApduHeader = new CommandApduHeader(_rawCommandApdu);
-            var n = new Hex(new N(
-                _incrementedSsc,
-                new M(
-                    new ProtectedCommandApduHeader(
-                        commandApduHeader
-                    ),
-                    _do87Or97
-                )
-            )).ToString();
-
-            var ssc = new Hex(_incrementedSsc).ToString();
-            var m = new Hex(new M(
-                                         new ProtectedCommandApduHeader(
-                                             commandApduHeader
-                                        ),
-                                        _do87Or97
-                                    )).ToString();
-
             var do8e = new DO8E(
                             new CC(
                                 new N(

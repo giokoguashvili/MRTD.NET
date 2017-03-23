@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using HelloWord.Commands;
 using HelloWord.SecureMessaging;
-using HelloWord.SecureMessaging.DO;
+using HelloWord.SecureMessaging.ResponseDO.DO87;
 using PCSC;
 using PCSC.Iso7816;
 

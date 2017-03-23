@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging.ResponseDO
+namespace HelloWord.SecureMessaging.ResponseDO.DO87
 {
     public class DO87ProtectedCommandResponseDO8E : IBinary
     {

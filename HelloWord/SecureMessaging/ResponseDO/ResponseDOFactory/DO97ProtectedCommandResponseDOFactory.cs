@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO;
+using HelloWord.SecureMessaging.ResponseDO.DO97;
 
-namespace HelloWord.SecureMessaging.ResponseDO
+namespace HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory
 {
     public class DO97ProtectedCommandResponseDOFactory : IProtectedCommandResponseDOFactory
     {

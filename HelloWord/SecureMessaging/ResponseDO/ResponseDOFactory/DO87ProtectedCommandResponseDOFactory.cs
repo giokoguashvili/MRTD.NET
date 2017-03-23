@@ -1,7 +1,7 @@
-﻿using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO;
+using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging.ResponseDO.DO87;
 
-namespace HelloWord.SecureMessaging.ResponseDO
+namespace HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory
 {
     public class DO87ProtectedCommandResponseDOFactory : IProtectedCommandResponseDOFactory
     {

@@ -4,7 +4,7 @@ using HelloWord.ISO7816.CommandAPDU.Body;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging.ResponseDO.DO87
 {
     public class DO87ProtectedCommandApdu : ICommandApdu
     {
@@ -28,7 +28,7 @@ namespace HelloWord.SecureMessaging.DO
         }
         public byte[] Bytes()
         {
-            var do87 = new DO87(
+            var do87 = new CommandDO.DO87(
                            new EncryptedCommandApduData(
                                _kSenc,
                                new PadedCommandApduData(

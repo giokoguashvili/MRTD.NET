@@ -3,6 +3,7 @@ using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
+using HelloWord.SecureMessaging.CommandDO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.FakeObjects;
 
