@@ -69,5 +69,19 @@ namespace UnitTests
                     ).ToString()
                 );
         }
+
+        [TestMethod]
+        public void Compute_MAC_over_K_with_KSmac_from_DO97ProtectedCommandResponse2()
+        {
+            Assert.AreEqual(
+                    "C8B2787EAEA07D74",
+                    new Hex(
+                        new CC(
+                            new BinaryHex("887022120C06C22C871901FB9235F4E4037F2327DCC8964F1F9B8C30F42C8E2FFF224A99029000"), // K
+                            new FkKSmac()// KSmac
+                        )
+                    ).ToString()
+                );
+        }
     }
 }

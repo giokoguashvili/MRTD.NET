@@ -85,7 +85,7 @@ namespace HelloWord.DataGroups
                     ),
                     new IncrementedSSC(_ssc).By(6),
                     _kSmac,
-                    new DO97ProtectedCommandResponseDOFactory()
+                    new SecondDO97ProtectedCommandResponseDOFactory()
                  ).Bytes();
 
         }

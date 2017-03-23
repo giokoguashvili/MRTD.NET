@@ -96,6 +96,7 @@
     <Compile Include="COMTests.cs" />
     <Compile Include="DO87ProtectedCommandApduTests.cs" />
     <Compile Include="DO97ProtectedCommandApduTests.cs" />
+    <Compile Include="SecondDO97ProtectedCommandResponseDO87DO99Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
