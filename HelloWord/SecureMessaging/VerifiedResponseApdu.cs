@@ -25,11 +25,14 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             var cc = new CC(
-                    new K(_incrementedSsc, new ResponseApduDO99(_responseApdu)),
+                    new K(
+                        _incrementedSsc, 
+                        new DO87ProtectedCommandResponseDO99(_responseApdu)
+                     ),
                     _kSmac
                 );
 
-            var responseApduDO8E = new ResponseApduDO8E(_responseApdu);
+            var responseApduDO8E = new DO87ProtectedCommandResponseDO8E(_responseApdu);
 
             if (
                 !cc

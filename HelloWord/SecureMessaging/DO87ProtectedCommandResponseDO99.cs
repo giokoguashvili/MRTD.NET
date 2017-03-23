@@ -6,11 +6,11 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class ResponseApduDO99 : IBinary
+    public class DO87ProtectedCommandResponseDO99 : IBinary
     {
         private readonly IBinary _responseApdu;
 
-        public ResponseApduDO99(IBinary responseApdu)
+        public DO87ProtectedCommandResponseDO99(IBinary responseApdu)
         {
             _responseApdu = responseApdu;
         }
