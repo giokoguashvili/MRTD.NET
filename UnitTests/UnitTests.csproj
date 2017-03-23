@@ -96,8 +96,7 @@
     <Compile Include="COMTests.cs" />
     <Compile Include="DO87ProtectedCommandApduTests.cs" />
     <Compile Include="DO97ProtectedCommandApduTests.cs" />
-    <Compile Include="DO87ProtectedCommandResponseCCTests.cs" />
-    <Compile Include="DO97ProtectedCommandResponseCCTests.cs" />
+    <Compile Include="DO8797ProtectedCommandResponseCCTests.cs" />
     <Compile Include="VerifiedProtectedCommandResponseApduTests.cs" />
   </ItemGroup>
   <ItemGroup>

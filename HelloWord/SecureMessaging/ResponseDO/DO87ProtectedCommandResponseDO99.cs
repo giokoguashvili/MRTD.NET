@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging.ResponseDO
 {
-    public class DO87ProtectedCommandResponseDO8E : IBinary
+    public class DO87ProtectedCommandResponseDO99 : IBinary
     {
         private readonly IBinary _responseApdu;
 
-        public DO87ProtectedCommandResponseDO8E(IBinary responseApdu)
+        public DO87ProtectedCommandResponseDO99(IBinary responseApdu)
         {
             _responseApdu = responseApdu;
         }
@@ -15,8 +15,7 @@ namespace HelloWord.SecureMessaging.DO
         {
             return _responseApdu
                 .Bytes()
-                .Skip(6)
-                .Take(8)
+                .Take(4)
                 .ToArray();
         }
     }

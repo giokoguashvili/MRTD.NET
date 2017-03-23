@@ -7,6 +7,7 @@ using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
 using HelloWord.SecureMessaging.DO;
+using HelloWord.SecureMessaging.ResponseDO;
 using HelloWord.SmartCard;
 using PCSC;
 
@@ -34,7 +35,7 @@ namespace HelloWord.DataGroups
         public byte[] Bytes()
         {
             //return 
-            new VerifiedDO87ProtectedCommandResponse(
+            new VerifiedProtectedCommandResponse(
                 new ResponseApduData(
                     new CachedBinary(
                         new ExecutedCommandApdu(
@@ -51,11 +52,12 @@ namespace HelloWord.DataGroups
                 new IncrementedSSC(
                     new IncrementedSSC(_ssc)
                 ),
-                _kSmac
+                _kSmac,
+                new DO87ProtectedCommandResponseDOFactory()
             ).Bytes();
 
             return 
-                new VerifiedDO97ProtectedCommandResponse(
+                new VerifiedProtectedCommandResponse(
                     new ResponseApduData(
                         new CachedBinary(
                             new ExecutedCommandApdu(
@@ -80,7 +82,8 @@ namespace HelloWord.DataGroups
                             )
                         )
                     ),
-                    _kSmac
+                    _kSmac,
+                    new DO97ProtectedCommandResponseDOFactory()
                  ).Bytes();
         }
     }
