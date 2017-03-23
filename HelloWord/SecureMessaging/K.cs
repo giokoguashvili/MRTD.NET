@@ -9,21 +9,21 @@ namespace HelloWord.SecureMessaging
     public class K : IBinary
     {
         private readonly IBinary _incrementedSsc;
-        private readonly IBinary _do99;
+        private readonly IBinary _do99_do87do99;
 
         public K(
                 IBinary incrementedSsc,
-                IBinary do99
+                IBinary do99_do87do99
             )
         {
             _incrementedSsc = incrementedSsc;
-            _do99 = do99;
+            _do99_do87do99 = do99_do87do99;
         }
         public byte[] Bytes()
         {
             return new ConcatenatedBinaries(
                     _incrementedSsc,
-                    _do99
+                    _do99_do87do99
                 ).Bytes();
         }
     }

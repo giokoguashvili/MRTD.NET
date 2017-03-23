@@ -2,6 +2,7 @@
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
+using HelloWord.SecureMessaging.DO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitTests.FakeObjects;
 

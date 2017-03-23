@@ -3,6 +3,7 @@ using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using UnitTests.FakeObjects;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace UnitTests
@@ -50,6 +51,20 @@ namespace UnitTests
                         new CC(
                             new BinaryHex("887022120C06C2290CB0000080000000970104"), // N - 80000000 without pad
                             new BinaryHex("F1CB1F1FB5ADF208806B89DC579DC1F8") // KSmac
+                        )
+                    ).ToString()
+                );
+        }
+
+        [TestMethod]
+        public void Compute_MAC_over_K_with_KSmac_from_DO97ProtectedCommandResponse()
+        {
+            Assert.AreEqual(
+                    "AD55CC17140B2DED",
+                    new Hex(
+                        new CC(
+                            new BinaryHex("887022120C06C22A8709019FF0EC34F992265199029000"), // K
+                            new FkKSmac()// KSmac
                         )
                     ).ToString()
                 );

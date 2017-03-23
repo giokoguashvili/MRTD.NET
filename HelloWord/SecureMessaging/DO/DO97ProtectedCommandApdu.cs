@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
-using HelloWord.ISO7816.CommandAPDU.Body;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.DO
 {
-    public class DO87ProtectedCommandApdu : ICommandApdu
+    public class DO97ProtectedCommandApdu : ICommandApdu
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
@@ -19,35 +13,25 @@ namespace HelloWord.SecureMessaging
         private readonly ICommandApdu _rawCommandApdu;
 
 
-        public DO87ProtectedCommandApdu(
-                ICommandApdu rawCommandApduHeader,
+        public DO97ProtectedCommandApdu(
+                ICommandApdu rawCommandApdu,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary incrementedSsc
             )
         {
-            _rawCommandApdu = rawCommandApduHeader;
+            _rawCommandApdu = rawCommandApdu;
             _kSenc = kSenc;
             _kSmac = kSmac;
             _incrementedSsc = incrementedSsc;
         }
         public byte[] Bytes()
         {
-            var do87 = new DO87(
-                           new EncryptedCommandApduData(
-                               _kSenc,
-                               new PadedCommandApduData(
-                                   new CommandApduData(
-                                       new CommandApduBody(_rawCommandApdu)
-                                   )
-                               )
-                           )
-                       );
             return new ProtectedCommandApdu(
                     _rawCommandApdu,
                     _kSmac,
                     _incrementedSsc,
-                    do87
+                    new DO97(_rawCommandApdu)
                 ).Bytes();
         }
 

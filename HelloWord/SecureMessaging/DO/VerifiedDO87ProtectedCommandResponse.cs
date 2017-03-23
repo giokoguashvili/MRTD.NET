@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.DO
 {
-    public class VerifiedResponseApdu : IBinary
+    public class VerifiedDO87ProtectedCommandResponse : IBinary
     {
         private readonly IBinary _responseApdu;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _kSmac;
 
-        public VerifiedResponseApdu(
+        public VerifiedDO87ProtectedCommandResponse(
                 IBinary responseApdu,
                 IBinary incrementedSsc,
                 IBinary kSmac
@@ -24,21 +22,21 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            var cc = new CC(
-                    new K(
-                        _incrementedSsc, 
-                        new DO87ProtectedCommandResponseDO99(_responseApdu)
-                     ),
-                    _kSmac
+
+            var _DO87ProtectedCommandResponseCC = new DO87ProtectedCommandResponseCC(
+                    _incrementedSsc,
+                    _kSmac,
+                    new DO87ProtectedCommandResponseDO99(
+                        _responseApdu
+                    )
                 );
 
-            var responseApduDO8E = new DO87ProtectedCommandResponseDO8E(_responseApdu);
-
+            var _DO87ProtectedCommandResponseDO8E = new DO87ProtectedCommandResponseDO8E(_responseApdu);
             if (
-                !cc
+                !_DO87ProtectedCommandResponseCC
                     .Bytes()
                     .SequenceEqual(
-                        responseApduDO8E
+                        _DO87ProtectedCommandResponseDO8E
                             .Bytes()
                     )
             )
@@ -46,18 +44,18 @@ namespace HelloWord.SecureMessaging
                 throw new Exception(
                     String.Format(
                         "CC not equal of DO‘8E’ of RAPDU\n{0} != {1}",
-                        new Hex(cc),
-                        new Hex(responseApduDO8E)
+                        new Hex(_DO87ProtectedCommandResponseCC),
+                        new Hex(_DO87ProtectedCommandResponseDO8E)
                     )
                 );
             }
             else
             {
                 Console.WriteLine(
-                        "CC equal of DO‘8E’ of RAPDU\n{0} == {1}", 
-                        new Hex(cc), 
-                        new Hex(responseApduDO8E)
-                    );  
+                        "CC equal of DO‘8E’ of RAPDU\n{0} == {1}",
+                        new Hex(_DO87ProtectedCommandResponseCC),
+                        new Hex(_DO87ProtectedCommandResponseDO8E)
+                    );
                 return _responseApdu.Bytes();
             }
         }

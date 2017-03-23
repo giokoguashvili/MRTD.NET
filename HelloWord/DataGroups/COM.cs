@@ -6,6 +6,7 @@ using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
+using HelloWord.SecureMessaging.DO;
 using HelloWord.SmartCard;
 using PCSC;
 
@@ -33,7 +34,7 @@ namespace HelloWord.DataGroups
         public byte[] Bytes()
         {
             //return 
-            new VerifiedResponseApdu(
+            new VerifiedDO87ProtectedCommandResponse(
                 new ResponseApduData(
                     new CachedBinary(
                         new ExecutedCommandApdu(
@@ -41,23 +42,21 @@ namespace HelloWord.DataGroups
                                 new SelectEFCOMApplicationCommand(),
                                 _kSenc,
                                 _kSmac,
-                                new IncrementedSSC(
-                                    _ssc
-                                )
+                                new IncrementedSSC(_ssc)
                             ),
                             _reader
                         )
                     )
                 ),
                 new IncrementedSSC(
-                    new IncrementedSSC(
-                        _ssc
-                    )
+                    new IncrementedSSC(_ssc)
                 ),
                 _kSmac
             ).Bytes();
 
-            return new ResponseApduData(
+            return 
+                new VerifiedDO97ProtectedCommandResponse(
+                    new ResponseApduData(
                         new CachedBinary(
                             new ExecutedCommandApdu(
                                 new DO97ProtectedCommandApdu(
@@ -66,16 +65,23 @@ namespace HelloWord.DataGroups
                                     _kSmac,
                                     new IncrementedSSC(
                                         new IncrementedSSC(
-                                            new IncrementedSSC(
-                                                _ssc
-                                            )
+                                            new IncrementedSSC(_ssc)
                                         )
                                     )
                                 ),
                                 _reader
                             )
                         )
-                    ).Bytes();
+                    ),
+                    new IncrementedSSC(
+                        new IncrementedSSC(
+                            new IncrementedSSC(
+                                new IncrementedSSC(_ssc)
+                            )
+                        )
+                    ),
+                    _kSmac
+                 ).Bytes();
         }
     }
 }
