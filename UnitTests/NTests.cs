@@ -22,5 +22,20 @@ namespace UnitTests
                     ).ToString()
                 );
         }
+
+        [TestMethod]
+        public void Generate_N_Concatenate_SSC_and_M_and_add_padding2()
+        {
+            //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
+            Assert.AreEqual(
+                    "887022120C06C22B0CB0000480000000970112", //8000000000
+                    new Hex(
+                        new N(
+                            new BinaryHex("887022120C06C22B"), // IncrementedSSC
+                            new BinaryHex("0CB0000480000000970112") // M
+                        )
+                    ).ToString()
+                );
+        }
     }
 }

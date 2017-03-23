@@ -10,6 +10,6 @@ namespace HelloWord.Infrastructure
 
     public interface ICommandApduFactory
     {
-        ICommandApdu Command();
+        IBinary Command();
     }
 }

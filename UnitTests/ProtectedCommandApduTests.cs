@@ -22,9 +22,7 @@ namespace UnitTests
                         new ProtectedCommandApdu(
                             new SelectEFCOMApplicationCommand(), 
                             new FkKSmac(),
-                            new IncrementedSSC(
-                                new FkSSC()
-                            ),
+                            new IncrementedSSC(new FkSSC()).By(1),
                             new BinaryHex("8709016375432908C044F6") // DO87
                         )
                     ).ToString()
@@ -53,12 +51,10 @@ namespace UnitTests
                         new ProtectedCommandApdu(
                             new SelectEFCOMApplicationCommand(),
                             new KSmac(kSeedIc),
-                            new IncrementedSSC(
-                                new SSC(
+                            new IncrementedSSC(new SSC(
                                     rndIc,
                                     rndIfd
-                                )
-                            ),
+                            )).By(1),
                             new BinaryHex("8709016375432908C044F6") // DO87
                         )
                     ).ToString()

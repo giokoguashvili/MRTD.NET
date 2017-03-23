@@ -168,7 +168,7 @@ namespace HelloWord.Infrastructure
 
     public class FkCommandFactory : ICommandApduFactory
     {
-        public ICommandApdu Command()
+        public IBinary Command()
         {
             return new FkCommandApdu();
         }
@@ -181,7 +181,7 @@ namespace HelloWord.Infrastructure
         {
 
         }
-        public ICommandApdu Command()
+        public IBinary Command()
         {
             throw new NotImplementedException();
         }
@@ -203,15 +203,13 @@ namespace HelloWord.Infrastructure
             _ssc = ssc;
         }
 
-        public ICommandApdu Command()
+        public IBinary Command()
         {
             return new DO87ProtectedCommandApdu(
                             new SelectEFCOMApplicationCommand(),
                             _kSenc,
                             _kSmac,
-                            new IncrementedSSC(
-                                _ssc
-                            )
+                            new IncrementedSSC(_ssc).By(1)
                    );
         }
     }

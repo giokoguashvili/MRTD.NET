@@ -5,7 +5,7 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class ExternalAuthenticateCommand : ICommandApdu
+    public class ExternalAuthenticateCommand : IBinary
     {
         private readonly IBinary _commandData;
         private readonly IsoCase _isoCase = PCSC.Iso7816.IsoCase.Case4Short;
@@ -28,21 +28,6 @@ namespace HelloWord.Commands
                 Data = _commandData.Bytes(),
                 Le = this._exceptedDataLength, 
             }.ToArray();
-        }
-
-        public int ExceptedDataLength()
-        {
-            return this._exceptedDataLength;
-        }
-
-        public IsoCase Case()
-        {
-            return this._isoCase;
-        }
-
-        public SCardProtocol ActiveProtocol()
-        {
-            return this._activeProtocol;
         }
     }
 }

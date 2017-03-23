@@ -8,11 +8,11 @@ namespace HelloWord.Infrastructure
 {
     public class ExecutedCommandApdu : IBinary
     {
-        private readonly ICommandApdu _rawCommandApdu;
+        private readonly IBinary _rawCommandApdu;
         private readonly IReader _reader;
         private readonly int _responseApduTrailerLength = 2; // 0x02
         public ExecutedCommandApdu(
-                ICommandApdu rawCommandApdu,
+                IBinary rawCommandApdu,
                 IReader reader
             )
         {
@@ -22,7 +22,7 @@ namespace HelloWord.Infrastructure
 
         public byte[] Bytes()
         {
-            var receiveBuffer = new byte[_rawCommandApdu.ExceptedDataLength() + _responseApduTrailerLength];
+            var receiveBuffer = new byte[50 + _responseApduTrailerLength];
             var receivePci = new SCardPCI();
             var sendPci = SCardPCI.GetPci(this._reader.ActiveProtocol());
 

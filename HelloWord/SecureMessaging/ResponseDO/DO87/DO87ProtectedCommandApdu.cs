@@ -6,16 +6,16 @@ using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging.ResponseDO.DO87
 {
-    public class DO87ProtectedCommandApdu : ICommandApdu
+    public class DO87ProtectedCommandApdu : IBinary
     {
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _incrementedSsc;
-        private readonly ICommandApdu _rawCommandApdu;
+        private readonly IBinary _rawCommandApdu;
 
 
         public DO87ProtectedCommandApdu(
-                ICommandApdu rawCommandApduHeader,
+                IBinary rawCommandApduHeader,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary incrementedSsc
@@ -44,21 +44,6 @@ namespace HelloWord.SecureMessaging.ResponseDO.DO87
                     _incrementedSsc,
                     do87
                 ).Bytes();
-        }
-
-        public IsoCase Case()
-        {
-            return _rawCommandApdu.Case();
-        }
-
-        public SCardProtocol ActiveProtocol()
-        {
-            return _rawCommandApdu.ActiveProtocol();
-        }
-
-        public int ExceptedDataLength()
-        {
-            return 32;
         }
     }
 }

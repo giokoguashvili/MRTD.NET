@@ -36,57 +36,58 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            //return 
             new VerifiedProtectedCommandResponse(
-                new ResponseApduData(
-                    new CachedBinary(
-                        new ExecutedCommandApdu(
-                            new DO87ProtectedCommandApdu(
-                                new SelectEFCOMApplicationCommand(),
-                                _kSenc,
-                                _kSmac,
-                                new IncrementedSSC(_ssc)
-                            ),
-                            _reader
-                        )
+                new CachedBinary(
+                    new ExecutedCommandApdu(
+                        new DO87ProtectedCommandApdu(
+                            new SelectEFCOMApplicationCommand(),
+                            _kSenc,
+                            _kSmac,
+                            new IncrementedSSC(_ssc).By(1)
+                        ),
+                        _reader
                     )
                 ),
-                new IncrementedSSC(
-                    new IncrementedSSC(_ssc)
-                ),
+                new IncrementedSSC(_ssc).By(2),
                 _kSmac,
                 new DO87ProtectedCommandResponseDOFactory()
             ).Bytes();
 
-            return 
-                new VerifiedProtectedCommandResponse(
-                    new ResponseApduData(
-                        new CachedBinary(
-                            new ExecutedCommandApdu(
-                                new DO97ProtectedCommandApdu(
-                                    new ReadBinaryCommand(4),
-                                    _kSenc,
-                                    _kSmac,
-                                    new IncrementedSSC(
-                                        new IncrementedSSC(
-                                            new IncrementedSSC(_ssc)
-                                        )
-                                    )
-                                ),
-                                _reader
-                            )
+            new VerifiedProtectedCommandResponse(
+                new CachedBinary(
+                    new ExecutedCommandApdu(
+                        new DO97ProtectedCommandApdu(
+                            new ReadBinaryCommand(4),
+                            _kSenc,
+                            _kSmac,
+                            new IncrementedSSC(_ssc).By(3)
+                        ),
+                        _reader
+                    )
+                ),
+                new IncrementedSSC(_ssc).By(4),
+                _kSmac,
+                new DO97ProtectedCommandResponseDOFactory()
+            ).Bytes();
+
+
+            return new VerifiedProtectedCommandResponse(
+                    new CachedBinary(
+                        new ExecutedCommandApdu(
+                            new DO97ProtectedCommandApdu(
+                                new ReadBinaryCommand(0x04, 18),
+                                _kSenc,
+                                _kSmac,
+                                new IncrementedSSC(_ssc).By(5)
+                            ),
+                            _reader
                         )
                     ),
-                    new IncrementedSSC(
-                        new IncrementedSSC(
-                            new IncrementedSSC(
-                                new IncrementedSSC(_ssc)
-                            )
-                        )
-                    ),
+                    new IncrementedSSC(_ssc).By(6),
                     _kSmac,
                     new DO97ProtectedCommandResponseDOFactory()
                  ).Bytes();
+
         }
     }
 }

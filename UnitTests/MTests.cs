@@ -40,5 +40,32 @@ namespace UnitTests
                     .ToString()
                 );
         }
+
+        [TestMethod]
+        public void Generate_M_Concatenate_CmdHeader_and_DO872()
+        {
+            var rawCommandApdu = new RawCommandApdu("00A4020C02011E");
+            Assert.AreEqual(
+                    "0CA4020C800000008709016375432908C044F6",
+                    new Hex(
+                        new M(
+                            new ProtectedCommandApduHeader(
+                                new CommandApduHeader(rawCommandApdu)
+                            ),
+                            new DO87(
+                                new EncryptedCommandApduData(
+                                    new FkKSenc(),
+                                    new PadedCommandApduData(
+                                        new CommandApduData(
+                                            new CommandApduBody(rawCommandApdu)
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                    .ToString()
+                );
+        }
     }
 }

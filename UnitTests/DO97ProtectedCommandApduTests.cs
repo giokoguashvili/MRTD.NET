@@ -21,13 +21,23 @@ namespace UnitTests
                             new ReadBinaryCommand(4),
                             new FkKSenc(),
                             new FkKSmac(),
-                            new IncrementedSSC(
-                                new IncrementedSSC(
-                                    new IncrementedSSC(
-                                        new FkSSC()
-                                    )
-                                )
-                            )
+                            new IncrementedSSC(new FkSSC()).By(3)
+                        )
+                    ).ToString()
+                );
+        }
+
+        [TestMethod]
+        public void Generate_DO97_protected_APDU1()
+        {
+            Assert.AreEqual(
+                    "0CB000040D9701128E082EA28A70F3C7B53500",
+                    new Hex(
+                        new DO97ProtectedCommandApdu(
+                            new ReadBinaryCommand(0x04, 18),
+                            new FkKSenc(),
+                            new FkKSmac(),
+                            new BinaryHex("887022120C06C22B") // IncrementedSSC
                         )
                     ).ToString()
                 );

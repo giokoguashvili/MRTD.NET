@@ -6,10 +6,10 @@ namespace HelloWord.SecureMessaging.CommandDO
 {
     public class DO97 : IBinary
     {
-        private readonly ICommandApdu _rawCommandApdu;
+        private readonly IBinary _rawCommandApdu;
         private readonly IBinary _do97 = new BinaryHex("9701");
 
-        public DO97(ICommandApdu rawCommandApdu)
+        public DO97(IBinary rawCommandApdu)
         {
             _rawCommandApdu = rawCommandApdu;
         }

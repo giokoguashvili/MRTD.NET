@@ -6,7 +6,7 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging
 {
-    public class IncrementedSSC : IBinary
+    public class IncrementedSSC
     {
         private readonly IBinary _ssc;
 
@@ -14,7 +14,8 @@ namespace HelloWord.SecureMessaging
         {
             _ssc = ssc;
         }
-        public byte[] Bytes()
+
+        public IBinary By(int count)
         {
             // icnrement last 4 byte by 0x01
             return new ConcatenatedBinaries(
@@ -29,12 +30,12 @@ namespace HelloWord.SecureMessaging
                                         .Reverse()
                                         .ToArray()
                                         , 0
-                                    ) + 1
+                                    ) + count
                             )
                             .Reverse()
                             .ToArray()
                     )
-                ).Bytes();
+                );
         }
     }
 }

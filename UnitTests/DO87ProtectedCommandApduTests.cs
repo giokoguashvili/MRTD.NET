@@ -23,9 +23,7 @@ namespace UnitTests
                             new SelectEFCOMApplicationCommand(),
                             new FkKSenc(),
                             new FkKSmac(),
-                            new IncrementedSSC(
-                                new FkSSC()
-                            )
+                            new IncrementedSSC(new FkSSC()).By(1)
                         )
                     ).ToString()
                 );
@@ -59,7 +57,7 @@ namespace UnitTests
                                     rndIc,
                                     rndIfd
                                 )
-                            )
+                            ).By(1)
                         )
                     ).ToString()
                 );

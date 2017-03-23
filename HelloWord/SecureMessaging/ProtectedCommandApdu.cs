@@ -11,16 +11,16 @@ using PCSC.Iso7816;
 
 namespace HelloWord.SecureMessaging
 {
-    public class ProtectedCommandApdu : ICommandApdu
+    public class ProtectedCommandApdu : IBinary
     {
         private readonly IBinary _kSmac;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _do87Or97;
-        private readonly ICommandApdu _rawCommandApdu;
+        private readonly IBinary _rawCommandApdu;
 
 
         public ProtectedCommandApdu(
-                ICommandApdu rawCommandApdu,
+                IBinary rawCommandApdu,
                 IBinary kSmac,
                 IBinary incrementedSsc,
                 IBinary do87or97
@@ -49,26 +49,12 @@ namespace HelloWord.SecureMessaging
                                 _kSmac
                             )
                         );
+            var l = new Hex(do8e).ToString();
             return new ConstructedProtectedCommandApdu(
                     new MaskedCommandApduHeader(commandApduHeader),
                     _do87Or97,
                     do8e
                 ).Bytes();
-        }
-
-        public SCardProtocol ActiveProtocol()
-        {
-            return this._rawCommandApdu.ActiveProtocol();
-        }
-
-        public int ExceptedDataLength()
-        {
-            return this._rawCommandApdu.ExceptedDataLength();
-        }
-
-        public IsoCase Case()
-        {
-            return IsoCase.Case4Short; //this._rawCommandApdu.Case();
         }
     }
 }
