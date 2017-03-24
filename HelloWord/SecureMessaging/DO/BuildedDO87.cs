@@ -17,15 +17,16 @@ namespace HelloWord.SecureMessaging.DO
         }
         public byte[] Bytes()
         {
-            // DO87 Format [87][EncryptedDataLength][01]
+            // DO87 Format [87][EncryptedDataLength + 1][01][EncryptedData]
             return new ConcatenatedBinaries(
                     new BinaryHex("87"), 
                     new HexInt(
                         _encryptedData
                             .Bytes()
-                            .Length
+                            .Length + 1
                     ),
-                    new BinaryHex("01")
+                    new BinaryHex("01"),
+                    _encryptedData
                 ).Bytes();
         }
     }

@@ -24,26 +24,31 @@ namespace HelloWord.SecureMessaging.DO
         public byte[] Bytes()
         {
             return new BuildedDO87(
-                    _DecryptedData()
+                    _EncryptedData()
                 ).Bytes();
         }
 
         public IBinary EncryptedData()
         {
-            return new PaddedData(
-                        new CommandApduData(
-                            new CommandApduBody(_unprotectedCommandApdu)
-                        )
-                    );
+            return _EncryptedData();
         }
 
         public IBinary DecryptedData()
         {
-            return _DecryptedData();
+            return new PaddedData(
+                     new CommandApduData(
+                         new CommandApduBody(_unprotectedCommandApdu)
+                     )
+                 );
         }
 
-        private IBinary _DecryptedData()
+        private IBinary _EncryptedData()
         {
+            var str = new Hex(new PaddedData(
+                        new CommandApduData(
+                            new CommandApduBody(_unprotectedCommandApdu)
+                        )
+                    )).ToString();
             return new TripleDES(
                     _kSenc,
                     new PaddedData(
@@ -51,7 +56,7 @@ namespace HelloWord.SecureMessaging.DO
                             new CommandApduBody(_unprotectedCommandApdu)
                         )
                     )
-                ).Decrypted();
+                ).Encrypted();
         }
     }
 }
