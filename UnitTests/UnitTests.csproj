@@ -102,7 +102,7 @@
     <Compile Include="SecondDO97ProtectedCommandResponseDO87DO99Tests.cs" />
     <Compile Include="DecryptedProtectedCommandDataTests.cs" />
     <Compile Include="AddedPaddingTests.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DO87Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

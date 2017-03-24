@@ -8,8 +8,8 @@ namespace HelloWord.SecureMessaging.DO
 {
     public interface IDOFactory
     {
-        IDO FromUnprotectedCommand(IBinary uprotectedCommandApdu);
-        IDO FromProtectedResponse(IBinary uprotectedCommandApdu);
+        IDO FromUnprotectedCommandApdu(IBinary uprotectedCommandApdu);
+        IDO FromProtectedResponseApdu(IBinary protectedResponseApdu);
     }
 
     public interface IDO : IBinary

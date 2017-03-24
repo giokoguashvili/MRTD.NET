@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging.ResponseDO.DO97;
 
 namespace HelloWord.SecureMessaging.DO
 {
@@ -14,14 +15,14 @@ namespace HelloWord.SecureMessaging.DO
             this._kSenc = _kSenc;
         }
 
-        public IDO FromUnprotectedCommand(IBinary uprotectedCommandApdu)
+        public IDO FromUnprotectedCommandApdu(IBinary uprotectedCommandApdu)
         {
             return new UnprotectedCommandDO87(_kSenc, uprotectedCommandApdu);
         }
 
-        public IDO FromProtectedResponse(IBinary uprotectedCommandApdu)
+        public IDO FromProtectedResponseApdu(IBinary protectedResponseApdu)
         {
-            throw new NotImplementedException();
+            return new ProtectedResponseDO87(_kSenc, protectedResponseApdu);
         }
     }
 }

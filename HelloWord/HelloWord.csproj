@@ -101,6 +101,8 @@
     <Compile Include="SecureMessaging\DO\BuildedDO87.cs" />
     <Compile Include="SecureMessaging\DO\DO87.cs" />
     <Compile Include="SecureMessaging\DO\IDO.cs" />
+    <Compile Include="SecureMessaging\DO\ParsedDO87.cs" />
+    <Compile Include="SecureMessaging\DO\ProtectedResponseDO87.cs" />
     <Compile Include="SecureMessaging\DO\UnprotectedCommandDO87.cs" />
     <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO8E.cs" />

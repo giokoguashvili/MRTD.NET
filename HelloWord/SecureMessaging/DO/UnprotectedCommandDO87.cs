@@ -44,11 +44,6 @@ namespace HelloWord.SecureMessaging.DO
 
         private IBinary _EncryptedData()
         {
-            var str = new Hex(new PaddedData(
-                        new CommandApduData(
-                            new CommandApduBody(_unprotectedCommandApdu)
-                        )
-                    )).ToString();
             return new TripleDES(
                     _kSenc,
                     new PaddedData(
