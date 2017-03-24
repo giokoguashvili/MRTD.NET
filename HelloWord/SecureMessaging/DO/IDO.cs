@@ -6,6 +6,12 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging.DO
 {
+    public interface IDOFactory
+    {
+        IDO FromUnprotectedCommand(IBinary uprotectedCommandApdu);
+        IDO FromProtectedResponse(IBinary uprotectedCommandApdu);
+    }
+
     public interface IDO : IBinary
     {
         IBinary EncryptedData();

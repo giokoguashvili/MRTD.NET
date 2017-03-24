@@ -31,12 +31,11 @@ namespace HelloWord.SecureMessaging
                                     _do87or97,
                                     _do8e
                                 );
-            var commandDataLengthAsBinaryHex = new BinaryHex(
-                                                commandData
-                                                .Bytes()
-                                                .Length
-                                                .ToString("X2")
-                                          );
+            var commandDataLengthAsBinaryHex = new HexInt(
+                                                    commandData
+                                                        .Bytes()
+                                                        .Count()
+                                               );
             return new ConcatenatedBinaries(
                     _maskedCommandApduHeader,
                     commandDataLengthAsBinaryHex,

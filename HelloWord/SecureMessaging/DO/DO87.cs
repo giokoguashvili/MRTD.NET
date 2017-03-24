@@ -6,19 +6,20 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging.DO
 {
-    public class DO87 : IDO
+    public class DO87 : IDOFactory
     {
-        public byte[] Bytes()
+        private readonly IBinary _kSenc;
+        public DO87(IBinary _kSenc)
         {
-            throw new NotImplementedException();
+            this._kSenc = _kSenc;
         }
 
-        public IBinary EncryptedData()
+        public IDO FromUnprotectedCommand(IBinary uprotectedCommandApdu)
         {
-            throw new NotImplementedException();
+            return new UnprotectedCommandDO87(_kSenc, uprotectedCommandApdu);
         }
 
-        public IBinary DecryptedData()
+        public IDO FromProtectedResponse(IBinary uprotectedCommandApdu)
         {
             throw new NotImplementedException();
         }

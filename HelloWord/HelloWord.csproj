@@ -46,6 +46,7 @@
     <Compile Include="Cryptography\PaddedData.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
+    <Compile Include="Infrastructure\HexInt.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
@@ -97,8 +98,10 @@
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO87.cs" />
     <Compile Include="SecureMessaging\DecryptedProtectedCommandData.cs" />
+    <Compile Include="SecureMessaging\DO\BuildedDO87.cs" />
     <Compile Include="SecureMessaging\DO\DO87.cs" />
     <Compile Include="SecureMessaging\DO\IDO.cs" />
+    <Compile Include="SecureMessaging\DO\UnprotectedCommandDO87.cs" />
     <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO8E.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO97.cs" />
