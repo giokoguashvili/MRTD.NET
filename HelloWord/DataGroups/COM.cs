@@ -75,7 +75,7 @@ namespace HelloWord.DataGroups
                     new CachedBinary(
                         new ExecutedCommandApdu(
                             new DO97ProtectedCommandApdu(
-                                new ReadBinaryCommand(0x04, 18),
+                                new ReadBinaryCommand(4, 18),
                                 _kSenc,
                                 _kSmac,
                                 new IncrementedSSC(_ssc).By(5)

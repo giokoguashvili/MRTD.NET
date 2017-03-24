@@ -1,4 +1,5 @@
-﻿using HelloWord.Infrastructure;
+﻿using System.Linq;
+using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using PCSC;
 using PCSC.Iso7816;
@@ -8,16 +9,16 @@ namespace HelloWord.Commands
     public class ReadBinaryCommand : IBinary
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
-        private readonly byte _p2;
+        private readonly int _offsetLength;
         private readonly int _expectedDataLength;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
 
-        public ReadBinaryCommand(int expectedDataLength) : this(0x00, expectedDataLength)
+        public ReadBinaryCommand(int expectedDataLength) : this(0, expectedDataLength)
         {
         }
-        public ReadBinaryCommand(byte p2, int expectedDataLength)
+        public ReadBinaryCommand(int offsetLength, int expectedDataLength)
         {
-            _p2 = p2;
+            _offsetLength = offsetLength;
             _expectedDataLength = expectedDataLength;
         }
 
@@ -28,7 +29,7 @@ namespace HelloWord.Commands
                 CLA = 0x00,
                 Instruction = InstructionCode.ReadBinary,
                 P1 = 0x00,
-                P2 = _p2,
+                P2 = new BinaryHex(_offsetLength.ToString("X2")).Bytes().First(),
                 Le = this._expectedDataLength
             }.ToArray();
         }

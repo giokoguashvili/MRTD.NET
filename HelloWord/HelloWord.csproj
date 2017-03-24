@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Cryptography\PaddedData.cs" />
+    <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
@@ -93,6 +96,9 @@
     <Compile Include="SecureMessaging\COMFileStructureLength.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO87.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedCommandData.cs" />
+    <Compile Include="SecureMessaging\DO\DO87.cs" />
+    <Compile Include="SecureMessaging\DO\IDO.cs" />
     <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO8E.cs" />
     <Compile Include="SecureMessaging\CommandDO\DO97.cs" />
@@ -120,6 +126,7 @@
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandResponseDO8E.cs" />
     <Compile Include="SecureMessaging\ResponseDO\ResponseDOFactory\SecondDO97ProtectedCommandResponseDOFactory.cs" />
+    <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedCommandResponse.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />

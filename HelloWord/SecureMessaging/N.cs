@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using Org.BouncyCastle.Ocsp;
 
@@ -11,8 +12,6 @@ namespace HelloWord.SecureMessaging
     {
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _m;
-        private readonly byte[] _pad = new byte[] { 0x80, 0x00, 0x00, 0x00, 0x00 };
-
         public N(
                 IBinary incrementedSSC,
                 IBinary m
@@ -25,10 +24,9 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             return new ConcatenatedBinaries(
-                    _incrementedSsc,
-                    _m
-                    //, new Binary(_pad)
-                ).Bytes();
+                        _incrementedSsc,
+                        _m
+                    ).Bytes();
         }
     }
 }

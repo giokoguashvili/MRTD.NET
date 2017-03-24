@@ -134,7 +134,9 @@ namespace HelloWord.Cryptography
         public byte[] Bytes()
         {
             var cipher = new DesEngine();
-            
+
+            var macSizeInBits = 64; // 8 in bytes
+
             var mac = new ISO9797Alg3Mac(cipher, 64, new ISO7816d4Padding());
             KeyParameter keyP = new KeyParameter(_key.Bytes());
             mac.Init(keyP);

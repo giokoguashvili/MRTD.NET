@@ -13,9 +13,15 @@ namespace HelloWord.Infrastructure
 
         public byte[] Bytes()
         {
-            return Enumerable.Range(0, this._str.Length)
+            var formatedString = _str;
+            if (formatedString.Length % 2 == 1)
+            {
+                formatedString = String.Format("0{0}", _str);
+            }
+
+            return Enumerable.Range(0, formatedString.Length)
                     .Where(x => x % 2 == 0)
-                    .Select(x => Convert.ToByte(this._str.Substring(x, 2), 16))
+                    .Select(x => Convert.ToByte(formatedString.Substring(x, 2), 16))
                     .ToArray();
         }
     }

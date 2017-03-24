@@ -102,10 +102,11 @@ namespace HelloWord
                     //    )
                     //);
 
-                    var mrzInfo = "12IB34415792061602210089"; // K
-                    //var mrzInfo = "15IC69034696112602606119"; // Bagdavadze
-                    //var mrzInfo = "13ID37063295110732402055"; // Shako
-
+                    var mrzInfo = "12IB34415792061602210089"; // + K
+                    //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
+                    //var mrzInfo = "13ID37063295110732402055";     // + Shako
+                    //var mrzInfo = "13IB90080296040761709252";   // + guka 
+                                   
                     Console.WriteLine("\nExternalAuthenticate: ");
 
                     var kIfd = new CachedBinary(new Kifd());
