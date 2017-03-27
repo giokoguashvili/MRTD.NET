@@ -1,17 +1,17 @@
 ﻿using System;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class CCTests
     {
-        //[TestMethod]
+        //[Test]
         //public void Compute_MAC_over_N_with_KSmac()
         //{
         //    //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
@@ -26,7 +26,7 @@ namespace UnitTests
         //        );
         //}
 
-        //[TestMethod]
+        //[Test]
         //public void Compute_MAC_over_K_with_KSmac()
         //{
         //    //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
@@ -41,7 +41,7 @@ namespace UnitTests
         //        );
         //}
 
-        //[TestMethod]
+        //[Test]
         //public void Compute_MAC_over_N_with_KSmac2()
         //{
         //    //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
@@ -56,7 +56,7 @@ namespace UnitTests
         //        );
         //}
 
-        //[TestMethod]
+        //[Test]
         //public void Compute_MAC_over_K_with_KSmac_from_DO97ProtectedCommandResponse()
         //{
         //    Assert.AreEqual(
@@ -70,7 +70,7 @@ namespace UnitTests
         //        );
         //}
 
-        //[TestMethod]
+        //[Test]
         //public void Compute_MAC_over_K_with_KSmac_from_DO97ProtectedCommandResponse2()
         //{
         //    Assert.AreEqual(

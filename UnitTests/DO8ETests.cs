@@ -4,15 +4,15 @@ using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
 using HelloWord.SecureMessaging.DO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class DO8ETests
     {
-        [TestMethod]
+        [Test]
         public void Build_DO8E_with_SSC_apduHeader_DO87_KSmac()
         {
             //Assert.AreEqual(

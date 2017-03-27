@@ -2,14 +2,14 @@
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class CommandHeaderTests
     {
-        [TestMethod]
+        [Test]
         public void Extract_CLA_from_rawCommandAPDU()
         {
             Assert.AreEqual(

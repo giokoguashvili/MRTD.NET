@@ -1,14 +1,14 @@
 ﻿using System;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.ResponseDO.DO97;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class SecondDO97ProtectedCommandResponseDO87DO99Tests
     {
-        [TestMethod]
+        [Test]
         public void Generate_DO87DO99_from_SecondDO97ProtectedCommandResponseDO87DO99Response()
         {
             Assert.AreEqual(

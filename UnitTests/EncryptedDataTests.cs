@@ -2,15 +2,15 @@
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class EncryptedDataTests
     {
-        [TestMethod]
+        [Test]
         public void Encrypt_command_data_with_KSEnc()
         {
             Assert.AreEqual(

@@ -1,14 +1,14 @@
 ﻿using System;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class NTests
     {
-        [TestMethod]
+        [Test]
         public void Generate_N_Concatenate_SSC_and_M_and_add_padding()
         {
             //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
@@ -23,7 +23,7 @@ namespace UnitTests
                 );
         }
 
-        [TestMethod]
+        [Test]
         public void Generate_N_Concatenate_SSC_and_M_and_add_padding2()
         {
             //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java

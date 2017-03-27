@@ -3,15 +3,15 @@ using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SecureMessaging.ResponseDO.DO97;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class DO97ProtectedCommandApduTests
     {
-        [TestMethod]
+        [Test]
         public void Generate_DO97_protected_APDU0()
         {
             Assert.AreEqual(
@@ -27,7 +27,7 @@ namespace UnitTests
                 );
         }
 
-        [TestMethod]
+        [Test]
         public void Generate_DO97_protected_APDU1()
         {
             Assert.AreEqual(

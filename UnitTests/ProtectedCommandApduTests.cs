@@ -5,15 +5,15 @@ using HelloWord.Cryptography;
 using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class ProtectedCommandApduTests
     {
-        [TestMethod]
+        [Test]
         public void Generate_protected_APDU()
         {
             Assert.AreEqual(
@@ -29,7 +29,7 @@ namespace UnitTests
                 );
         }
 
-        [TestMethod]
+        [Test]
         public void Generate_protected_APDU2()
         {
             var kIfd = new BinaryHex("0B795240CB7049B01C19B33E32804F0B"); //new CachedBinary(new Kifd()));

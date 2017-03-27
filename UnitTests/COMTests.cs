@@ -3,14 +3,14 @@ using HelloWord.Cryptography;
 using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class COMTests
     {
-        [TestMethod]
+        [Test]
         public void TestMethod1()
         {
             //Assert.AreEqual(

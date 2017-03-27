@@ -1,14 +1,14 @@
 ﻿using System;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class IncrementedSSCTests
     {
-        [TestMethod]
+        [Test]
         public void Increment_SSC_by_1()
         {
             Assert.AreEqual(

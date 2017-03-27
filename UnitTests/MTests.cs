@@ -6,15 +6,15 @@ using HelloWord.ISO7816.CommandAPDU.Body;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
 using HelloWord.SecureMessaging.DO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class MTests
     {
-        //[TestMethod]
+        //[Test]
         //public void Generate_M_Concatenate_CmdHeader_and_DO87()
         //{
         //    var rawCommandApdu = new RawCommandApdu("00A4020C02011E");
@@ -41,7 +41,7 @@ namespace UnitTests
         //        );
         //}
 
-        //[TestMethod]
+        //[Test]
         //public void Generate_M_Concatenate_CmdHeader_and_DO872()
         //{
         //    var rawCommandApdu = new RawCommandApdu("00A4020C02011E");
