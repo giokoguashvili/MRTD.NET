@@ -20,6 +20,7 @@ namespace HelloWord.SecureMessaging.DO
             _kSenc = kSenc;
             _rawCommandApdu = rawCommandApdu;
         }
+
         public byte[] Bytes()
         {
             //If no Data is available, leave building DO ‘87’ out
@@ -31,12 +32,12 @@ namespace HelloWord.SecureMessaging.DO
             {
                 return new Binary().Bytes();
             }
-            
 
             var encryptedData = new EncryptedCommandApduData(
                                     _kSenc,
                                     new Padded(data)
                                 );
+
             // DO87 Format [87][EncryptedDataLength + 1][01][EncryptedData]
             return new ConcatenatedBinaries(
                     new BinaryHex("87"),

@@ -48,8 +48,8 @@ namespace HelloWord.SecureMessaging.DO
                            );
             return new ConcatenatedBinaries(
                     new BinaryHex("8E"),
-                       new HexInt(cachedCC.Bytes().Count()),
-                       cachedCC
+                    new HexInt(cachedCC.Bytes().Count()),
+                    cachedCC
                 ).Bytes();
         }
     }

@@ -29,8 +29,8 @@ namespace HelloWord.Commands
                 CLA = 0x00,
                 Instruction = InstructionCode.ReadBinary,
                 P1 = 0x00,
-                P2 = new BinaryHex(_offsetLength.ToString("X2")).Bytes().First(),
-                Le = this._expectedDataLength
+                P2 = new HexInt(_offsetLength).Bytes().First(), //new BinaryHex(_offsetLength.ToString("X2")).Bytes().First(),
+                Le = _expectedDataLength
             }.ToArray();
         }
     }
