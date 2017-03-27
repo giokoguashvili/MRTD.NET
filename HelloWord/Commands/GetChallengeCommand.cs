@@ -11,7 +11,6 @@ namespace HelloWord.Commands
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
         private readonly int _expectedDataLength = 8;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
-        private readonly IBinary _applicationIdentifier = new BinaryHex("011E"); // 0x01 0x1E
         public byte[] Bytes()
         {
             return new CommandApdu(this._isoCase, this._activeProtocol)

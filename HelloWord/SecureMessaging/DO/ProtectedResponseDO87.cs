@@ -24,8 +24,9 @@ namespace HelloWord.SecureMessaging.DO
         }
         public byte[] Bytes()
         {
-            return new BuildedDO87(_EncryptedData())
-                            .Bytes();
+            throw new NotImplementedException();
+            //return new BuildedDO87(_EncryptedData())
+            //                .Bytes();
         }
 
         public IBinary EncryptedData()

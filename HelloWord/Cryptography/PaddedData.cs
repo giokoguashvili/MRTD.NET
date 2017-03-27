@@ -13,12 +13,12 @@ namespace HelloWord.Cryptography
     // Add a single bit with value 1 to the end of the data.
     // Then if necessary add bits with value 0 to the end of the data until the padded data is a multiple of n (n is the block length in bits).
     
-    public class PaddedData : IBinary
+    public class Padded : IBinary
     {
         private readonly IBinary _data;
         private readonly byte _singleBitWithLackingZeroBytes = 0x80; // 0x80 == 128 == 0b 1000 0000 
         private readonly int _blockSize = 8; // DesEngine cipher block size is 8 byte
-        public PaddedData(IBinary data)
+        public Padded(IBinary data)
         {
             _data = data;
         }

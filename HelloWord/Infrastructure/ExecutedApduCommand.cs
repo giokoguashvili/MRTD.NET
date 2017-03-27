@@ -16,8 +16,8 @@ namespace HelloWord.Infrastructure
                 IReader reader
             )
         {
-            this._rawCommandApdu = rawCommandApdu;
-            this._reader = reader;
+            _rawCommandApdu = rawCommandApdu;
+            _reader = reader;
         }
 
         public byte[] Bytes()
@@ -26,9 +26,9 @@ namespace HelloWord.Infrastructure
             var receivePci = new SCardPCI();
             var sendPci = SCardPCI.GetPci(this._reader.ActiveProtocol());
 
-            var sc = this._reader.Transmit(
+            var sc = _reader.Transmit(
                             sendPci,
-                            this._rawCommandApdu.Bytes(),
+                            _rawCommandApdu.Bytes(),
                             receivePci,
                             ref receiveBuffer
                         );

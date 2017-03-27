@@ -26,11 +26,10 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
+            return _responseApdu.Bytes();
             var protectedCommandResponseCC = new CC(
-                    new K(
-                        _incrementedSsc,
-                        _protectedCommandResponseDoFactory.DO(_responseApdu)
-                     ),
+                    _incrementedSsc,
+                    _protectedCommandResponseDoFactory.DO(_responseApdu),
                     _kSmac
                 ).Bytes();
 

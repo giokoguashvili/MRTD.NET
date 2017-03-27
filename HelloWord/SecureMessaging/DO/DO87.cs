@@ -7,22 +7,42 @@ using HelloWord.SecureMessaging.ResponseDO.DO97;
 
 namespace HelloWord.SecureMessaging.DO
 {
-    public class DO87 : IDOFactory
+    public class DO87 : IDO , IBinary
     {
         private readonly IBinary _kSenc;
-        public DO87(IBinary _kSenc)
+        private readonly IBinary _unprotectedCommandApdu;
+        private readonly IBinary _protectedResponseApdu;
+
+        public DO87(
+                IBinary _kSenc,
+                IBinary unprotectedCommandApdu
+            ) : this(_kSenc, unprotectedCommandApdu, new Binary())
+        { }
+
+        private DO87(
+                IBinary _kSenc,
+                IBinary unprotectedCommandApdu,
+                IBinary protectedResponseApdu
+            )
         {
             this._kSenc = _kSenc;
+            _unprotectedCommandApdu = unprotectedCommandApdu;
+            _protectedResponseApdu = protectedResponseApdu;
         }
 
-        public IDO FromUnprotectedCommandApdu(IBinary uprotectedCommandApdu)
+        public byte[] Bytes()
         {
-            return new UnprotectedCommandDO87(_kSenc, uprotectedCommandApdu);
+            throw new NotImplementedException();
         }
 
-        public IDO FromProtectedResponseApdu(IBinary protectedResponseApdu)
+        public IBinary EncryptedData()
         {
-            return new ProtectedResponseDO87(_kSenc, protectedResponseApdu);
+            throw new NotImplementedException();
+        }
+
+        public IBinary DecryptedData()
+        {
+            throw new NotImplementedException();
         }
     }
 }

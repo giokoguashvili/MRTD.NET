@@ -24,10 +24,15 @@ namespace HelloWord.Infrastructure
 
         public int ToInt()
         {
+            var strHex = new Hex(_binary).ToString();
+            if (String.IsNullOrEmpty(strHex))
+            {
+                return 0;
+            }
             return Int32.Parse(
-               new Hex(_binary).ToString(),
-               System.Globalization.NumberStyles.HexNumber
-           );
+                       strHex,
+                       System.Globalization.NumberStyles.HexNumber
+                   );
         } 
     }
 }

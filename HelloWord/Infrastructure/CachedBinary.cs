@@ -11,11 +11,11 @@
 
         public byte[] Bytes()
         {
-            if (this._cachedBytes.Length == 0)
+            if (_cachedBytes.Length == 0)
             {
-                this._cachedBytes = this._src.Bytes();
+                _cachedBytes = this._src.Bytes();
             }
-            return this._cachedBytes;
+            return _cachedBytes;
         }
     }
 }

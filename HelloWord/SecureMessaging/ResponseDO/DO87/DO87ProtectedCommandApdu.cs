@@ -1,6 +1,7 @@
 ﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Body;
+using HelloWord.SecureMessaging.DO;
 using PCSC;
 using PCSC.Iso7816;
 
@@ -28,16 +29,17 @@ namespace HelloWord.SecureMessaging.ResponseDO.DO87
         }
         public byte[] Bytes()
         {
-            var do87 = new CommandDO.DO87(
-                           new EncryptedCommandApduData(
-                               _kSenc,
-                               new PadedCommandApduData(
-                                   new CommandApduData(
-                                       new CommandApduBody(_rawCommandApdu)
-                                   )
-                               )
-                           )
-                       );
+            var do87 = new Binary();
+                    //new BuildedDO87(
+                    //       new EncryptedCommandApduData(
+                    //           _kSenc,
+                    //           new PadedCommandApduData(
+                    //               new CommandApduData(
+                    //                   new CommandApduBody(_rawCommandApdu)
+                    //               )
+                    //           )
+                    //       )
+                    //   );
             return new ProtectedCommandApdu(
                     _rawCommandApdu,
                     _kSmac,

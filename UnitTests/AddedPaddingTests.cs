@@ -18,7 +18,7 @@ namespace UnitTests
             Assert.AreEqual(
                     act,
                     new Hex(
-                        new PaddedData(
+                        new Padded(
                             new BinaryHex(data)
                         )
                     ).ToString()

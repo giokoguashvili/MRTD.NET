@@ -38,7 +38,6 @@ namespace HelloWord.Cryptography
         public IBinary Decrypted()
         {
             return new Crypted3DES(
-                    this._key,
                     this._text,
                     _cryptoService.CreateDecryptor()
                 );
@@ -47,7 +46,6 @@ namespace HelloWord.Cryptography
         public IBinary Encrypted()
         {
             return new Crypted3DES(
-                    this._key,
                     this._text,
                     _cryptoService.CreateEncryptor()
                 );

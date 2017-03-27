@@ -36,10 +36,29 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
+
+
+            //new VerifiedProtectedCommandResponse(
+            //    new CachedBinary(
+            //        new ExecutedCommandApdu(
+            //            new ProtectedCommandApdu2(
+            //                new SelectEFCOMApplicationCommand(),
+            //                new DO8E(_kSmac, _incrementedSsc),
+            //                new DO87(_kSenc)
+            //            ),
+            //            _reader
+            //        )
+            //    ),
+            //    new IncrementedSSC(_ssc).By(2),
+            //    _kSmac,
+            //    new DO87ProtectedCommandResponseDOFactory()
+            //).Bytes();
+
+
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(
-                        new DO87ProtectedCommandApdu(
+                        new ProtectedCommandApdu2(
                             new SelectEFCOMApplicationCommand(),
                             _kSenc,
                             _kSmac,
@@ -56,7 +75,7 @@ namespace HelloWord.DataGroups
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(
-                        new DO97ProtectedCommandApdu(
+                        new ProtectedCommandApdu2(
                             new ReadBinaryCommand(4),
                             _kSenc,
                             _kSmac,
@@ -71,10 +90,10 @@ namespace HelloWord.DataGroups
             ).Bytes();
 
 
-            return new VerifiedProtectedCommandResponse(
+             return new VerifiedProtectedCommandResponse(
                     new CachedBinary(
                         new ExecutedCommandApdu(
-                            new DO97ProtectedCommandApdu(
+                            new ProtectedCommandApdu2(
                                 new ReadBinaryCommand(4, 18),
                                 _kSenc,
                                 _kSmac,
@@ -87,6 +106,23 @@ namespace HelloWord.DataGroups
                     _kSmac,
                     new SecondDO97ProtectedCommandResponseDOFactory()
                  ).Bytes();
+
+            //return new VerifiedProtectedCommandResponse(
+            //        new CachedBinary(
+            //            new ExecutedCommandApdu(
+            //                new DO97ProtectedCommandApdu(
+            //                    new ReadBinaryCommand(18, 18),
+            //                    _kSenc,
+            //                    _kSmac,
+            //                    new IncrementedSSC(_ssc).By(7)
+            //                ),
+            //                _reader
+            //            )
+            //        ),
+            //        new IncrementedSSC(_ssc).By(8),
+            //        _kSmac,
+            //        new SecondDO97ProtectedCommandResponseDOFactory()
+            //     ).Bytes();
 
         }
     }

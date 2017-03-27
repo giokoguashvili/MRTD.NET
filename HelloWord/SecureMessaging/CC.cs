@@ -9,20 +9,27 @@ namespace HelloWord.SecureMessaging
 {
     public class CC : IBinary
     {
-        private readonly IBinary _n;
+        private readonly IBinary _incrementedSsc;
         private readonly IBinary _kSmac;
+        private readonly IBinary _m;
 
         public CC(
-            IBinary n,
-            IBinary kSmac)
+                IBinary incrementedSsc,
+                IBinary kSmac,
+                IBinary m
+            )
         {
-            _n = n;
+            _incrementedSsc = incrementedSsc;
             _kSmac = kSmac;
+            _m = m;
         }
         public byte[] Bytes()
         {
             return new MAC3(
-                    _n,
+                    new N(
+                        _incrementedSsc,
+                        _m
+                    ),
                     _kSmac
                 ).Bytes(); 
         }

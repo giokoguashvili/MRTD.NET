@@ -103,6 +103,7 @@
     <Compile Include="DecryptedProtectedCommandDataTests.cs" />
     <Compile Include="AddedPaddingTests.cs" />
     <Compile Include="DO87Tests.cs" />
+    <Compile Include="BuildedDO8ETests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

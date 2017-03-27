@@ -9,14 +9,15 @@ namespace HelloWord.Cryptography
 {
     public class Crypted3DES : IBinary
     {
-        private readonly IBinary _key;
         private readonly IBinary _text;
         private readonly ICryptoTransform _cTransform;
-        public Crypted3DES(IBinary key, IBinary textForEncrypt, ICryptoTransform cTransform)
+        public Crypted3DES(
+                IBinary textForEncrypt, 
+                ICryptoTransform cTransform
+            )
         {
-            this._key = key;
-            this._text = textForEncrypt;
-            this._cTransform = cTransform;
+            _text = textForEncrypt;
+            _cTransform = cTransform;
         }
         public byte[] Bytes()
         {

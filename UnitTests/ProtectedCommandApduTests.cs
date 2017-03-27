@@ -19,11 +19,11 @@ namespace UnitTests
             Assert.AreEqual(
                     "0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800",
                     new Hex(
-                        new ProtectedCommandApdu(
+                        new ProtectedCommandApdu2(
                             new SelectEFCOMApplicationCommand(), 
                             new FkKSmac(),
-                            new IncrementedSSC(new FkSSC()).By(1),
-                            new BinaryHex("8709016375432908C044F6") // DO87
+                            new FkKSenc(),
+                            new IncrementedSSC(new FkSSC()).By(1)
                         )
                     ).ToString()
                 );
@@ -48,14 +48,14 @@ namespace UnitTests
             Assert.AreEqual(
                     "0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800",
                     new Hex(
-                        new ProtectedCommandApdu(
+                        new ProtectedCommandApdu2(
                             new SelectEFCOMApplicationCommand(),
                             new KSmac(kSeedIc),
+                            new FkKSenc(), 
                             new IncrementedSSC(new SSC(
                                     rndIc,
                                     rndIfd
-                            )).By(1),
-                            new BinaryHex("8709016375432908C044F6") // DO87
+                            )).By(1)
                         )
                     ).ToString()
                 );
