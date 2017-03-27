@@ -36,8 +36,6 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-
-
             //new VerifiedProtectedCommandResponse(
             //    new CachedBinary(
             //        new ExecutedCommandApdu(
@@ -53,8 +51,6 @@ namespace HelloWord.DataGroups
             //    _kSmac,
             //    new DO87ProtectedCommandResponseDOFactory()
             //).Bytes();
-
-
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(
