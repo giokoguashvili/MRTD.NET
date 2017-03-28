@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using HelloWord.Commands;
 using HelloWord.SecureMessaging;
-using HelloWord.SecureMessaging.ResponseDO.DO87;
 using PCSC;
 using PCSC.Iso7816;
 
@@ -184,33 +183,6 @@ namespace HelloWord.Infrastructure
         public IBinary Command()
         {
             throw new NotImplementedException();
-        }
-    }
-
-    public class DO87ProtectedCommandApduFactory : ICommandApduFactory
-    {
-        private readonly IBinary _kSenc;
-        private readonly IBinary _kSmac;
-        private readonly IBinary _ssc;
-        public DO87ProtectedCommandApduFactory(
-                IBinary kSenc,
-                IBinary kSmac,
-                IBinary ssc
-            )
-        {
-            _kSenc = kSenc;
-            _kSmac = kSmac;
-            _ssc = ssc;
-        }
-
-        public IBinary Command()
-        {
-            return new DO87ProtectedCommandApdu(
-                            new SelectEFCOMApplicationCommand(),
-                            _kSenc,
-                            _kSmac,
-                            new IncrementedSSC(_ssc).By(1)
-                   );
         }
     }
 }

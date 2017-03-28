@@ -97,9 +97,6 @@
     <Compile Include="ProtectedCommandApduTests.cs" />
     <Compile Include="DO8ETests.cs" />
     <Compile Include="COMTests.cs" />
-    <Compile Include="DO87ProtectedCommandApduTests.cs" />
-    <Compile Include="DO97ProtectedCommandApduTests.cs" />
-    <Compile Include="SecondDO97ProtectedCommandResponseDO87DO99Tests.cs" />
     <Compile Include="DecryptedProtectedCommandDataTests.cs" />
     <Compile Include="AddedPaddingTests.cs" />
     <Compile Include="DO87Tests.cs" />

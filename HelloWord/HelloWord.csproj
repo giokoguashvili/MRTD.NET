@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Cryptography\PaddedData.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
@@ -102,27 +101,11 @@
     <Compile Include="SecureMessaging\DO\Builded\BuildedDO8E.cs" />
     <Compile Include="SecureMessaging\DO\Builded\BuildedDO97.cs" />
     <Compile Include="SecureMessaging\DO\DO87.cs" />
-    <Compile Include="SecureMessaging\DO\DO8E.cs" />
     <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO87.cs" />
     <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO99.cs" />
-    <Compile Include="SecureMessaging\DO\IDO.cs" />
-    <Compile Include="SecureMessaging\DO\IDOFactory.cs" />
-    <Compile Include="SecureMessaging\DO\ProtectedResponseDO87.cs" />
-    <Compile Include="SecureMessaging\DO\UnprotectedCommandDO87.cs" />
-    <Compile Include="SecureMessaging\DO\UnprotectedCommandDO8E.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu2.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandApdu.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO97\SecondDO97ProtectedCommandResponseDO87DO99.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO97\SecondDO97ProtectedCommandResponseDO8E.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\ResponseDOFactory\DO87ProtectedCommandResponseDOFactory.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO97\DO97ProtectedCommandApdu.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\ResponseDOFactory\DO97ProtectedCommandResponseDOFactory.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO97\DO97ProtectedCommandResponseDO8E.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO97\DO97ProtectedCommandResponseDO87DO99.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\ResponseDOFactory\IProtectedCommandResponseDOFactory.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandResponseDO99.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
     <Compile Include="SecureMessaging\K.cs" />
@@ -135,8 +118,6 @@
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\DO87\DO87ProtectedCommandResponseDO8E.cs" />
-    <Compile Include="SecureMessaging\ResponseDO\ResponseDOFactory\SecondDO97ProtectedCommandResponseDOFactory.cs" />
     <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedCommandResponse.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />

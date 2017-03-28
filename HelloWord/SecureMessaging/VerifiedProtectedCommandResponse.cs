@@ -2,7 +2,6 @@
 using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.DO.Extracted;
-using HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory;
 
 namespace HelloWord.SecureMessaging
 {
@@ -11,19 +10,16 @@ namespace HelloWord.SecureMessaging
         private readonly IBinary _responseApdu;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _kSmac;
-        private readonly IProtectedCommandResponseDOFactory _protectedCommandResponseDoFactory;
 
         public VerifiedProtectedCommandResponse(
                 IBinary responseApdu,
                 IBinary incrementedSsc,
-                IBinary kSmac,
-                IProtectedCommandResponseDOFactory protectedCommandResponseDoFactory
+                IBinary kSmac
             )
         {
             _responseApdu = responseApdu;
             _incrementedSsc = incrementedSsc;
             _kSmac = kSmac;
-            _protectedCommandResponseDoFactory = protectedCommandResponseDoFactory;
         }
         public byte[] Bytes()
         {
