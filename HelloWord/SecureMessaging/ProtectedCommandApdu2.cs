@@ -19,8 +19,8 @@ namespace HelloWord.SecureMessaging
 
         public ProtectedCommandApdu2(
                 IBinary rawCommandApdu,
-                IBinary kSmac,
                 IBinary kSenc,
+                IBinary kSmac,
                 IBinary incrementedSsc
             )
         {

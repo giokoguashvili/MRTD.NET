@@ -31,6 +31,7 @@ namespace HelloWord.SmartCard
                         ref receiveBuffer
                    );
 
+            var claName = String.Empty;
             try
             {
                 var claNamesDictionary = ((InstructionCode[]) Enum.GetValues(typeof(InstructionCode)))
@@ -40,30 +41,33 @@ namespace HelloWord.SmartCard
                     )
                     .ToDictionary((item) => item.Value, item => item.Name);
 
-                var claValue = new Hex(new Binary(sendBuffer.Take(2).ToArray())).ToInt();
-                var claName = claNamesDictionary[claValue];
-
-
-                Console.WriteLine(
-                    "{3}:\nCAPDU: {0}\nRAPDU: {2}\nLe: {1}",
-                    new Hex(
-                        new Binary(sendBuffer)
-                    ),
-                    receiveBuffer.Length,
-                    new Hex(
-                        new Binary(receiveBuffer)
-                    ),
-                    claName
-                );
+                var claValue = new Hex(new Binary(sendBuffer.Skip(1).Take(1).ToArray())).ToInt();
+                claName = claNamesDictionary[claValue];
             }
             catch (Exception ex)
             {
                 Console.Write(
-                        "\n{0}\n",
-                        ex.Message
+                        "\n{0} : {1}\n",
+                        ex.Message,
+                        new Hex(new Binary(sendBuffer.Skip(1).Take(1).ToArray()))
                     );
             }
-            
+
+            Console.WriteLine(
+                   "{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
+                   new Hex(
+                       new Binary(sendBuffer)
+                   ),
+                   receiveBuffer.Length,
+                   new Hex(
+                       new Binary(receiveBuffer)
+                   ),
+                   claName,
+                   new Hex(new Binary(receiveBuffer.Reverse().Take(2).Reverse()))
+               );
+
+
+
             return sce;
         }
     }
