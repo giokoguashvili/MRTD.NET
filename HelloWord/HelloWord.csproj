@@ -46,6 +46,7 @@
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
     <Compile Include="DataGroups\DG1.cs" />
+    <Compile Include="DataGroups\DG1Data.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />

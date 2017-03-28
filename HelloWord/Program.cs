@@ -76,6 +76,7 @@ namespace HelloWord
                     //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
+                    //var mrzInfo = "13ID40308689022472402103";     // + Giorgio
 
                     var kIfd = new Cached(new Kifd());
                     var rndIc = new Cached(new RNDic(_reader));
@@ -129,18 +130,24 @@ namespace HelloWord
                             )
                         );
 
+                    var dg1 = 
+                        new Cached(
+                            new DG1(
+                                kSenc,
+                                kSmac,
+                                new IncrementedSSC(ssc).By(6),
+                                _reader
+                            )
+                        );
+
                     Console.Write(
                            "\nDG1: {0}\n",
-                           new Hex(
-                               new DG1(
-                                   kSenc,
-                                   kSmac,
-                                   new IncrementedSSC(ssc).By(6),
-                                   _reader
-                               )
-                           )
+                           new Hex(dg1)
                        );
-
+                    Console.Write(
+                           "\nDG1 Data: {0}\n",
+                           new DG1Data(dg1)
+                       );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);

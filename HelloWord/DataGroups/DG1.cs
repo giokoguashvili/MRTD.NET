@@ -35,7 +35,8 @@ namespace HelloWord.DataGroups
                         _kSmac,
                         _ssc,
                         _reader
-                   ).Bytes();
+                   )
+                   .Bytes();
         }
     }
 }
