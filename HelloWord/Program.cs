@@ -58,10 +58,7 @@ namespace HelloWord
                     var _reader = new LogedReader(reader);
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
-                    Console.WriteLine("\n\nSelectFile DF: ");
-                    Console.WriteLine("Retrieving the UID .... ");
 
-                    Console.WriteLine("\nSelectMRTDApplication: ");
                     Console.WriteLine(
                         new Hex(
                             new ResponseApduData(
@@ -76,7 +73,6 @@ namespace HelloWord
                     );
 
 
-                    Console.WriteLine("\nSelectEFCOMApplication: ");
                     Console.WriteLine(
                         new Hex(
                             new ResponseApduData(
@@ -106,8 +102,7 @@ namespace HelloWord
                     //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
-                                   
-                    Console.WriteLine("\nExternalAuthenticate: ");
+
 
                     var kIfd = new CachedBinary(new Kifd());
                     var rndIc = new CachedBinary(new RNDic(_reader));
@@ -129,7 +124,6 @@ namespace HelloWord
                                                     )
                                                 );
 
-                    Console.WriteLine("\nSecure Messaging");
 
                     var kSeedIc = new KseedIc(
                                         kIfd,

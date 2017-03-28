@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using HelloWord.Infrastructure;
 using PCSC;
+using PCSC.Iso7816;
 
 namespace HelloWord.SmartCard
 {
@@ -28,16 +30,40 @@ namespace HelloWord.SmartCard
                         receivePci,
                         ref receiveBuffer
                    );
-            Console.WriteLine(
-                "\nCAPDU: {0}\nRAPDU: {2}\nLe: {1}",
-                new Hex(
-                    new Binary(sendBuffer)
-                ),
-                receiveBuffer.Length,
-                new Hex(
-                    new Binary(receiveBuffer)
-                )
-            );
+
+            try
+            {
+                var claNamesDictionary = ((InstructionCode[]) Enum.GetValues(typeof(InstructionCode)))
+                    .Zip(
+                        Enum.GetNames(typeof(InstructionCode)),
+                        (first, second) => new {Value = (int) first, Name = second}
+                    )
+                    .ToDictionary((item) => item.Value, item => item.Name);
+
+                var claValue = new Hex(new Binary(sendBuffer.Take(2).ToArray())).ToInt();
+                var claName = claNamesDictionary[claValue];
+
+
+                Console.WriteLine(
+                    "{3}:\nCAPDU: {0}\nRAPDU: {2}\nLe: {1}",
+                    new Hex(
+                        new Binary(sendBuffer)
+                    ),
+                    receiveBuffer.Length,
+                    new Hex(
+                        new Binary(receiveBuffer)
+                    ),
+                    claName
+                );
+            }
+            catch (Exception ex)
+            {
+                Console.Write(
+                        "\n{0}\n",
+                        ex.Message
+                    );
+            }
+            
             return sce;
         }
     }
