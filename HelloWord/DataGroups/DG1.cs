@@ -1,17 +1,21 @@
-﻿using HelloWord.Infrastructure;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 
 namespace HelloWord.DataGroups
 {
-    public class COM : IBinary
+    public class DG1 : IBinary
     {
         private readonly IReader _reader;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _ssc;
-        private readonly IBinary _FID = new BinaryHex("011E");
-        public COM(
+        private readonly IBinary _FID = new BinaryHex("0101");
+        public DG1(
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary ssc,

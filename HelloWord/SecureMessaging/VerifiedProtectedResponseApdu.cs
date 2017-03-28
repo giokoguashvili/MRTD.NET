@@ -5,13 +5,13 @@ using HelloWord.SecureMessaging.DataObjects.Extracted;
 
 namespace HelloWord.SecureMessaging
 {
-    public class VerifiedProtectedCommandResponse : IBinary
+    public class VerifiedProtectedResponseApdu : IBinary
     {
         private readonly IBinary _responseApdu;
         private readonly IBinary _incrementedSsc;
         private readonly IBinary _kSmac;
 
-        public VerifiedProtectedCommandResponse(
+        public VerifiedProtectedResponseApdu(
                 IBinary responseApdu,
                 IBinary incrementedSsc,
                 IBinary kSmac
@@ -30,7 +30,9 @@ namespace HelloWord.SecureMessaging
                                 ).Bytes();
                 
 
-            var encryptedDO8E = new ExtractedDO8E(_responseApdu).EncryptedData();
+            var encryptedDO8E = new ExtractedDO8E(_responseApdu)
+                                        .EncryptedData()
+                                        .Bytes();
             if (
                 !extractedCC
                     .SequenceEqual(encryptedDO8E)

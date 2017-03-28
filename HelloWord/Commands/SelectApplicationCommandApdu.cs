@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.DataGroups.FileIds;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using PCSC;
 using PCSC.Iso7816;
 

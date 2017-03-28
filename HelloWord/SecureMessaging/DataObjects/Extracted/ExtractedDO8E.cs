@@ -34,11 +34,13 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             ).Bytes();
         }
 
-        public byte[] EncryptedData()
+        public IBinary EncryptedData()
         {
-            return Bytes()
-                .Skip(_do8eBytesCountWithoutEncryptedData)
-                .ToArray();
+            return new Binary(
+                    Bytes()
+                        .Skip(_do8eBytesCountWithoutEncryptedData)
+                );
+                
         }
     }
 }

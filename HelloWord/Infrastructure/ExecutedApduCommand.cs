@@ -22,7 +22,7 @@ namespace HelloWord.Infrastructure
 
         public byte[] Bytes()
         {
-            var receiveBuffer = new byte[50 + _responseApduTrailerLength];
+            var receiveBuffer = new byte[1024 + _responseApduTrailerLength];
             var receivePci = new SCardPCI();
             var sendPci = SCardPCI.GetPci(this._reader.ActiveProtocol());
 

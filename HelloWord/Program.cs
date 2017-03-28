@@ -72,32 +72,6 @@ namespace HelloWord
                         )
                     );
 
-
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseApduData(
-                                new Cached(
-                                    new ExecutedCommandApdu(
-                                        new SelectEFCOMApplicationCommandApdu(),
-                                        _reader
-                                    )
-                                )
-                            )
-                        )
-                     );
-
-                    //Console.WriteLine("\nReadBinary\nResponseAPDU: ");
-                    //Console.WriteLine(
-                    //    new Hex(
-                    //        new ResponseAPDU(
-                    //            new ExecutedCommandAPDU(
-                    //                new ReadBinaryCommand(),
-                    //                _reader
-                    //            )
-                    //        )
-                    //    )
-                    //);
-
                     var mrzInfo = "12IB34415792061602210089"; // + K
                     //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
@@ -134,24 +108,40 @@ namespace HelloWord
                                             )
                                         )
                                     );
+                    var kSenc = new KSenc(kSeedIc);
+                    var kSmac = new KSmac(kSeedIc);
+                    var ssc = new Cached(
+                                    new SSC(
+                                        rndIc,
+                                        rndIfd
+                                    )
+                                );
 
                     Console.Write(
+                            "\nCOM: {0}\n",
                             new Hex(
                                 new COM(
-                                    new KSenc(kSeedIc),
-                                    new KSmac(kSeedIc),
-                                    new Cached(
-                                        new SSC(
-                                            rndIc,
-                                            rndIfd
-                                        )
-                                    ),
+                                    kSenc,
+                                    kSmac,
+                                    ssc,
                                     _reader
                                 )
-                            ).ToString()
+                            )
                         );
 
-                 
+                    Console.Write(
+                           "\nDG1: {0}\n",
+                           new Hex(
+                               new DG1(
+                                   kSenc,
+                                   kSmac,
+                                   new IncrementedSSC(ssc).By(6),
+                                   _reader
+                               )
+                           )
+                       );
+
+
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);
 

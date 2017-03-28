@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
+    <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\PaddedData.cs" />
+    <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
@@ -60,7 +62,6 @@
     <Compile Include="Commands\GetChallengeCommandApdu.cs" />
     <Compile Include="Commands\ReadBinaryCommandApdu.cs" />
     <Compile Include="Commands\SelectMRTDApplicationCommandApdu.cs" />
-    <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Eic.cs" />
     <Compile Include="Cryptography\Kic.cs" />
     <Compile Include="Cryptography\KseedIc.cs" />
@@ -69,7 +70,6 @@
     <Compile Include="Cryptography\R.cs" />
     <Compile Include="Cryptography\SSC.cs" />
     <Compile Include="DataGroups\COM.cs" />
-    <Compile Include="DataGroups\DataGroupsIDs\EF_COM.cs" />
     <Compile Include="ISO7816\CommandAPDU\Header\CLA.cs" />
     <Compile Include="ISO7816\CommandAPDU\CommandHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\Header\CommandAPDUHeader.cs" />
@@ -110,6 +110,7 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO87.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
+    <Compile Include="SecureMessaging\EncryptedProtectedResponseApdu.cs" />
     <Compile Include="SecureMessaging\ExtractedCC.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />
@@ -125,8 +126,9 @@
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />
+    <Compile Include="SecureMessaging\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
-    <Compile Include="SecureMessaging\VerifiedProtectedCommandResponse.cs" />
+    <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="Infrastructure\Hex.cs" />

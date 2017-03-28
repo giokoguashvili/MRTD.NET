@@ -54,7 +54,7 @@ namespace HelloWord.SmartCard
             }
 
             Console.WriteLine(
-                   "{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
+                   "\n{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
                    new Hex(
                        new Binary(sendBuffer)
                    ),

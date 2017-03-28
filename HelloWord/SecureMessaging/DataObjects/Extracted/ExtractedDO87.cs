@@ -3,9 +3,10 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
-    public class ExtractedDO87 : IBinary
+    public class ExtractedDO87 : IDataObject, IBinary
     {
         private readonly IBinary _protectedResponseApdu;
+        private readonly int _do87BytesCountWithoutEncryptedData = 3;
 
         public ExtractedDO87(IBinary protectedResponseApdu)
         {
@@ -39,9 +40,17 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             return new Binary(
                     _protectedResponseApdu
                         .Bytes()
-                        .Take(3 + encDataLength)
+                        .Take(_do87BytesCountWithoutEncryptedData + encDataLength)
                         .ToArray()
                 ).Bytes();
+        }
+
+        public IBinary EncryptedData()
+        {
+            return new Binary(
+                Bytes()
+                    .Skip(_do87BytesCountWithoutEncryptedData)
+            );
         }
     }
 }
