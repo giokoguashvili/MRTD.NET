@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.Commands;
+using HelloWord.DataGroups.FileIds;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
@@ -17,7 +18,7 @@ namespace HelloWord.DataGroups
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _ssc;
-
+        private readonly IBinary EF_COM_ID = new EF_COM();
         public COM(
                 IBinary kSenc,
                 IBinary kSmac,
@@ -32,30 +33,14 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            //new VerifiedProtectedCommandResponse(
-            //    new CachedBinary(
-            //        new ExecutedCommandApdu(
-            //            new ProtectedCommandApdu2(
-            //                new SelectEFCOMApplicationCommand(),
-            //                new DO8E(_kSmac, _incrementedSsc),
-            //                new DO87(_kSenc)
-            //            ),
-            //            _reader
-            //        )
-            //    ),
-            //    new IncrementedSSC(_ssc).By(2),
-            //    _kSmac,
-            //    new DO87ProtectedCommandResponseDOFactory()
-            //).Bytes();
-
             new VerifiedProtectedCommandResponse(
-                new CachedBinary(
+                new Cached(
                     new ExecutedCommandApdu(
                         new ProtectedCommandApdu(
-                            new SelectEFCOMApplicationCommand(),
+                            new SelectApplicationCommandApdu(EF_COM_ID),
                             _kSenc,
                             _kSmac,
-                            new IncrementedSSC(_ssc).By(1)
+                             new IncrementedSSC(_ssc).By(1)
                         ),
                         _reader
                     )
@@ -65,10 +50,10 @@ namespace HelloWord.DataGroups
             ).Bytes();
 
             new VerifiedProtectedCommandResponse(
-                new CachedBinary(
+                new Cached(
                     new ExecutedCommandApdu(
                         new ProtectedCommandApdu(
-                            new ReadBinaryCommand(4),
+                            new ReadBinaryCommandApdu(0, 4),
                             _kSenc,
                             _kSmac,
                             new IncrementedSSC(_ssc).By(3)
@@ -82,10 +67,10 @@ namespace HelloWord.DataGroups
 
 
              return new VerifiedProtectedCommandResponse(
-                    new CachedBinary(
+                    new Cached(
                         new ExecutedCommandApdu(
                             new ProtectedCommandApdu(
-                                new ReadBinaryCommand(4, 18),
+                                new ReadBinaryCommandApdu(4, 18),
                                 _kSenc,
                                 _kSmac,
                                 new IncrementedSSC(_ssc).By(5)
@@ -96,24 +81,6 @@ namespace HelloWord.DataGroups
                     new IncrementedSSC(_ssc).By(6),
                     _kSmac
                  ).Bytes();
-
-            //return new VerifiedProtectedCommandResponse(
-            //        new CachedBinary(
-            //            new ExecutedCommandApdu(
-            //                new DO97ProtectedCommandApdu(
-            //                    new ReadBinaryCommand(18, 18),
-            //                    _kSenc,
-            //                    _kSmac,
-            //                    new IncrementedSSC(_ssc).By(7)
-            //                ),
-            //                _reader
-            //            )
-            //        ),
-            //        new IncrementedSSC(_ssc).By(8),
-            //        _kSmac,
-            //        new SecondDO97ProtectedCommandResponseDOFactory()
-            //     ).Bytes();
-
         }
     }
 }

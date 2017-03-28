@@ -62,9 +62,9 @@ namespace HelloWord
                     Console.WriteLine(
                         new Hex(
                             new ResponseApduData(
-                                new CachedBinary(
+                                new Cached(
                                     new ExecutedCommandApdu(
-                                        new SelectMRTDApplicationCommand(),
+                                        new SelectMRTDApplicationCommandApdu(),
                                         _reader
                                     )
                                 )
@@ -76,9 +76,9 @@ namespace HelloWord
                     Console.WriteLine(
                         new Hex(
                             new ResponseApduData(
-                                new CachedBinary(
+                                new Cached(
                                     new ExecutedCommandApdu(
-                                        new SelectEFCOMApplicationCommand(),
+                                        new SelectEFCOMApplicationCommandApdu(),
                                         _reader
                                     )
                                 )
@@ -104,14 +104,14 @@ namespace HelloWord
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
 
 
-                    var kIfd = new CachedBinary(new Kifd());
-                    var rndIc = new CachedBinary(new RNDic(_reader));
-                    var rndIfd = new CachedBinary(new RNDifd());
+                    var kIfd = new Cached(new Kifd());
+                    var rndIc = new Cached(new RNDic(_reader));
+                    var rndIfd = new Cached(new RNDifd());
 
                     var externalAuthRespData = new ResponseApduData(
-                                                    new CachedBinary(
+                                                    new Cached(
                                                         new ExecutedCommandApdu(
-                                                            new ExternalAuthenticateCommand(
+                                                            new ExternalAuthenticateCommandApdu(
                                                                 new ExternalAuthenticateCommandData(
                                                                     mrzInfo,
                                                                     rndIc,
@@ -140,9 +140,11 @@ namespace HelloWord
                                 new COM(
                                     new KSenc(kSeedIc),
                                     new KSmac(kSeedIc),
-                                    new SSC(
+                                    new Cached(
+                                        new SSC(
                                             rndIc,
                                             rndIfd
+                                        )
                                     ),
                                     _reader
                                 )

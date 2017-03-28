@@ -106,7 +106,7 @@ namespace HelloWord.Infrastructure
             if (commandResult.Length != 0)
             {
                 nextInput = new ResponseApduData(
-                                    new CachedBinary(
+                                    new Cached(
                                         new ExecutedCommandApdu(
                                             _nextCommand,
                                             reader
@@ -117,7 +117,7 @@ namespace HelloWord.Infrastructure
             else if (commandFactoruResult.Length != 0)
             {
                 nextInput = new ResponseApduData(
-                                    new CachedBinary(
+                                    new Cached(
                                         new ExecutedCommandApdu(
                                             _commandFactory.Command(),
                                             reader

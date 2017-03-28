@@ -6,7 +6,7 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class GetChallengeCommand : IBinary
+    public class GetChallengeCommandApdu : IBinary
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
         private readonly int _expectedDataLength = 8;

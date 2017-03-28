@@ -1,10 +1,10 @@
 ﻿namespace HelloWord.Infrastructure
 {
-    public class CachedBinary : IBinary
+    public class Cached : IBinary
     {
         private readonly IBinary _src;
         private byte[] _cachedBytes = new byte[0];
-        public CachedBinary(IBinary src)
+        public Cached(IBinary src)
         {
             this._src = src;
         }

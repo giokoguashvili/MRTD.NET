@@ -6,7 +6,7 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class SelectMRTDApplicationCommand : IBinary
+    public class SelectMRTDApplicationCommandApdu : IBinary
     {
         private readonly IsoCase _isoCase = IsoCase.Case3Short;
         private readonly int _expectedDataLength = 0;

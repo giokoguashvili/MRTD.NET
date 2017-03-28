@@ -21,9 +21,9 @@ namespace HelloWord.Cryptography.RandomKeys
 
         public RNDic(IReader reader)
             : this(
-                        new CachedBinary(
+                        new Cached(
                             new ExecutedCommandApdu(
-                                new GetChallengeCommand(),
+                                new GetChallengeCommandApdu(),
                                 reader
                             )
                         )

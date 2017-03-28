@@ -6,7 +6,7 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class SelectEFCOMApplicationCommand : IBinary
+    public class SelectEFCOMApplicationCommandApdu : IBinary
     {
         private readonly IsoCase _isoCase = IsoCase.Case3Short;
         private readonly int _expectedDataLength = 0;

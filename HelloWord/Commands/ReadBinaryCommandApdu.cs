@@ -6,17 +6,17 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class ReadBinaryCommand : IBinary
+    public class ReadBinaryCommandApdu : IBinary
     {
         private readonly IsoCase _isoCase = IsoCase.Case2Short;
         private readonly int _offsetLength;
         private readonly int _expectedDataLength;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
 
-        public ReadBinaryCommand(int expectedDataLength) : this(0, expectedDataLength)
+        public ReadBinaryCommandApdu(int expectedDataLength) : this(0, expectedDataLength)
         {
         }
-        public ReadBinaryCommand(int offsetLength, int expectedDataLength)
+        public ReadBinaryCommandApdu(int offsetLength, int expectedDataLength)
         {
             _offsetLength = offsetLength;
             _expectedDataLength = expectedDataLength;

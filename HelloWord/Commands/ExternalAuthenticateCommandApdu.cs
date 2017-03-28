@@ -5,14 +5,14 @@ using PCSC.Iso7816;
 
 namespace HelloWord.Commands
 {
-    public class ExternalAuthenticateCommand : IBinary
+    public class ExternalAuthenticateCommandApdu : IBinary
     {
         private readonly IBinary _commandData;
         private readonly IsoCase _isoCase = PCSC.Iso7816.IsoCase.Case4Short;
         private readonly int _exceptedDataLength = 40; // (0x28)
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
 
-        public ExternalAuthenticateCommand(IBinary commandData) 
+        public ExternalAuthenticateCommandApdu(IBinary commandData) 
         {
             this._commandData = commandData;
         }
