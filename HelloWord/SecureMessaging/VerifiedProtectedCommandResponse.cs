@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging.DO.Extracted;
 using HelloWord.SecureMessaging.ResponseDO.ResponseDOFactory;
 
 namespace HelloWord.SecureMessaging
@@ -26,15 +27,20 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return _responseApdu.Bytes();
-            var protectedCommandResponseCC = new CC(
-                    _incrementedSsc,
-                    _protectedCommandResponseDoFactory.DO(_responseApdu),
-                    _kSmac
-                ).Bytes();
+            var protectedCommandResponseCC = new CachedBinary(
+                    new CC(
+                        _incrementedSsc,
+                        _kSmac,
+                        new ConcatenatedBinaries(
+                            new ExtractedDO87(_responseApdu),
+                            new ExtractedDO99(_responseApdu)
+                        )
+                    )
+               ).Bytes();
 
-            var protectedCommandResponseDO8E = _protectedCommandResponseDoFactory.DO8E(_responseApdu)
-                .Bytes();
+            var protectedCommandResponseDO8E = new ExtractedDO8E(_responseApdu)
+                .Bytes()
+                .Skip(2);
             if (
                 !protectedCommandResponseCC
                     .SequenceEqual(protectedCommandResponseDO8E)

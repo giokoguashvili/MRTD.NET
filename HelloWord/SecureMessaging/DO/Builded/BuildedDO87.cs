@@ -38,18 +38,7 @@ namespace HelloWord.SecureMessaging.DO
                                     new Padded(data)
                                 );
 
-            // DO87 Format [87][EncryptedDataLength + 1][01][EncryptedData]
-            return new ConcatenatedBinaries(
-                    new BinaryHex("87"),
-                    new HexInt(
-                        encryptedData
-                            .Bytes()
-                            .Length + 1
-                    ),
-                    new BinaryHex("01"),
-                    encryptedData
-                ).Bytes();
-            
+            return new DO87(encryptedData).Bytes();
         }
     }
 }

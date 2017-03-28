@@ -104,6 +104,9 @@
     <Compile Include="AddedPaddingTests.cs" />
     <Compile Include="DO87Tests.cs" />
     <Compile Include="BuildedDO8ETests.cs" />
+    <Compile Include="ExtractedDO87Tests.cs" />
+    <Compile Include="ExtractedDO99Tests.cs" />
+    <Compile Include="ExtractedDO8ETests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

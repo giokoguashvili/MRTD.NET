@@ -51,6 +51,7 @@ namespace HelloWord.DataGroups
             //    _kSmac,
             //    new DO87ProtectedCommandResponseDOFactory()
             //).Bytes();
+
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(

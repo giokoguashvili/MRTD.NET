@@ -103,6 +103,9 @@
     <Compile Include="SecureMessaging\DO\Builded\BuildedDO97.cs" />
     <Compile Include="SecureMessaging\DO\DO87.cs" />
     <Compile Include="SecureMessaging\DO\DO8E.cs" />
+    <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO87.cs" />
+    <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO8E.cs" />
+    <Compile Include="SecureMessaging\DO\Extracted\ExtractedDO99.cs" />
     <Compile Include="SecureMessaging\DO\IDO.cs" />
     <Compile Include="SecureMessaging\DO\IDOFactory.cs" />
     <Compile Include="SecureMessaging\DO\ProtectedResponseDO87.cs" />
