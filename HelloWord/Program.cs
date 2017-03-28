@@ -77,7 +77,6 @@ namespace HelloWord
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
 
-
                     var kIfd = new Cached(new Kifd());
                     var rndIc = new Cached(new RNDic(_reader));
                     var rndIfd = new Cached(new RNDifd());
@@ -108,6 +107,7 @@ namespace HelloWord
                                             )
                                         )
                                     );
+
                     var kSenc = new KSenc(kSeedIc);
                     var kSmac = new KSmac(kSeedIc);
                     var ssc = new Cached(

@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
-    <Compile Include="Cryptography\PaddedData.cs" />
+    <Compile Include="Cryptography\Padded.cs" />
     <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
@@ -122,7 +122,6 @@
     <Compile Include="SecureMessaging\MasketCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\N.cs" />
     <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
-    <Compile Include="SecureMessaging\PadedCommandApduData.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />

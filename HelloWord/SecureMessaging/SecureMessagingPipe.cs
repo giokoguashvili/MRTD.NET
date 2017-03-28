@@ -48,7 +48,7 @@ namespace HelloWord.SecureMessaging
                 _kSmac
             ).Bytes();
 
-            var first = new DecryptedProtectedResponseApdu(
+            var firstFourBytes = new DecryptedProtectedResponseApdu(
                 new Cached(
                     new VerifiedProtectedResponseApdu(
                         new Cached(
@@ -71,14 +71,14 @@ namespace HelloWord.SecureMessaging
 
             var lackingLength = new Hex(
                 new Binary(
-                    first
+                    firstFourBytes
                         .Bytes()
                         .Skip(1)
                         .Take(1)
                 )
             ).ToInt() - 2;
 
-            var second = new DecryptedProtectedResponseApdu(
+            var lastBytes = new DecryptedProtectedResponseApdu(
                 new Cached(
                     new VerifiedProtectedResponseApdu(
                         new Cached(
@@ -100,8 +100,16 @@ namespace HelloWord.SecureMessaging
             );
 
             return new ConcatenatedBinaries(
-                    first,
-                    second
+                    new Binary(
+                        firstFourBytes
+                            .Bytes()
+                            .Take(4)
+                    ),
+                    new Binary(
+                        lastBytes
+                            .Bytes()
+                            .Take(lackingLength)
+                    )
                 ).Bytes();
         }
     }
