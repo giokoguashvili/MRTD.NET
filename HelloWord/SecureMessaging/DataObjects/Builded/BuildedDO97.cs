@@ -1,5 +1,6 @@
 ﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Body;
+using HelloWord.SecureMessaging.DataObjects.DO;
 
 namespace HelloWord.SecureMessaging.DataObjects.Builded
 {
@@ -24,10 +25,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
                 return new Binary().Bytes();
             }
 
-            return new ConcatenatedBinaries(
-                        new BinaryHex("9701"),
-                        new HexInt(exceptedDataLength)
-                    ).Bytes();
+            return new DO97(exceptedDataLength).Bytes();
         }
     }
 }

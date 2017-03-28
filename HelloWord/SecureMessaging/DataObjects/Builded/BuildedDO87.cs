@@ -25,7 +25,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
                             new CommandApduBody(_rawCommandApdu)
                         );
 
-            if (data.Bytes().Length == 0)
+            if (new Len(data).Is(0))
             {
                 return new Binary().Bytes();
             }

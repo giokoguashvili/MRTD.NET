@@ -23,12 +23,14 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
                                 ).ToString();
 
             return new BinaryHex(
-                String.Concat(new Hex(_protectedResponseApdu)
-                    .ToString()
-                    .Replace(String.Format("{0}{1}", extractedDO87AsString, extractedDO99AsString), String.Empty)
-                    .Reverse()
-                    .Skip(4)
-                    .Reverse())
+                String.Concat(
+                        new Hex(_protectedResponseApdu)
+                            .ToString()
+                            .Replace(String.Format("{0}{1}", extractedDO87AsString, extractedDO99AsString), String.Empty)
+                            .Reverse()
+                            .Skip(4)
+                            .Reverse()
+                    )
             ).Bytes();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Header;
+using HelloWord.SecureMessaging.DataObjects.DO;
 
 namespace HelloWord.SecureMessaging.DataObjects.Builded
 {
@@ -25,27 +26,23 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         }
         public byte[] Bytes()
         {
-            var cachedCC = new CachedBinary(
-                                new CC(
-                                    _incrementedSsc,
-                                    _kSmac,
-                                    new ConcatenatedBinaries(
-                                        new ProtectedCommandApduHeader(
-                                            new CommandApduHeader(_rawCommandApdu)
-                                        ),
-                                        new BuildedDO87(
-                                            _rawCommandApdu,
-                                            _kSenc
-                                        ),
-                                        new BuildedDO97(_rawCommandApdu)
-                                    )
-                                )
-                           );
-            return new ConcatenatedBinaries(
-                    new BinaryHex("8E"),
-                    new HexInt(cachedCC.Bytes().Count()),
-                    cachedCC
-                ).Bytes();
+            var cc =
+                new CC(
+                    _incrementedSsc,
+                    _kSmac,
+                    new ConcatenatedBinaries(
+                        new ProtectedCommandApduHeader(
+                            new CommandApduHeader(_rawCommandApdu)
+                        ),
+                        new BuildedDO87(
+                            _rawCommandApdu,
+                            _kSenc
+                        ),
+                        new BuildedDO97(_rawCommandApdu)
+                    )
+                );
+
+            return new DO8E(cc).Bytes();
         }
     }
 }
