@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HelloWord.Infrastructure
 {
-    public class Len
+    public class Len : INumber
     {
         private readonly IBinary _data;
 
@@ -14,19 +14,19 @@ namespace HelloWord.Infrastructure
             _data = data;
         }
 
-        public int Result()
-        {
-            return _data.Bytes().Length;
-        }
-
         public bool Is(int len)
         {
-            return Result() == len;
+            return Value() == len;
         }
 
         public bool IsEmpty()
         {
             return Is(0);
+        }
+
+        public int Value()
+        {
+            return _data.Bytes().Length;
         }
     }
 }

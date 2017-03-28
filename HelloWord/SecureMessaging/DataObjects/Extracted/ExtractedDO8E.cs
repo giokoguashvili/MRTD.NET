@@ -4,10 +4,10 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
-    public class ExtractedDO8E : IBinary
+    public class ExtractedDO8E : IDataObject, IBinary
     {
         private readonly IBinary _protectedResponseApdu;
-
+        private readonly int _do8eBytesCountWithoutEncryptedData = 2;
         public ExtractedDO8E(IBinary protectedResponseApdu)
         {
             _protectedResponseApdu = protectedResponseApdu;
@@ -32,6 +32,13 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
                             .Reverse()
                     )
             ).Bytes();
+        }
+
+        public byte[] EncryptedData()
+        {
+            return Bytes()
+                .Skip(_do8eBytesCountWithoutEncryptedData)
+                .ToArray();
         }
     }
 }

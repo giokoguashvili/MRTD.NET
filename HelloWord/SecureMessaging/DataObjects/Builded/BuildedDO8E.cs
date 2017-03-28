@@ -11,7 +11,6 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         private readonly IBinary _rawCommandApdu;
         private readonly IBinary _kSmac;
         private readonly IBinary _kSenc;
-        private readonly IBinary _cc;
         public BuildedDO8E(
                 IBinary rawCommandApdu,
                 IBinary incrementedSsc,
@@ -26,23 +25,14 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         }
         public byte[] Bytes()
         {
-            var cc =
-                new CC(
-                    _incrementedSsc,
-                    _kSmac,
-                    new ConcatenatedBinaries(
-                        new ProtectedCommandApduHeader(
-                            new CommandApduHeader(_rawCommandApdu)
-                        ),
-                        new BuildedDO87(
-                            _rawCommandApdu,
-                            _kSenc
-                        ),
-                        new BuildedDO97(_rawCommandApdu)
-                    )
-                );
-
-            return new DO8E(cc).Bytes();
+            return new DO8E(
+                        new ComputedCC(
+                            _incrementedSsc,
+                            _kSenc,
+                            _kSmac,
+                            _rawCommandApdu
+                        )
+                    ).Bytes();
         }
     }
 }

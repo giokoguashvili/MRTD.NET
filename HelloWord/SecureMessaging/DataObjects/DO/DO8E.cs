@@ -8,20 +8,21 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
 {
     public class DO8E : IBinary
     {
-        private readonly IBinary _cc;
+        private readonly IBinary _computedCc;
 
-        public DO8E(IBinary cc)
+        public DO8E(IBinary computedCC)
         {
-            _cc = cc;
+            _computedCc = computedCC;
         }
         public byte[] Bytes()
         {
-            var cachedCC = new CachedBinary(_cc);
             // DO8E Format: [8E][EncodedDataLengh][EncodedData]
             return new ConcatenatedBinaries(
                     new BinaryHex("8E"),
-                    new HexInt(cachedCC.Bytes().Count()),
-                    cachedCC
+                    new HexInt(
+                        new Len(_computedCc)
+                    ),
+                    _computedCc
                 ).Bytes();
         }
     }

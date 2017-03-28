@@ -47,7 +47,9 @@
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
+    <Compile Include="Infrastructure\INumber.cs" />
     <Compile Include="Infrastructure\Len.cs" />
+    <Compile Include="Infrastructure\Number.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\Lc.cs" />
@@ -95,9 +97,11 @@
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW2.cs" />
     <Compile Include="SecureMessaging\CC.cs" />
     <Compile Include="SecureMessaging\COMFileStructureLength.cs" />
+    <Compile Include="SecureMessaging\ComputedCC.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\DataObjects\DO\DO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\DO\DO97.cs" />
+    <Compile Include="SecureMessaging\DataObjects\IDataObject.cs" />
     <Compile Include="SecureMessaging\DecryptedProtectedCommandData.cs" />
     <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO87.cs" />
     <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO8E.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO87.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
+    <Compile Include="SecureMessaging\ExtractedCC.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />

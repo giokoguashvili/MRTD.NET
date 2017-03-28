@@ -23,30 +23,24 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            var protectedCommandResponseCC = new CachedBinary(
-                    new CC(
-                        _incrementedSsc,
-                        _kSmac,
-                        new ConcatenatedBinaries(
-                            new ExtractedDO87(_responseApdu),
-                            new ExtractedDO99(_responseApdu)
-                        )
-                    )
-               ).Bytes();
+            var extractedCC = new ExtractedCC(
+                                    _incrementedSsc,
+                                    _kSmac,
+                                    _responseApdu
+                                ).Bytes();
+                
 
-            var protectedCommandResponseDO8E = new ExtractedDO8E(_responseApdu)
-                .Bytes()
-                .Skip(2);
+            var encryptedDO8E = new ExtractedDO8E(_responseApdu).EncryptedData();
             if (
-                !protectedCommandResponseCC
-                    .SequenceEqual(protectedCommandResponseDO8E)
+                !extractedCC
+                    .SequenceEqual(encryptedDO8E)
             )
             {
                 throw new Exception(
                     String.Format(
                         "CC not equal of DO‘8E’ of RAPDU\n{0} != {1}",
-                        new Hex(new Binary(protectedCommandResponseCC)),
-                        new Hex(new Binary(protectedCommandResponseDO8E))
+                        new Hex(new Binary(extractedCC)),
+                        new Hex(new Binary(encryptedDO8E))
                     )
                 );
             }
@@ -54,8 +48,8 @@ namespace HelloWord.SecureMessaging
             {
                 Console.WriteLine(
                         "CC equal of DO‘8E’ of RAPDU\n{0} == {1}",
-                        new Hex(new Binary(protectedCommandResponseCC)),
-                        new Hex(new Binary(protectedCommandResponseDO8E))
+                        new Hex(new Binary(extractedCC)),
+                        new Hex(new Binary(encryptedDO8E))
                     );
                 return _responseApdu.Bytes();
             }

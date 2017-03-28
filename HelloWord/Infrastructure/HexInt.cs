@@ -7,15 +7,21 @@ namespace HelloWord.Infrastructure
 {
     public class HexInt : IBinary
     {
-        private readonly int _number;
-        public HexInt(int number)
+        private readonly INumber _number;
+
+        public HexInt(INumber number)
         {
             _number = number;
         }
+        public HexInt(int number) 
+            : this(new Number(number))
+        {}
+
         public byte[] Bytes()
         {
             return new BinaryHex(
                     _number
+                        .Value()
                         .ToString("X2")
                 ).Bytes();
         }
