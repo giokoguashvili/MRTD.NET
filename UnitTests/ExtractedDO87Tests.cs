@@ -1,6 +1,6 @@
 ﻿using System;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO.Extracted;
+using HelloWord.SecureMessaging.DataObjects.Extracted;
 using NUnit.Framework;
 
 namespace UnitTests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO.Extracted;
+using HelloWord.SecureMessaging.DataObjects.Extracted;
 
 namespace HelloWord.SecureMessaging
 {

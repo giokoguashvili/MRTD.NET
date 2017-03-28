@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.SecureMessaging.DO.Extracted
+namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
     public class ExtractedDO87 : IBinary
     {

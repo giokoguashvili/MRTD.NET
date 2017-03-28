@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
-using HelloWord.ISO7816.CommandAPDU.Body;
 using HelloWord.ISO7816.CommandAPDU.Header;
-using Org.BouncyCastle.Crypto.Tls;
 
-namespace HelloWord.SecureMessaging.DO
+namespace HelloWord.SecureMessaging.DataObjects.Builded
 {
     public class BuildedDO8E : IBinary
     {

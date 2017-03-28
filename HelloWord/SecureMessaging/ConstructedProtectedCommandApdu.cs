@@ -10,31 +10,37 @@ namespace HelloWord.SecureMessaging
     public class ConstructedProtectedCommandApdu : IBinary
     {
         private readonly IBinary _maskedCommandApduHeader;
-        private readonly IBinary _do87or97;
+        private readonly IBinary _do87;
+        private readonly IBinary _do97;
         private readonly IBinary _do8e;
         private readonly byte[] _exceptedDataLength = new byte[] { 0x00 };
 
         public ConstructedProtectedCommandApdu(
               IBinary rawCommandApduHeader,
-              IBinary do87or97,
+              IBinary do87,
+              IBinary do97,
               IBinary do8e
           )
         {
             _maskedCommandApduHeader = rawCommandApduHeader;
-            _do87or97 = do87or97;
+            _do87 = do87;
+            _do97 = do97;
             _do8e = do8e;
         }
         public byte[] Bytes()
         {
-            var commandData = new ProtectedCommandApduData(
-                                    _do87or97,
+            var commandData = new ConcatenatedBinaries(
+                                    _do87,
+                                    _do97,
                                     _do8e
                                 );
+
             var commandDataLengthAsBinaryHex = new HexInt(
                                                     commandData
                                                         .Bytes()
                                                         .Count()
                                                );
+
             return new ConcatenatedBinaries(
                     _maskedCommandApduHeader,
                     commandDataLengthAsBinaryHex,

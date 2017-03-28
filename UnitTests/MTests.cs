@@ -5,7 +5,6 @@ using HelloWord.ISO7816.CommandAPDU;
 using HelloWord.ISO7816.CommandAPDU.Body;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
-using HelloWord.SecureMessaging.DO;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 

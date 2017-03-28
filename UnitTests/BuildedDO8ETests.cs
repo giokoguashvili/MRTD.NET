@@ -1,6 +1,5 @@
 ﻿using System;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using UnitTests.FakeObjects;

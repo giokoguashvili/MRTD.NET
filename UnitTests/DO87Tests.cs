@@ -1,11 +1,10 @@
 ﻿using System;
 using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.DO;
 using NUnit.Framework.Internal;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
-using DO87 = HelloWord.SecureMessaging.DO.DO87;
+using DO87 = HelloWord.SecureMessaging.DataObjects.DO.DO87;
 
 namespace UnitTests
 {

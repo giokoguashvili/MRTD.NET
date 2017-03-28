@@ -51,7 +51,7 @@ namespace HelloWord.DataGroups
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(
-                        new ProtectedCommandApdu2(
+                        new ProtectedCommandApdu(
                             new SelectEFCOMApplicationCommand(),
                             _kSenc,
                             _kSmac,
@@ -67,7 +67,7 @@ namespace HelloWord.DataGroups
             new VerifiedProtectedCommandResponse(
                 new CachedBinary(
                     new ExecutedCommandApdu(
-                        new ProtectedCommandApdu2(
+                        new ProtectedCommandApdu(
                             new ReadBinaryCommand(4),
                             _kSenc,
                             _kSmac,
@@ -84,7 +84,7 @@ namespace HelloWord.DataGroups
              return new VerifiedProtectedCommandResponse(
                     new CachedBinary(
                         new ExecutedCommandApdu(
-                            new ProtectedCommandApdu2(
+                            new ProtectedCommandApdu(
                                 new ReadBinaryCommand(4, 18),
                                 _kSenc,
                                 _kSmac,
