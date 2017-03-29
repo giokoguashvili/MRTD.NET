@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using BerTlv;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.DataGroups
 {
-    public class DG1Data 
+    public class COMData
     {
-        private readonly IBinary _dg1Data;
+        private readonly IBinary _comData;
 
-        public DG1Data(IBinary dg1Data)
+        public COMData(IBinary comData)
         {
-            _dg1Data = dg1Data;
+            _comData = comData;
         }
 
         public override string ToString()
         {
 
-            ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_dg1Data).ToString());
+            ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_comData).ToString());
             return Encoding.ASCII
                 .GetString(
-                    _dg1Data
+                    _comData
                     .Bytes()
                     .Skip(5)
                     .ToArray()

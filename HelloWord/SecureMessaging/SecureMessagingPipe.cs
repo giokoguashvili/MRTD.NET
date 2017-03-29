@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
+using BerTlv;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
@@ -13,21 +15,21 @@ namespace HelloWord.SecureMessaging
         private readonly IBinary _applicationIdentifier;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
-        private readonly IBinary _ssc;
+        private readonly IBinary _selfIncrementedSsc;
         private readonly IReader _reader;
 
         public SecureMessagingPipe(
                 IBinary applicationIdentifier,
                 IBinary kSenc,
                 IBinary kSmac,
-                IBinary ssc,
+                IBinary selfIncrementedSsc,
                 IReader reader
             )
         {
             _applicationIdentifier = applicationIdentifier;
             _kSenc = kSenc;
             _kSmac = kSmac;
-            _ssc = ssc;
+            _selfIncrementedSsc = selfIncrementedSsc;
             _reader = reader;
         }
         public byte[] Bytes()
@@ -39,12 +41,12 @@ namespace HelloWord.SecureMessaging
                             new SelectApplicationCommandApdu(_applicationIdentifier),
                             _kSenc,
                             _kSmac,
-                             new IncrementedSSC(_ssc).By(1)
+                             new Cached(_selfIncrementedSsc.Bytes())
                         ),
                         _reader
                     )
                 ),
-                new IncrementedSSC(_ssc).By(2),
+                new Cached(_selfIncrementedSsc.Bytes()),
                 _kSmac
             ).Bytes();
 
@@ -57,17 +59,20 @@ namespace HelloWord.SecureMessaging
                                     new ReadBinaryCommandApdu(0, 4),
                                     _kSenc,
                                     _kSmac,
-                                    new IncrementedSSC(_ssc).By(3)
+                                    new Cached(_selfIncrementedSsc.Bytes())
                                 ),
                                 _reader
                             )
                         ),
-                        new IncrementedSSC(_ssc).By(4),
+                        new Cached(_selfIncrementedSsc.Bytes()),
                         _kSmac
                     )
                 ),
                 _kSenc
             );
+
+
+            var str = new Hex(firstFourBytes).ToString();
 
             var lackingLength = new Hex(
                 new Binary(
@@ -87,12 +92,12 @@ namespace HelloWord.SecureMessaging
                                     new ReadBinaryCommandApdu(4, lackingLength),
                                     _kSenc,
                                     _kSmac,
-                                    new IncrementedSSC(_ssc).By(5)
+                                    new Cached(_selfIncrementedSsc.Bytes())
                                 ),
                                 _reader
                             )
                         ),
-                        new IncrementedSSC(_ssc).By(6),
+                        new Cached(_selfIncrementedSsc.Bytes()),
                         _kSmac
                      )
                  ),

@@ -111,34 +111,53 @@ namespace HelloWord
 
                     var kSenc = new KSenc(kSeedIc);
                     var kSmac = new KSmac(kSeedIc);
-                    var ssc = new Cached(
-                                    new SSC(
-                                        rndIc,
-                                        rndIfd
+                    var selfIncrementSsc = 
+                                new SelfIncrementSSC(
+                                    new Cached(
+                                        new SSC(
+                                            rndIc,
+                                            rndIfd
+                                        )
                                     )
                                 );
+                                
 
-                    Console.Write(
-                            "\nCOM: {0}\n",
-                            new Hex(
-                                new COM(
-                                    kSenc,
-                                    kSmac,
-                                    ssc,
-                                    _reader
-                                )
-                            )
-                        );
+                    //var com =
+                    //    new Cached(
+                    //        new COM(
+                    //            kSenc,
+                    //            kSmac,
+                    //            ssc,
+                    //            _reader
+                    //        )
+                    //    );
+
+                    //Console.Write(
+                    //        "\nCOM: {0}\n",
+                    //        new Hex(
+                    //            com
+                    //        )
+                    //    );
+                    //Console.Write(
+                    //     "\nCOM Data: {0}\n",
+                    //     new COMData(com)
+                    // );
 
                     var dg1 = 
                         new Cached(
                             new DG1(
                                 kSenc,
                                 kSmac,
-                                new IncrementedSSC(ssc).By(6),
+                                selfIncrementSsc,
                                 _reader
                             )
                         );
+
+                    //new DG12(
+                    //    new BACReader(
+                    //        new MRZInfo(cardID, birtDate, expireData)
+                    //    )
+                    //).Content();
 
                     Console.Write(
                            "\nDG1: {0}\n",

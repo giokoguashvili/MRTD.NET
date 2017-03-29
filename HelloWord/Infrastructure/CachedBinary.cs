@@ -4,6 +4,9 @@
     {
         private readonly IBinary _src;
         private byte[] _cachedBytes = new byte[0];
+
+        public Cached(byte[] bytes) : this(new Binary(bytes))
+        {}
         public Cached(IBinary src)
         {
             this._src = src;

@@ -8,8 +8,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>HelloWord</RootNamespace>
     <AssemblyName>HelloWord</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -29,8 +31,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BerTlv, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BerTlv.NET.1.0.1\lib\net45\BerTlv.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
@@ -45,8 +51,11 @@
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
+    <Compile Include="DataGroups\COMData.cs" />
     <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="DataGroups\DG1Data.cs" />
+    <Compile Include="DataGroups\DGFirstFourBytes.cs" />
+    <Compile Include="DataGroups\DGLength.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
@@ -129,6 +138,7 @@
     <Compile Include="SecureMessaging\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
+    <Compile Include="SmartCard\BACReader.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
@@ -160,6 +170,7 @@
     <Compile Include="SmartCard\LogedReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
