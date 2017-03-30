@@ -10,17 +10,17 @@ namespace HelloWord.BER_TLV
     // http://stackoverflow.com/questions/42450105/parsing-magtek-emv-tlv
     public class SubsequentBytes : IBinary
     {
-        private readonly IBinary _berTag;
+        private readonly IBinary _berTvl;
         private readonly byte _b5_b1_one = 0x1F; // 0b0001 0b1111
         private readonly byte _b8_one = 0x80; // 0b1000 0b0000
-        public SubsequentBytes(IBinary berTag)
+        public SubsequentBytes(IBinary berTvl)
         {
-            _berTag = berTag;
+            _berTvl = berTvl;
         }
         public byte[] Bytes()
         {
-            var firstByte = _berTag.Bytes().First();
-            var restBytes = _berTag.Bytes().Skip(1).ToArray();
+            var firstByte = _berTvl.Bytes().First();
+            var restBytes = _berTvl.Bytes().Skip(1).ToArray();
             if (HasSubsequentBytes(firstByte))
             {
                 return new ConcatenatedBinaries(

@@ -8,32 +8,33 @@ using Org.BouncyCastle.Asn1;
 
 namespace HelloWord.BER_TLV
 {
-    //public class TLV
-    //{
-    //    private readonly IBinary _binaryHex;
-    //    public TLV(IBinary binaryHex)
-    //    {
-    //        _binaryHex = binaryHex;
-    //    }
+    public class TLV
+    {
+        private readonly IBinary _binaryHex;
+        public TLV(IBinary binaryHex)
+        {
+            _binaryHex = binaryHex;
+        }
 
-    //    public IBinary Tag()
-    //    {
-    //        return new Tag(_binaryHex);
-    //    }
+        public IBinary Tag()
+        {
+            return new Tag(_binaryHex);
+        }
 
-    //    public IBinary Len()
-    //    {
-    //        return new Len(_binaryHex);
-    //    }
+        public IBinary Len()
+        {
+            return new Len(_binaryHex);
+        }
 
-    //    public IBinary Val()
-    //    {
-    //        return new Val(_binaryHex);
-    //    }
+        public IBinary Val()
+        {
+            return new Binary();
+            //return new Val(_binaryHex);
+        }
 
-    //    public IEnumerable<TLV> Data()
-    //    {
-    //        return new TLV(_binaryHex).Data();
-    //    }
-    //}
+        public IEnumerable<TLV> Data()
+        {
+            return new TLV(_binaryHex).Data();
+        }
+    }
 }

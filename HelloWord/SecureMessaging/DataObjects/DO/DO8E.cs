@@ -20,7 +20,7 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
             return new ConcatenatedBinaries(
                     new BinaryHex("8E"),
                     new HexInt(
-                        new Len(_computedCc)
+                        new Length(_computedCc)
                     ),
                     _computedCc
                 ).Bytes();

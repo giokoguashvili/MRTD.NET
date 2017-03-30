@@ -5,11 +5,11 @@ using System.Text;
 
 namespace HelloWord.Infrastructure
 {
-    public class Len : INumber
+    public class Length : INumber
     {
         private readonly IBinary _data;
 
-        public Len(IBinary data)
+        public Length(IBinary data)
         {
             _data = data;
         }

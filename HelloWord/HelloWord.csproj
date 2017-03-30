@@ -66,7 +66,7 @@
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="Infrastructure\IMtBinary.cs" />
     <Compile Include="Infrastructure\INumber.cs" />
-    <Compile Include="Infrastructure\Len.cs" />
+    <Compile Include="Infrastructure\Length.cs" />
     <Compile Include="Infrastructure\Number.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
