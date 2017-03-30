@@ -48,18 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BER-TLV\Len.cs" />
+    <Compile Include="BER-TLV\LinqExtensions.cs" />
+    <Compile Include="BER-TLV\SubsequentBytes.cs" />
+    <Compile Include="BER-TLV\Tag.cs" />
+    <Compile Include="BER-TLV\TLV.cs" />
+    <Compile Include="BER-TLV\Val.cs" />
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
     <Compile Include="DataGroups\COMData.cs" />
     <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="DataGroups\DG1Data.cs" />
-    <Compile Include="DataGroups\DGFirstFourBytes.cs" />
-    <Compile Include="DataGroups\DGLength.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
+    <Compile Include="Infrastructure\IMtBinary.cs" />
     <Compile Include="Infrastructure\INumber.cs" />
     <Compile Include="Infrastructure\Len.cs" />
     <Compile Include="Infrastructure\Number.cs" />

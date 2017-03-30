@@ -14,6 +14,16 @@ namespace HelloWord.Infrastructure
         private readonly IBinary _d;
 
         public ConcatenatedBinaries(
+                IEnumerable<byte> a,
+                IEnumerable<byte> b
+            ) : this(new Binary(a), new Binary(b), new Binary(), new Binary()) { }
+
+        public ConcatenatedBinaries(
+                byte[] a,
+                byte[] b
+            ) : this(new Binary(a), new Binary(b), new Binary(), new Binary()) { }
+
+        public ConcatenatedBinaries(
                 IBinary a,
                 IBinary b
             ) : this(a, b, new Binary(), new Binary()) { }
