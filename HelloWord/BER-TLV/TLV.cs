@@ -9,9 +9,12 @@ using Org.BouncyCastle.Asn1;
 
 namespace HelloWord.BER_TLV
 {
-    public class TLV
+    public class TLV : IBinary
     {
         private readonly IBinary _berTvl;
+
+        public TLV(IEnumerable<byte> berTlv) : this(new Binary(berTlv))
+        {}
         public TLV(IBinary berTvl)
         {
             _berTvl = berTvl;
@@ -27,33 +30,41 @@ namespace HelloWord.BER_TLV
             return new Len(_berTvl);
         }
 
-        public IBinary Val()
+        public string Val
         {
-            return new Val(_berTvl);
+            get { return new Hex(new Val(_berTvl)).ToString(); }
         }
 
-        public IEnumerable<TLV> Data()
-        {
-
-            return new TLV(_berTvl).Data();
-        }
-
-        private IBinary FirstExistingTVL()
+        public byte[] Bytes()
         {
             return new ConcatenatedBinaries(
                         Tag(),
                         Len(),
-                        Val()
-                   );
+                        new BinaryHex(Val)
+                   ).Bytes();
         }
 
-        private IEnumerable<IBinary> ExtractData(byte[] constructedBerTlv)
+        public TLV[] Data
         {
-            var firstExistingTVL = FirstExistingTVL();
-            return new List<IBinary>()
+            get
             {
-                firstExistingTVL
-            }.Concat(ExtractData(new byte[] {1}));
+                if (new Tag(_berTvl).HasConstructedData())
+                {
+                    var val = new Cached(new BinaryHex(Val));
+                    var firstExistingTLV = new TLV(val);
+                    return new List<TLV>()
+                {
+                    firstExistingTLV
+                }.Concat(
+                        new TLV(
+                                val
+                                    .Bytes()
+                                    .Skip(firstExistingTLV.Bytes().Length)
+                            ).Data
+                    ).ToArray();
+                }
+                return new TLV[0];
+            }
         }
     }
 }

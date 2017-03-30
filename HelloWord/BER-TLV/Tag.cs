@@ -12,6 +12,7 @@ namespace HelloWord.BER_TLV
     {
         private readonly IBinary _berTvl;
         private readonly byte _b5_b1_one = 0x1F; // 0b0001 0b1111
+        private readonly byte _b6_one = 0x40; // 0b0010 0b0000
         public Tag(IBinary berTvl)
         {
             _berTvl = berTvl;
@@ -19,9 +20,19 @@ namespace HelloWord.BER_TLV
         public byte[] Bytes()
         {
             return new ConcatenatedBinaries(
-                        new Binary(_berTvl.Bytes().Take(1)),      
+                        new Binary(berTlvFirstByte()),      
                         new SubsequentBytes(_berTvl)
                     ).Bytes();
+        }
+
+        private byte berTlvFirstByte()
+        {
+            return _berTvl.Bytes().FirstOrDefault();
+        }
+
+        public bool HasConstructedData()
+        {
+            return (berTlvFirstByte() & _b6_one) == _b6_one;
         }
     }
 }

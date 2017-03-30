@@ -12,14 +12,21 @@ namespace HelloWord.BER_TLV
         }
         public byte[] Bytes()
         {
+            var tag = new Tag(_berTlv);
+            var len = new Cached(
+                        new Len(_berTlv)
+                      );
+
             var valueLength = new Hex(
-                                new Len(_berTlv)
+                                len
                               ).ToInt();
+
+            var tagAndLenBytesCount = tag.Bytes().Length + len.Bytes().Length;
+            
             return _berTlv
                 .Bytes()
-                .Reverse()
+                .Skip(tagAndLenBytesCount)
                 .Take(valueLength)
-                .Reverse()
                 .ToArray();
         }
     }

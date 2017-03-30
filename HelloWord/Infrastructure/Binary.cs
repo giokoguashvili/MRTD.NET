@@ -7,6 +7,8 @@ namespace HelloWord.Infrastructure
     {
         private readonly byte[] _bytes;
 
+        public Binary(byte _byte) : this(new byte[] { _byte }) { }
+
         public Binary() : this(new byte[0]) {}
 
         public Binary(IEnumerable<byte> bytes) : this(bytes.ToArray())

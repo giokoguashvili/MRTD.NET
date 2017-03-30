@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BER-TLV\BerTLV.cs" />
+    <Compile Include="BER-TLV\IBerTLV.cs" />
     <Compile Include="BER-TLV\Len.cs" />
     <Compile Include="BER-TLV\LinqExtensions.cs" />
     <Compile Include="BER-TLV\SubsequentBytes.cs" />
