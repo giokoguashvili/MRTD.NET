@@ -58,6 +58,7 @@
     <Compile Include="BER-TLV\SubsequentBytesTests.cs" />
     <Compile Include="BER-TLV\TagTests.cs" />
     <Compile Include="BER-TLV\LenTests.cs" />
+    <Compile Include="BER-TLV\ValTests.cs" />
     <Compile Include="FakeObjects\FkKSenc.cs" />
     <Compile Include="FakeObjects\FkKSmac.cs" />
     <Compile Include="FakeObjects\FkSSC.cs" />

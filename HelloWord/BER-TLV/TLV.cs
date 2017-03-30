@@ -10,31 +10,30 @@ namespace HelloWord.BER_TLV
 {
     public class TLV
     {
-        private readonly IBinary _binaryHex;
-        public TLV(IBinary binaryHex)
+        private readonly IBinary _berTvl;
+        public TLV(IBinary berTvl)
         {
-            _binaryHex = binaryHex;
+            _berTvl = berTvl;
         }
 
         public IBinary Tag()
         {
-            return new Tag(_binaryHex);
+            return new Tag(_berTvl);
         }
 
         public IBinary Len()
         {
-            return new Len(_binaryHex);
+            return new Len(_berTvl);
         }
 
         public IBinary Val()
         {
-            return new Binary();
-            //return new Val(_binaryHex);
+            return new Val(_berTvl);
         }
 
         public IEnumerable<TLV> Data()
         {
-            return new TLV(_binaryHex).Data();
+            return new TLV(_berTvl).Data();
         }
     }
 }
