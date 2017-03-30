@@ -13,22 +13,17 @@ namespace UnitTests.BER_TLV
         private readonly IBinary _cachedTag;
         private readonly IBinary _cachedLen;
         private readonly IBinary _cachedVal;
-        private readonly byte _b6_one = 0x20; // 0b0010 0b0000
         private readonly IBinary _cachedTlv;
-
+        private readonly byte _b6_one = 0x20; // 0b0010 0b0000
         public BerTLV(byte[] bytes)
-            : this(new Binary(bytes))
-        {
-        }
+            : this(new Binary(bytes)) {}
 
         public BerTLV(string hexString) 
             : this(
                         new Cached(
                             new BinaryHex(hexString)
                         )
-                  )
-        { 
-        }
+                  ) {}
         public BerTLV(IBinary berTlv)
         {
             _cachedTag = new CachedTag(berTlv);
@@ -39,7 +34,7 @@ namespace UnitTests.BER_TLV
                                     _cachedTag,
                                     _cachedLen,
                                     _cachedVal
-                               )
+                            )
                           );
         }
 
@@ -56,47 +51,6 @@ namespace UnitTests.BER_TLV
         public byte[] Bytes()
         {
             return _cachedTlv.Bytes();
-        }
-    }
-
-    public class ConstructedTLV
-    {
-        private readonly IBinary _constructedTLV;
-        private readonly IBinary _cachedFirstExistingTLV;
-
-        public ConstructedTLV(IBinary constructedTLV)
-        {
-            _constructedTLV = constructedTLV;
-            _cachedFirstExistingTLV = new BerTLV(_constructedTLV);
-        }
-
-        private IBerTLV[] First()
-        {
-            return new IBerTLV[1] { new BerTLV(_cachedFirstExistingTLV) };
-        }
-
-        private IBinary Rest()
-        {
-            return new Binary(
-                    _constructedTLV
-                        .Bytes()
-                        .Skip(_cachedFirstExistingTLV.Bytes().Length)
-                );
-        }
-
-        public IBerTLV[] Data()
-        {
-            if (new Length(Rest()).IsEmpty())
-            {
-                return First();
-            }
-
-            return First()
-                .Concat(
-                    new ConstructedTLV(
-                        Rest()
-                    ).Data()
-                ).ToArray();
         }
     }
 }

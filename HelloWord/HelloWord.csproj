@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BER-TLV\BerTLV.cs" />
+    <Compile Include="BER-TLV\ConstructedTLV.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedLen.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedTag.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />

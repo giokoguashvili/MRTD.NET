@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HelloWord.Infrastructure
 {
-    public class Binary : IBinary
+    public class Binary : IBinary, INumber
     {
         private readonly byte[] _bytes;
 
@@ -13,6 +14,7 @@ namespace HelloWord.Infrastructure
 
         public Binary(IEnumerable<byte> bytes) : this(bytes.ToArray())
         {}
+
         public Binary(byte[] bytes)
         {
             this._bytes = bytes;
@@ -20,6 +22,21 @@ namespace HelloWord.Infrastructure
         public byte[] Bytes()
         {
             return this._bytes;
+        }
+
+        public bool Is(int len)
+        {
+            return Value() == len;
+        }
+
+        public bool IsEmpty()
+        {
+            return Is(0);
+        }
+
+        public int Value()
+        {
+            return _bytes.Length;
         }
     }
 }
