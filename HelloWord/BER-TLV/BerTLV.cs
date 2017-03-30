@@ -14,6 +14,7 @@ namespace UnitTests.BER_TLV
         private readonly IBinary _cachedLen;
         private readonly IBinary _cachedVal;
         private readonly byte _b6_one = 0x20; // 0b0010 0b0000
+        private readonly IBinary _cachedTlv;
 
         public BerTLV(byte[] bytes)
             : this(new Binary(bytes))
@@ -22,24 +23,24 @@ namespace UnitTests.BER_TLV
 
         public BerTLV(string hexString) 
             : this(
-                    new Cached(
-                        new BinaryHex(hexString)
-                    )
+                        new Cached(
+                            new BinaryHex(hexString)
+                        )
                   )
         { 
         }
         public BerTLV(IBinary berTlv)
         {
-            var tag = new Hex(new Tag(berTlv)).ToString();
-            _cachedTag = new Cached(
-                            new Tag(berTlv)
-                         );
-            _cachedLen = new Cached(
-                            new Len(berTlv)
-                         );
-            _cachedVal = new Cached(
-                            new Val(berTlv)
-                         );
+            _cachedTag = new CachedTag(berTlv);
+            _cachedLen = new CachedLen(berTlv, _cachedTag);
+            _cachedVal = new CachedVal(berTlv, _cachedTag, _cachedLen);
+            _cachedTlv = new Cached(
+                            new ConcatenatedBinaries(
+                                    _cachedTag,
+                                    _cachedLen,
+                                    _cachedVal
+                               )
+                          );
         }
 
         public string Tag => new Hex(_cachedTag).ToString();
@@ -54,11 +55,7 @@ namespace UnitTests.BER_TLV
 
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
-                        _cachedTag,
-                        _cachedLen,
-                        _cachedVal
-                   ).Bytes();
+            return _cachedTlv.Bytes();
         }
     }
 
@@ -67,24 +64,15 @@ namespace UnitTests.BER_TLV
         private readonly IBinary _constructedTLV;
         private readonly IBinary _cachedFirstExistingTLV;
 
-        private readonly IBinary _cachedTag;
-        private readonly IBinary _cachedLen;
-        private readonly IBinary _cachedVal;
-
         public ConstructedTLV(IBinary constructedTLV)
         {
             _constructedTLV = constructedTLV;
-            _cachedFirstExistingTLV = new Cached(
-                                         new BerTLV(_constructedTLV)
-                                            .Bytes()
-                                      );
+            _cachedFirstExistingTLV = new BerTLV(_constructedTLV);
         }
 
-        private IBerTLV First()
+        private IBerTLV[] First()
         {
-            return new BerTLV(
-                        _cachedFirstExistingTLV
-                   );
+            return new IBerTLV[1] { new BerTLV(_cachedFirstExistingTLV) };
         }
 
         private IBinary Rest()
@@ -98,11 +86,12 @@ namespace UnitTests.BER_TLV
 
         public IBerTLV[] Data()
         {
-            var result = new IBerTLV[1] { First() };
+            if (new Length(Rest()).IsEmpty())
+            {
+                return First();
+            }
 
-            if (Rest().Bytes().Length == 0) return result;
-
-            return result
+            return First()
                 .Concat(
                     new ConstructedTLV(
                         Rest()

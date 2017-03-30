@@ -23,13 +23,9 @@ namespace HelloWord.BER_TLV
             var restBytes = _berTvl.Bytes().Skip(1).ToArray();
             if (HasSubsequentBytes(firstByte))
             {
-                return new ConcatenatedBinaries(
-                            restBytes
-                                .TakeWhile(IsSubsequentByte),
-                            restBytes
-                                .SkipWhile(IsSubsequentByte)
-                                .Take(1)
-                       ).Bytes();
+                return restBytes
+                    .TakeWhileWithIncludingLast(IsSubsequentByte)
+                    .ToArray();
             }
 
             return new byte[0];

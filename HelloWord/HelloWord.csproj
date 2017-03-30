@@ -49,13 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BER-TLV\BerTLV.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedLen.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedTag.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />
     <Compile Include="BER-TLV\IBerTLV.cs" />
-    <Compile Include="BER-TLV\Len.cs" />
-    <Compile Include="BER-TLV\LinqExtensions.cs" />
+    <Compile Include="BER-TLV\TVL\Len.cs" />
+    <Compile Include="Infrastructure\LinqExtensions.cs" />
     <Compile Include="BER-TLV\SubsequentBytes.cs" />
-    <Compile Include="BER-TLV\Tag.cs" />
-    <Compile Include="BER-TLV\TLV.cs" />
-    <Compile Include="BER-TLV\Val.cs" />
+    <Compile Include="BER-TLV\TVL\Tag.cs" />
+    <Compile Include="BER-TLV\TVL\Val.cs" />
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="DataGroups\DG1Data.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
+    <Compile Include="Infrastructure\DevidedBinary.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="Infrastructure\IMtBinary.cs" />

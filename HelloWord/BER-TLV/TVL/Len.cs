@@ -14,15 +14,25 @@ namespace HelloWord.BER_TLV
     public class Len : IBinary
     {
         private readonly IBinary _berTvl;
+        private readonly IBinary _cachedTag;
         private readonly byte _b8_one = 0x80; // 0b1000 0b000
         private readonly byte _all_one = 0xFF;// 0b1111 0b1111
         public Len(IBinary berTvl)
+             : this(berTvl, new CachedTag(berTvl))
+        {
+        }
+        public Len(
+                IBinary berTvl,
+                IBinary tag
+            )
         {
             _berTvl = berTvl;
+            _cachedTag = tag;
         }
+
         public byte[] Bytes()
         {
-            var berTvlTagLength = new Tag(_berTvl).Bytes().Length;
+            var berTvlTagLength = _cachedTag.Bytes().Length;
             var berTvlWithoutTag = _berTvl
                                         .Bytes()
                                         .Skip(berTvlTagLength)
@@ -46,7 +56,8 @@ namespace HelloWord.BER_TLV
         {
             return new[] { (byte)(firstByteOfBerTvlWithoutTag & _all_one) };
         }
-        public bool IsLongFormOfLen(byte firstByteOfBerTvlWithoutTag)
+
+        private bool IsLongFormOfLen(byte firstByteOfBerTvlWithoutTag)
         {
             return (firstByteOfBerTvlWithoutTag & _b8_one) == _b8_one;
         }
