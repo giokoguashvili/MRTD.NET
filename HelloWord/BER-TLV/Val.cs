@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.BER_TLV
 {
     public class Val : IBinary
     {
-        private readonly IBinary _berTvl;
-        public Val(IBinary berTvl)
+        private readonly IBinary _berTlv;
+        public Val(IBinary berTlv)
         {
-            _berTvl = berTvl;
+            _berTlv = berTlv;
         }
         public byte[] Bytes()
         {
             var valueLength = new Hex(
-                                new Len(_berTvl)
+                                new Len(_berTlv)
                               ).ToInt();
-            return _berTvl
+            return _berTlv
                 .Bytes()
                 .Reverse()
                 .Take(valueLength)

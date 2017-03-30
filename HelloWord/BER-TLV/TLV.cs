@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HelloWord.Infrastructure;
+using HelloWord.ISO7816.CommandAPDU.Body;
 using Org.BouncyCastle.Asn1;
 
 namespace HelloWord.BER_TLV
@@ -33,7 +34,26 @@ namespace HelloWord.BER_TLV
 
         public IEnumerable<TLV> Data()
         {
+
             return new TLV(_berTvl).Data();
+        }
+
+        private IBinary FirstExistingTVL()
+        {
+            return new ConcatenatedBinaries(
+                        Tag(),
+                        Len(),
+                        Val()
+                   );
+        }
+
+        private IEnumerable<IBinary> ExtractData(byte[] constructedBerTlv)
+        {
+            var firstExistingTVL = FirstExistingTVL();
+            return new List<IBinary>()
+            {
+                firstExistingTVL
+            }.Concat(ExtractData(new byte[] {1}));
         }
     }
 }
