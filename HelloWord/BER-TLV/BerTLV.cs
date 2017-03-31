@@ -37,15 +37,16 @@ namespace HelloWord
                           );
         }
 
-        public string Tag => new Hex(_cachedTag).ToString();
+        public string Tag { get { return new Hex(_cachedTag).ToString(); } } 
 
-        public string Len => new Hex(_cachedLen).ToString();
+        public string Len { get { return new Hex(_cachedLen).ToString(); } } 
 
-        public string Val => new Hex(_cachedVal).ToString();
+        public string Val { get { return new Hex(_cachedVal).ToString(); } }
+        
 
-        public IBerTLV[] Data => HasConstructedData ? new ConstructedTLV(_cachedVal).Data() : new IBerTLV[0];
+        public IBerTLV[] Data { get { return HasConstructedData ? new ConstructedTLV(_cachedVal).Data() : new IBerTLV[0]; } } 
 
-        private bool HasConstructedData => (_cachedTag.Bytes().First() & _b6_one) == _b6_one;
+        private bool HasConstructedData { get { return (_cachedTag.Bytes().First() & _b6_one) == _b6_one; } }
 
         public byte[] Bytes()
         {
