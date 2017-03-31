@@ -1,4 +1,5 @@
-﻿using HelloWord.Infrastructure;
+﻿using System;
+using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 
@@ -25,13 +26,14 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            return new SecureMessagingPipe(
-                        _FID,
-                        _kSenc,
-                        _kSmac,
-                        _ssc,
-                        _reader
-                   ).Bytes();
+            throw new NotImplementedException();
+            //return new SecureMessagingPipe(
+            //            _FID,
+            //            _kSenc,
+            //            _kSmac,
+            //            _ssc,
+            //            _reader
+            //       ).Bytes();
         }
     }
 }

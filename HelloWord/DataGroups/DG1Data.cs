@@ -19,13 +19,16 @@ namespace HelloWord.DataGroups
         public override string ToString()
         {
 
-            ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_dg1Data).ToString());
+            //ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_dg1Data).ToString());
+            var berTlv = new BerTLV(_dg1Data);
             return Encoding.ASCII
                 .GetString(
-                    _dg1Data
-                    .Bytes()
-                    .Skip(5)
-                    .ToArray()
+                    new BinaryHex(
+                        berTlv
+                            .Data
+                            .First()
+                            .Val
+                    ).Bytes()
                 );
         }
     }

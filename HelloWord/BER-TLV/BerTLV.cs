@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
 
@@ -11,6 +12,8 @@ namespace HelloWord
         private readonly IBinary _cachedVal;
         private readonly IBinary _cachedTlv;
         private readonly byte _b6_one = 0x20; // 0b0010 0b0000
+        public BerTLV(IEnumerable<byte> bytes)
+            : this(new Binary(bytes)) { }
         public BerTLV(byte[] bytes)
             : this(new Binary(bytes)) {}
 
@@ -26,11 +29,11 @@ namespace HelloWord
             _cachedLen = new CachedLen(berTlv, _cachedTag);
             _cachedVal = new CachedVal(berTlv, _cachedTag, _cachedLen);
             _cachedTlv = new Cached(
-                            new ConcatenatedBinaries(
-                                    _cachedTag,
-                                    _cachedLen,
-                                    _cachedVal
-                            )
+                                new ConcatenatedBinaries(
+                                        _cachedTag,
+                                        _cachedLen,
+                                        _cachedVal
+                                )
                           );
         }
 
