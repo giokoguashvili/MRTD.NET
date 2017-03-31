@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
 
@@ -15,18 +16,21 @@ namespace HelloWord.DataGroups.DG
 
         public override string ToString()
         {
-
-            //ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_dg1Data).ToString());
+            var str = new Hex(_dg1Data).ToString();
+           // ICollection<Tlv> tlvs = Tlv.ParseTlv(str);
             var berTlv = new BerTLV(_dg1Data);
-            return Encoding.ASCII
+            var res = Encoding.UTF8
                 .GetString(
                     new BinaryHex(
+                        //((HelloWord.BerTLV)berTlv.Data[3]).Val
                         berTlv
                             .Data
                             .First()
                             .Val
                     ).Bytes()
                 );
+
+            return res;
         }
     }
 }

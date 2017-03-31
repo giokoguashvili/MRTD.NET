@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BerTlv;
 using HelloWord.Infrastructure;
 
 namespace HelloWord.DataGroups.DG
@@ -18,7 +17,7 @@ namespace HelloWord.DataGroups.DG
         public override string ToString()
         {
 
-            ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_comData).ToString());
+           // ICollection<Tlv> tlvs = Tlv.ParseTlv(new Hex(_comData).ToString());
             return Encoding.ASCII
                 .GetString(
                     _comData

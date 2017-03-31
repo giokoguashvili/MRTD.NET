@@ -19,10 +19,16 @@ namespace HelloWord.Infrastructure
 
         public byte[] Bytes()
         {
+            var hex = _number
+                .Value()
+                .ToString("X2");
+
+            if (hex.Length % 2 != 0)
+            {
+                hex = "0" + hex;
+            }
             return new BinaryHex(
-                    _number
-                        .Value()
-                        .ToString("X2")
+                    hex
                 ).Bytes();
         }
     }

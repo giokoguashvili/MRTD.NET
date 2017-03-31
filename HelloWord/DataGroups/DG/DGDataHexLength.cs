@@ -45,8 +45,8 @@ namespace HelloWord.DataGroups.DG
                                        
                                         .Take(firstFourByteForDGStructureLength)
                                 );
-            var tagBytesCount = parsedBerTLV.Tag.Length;
-            var lenBytesCount = parsedBerTLV.Len.Length;
+            var tagBytesCount = parsedBerTLV.Tag.Length / 2;
+            var lenBytesCount = parsedBerTLV.Len.Length / 2;
 
             var berTlvValueLength = new Hex(
                                         new BinaryHex(

@@ -36,19 +36,23 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
+
+            var com = new ProtectedCommandApdu(
+                new Cached(
+                    new ReadBinaryCommandApdu(_startByteIntex, _bytesCountForRead)
+                ),
+                _kSenc,
+                _kSmac,
+                new Cached(_selfIncrementSsc.Bytes())
+            );
+            var len = com.Bytes().Length;
+
             var result = new DecryptedProtectedResponseApdu(
                        new Cached(
                            new VerifiedProtectedResponseApdu(
                                new Cached(
                                    new ExecutedCommandApdu(
-                                       new ProtectedCommandApdu(
-                                           new Cached(
-                                               new ReadBinaryCommandApdu(_startByteIntex, _bytesCountForRead)
-                                           ),
-                                           _kSenc,
-                                           _kSmac,
-                                           new Cached(_selfIncrementSsc.Bytes())
-                                       ),
+                                       com,
                                        _reader
                                    )
                                ),
@@ -61,7 +65,7 @@ namespace HelloWord.SecureMessaging
                    .Bytes()
                    .Take(_bytesCountForRead)
                    .ToArray();
-
+          
             return result;
         }
     }

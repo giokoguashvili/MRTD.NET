@@ -29,6 +29,7 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
+            var s = _do87.Bytes();
             var commandData = new ConcatenatedBinaries(
                                     _do87,
                                     _do97,

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using System.Text;
-using BerTlv;
 using HelloWord.Commands;
 using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
@@ -54,22 +53,17 @@ namespace HelloWord.SecureMessaging
                 _kSmac
             ).Bytes();
 
+            var step = 64;
             var range = Enumerable
                 .Range(0, _bytesCountForRead)
-                .Where(index => index % 128 == 0)
+                .Where(index => index % step == 0)
                 .Select(index => new
                 {
                     StartIndex = index,
-                    Count = index + 128 < _bytesCountForRead ? 128 : _bytesCountForRead % 128
-                }).ToList();
-            return Enumerable
-                    .Range(0, _bytesCountForRead)
-                    .Where(index => index % 128 == 0)
-                    .Select(index => new
-                    {
-                        StartIndex = index,
-                        Count = index + 128 < _bytesCountForRead ? 128 : _bytesCountForRead % 128
-                    })
+                    Count = index + step < _bytesCountForRead ? step : _bytesCountForRead % step
+                });
+
+            return range
                     .Aggregate(
                         new byte[0],
                         (prev, next) => prev.Concat(
@@ -85,7 +79,7 @@ namespace HelloWord.SecureMessaging
                                         ).ToArray()
                         );
 
-            //return new DecryptedProtectedResponseApdu(
+            //var f1 = new DecryptedProtectedResponseApdu(
             //            new Cached(
             //                new VerifiedProtectedResponseApdu(
             //                    new Cached(
@@ -108,6 +102,108 @@ namespace HelloWord.SecureMessaging
             //        .Bytes()
             //        .Take(_bytesCountForRead)
             //        .ToArray();
+
+            var f2= new DecryptedProtectedResponseApdu(
+                        new Cached(
+                            new VerifiedProtectedResponseApdu(
+                                new Cached(
+                                    new ExecutedCommandApdu(
+                                        new ProtectedCommandApdu(
+                                            new ReadBinaryCommandApdu(0, 64),
+                                            _kSenc,
+                                            _kSmac,
+                                            new Cached(_selfIncrementSsc.Bytes())
+                                        ),
+                                        _reader
+                                    )
+                                ),
+                                new Cached(_selfIncrementSsc.Bytes()),
+                                _kSmac
+                            )
+                        ),
+                        _kSenc
+                    )
+                    .Bytes()
+                    .Take(127)
+                    .ToArray();
+
+            //var f3 = new DecryptedProtectedResponseApdu(
+            //                new Cached(
+            //                    new VerifiedProtectedResponseApdu(
+            //                        new Cached(
+            //                            new ExecutedCommandApdu(
+            //                                new ProtectedCommandApdu(
+            //                                    new ReadBinaryCommandApdu(127, 127),
+            //                                    _kSenc,
+            //                                    _kSmac,
+            //                                    new Cached(_selfIncrementSsc.Bytes())
+            //                                ),
+            //                                _reader
+            //                            )
+            //                        ),
+            //                        new Cached(_selfIncrementSsc.Bytes()),
+            //                        _kSmac
+            //                    )
+            //                ),
+            //                _kSenc
+            //            )
+            //            .Bytes()
+            //            .Take(127)
+            //            .ToArray();
+
+            //var readCommand = new ReadBinaryCommandApdu(2 * 127, 127).Bytes();
+            //var f4 = new DecryptedProtectedResponseApdu(
+            //            new Cached(
+            //                new VerifiedProtectedResponseApdu(
+            //                    new Cached(
+            //                        new ExecutedCommandApdu(
+            //                            new ProtectedCommandApdu(
+            //                                new Binary(readCommand), 
+            //                                _kSenc,
+            //                                _kSmac,
+            //                                new Cached(_selfIncrementSsc.Bytes())
+            //                            ),
+            //                            _reader
+            //                        )
+            //                    ),
+            //                    new Cached(_selfIncrementSsc.Bytes()),
+            //                    _kSmac
+            //                )
+            //            ),
+            //            _kSenc
+            //        )
+            //        .Bytes()
+            //        .Take(127)
+            //        .ToArray();
+
+
+            //var readCommand5 = new ReadBinaryCommandApdu(3 * 127, 127).Bytes();
+            //var f5 = new DecryptedProtectedResponseApdu(
+            //            new Cached(
+            //                new VerifiedProtectedResponseApdu(
+            //                    new Cached(
+            //                        new ExecutedCommandApdu(
+            //                            new ProtectedCommandApdu(
+            //                                new Binary(readCommand),
+            //                                _kSenc,
+            //                                _kSmac,
+            //                                new Cached(_selfIncrementSsc.Bytes())
+            //                            ),
+            //                            _reader
+            //                        )
+            //                    ),
+            //                    new Cached(_selfIncrementSsc.Bytes()),
+            //                    _kSmac
+            //                )
+            //            ),
+            //            _kSenc
+            //        )
+            //        .Bytes()
+            //        .Take(127)
+            //        .ToArray();
+
+
+            return f2;
         }
     }
 }

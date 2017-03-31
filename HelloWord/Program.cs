@@ -17,6 +17,12 @@ namespace HelloWord
     {
         static void Main(string[] args)
         {
+            //var contextFactory = ContextFactory.Instance;
+            //var context = contextFactory.Establish(SCardScope.System);
+
+
+            //var readerNames = context.GetReaders();
+
 
             var contextFactory = ContextFactory.Instance;
             SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
@@ -112,7 +118,7 @@ namespace HelloWord
 
                     var kSenc = new KSenc(kSeedIc);
                     var kSmac = new KSmac(kSeedIc);
-                    var selfIncrementSsc = 
+                    var selfIncrementSsc =
                                 new SelfIncrementSSC(
                                     new Cached(
                                         new SSC(
@@ -121,7 +127,7 @@ namespace HelloWord
                                         )
                                     )
                                 );
-                                
+
 
                     //var com =
                     //    new Cached(
@@ -144,7 +150,7 @@ namespace HelloWord
                     //     new COMData(com)
                     // );
 
-                    var dg1 = 
+                    var dg1 =
                         new Cached(
                             new DG1(
                                 kSenc,

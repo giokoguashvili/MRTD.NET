@@ -110,6 +110,7 @@
     <Compile Include="ExtractedDO87Tests.cs" />
     <Compile Include="ExtractedDO99Tests.cs" />
     <Compile Include="ExtractedDO8ETests.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
