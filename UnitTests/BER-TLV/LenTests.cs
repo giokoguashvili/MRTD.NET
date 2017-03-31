@@ -8,9 +8,10 @@ namespace UnitTests
     public class LenTests
     {
         [Test]
-        [TestCase("1FBB", "5F1B821FBB")]
+        [TestCase("001FBB", "5F1B821FBB")]
         [TestCase("02", "6002")]
         [TestCase("08", "9908")]
+        [TestCase("001FDA", "75821FDA7F")]
         public void Extract_Len_from_BER_TLV(string exc, string berTvl)
         {
             Assert.AreEqual(

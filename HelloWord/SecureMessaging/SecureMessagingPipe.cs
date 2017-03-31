@@ -54,61 +54,60 @@ namespace HelloWord.SecureMessaging
                 _kSmac
             ).Bytes();
 
-            //var lackingLength = new Hex(
-            //                        new BinaryHex(
-            //                            new BerTLV(
-            //                                firstFourBytes
-            //                                    .Bytes()
-            //                                    .Take(4)
-            //                            ).Len
-            //                        )
-            //                    ).ToInt() - 2;
+            var range = Enumerable
+                .Range(0, _bytesCountForRead)
+                .Where(index => index % 128 == 0)
+                .Select(index => new
+                {
+                    StartIndex = index,
+                    Count = index + 128 < _bytesCountForRead ? 128 : _bytesCountForRead % 128
+                }).ToList();
+            return Enumerable
+                    .Range(0, _bytesCountForRead)
+                    .Where(index => index % 128 == 0)
+                    .Select(index => new
+                    {
+                        StartIndex = index,
+                        Count = index + 128 < _bytesCountForRead ? 128 : _bytesCountForRead % 128
+                    })
+                    .Aggregate(
+                        new byte[0],
+                        (prev, next) => prev.Concat(
+                                            new ReadedBytesRange(
+                                                    next.StartIndex,
+                                                    next.Count,
+                                                    _kSenc,
+                                                    _kSmac,
+                                                    _selfIncrementSsc,
+                                                    _reader
+                                                )
+                                                .Bytes()
+                                        ).ToArray()
+                        );
 
-            //var lastBytes = new DecryptedProtectedResponseApdu(
+            //return new DecryptedProtectedResponseApdu(
+            //            new Cached(
+            //                new VerifiedProtectedResponseApdu(
             //                    new Cached(
-            //                        new VerifiedProtectedResponseApdu(
-            //                            new Cached(
-            //                                new ExecutedCommandApdu(
-            //                                    new ProtectedCommandApdu(
-            //                                        new ReadBinaryCommandApdu(4, lackingLength),
-            //                                        _kSenc,
-            //                                        _kSmac,
-            //                                        new Cached(_selfIncrementSsc.Bytes())
-            //                                    ),
-            //                                    _reader
-            //                                )
+            //                        new ExecutedCommandApdu(
+            //                            new ProtectedCommandApdu(
+            //                                new ReadBinaryCommandApdu(0, _bytesCountForRead),
+            //                                _kSenc,
+            //                                _kSmac,
+            //                                new Cached(_selfIncrementSsc.Bytes())
             //                            ),
-            //                            new Cached(_selfIncrementSsc.Bytes()),
-            //                            _kSmac
-            //                         )
-            //                     ),
-            //                    _kSenc
-            //                );
-
-
-            return new DecryptedProtectedResponseApdu(
-                        new Cached(
-                            new VerifiedProtectedResponseApdu(
-                                new Cached(
-                                    new ExecutedCommandApdu(
-                                        new ProtectedCommandApdu(
-                                            new ReadBinaryCommandApdu(0, _bytesCountForRead),
-                                            _kSenc,
-                                            _kSmac,
-                                            new Cached(_selfIncrementSsc.Bytes())
-                                        ),
-                                        _reader
-                                    )
-                                ),
-                                new Cached(_selfIncrementSsc.Bytes()),
-                                _kSmac
-                            )
-                        ),
-                        _kSenc
-                    )
-                    .Bytes()
-                    .Take(_bytesCountForRead)
-                    .ToArray();
+            //                            _reader
+            //                        )
+            //                    ),
+            //                    new Cached(_selfIncrementSsc.Bytes()),
+            //                    _kSmac
+            //                )
+            //            ),
+            //            _kSenc
+            //        )
+            //        .Bytes()
+            //        .Take(_bytesCountForRead)
+            //        .ToArray();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace HelloWord.DataGroups.DG
         private readonly IBinary _ssc;
         private readonly IReader _reader;
 
-        private readonly int firstFourByteForDGStructureLength = 4;
+        private readonly int firstFourByteForDGStructureLength = 5;
 
         public DGDataHexLength(
                 IBinary applicationIdentifier,
@@ -38,11 +38,11 @@ namespace HelloWord.DataGroups.DG
                         _kSmac,
                         _ssc,
                         _reader
-                   );
+                   ).Bytes();
 
             var parsedBerTLV = new BerTLV(
                                     firstFourBytes
-                                        .Bytes()
+                                       
                                         .Take(firstFourByteForDGStructureLength)
                                 );
             var tagBytesCount = parsedBerTLV.Tag.Length;

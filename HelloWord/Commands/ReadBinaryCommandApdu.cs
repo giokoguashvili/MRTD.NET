@@ -24,13 +24,14 @@ namespace HelloWord.Commands
 
         public byte[] Bytes()
         {
-            var offsetLength = new HexInt(_offsetLength).Bytes().First();
+            var offsetMSB = new HexInt(_offsetLength).Bytes().First();
+            var offsetLSB = new HexInt(_offsetLength + _expectedDataLength).Bytes().First();
             return new CommandApdu(this._isoCase, this._activeProtocol)
             {
                 CLA = 0x00,
                 Instruction = InstructionCode.ReadBinary,
                 P1 = 0x00,
-                P2 = offsetLength, //new BinaryHex(_offsetLength.ToString("X2")).Bytes().First(),
+                P2 = offsetMSB, //new BinaryHex(_offsetLength.ToString("X2")).Bytes().First(),
                 Le = _expectedDataLength
             }.ToArray();
         }

@@ -59,5 +59,28 @@ namespace UnitTests
                      parsedTvl.Data[1].Data[1].Val
                 );
         }
+
+        //75 82 1FDA 7F
+
+        [Test]
+        public void Parse_BER_TLV_2()
+        {
+            var parsedTvl = new BerTLV(
+                                new BinaryHex("75821FDA7F")
+                            );
+
+            Assert.AreEqual(
+                    "75",
+                    parsedTvl.Tag
+                );
+            Assert.AreEqual(
+                    "001FDA",
+                    parsedTvl.Len
+                );
+            Assert.AreEqual(
+                    "7F",
+                    parsedTvl.Val
+                );
+        }
     }
 }

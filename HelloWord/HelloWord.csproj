@@ -147,6 +147,7 @@
     <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
+    <Compile Include="SecureMessaging\ReadedBytesRange.cs" />
     <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />
     <Compile Include="SecureMessaging\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
