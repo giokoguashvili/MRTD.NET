@@ -55,8 +55,8 @@
     <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />
     <Compile Include="BER-TLV\IBerTLV.cs" />
     <Compile Include="BER-TLV\TVL\Len.cs" />
-    <Compile Include="DataGroups\DGContent.cs" />
-    <Compile Include="DataGroups\DGContentHexLength.cs" />
+    <Compile Include="DataGroups\DG\DGData.cs" />
+    <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="Infrastructure\LinqExtensions.cs" />
     <Compile Include="BER-TLV\SubsequentBytes.cs" />
     <Compile Include="BER-TLV\TVL\Tag.cs" />
@@ -64,9 +64,9 @@
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
-    <Compile Include="DataGroups\COMData.cs" />
+    <Compile Include="DataGroups\DG\COMData.cs" />
     <Compile Include="DataGroups\DG1.cs" />
-    <Compile Include="DataGroups\DG1Data.cs" />
+    <Compile Include="DataGroups\DG\DG1Content.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\DevidedBinary.cs" />

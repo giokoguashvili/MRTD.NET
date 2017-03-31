@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
@@ -29,7 +30,7 @@ namespace HelloWord.DataGroups
         }
         public byte[] Bytes()
         {
-            return new DGContent(
+            return new DGData(
                         _FID,
                         _kSenc,
                         _kSmac,

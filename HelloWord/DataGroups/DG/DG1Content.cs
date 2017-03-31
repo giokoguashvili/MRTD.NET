@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text;
-using BerTlv;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.DataGroups
+namespace HelloWord.DataGroups.DG
 {
-    public class DG1Data 
+    public class DG1Content 
     {
         private readonly IBinary _dg1Data;
 
-        public DG1Data(IBinary dg1Data)
+        public DG1Content(IBinary dg1Data)
         {
             _dg1Data = dg1Data;
         }

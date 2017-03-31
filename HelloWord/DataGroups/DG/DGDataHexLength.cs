@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 
-namespace HelloWord.DataGroups
+namespace HelloWord.DataGroups.DG
 {
-    public class DGContentHexLength : IBinary
+    public class DGDataHexLength : IBinary
     {
         private readonly IBinary _applicationIdentifier;
         private readonly IBinary _kSenc;
@@ -19,7 +15,7 @@ namespace HelloWord.DataGroups
 
         private readonly int firstFourByteForDGStructureLength = 4;
 
-        public DGContentHexLength(
+        public DGDataHexLength(
                 IBinary applicationIdentifier,
                 IBinary kSenc,
                 IBinary kSmac,

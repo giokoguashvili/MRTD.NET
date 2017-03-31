@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 
-namespace HelloWord.DataGroups
+namespace HelloWord.DataGroups.DG
 {
-    public class DGContent : IBinary
+    public class DGData : IBinary
     {
         private readonly IBinary _applicationIdentifier;
         private readonly IReader _reader;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _ssc;
-        public DGContent(
+        public DGData(
                 IBinary applicationIdentifier,
                 IBinary kSenc,
                 IBinary kSmac,
@@ -35,7 +30,7 @@ namespace HelloWord.DataGroups
             return new SecureMessagingPipe(
                         _applicationIdentifier,
                         new Hex(
-                            new DGContentHexLength(
+                            new DGDataHexLength(
                                 _applicationIdentifier,
                                 _kSenc,
                                 _kSmac,

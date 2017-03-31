@@ -6,6 +6,7 @@ using HelloWord.SmartCard;
 using HelloWord.Commands;
 using HelloWord.Cryptography.RandomKeys;
 using HelloWord.DataGroups;
+using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
@@ -165,7 +166,7 @@ namespace HelloWord
                        );
                     Console.Write(
                            "\nDG1 Data: {0}\n",
-                           new DG1Data(dg1)
+                           new DG1Content(dg1)
                        );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
