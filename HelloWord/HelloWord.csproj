@@ -34,34 +34,41 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BerTlv, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BerTlv.NET.1.0.1\lib\net45\BerTlv.dll</HintPath>
-    </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
-      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="pcsc-sharp, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PCSC.3.6.0\lib\net40\pcsc-sharp.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\pcsc-sharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BER-TLV\Len.cs" />
-    <Compile Include="BER-TLV\LinqExtensions.cs" />
+    <Compile Include="BER-TLV\BerTLV.cs" />
+    <Compile Include="BER-TLV\ConstructedTLV.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedLen.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedTag.cs" />
+    <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />
+    <Compile Include="BER-TLV\IBerTLV.cs" />
+    <Compile Include="BER-TLV\TVL\Len.cs" />
+    <Compile Include="DataGroups\DG\DGData.cs" />
+    <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
+    <Compile Include="Infrastructure\LinqExtensions.cs" />
     <Compile Include="BER-TLV\SubsequentBytes.cs" />
-    <Compile Include="BER-TLV\Tag.cs" />
-    <Compile Include="BER-TLV\TLV.cs" />
-    <Compile Include="BER-TLV\Val.cs" />
+    <Compile Include="BER-TLV\TVL\Tag.cs" />
+    <Compile Include="BER-TLV\TVL\Val.cs" />
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
-    <Compile Include="DataGroups\COMData.cs" />
+    <Compile Include="DataGroups\DG\COMData.cs" />
     <Compile Include="DataGroups\DG1.cs" />
-    <Compile Include="DataGroups\DG1Data.cs" />
+    <Compile Include="DataGroups\DG\DG1Content.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\ChainedCommand.cs" />
+    <Compile Include="Infrastructure\DevidedBinary.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="Infrastructure\IMtBinary.cs" />
@@ -139,6 +146,7 @@
     <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
+    <Compile Include="SecureMessaging\ReadedBytesRange.cs" />
     <Compile Include="SecureMessaging\SecureMessagingCommandFactory.cs" />
     <Compile Include="SecureMessaging\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />

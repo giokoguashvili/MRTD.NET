@@ -1,9 +1,8 @@
-﻿using System;
-using HelloWord.BER_TLV;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
+using HelloWord.TVL;
 using NUnit.Framework;
 
-namespace UnitTests.BER_TLV
+namespace UnitTests
 {
     [TestFixture]
     public class ValTests
@@ -11,6 +10,7 @@ namespace UnitTests.BER_TLV
         [Test]
         [TestCase("AABB", "5F1B02AABB")]
         [TestCase("BB", "5F1B01BB")]
+        [TestCase("7F", "758200017F")]
         public void Extract_Val_from_BER_TLV(string exc, string berTlv)
         {
             Assert.AreEqual(

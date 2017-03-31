@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.TVL.Cached;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord.TVL
 {
     /// <summary>
     /// ISO 7816-4 Annex D.3: Length field
@@ -14,15 +11,25 @@ namespace HelloWord.BER_TLV
     public class Len : IBinary
     {
         private readonly IBinary _berTvl;
+        private readonly IBinary _cachedTag;
         private readonly byte _b8_one = 0x80; // 0b1000 0b000
-        private readonly byte _all_one = 0xFF;// 0b1111 0b1111
+        private readonly byte _b7_b1_one = 0x7F;// 0b0111 0b1111
         public Len(IBinary berTvl)
+             : this(berTvl, new CachedTag(berTvl))
+        {
+        }
+        public Len(
+                IBinary berTvl,
+                IBinary tag
+            )
         {
             _berTvl = berTvl;
+            _cachedTag = tag;
         }
+
         public byte[] Bytes()
         {
-            var berTvlTagLength = new Tag(_berTvl).Bytes().Length;
+            var berTvlTagLength = _cachedTag.Bytes().Length;
             var berTvlWithoutTag = _berTvl
                                         .Bytes()
                                         .Skip(berTvlTagLength)
@@ -31,10 +38,12 @@ namespace HelloWord.BER_TLV
             if (IsLongFormOfLen(firstByte))
             {
                 var actualLen = new Hex(ExtractLen(firstByte)).ToInt();
-                return berTvlWithoutTag
-                            .Skip(1)
-                            .Take(actualLen)
-                            .ToArray();
+                return new byte[1] { 0x00 }
+                        .Concat(
+                             berTvlWithoutTag
+                                    .Skip(1)
+                                    .Take(actualLen)
+                        ).ToArray();
             }
             else
             {
@@ -44,9 +53,10 @@ namespace HelloWord.BER_TLV
 
         private byte[] ExtractLen(byte firstByteOfBerTvlWithoutTag)
         {
-            return new[] { (byte)(firstByteOfBerTvlWithoutTag & _all_one) };
+            return new[] { (byte)(firstByteOfBerTvlWithoutTag & _b7_b1_one) };
         }
-        public bool IsLongFormOfLen(byte firstByteOfBerTvlWithoutTag)
+
+        private bool IsLongFormOfLen(byte firstByteOfBerTvlWithoutTag)
         {
             return (firstByteOfBerTvlWithoutTag & _b8_one) == _b8_one;
         }

@@ -23,12 +23,17 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return new TripleDES(
+            var apdu = _protectedResponseApdu.Bytes();
+            var d = new ExtractedDO87(_protectedResponseApdu)
+                .EncryptedData();
+            var des = new TripleDES(
                     _kSenc,
-                    new ExtractedDO87(_protectedResponseApdu)
-                        .EncryptedData()
+                    d
                 ).Decrypted()
                 .Bytes();
+
+            Console.WriteLine("Decrypred DATA: {0}", new Hex(des).ToString());
+            return des;
         }
     }
 }

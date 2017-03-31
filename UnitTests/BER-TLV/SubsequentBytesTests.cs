@@ -1,9 +1,8 @@
-﻿using System;
-using HelloWord.BER_TLV;
+﻿using HelloWord;
 using HelloWord.Infrastructure;
 using NUnit.Framework;
 
-namespace UnitTests.BER_TLV
+namespace UnitTests
 {
     [TestFixture]
     public class SubsequentBytesTests

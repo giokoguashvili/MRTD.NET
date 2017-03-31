@@ -1,4 +1,5 @@
-﻿using HelloWord.Cryptography;
+﻿using System;
+using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Body;
 using HelloWord.SecureMessaging.DataObjects.DO;
@@ -21,18 +22,28 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         public byte[] Bytes()
         {
             //If no Data is available, leave building DO ‘87’ out
-            var data = new CommandApduData(
-                            new CommandApduBody(_rawCommandApdu)
-                        );
+            byte[] data;
+            try
+            {
+                 data = new CommandApduData(
+                        new CommandApduBody(_rawCommandApdu)
+                    ).Bytes();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("kogoiaaaaaaaaaaaaaaaaaaa");
+                throw;
+            }
+            
 
-            if (new Length(data).Is(0))
+            if (new Length(new Binary(data)).Is(0))
             {
                 return new Binary().Bytes();
             }
 
             var encryptedData = new EncryptedCommandApduData(
                                     _kSenc,
-                                    new Padded(data)
+                                    new Padded(new Binary(data))
                                 );
 
             return new DO87(encryptedData).Bytes();

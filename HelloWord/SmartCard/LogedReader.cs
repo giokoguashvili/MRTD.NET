@@ -53,21 +53,26 @@ namespace HelloWord.SmartCard
                     );
             }
 
-            Console.WriteLine(
-                   "\n{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
-                   new Hex(
-                       new Binary(sendBuffer)
-                   ),
-                   receiveBuffer.Length,
-                   new Hex(
-                       new Binary(receiveBuffer)
-                   ),
-                   claName,
-                   new Hex(new Binary(receiveBuffer.Reverse().Take(2).Reverse()))
-               );
-
-
-
+            try
+            {
+                Console.WriteLine(
+                          "\n{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
+                          new Hex(
+                              new Binary(sendBuffer)
+                          ),
+                          receiveBuffer.Length,
+                          new Hex(
+                              new Binary(receiveBuffer)
+                          ),
+                          claName,
+                          new Hex(new Binary(receiveBuffer.Reverse().Take(2).Reverse()))
+                      );
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Wrong Length for Hex");
+            }
+           
             return sce;
         }
     }
