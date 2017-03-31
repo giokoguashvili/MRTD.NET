@@ -1,12 +1,7 @@
-﻿using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnitTests.BER_TLV;
+﻿using System.Linq;
+using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord
 {
     public class ConstructedTLV
     {

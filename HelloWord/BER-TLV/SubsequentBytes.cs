@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord
 {
     // http://stackoverflow.com/questions/42450105/parsing-magtek-emv-tlv
     public class SubsequentBytes : IBinary

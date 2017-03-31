@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.TVL.Cached;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord.TVL
 {
     /// <summary>
     /// ISO 7816-4 Annex D.3: Length field

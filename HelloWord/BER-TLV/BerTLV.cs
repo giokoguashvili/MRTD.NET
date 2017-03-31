@@ -1,12 +1,8 @@
-﻿using HelloWord.BER_TLV;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HelloWord.TVL.Cached;
 
-namespace UnitTests.BER_TLV
+namespace HelloWord
 {
     public class BerTLV : IBerTLV, IBinary
     {

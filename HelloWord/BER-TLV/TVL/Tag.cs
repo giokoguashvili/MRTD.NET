@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord.TVL
 {
   
     public class Tag : IBinary

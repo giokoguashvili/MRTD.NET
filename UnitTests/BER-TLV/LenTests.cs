@@ -1,10 +1,8 @@
-﻿using System;
-using HelloWord.BER_TLV;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
+using HelloWord.TVL;
 using NUnit.Framework;
 
-
-namespace UnitTests.BER_TLV
+namespace UnitTests
 {
     [TestFixture]
     public class LenTests

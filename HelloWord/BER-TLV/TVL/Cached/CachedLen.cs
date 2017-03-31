@@ -1,13 +1,13 @@
 ﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord.TVL.Cached
 {
     public class CachedLen : IBinary
     {
         private readonly IBinary _cachedBerLen;
         public CachedLen(IBinary berTvl, IBinary berTag)
         {
-            _cachedBerLen = new Cached(
+            _cachedBerLen = new Infrastructure.Cached(
                                 new Len(berTvl, berTag)
                             );
         }

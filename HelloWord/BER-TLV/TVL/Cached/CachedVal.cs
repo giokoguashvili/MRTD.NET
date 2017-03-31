@@ -1,6 +1,6 @@
 ﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord.TVL.Cached
 {
     public class CachedVal : IBinary
     {
@@ -11,7 +11,7 @@ namespace HelloWord.BER_TLV
                 IBinary berLen
             )
         {
-            _cachedBerVal = new Cached(
+            _cachedBerVal = new Infrastructure.Cached(
                                 new Val(berTvl, berTag, berLen)
                             );
         }
