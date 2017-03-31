@@ -17,11 +17,15 @@ namespace HelloWord
     {
         static void Main(string[] args)
         {
-            //var contextFactory = ContextFactory.Instance;
-            //var context = contextFactory.Establish(SCardScope.System);
+            var contextFactory2 = ContextFactory.Instance;
+            var context = contextFactory2.Establish(SCardScope.System);
 
 
-            //var readerNames = context.GetReaders();
+            var readerNames = context.GetReaders();
+            foreach (var readerName in readerNames)
+            {
+                Console.WriteLine(readerName);
+            }
 
 
             var contextFactory = ContextFactory.Instance;
