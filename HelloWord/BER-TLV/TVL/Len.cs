@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
+using HelloWord.BER_TLV.TVL;
 
 namespace HelloWord.TVL
 {
@@ -10,52 +11,52 @@ namespace HelloWord.TVL
     /// </summary>
     public class Len : IBinary
     {
-        private readonly IBinary _berTvl;
+        private readonly IBinary _berTlv;
         private readonly IBinary _cachedTag;
         private readonly byte _b8_one = 0x80; // 0b1000 0b000
-        private readonly byte _b7_b1_one = 0x7F;// 0b0111 0b1111
+        
         public Len(IBinary berTvl)
              : this(berTvl, new CachedTag(berTvl))
         {
         }
         public Len(
-                IBinary berTvl,
+                IBinary berTlv,
                 IBinary tag
             )
         {
-            _berTvl = berTvl;
+            _berTlv = berTlv;
             _cachedTag = tag;
         }
 
         public byte[] Bytes()
         {
             var berTvlTagLength = _cachedTag.Bytes().Length;
-            var berTvlWithoutTag = _berTvl
+            var berTlvWithoutTag = _berTlv
                                         .Bytes()
-                                        .Skip(berTvlTagLength)
-                                        .ToArray();
-            var firstByte = berTvlWithoutTag.First();
+                                        .Skip(berTvlTagLength);
+
+            var firstByte = berTlvWithoutTag.First();
+
             if (IsLongFormOfLen(firstByte))
             {
-                var actualLen = new Hex(ExtractLen(firstByte)).ToInt();
-                return new byte[1] { 0x00 }
-                        .Concat(
-                             berTvlWithoutTag
-                                    .Skip(1)
-                                    .Take(actualLen)
-                        ).ToArray();
+                return new ConcatenatedBinaries(
+                            new ShortLen(
+                                new Binary(berTlvWithoutTag)
+                            ),
+                            new LongLen(
+                                new Binary(berTlvWithoutTag)
+                            )
+                        ).Bytes();
             }
             else
             {
-                return ExtractLen(firstByte);
+                return new ShortLen(
+                            new Binary(berTlvWithoutTag)
+                        ).Bytes();
             }
         }
 
-        private byte[] ExtractLen(byte firstByteOfBerTvlWithoutTag)
-        {
-            return new[] { (byte)(firstByteOfBerTvlWithoutTag & _b7_b1_one) };
-        }
-
+        
         private bool IsLongFormOfLen(byte firstByteOfBerTvlWithoutTag)
         {
             return (firstByteOfBerTvlWithoutTag & _b8_one) == _b8_one;

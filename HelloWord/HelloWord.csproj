@@ -55,6 +55,8 @@
     <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />
     <Compile Include="BER-TLV\IBerTLV.cs" />
     <Compile Include="BER-TLV\TVL\Len.cs" />
+    <Compile Include="BER-TLV\TVL\LongLen.cs" />
+    <Compile Include="BER-TLV\TVL\ShortLen.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="Infrastructure\LinqExtensions.cs" />

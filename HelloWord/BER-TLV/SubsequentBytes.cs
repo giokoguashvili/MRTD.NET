@@ -15,7 +15,7 @@ namespace HelloWord
         }
         public byte[] Bytes()
         {
-            var firstByte = _berTvl.Bytes().First();
+            var firstByte = _berTvl.Bytes().FirstOrDefault();
             var restBytes = _berTvl.Bytes().Skip(1).ToArray();
             if (HasSubsequentBytes(firstByte))
             {

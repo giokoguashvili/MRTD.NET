@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
+using HelloWord.BER_TLV.TVL;
 
 namespace HelloWord.TVL
 {
@@ -31,13 +32,22 @@ namespace HelloWord.TVL
         }
         public byte[] Bytes()
         {
-            var valueLength = new Hex(_len).ToInt();
+            var valueLength = ExtractActualLen(_len);
             var tagAndLenBytesCount = _tag.Bytes().Length + _len.Bytes().Length;
             return _berTlv
                 .Bytes()
                 .Skip(tagAndLenBytesCount)
                 .Take(valueLength)
                 .ToArray();
+        }
+        private int ExtractActualLen(IBinary len)
+        {
+            var length = len;
+            if (len.Bytes().Length > 1)
+            {
+                length = new LongLen(len);
+            }
+            return new Hex(length).ToInt();
         }
     }
 }
