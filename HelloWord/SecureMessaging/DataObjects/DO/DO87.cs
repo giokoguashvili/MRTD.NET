@@ -13,7 +13,7 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
         public byte[] Bytes()
         {
             // DO87 Format: [87][EncryptedDataLength + 1][01][EncryptedData]
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                         new BinaryHex("87"),
                         new HexInt(
                             _encryptedData

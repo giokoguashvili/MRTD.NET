@@ -22,7 +22,7 @@ namespace HelloWord.SecureMessaging
 
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                 _do87or97,
                 _do8E
             ).Bytes();

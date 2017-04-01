@@ -14,7 +14,7 @@ namespace UnitTests
             Assert.AreEqual(
                     "818279",
                     new Hex(
-                        new SubsequentBytes(
+                        new TagSubsequentBytes(
                             new BinaryHex("5F81827978")
                         )
                     ).ToString()

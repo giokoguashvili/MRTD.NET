@@ -21,7 +21,7 @@ namespace HelloWord.Cryptography
         }
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     new LastSignificantBytes(_rndIc),
                     new LastSignificantBytes(_rndIfd)
                 ).Bytes();

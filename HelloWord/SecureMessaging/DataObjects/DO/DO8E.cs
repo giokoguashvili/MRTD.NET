@@ -17,7 +17,7 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
         public byte[] Bytes()
         {
             // DO8E Format: [8E][EncodedDataLengh][EncodedData]
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     new BinaryHex("8E"),
                     new HexInt(
                         new HexCount(_computedCc)

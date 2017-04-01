@@ -17,7 +17,7 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                 new MaskedCLA(
                     new CLA(_commandApduHeader)
                 ),

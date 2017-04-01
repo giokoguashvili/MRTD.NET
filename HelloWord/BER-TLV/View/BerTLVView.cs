@@ -20,7 +20,7 @@ namespace HelloWord.BER_TLV
 
         public void View()
         {
-            var tagMaxLen = _berTlvs.Max(t => t.Tag.Length);
+            var tagMaxLen = _berTlvs.Max(t => t.T.Length);
             foreach (var tlv in _berTlvs)
             {
                 var tabs =
@@ -34,10 +34,10 @@ namespace HelloWord.BER_TLV
                     Console.WriteLine(
                                 "{0}{1} {2} {3}", 
                                 tabs,
-                                new PaddedSpace(tlv.Tag, tagMaxLen)
+                                new PaddedSpace(tlv.T, tagMaxLen)
                                         .Paded(),
-                                tlv.Len, 
-                                new ValView(tlv.Val).View()
+                                tlv.L, 
+                                new ValView(tlv.V).View()
                             );
                 }
                 else
@@ -45,8 +45,8 @@ namespace HelloWord.BER_TLV
                     Console.WriteLine(
                                      "{0}{1} {2}",
                                      tabs,
-                                     tlv.Tag,
-                                     tlv.Len
+                                     tlv.T,
+                                     tlv.L
                                 );
                     new BerTLVView(tlv.Data, _depth + 1).View();
                 }

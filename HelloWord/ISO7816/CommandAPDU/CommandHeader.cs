@@ -67,7 +67,7 @@ namespace HelloWord.ISO7816.CommandAPDU
         public IBinary WithCLA(IBinary cla)
         {
             return 
-                new ConcatenatedBinaries(
+                new CombinedBinaries(
                     cla, 
                     new Binary(_rawCommandApdu.Bytes().Skip(1).Take(3).ToArray())
                 );

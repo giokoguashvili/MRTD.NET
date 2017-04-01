@@ -30,7 +30,7 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             var s = _do87.Bytes();
-            var commandData = new ConcatenatedBinaries(
+            var commandData = new CombinedBinaries(
                                     _do87,
                                     _do97,
                                     _do8e
@@ -42,7 +42,7 @@ namespace HelloWord.SecureMessaging
                                                         .Count()
                                                );
 
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     _maskedCommandApduHeader,
                     commandDataLengthAsBinaryHex,
                     commandData,

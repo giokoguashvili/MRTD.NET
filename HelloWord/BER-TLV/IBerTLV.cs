@@ -2,9 +2,11 @@
 {
     public interface IBerTLV
     {
-        string Tag { get; }
-        string Len { get; }
-        string Val { get; }
+        string T { get; }
+        string L { get; }
+        string V { get; }
+        string TL { get; }
+        string LV { get; }
         IBerTLV[] Data { get; }
     }
 }

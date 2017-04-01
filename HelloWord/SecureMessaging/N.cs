@@ -23,7 +23,7 @@ namespace HelloWord.SecureMessaging
         //http://stackoverflow.com/questions/30827140/epassport-problems-reagrding-mac-creation-in-icao-9303-worked-examples-in-java
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                         _incrementedSsc,
                         _m
                     ).Bytes();

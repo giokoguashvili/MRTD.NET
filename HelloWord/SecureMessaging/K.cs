@@ -21,7 +21,7 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     _incrementedSsc,
                     _do99_do87do99
                 ).Bytes();

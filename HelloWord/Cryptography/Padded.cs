@@ -24,7 +24,7 @@ namespace HelloWord.Cryptography
         }
         public byte[] Bytes()
         {
-            var dataWithPaddedSingleBit = new ConcatenatedBinaries(
+            var dataWithPaddedSingleBit = new CombinedBinaries(
                                             _data,
                                             new Binary(new [] { _singleBitWithLackingZeroBytes })
                                           );
@@ -37,7 +37,7 @@ namespace HelloWord.Cryptography
                                 .Range(0, lackingBytesCount)
                                 .Select(i => (byte) 0x00);
 
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     dataWithPaddedSingleBit,
                     new Binary(lackingBytes)
                 ).Bytes();

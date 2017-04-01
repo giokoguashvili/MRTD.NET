@@ -4,12 +4,12 @@ using HelloWord.Infrastructure;
 namespace HelloWord
 {
     // http://stackoverflow.com/questions/42450105/parsing-magtek-emv-tlv
-    public class SubsequentBytes : IBinary
+    public class TagSubsequentBytes : IBinary
     {
         private readonly IBinary _berTvl;
         private readonly byte _b5_b1_one = 0x1F; // 0b0001 0b1111
         private readonly byte _b8_one = 0x80; // 0b1000 0b0000
-        public SubsequentBytes(IBinary berTvl)
+        public TagSubsequentBytes(IBinary berTvl)
         {
             _berTvl = berTvl;
         }

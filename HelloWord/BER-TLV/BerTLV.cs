@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
@@ -29,7 +30,7 @@ namespace HelloWord
             _cachedLen = new CachedLen(berTlv, _cachedTag);
             _cachedVal = new CachedVal(berTlv, _cachedTag, _cachedLen);
             _cachedTlv = new Cached(
-                                new ConcatenatedBinaries(
+                                new CombinedBinaries(
                                         _cachedTag,
                                         _cachedLen,
                                         _cachedVal
@@ -37,14 +38,40 @@ namespace HelloWord
                           );
         }
 
-        public string Tag { get { return new Hex(_cachedTag).ToString(); } } 
+        public string T { get { return new Hex(_cachedTag).ToString(); } } 
 
-        public string Len { get { return new Hex(_cachedLen).ToString(); } } 
+        public string L { get { return new Hex(_cachedLen).ToString(); } } 
 
-        public string Val { get { return new Hex(_cachedVal).ToString(); } }
+        public string V { get { return new Hex(_cachedVal).ToString(); } }
         
 
-        public IBerTLV[] Data { get { return HasConstructedData ? new ConstructedTLV(_cachedVal).Data() : new IBerTLV[0]; } } 
+        public IBerTLV[] Data { get { return HasConstructedData ? new ConstructedTLV(_cachedVal).Data() : new IBerTLV[0]; } }
+
+        public string TL
+        {
+            get
+            {
+                return new Hex(
+                            new CombinedBinaries(
+                                _cachedTag,
+                                _cachedLen
+                            )
+                       ).ToString();
+            }
+        }
+
+        public string LV
+        {
+            get
+            {
+                return new Hex(
+                            new CombinedBinaries(
+                                _cachedLen,
+                                _cachedVal
+                            )
+                       ).ToString();
+            }
+        }
 
         private bool HasConstructedData { get { return (_cachedTag.Bytes().First() & _b6_one) == _b6_one; } }
 

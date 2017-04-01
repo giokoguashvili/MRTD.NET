@@ -18,7 +18,7 @@ namespace HelloWord.Cryptography
 
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     _kSeed,
                     _c
                 ).Bytes();

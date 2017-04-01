@@ -32,7 +32,7 @@ namespace HelloWord.SecureMessaging
             return new CC(
                     _incrementedSsc,
                     _kSmac,
-                    new ConcatenatedBinaries(
+                    new CombinedBinaries(
                         new ProtectedCommandApduHeader(
                             new CommandApduHeader(_unprotectedCommandApdu)
                         ),

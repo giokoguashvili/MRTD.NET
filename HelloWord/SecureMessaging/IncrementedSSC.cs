@@ -19,7 +19,7 @@ namespace HelloWord.SecureMessaging
         {
             // icnrement last 4 byte by 0x01
             return
-                new ConcatenatedBinaries(
+                new CombinedBinaries(
                     new Binary(_ssc.Bytes().Take(4)),
                     new Binary(
                         BitConverter

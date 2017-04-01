@@ -39,7 +39,7 @@ namespace HelloWord.TVL
 
             if (IsLongFormOfLen(firstByte))
             {
-                return new ConcatenatedBinaries(
+                return new CombinedBinaries(
                             new ShortLen(
                                 new Binary(berTlvWithoutTag)
                             ),

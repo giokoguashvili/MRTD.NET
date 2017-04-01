@@ -63,7 +63,7 @@ namespace HelloWord.SmartCard
 
             public byte[] Bytes()
             {
-                return new ConcatenatedBinaries(
+                return new CombinedBinaries(
                         _eIfd,
                         _mIfd
                     ).Bytes();

@@ -24,7 +24,7 @@ namespace HelloWord.Cryptography.RandomKeys
 
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                     _RNDifd,
                     _RNDic,
                     _Kifd

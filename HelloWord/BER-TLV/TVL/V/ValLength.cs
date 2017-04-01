@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace HelloWord.BER_TLV.TVL
 {
-    public class LenValue : INumber
+    public class ValLength : INumber
     {
         private readonly IBinary _berLen;
-        public LenValue(string berLen) : this(new BinaryHex(berLen))
+        public ValLength(string berLen) : this(new BinaryHex(berLen))
         {}
-        public LenValue(IBinary berLen)
+        public ValLength(IBinary berLen)
         {
             _berLen = berLen;
         }

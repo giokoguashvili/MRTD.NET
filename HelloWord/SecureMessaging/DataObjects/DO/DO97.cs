@@ -16,7 +16,7 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
         public byte[] Bytes()
         {
             // DO97 Format [97][01][ExceptedDataLength] 
-            return new ConcatenatedBinaries(
+            return new CombinedBinaries(
                         new BinaryHex("9701"),
                         new HexInt(_exceptedDataLength)
                     ).Bytes();

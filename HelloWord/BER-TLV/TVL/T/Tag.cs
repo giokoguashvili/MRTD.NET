@@ -15,9 +15,9 @@ namespace HelloWord.TVL
         }
         public byte[] Bytes()
         {
-            return new ConcatenatedBinaries(
-                        new Binary(berTlvFirstByte()),      
-                        new SubsequentBytes(_berTvl)
+            return new CombinedBinaries(
+                        new Binary(_berTvl.Bytes().First()),      
+                        new TagSubsequentBytes(_berTvl)
                     ).Bytes();
         }
 

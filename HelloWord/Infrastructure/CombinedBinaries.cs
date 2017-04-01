@@ -6,35 +6,35 @@ using Org.BouncyCastle.Crypto.Prng.Drbg;
 
 namespace HelloWord.Infrastructure
 {
-    public class ConcatenatedBinaries : IBinary
+    public class CombinedBinaries : IBinary
     {
         private readonly IBinary _a;
         private readonly IBinary _b;
         private readonly IBinary _c;
         private readonly IBinary _d;
 
-        public ConcatenatedBinaries(
+        public CombinedBinaries(
                 IEnumerable<byte> a,
                 IEnumerable<byte> b
             ) : this(new Binary(a), new Binary(b), new Binary(), new Binary()) { }
 
-        public ConcatenatedBinaries(
+        public CombinedBinaries(
                 byte[] a,
                 byte[] b
             ) : this(new Binary(a), new Binary(b), new Binary(), new Binary()) { }
 
-        public ConcatenatedBinaries(
+        public CombinedBinaries(
                 IBinary a,
                 IBinary b
             ) : this(a, b, new Binary(), new Binary()) { }
 
-        public ConcatenatedBinaries(
+        public CombinedBinaries(
                 IBinary a,
                 IBinary b,
                 IBinary c
             ) : this(a, b, c, new Binary()) { }
 
-        public ConcatenatedBinaries(
+        public CombinedBinaries(
                 IBinary a,
                 IBinary b,
                 IBinary c,

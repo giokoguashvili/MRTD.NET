@@ -28,7 +28,7 @@ namespace HelloWord.SecureMessaging
             return new CC(
                 _incrementedSsc,
                 _kSmac,
-                new ConcatenatedBinaries(
+                new CombinedBinaries(
                     new ExtractedDO87(_protectedResponseApdu),
                     new ExtractedDO99(_protectedResponseApdu)
                 )

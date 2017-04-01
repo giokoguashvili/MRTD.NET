@@ -32,22 +32,17 @@ namespace HelloWord.TVL
         }
         public byte[] Bytes()
         {
-            var valueLength = ExtractActualLen(_len);
-            var tagAndLenBytesCount = _tag.Bytes().Length + _len.Bytes().Length;
+            var tagAndLenBytesCount = new HexCount(
+                                         new CombinedBinaries(
+                                             _tag,
+                                             _len
+                                         )
+                                      ).Value();
             return _berTlv
                 .Bytes()
                 .Skip(tagAndLenBytesCount)
-                .Take(valueLength)
+                .Take(new ValLength(_len).Value())
                 .ToArray();
-        }
-        private int ExtractActualLen(IBinary len)
-        {
-            var length = len;
-            if (len.Bytes().Length > 1)
-            {
-                length = new LongLen(len);
-            }
-            return new Hex(length).ToInt();
         }
     }
 }
