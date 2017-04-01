@@ -11,16 +11,16 @@ namespace HelloWord.SecureMessaging
 {
     public class ReadedBytesRange : IBinary
     {
-        private readonly int _startByteIntex;
-        private readonly int _bytesCountForRead;
+        private readonly INumber _startByteIntex;
+        private readonly INumber _bytesCountForRead;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _selfIncrementSsc;
         private readonly IReader _reader;
 
         public ReadedBytesRange(
-                int startByteIntex,
-                int bytesCountForRead,
+                INumber startByteIntex,
+                INumber bytesCountForRead,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary selfIncrementSsc,
@@ -36,23 +36,19 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-
-            var com = new ProtectedCommandApdu(
-                new Cached(
-                    new ReadBinaryCommandApdu(_startByteIntex, _bytesCountForRead)
-                ),
-                _kSenc,
-                _kSmac,
-                new Cached(_selfIncrementSsc.Bytes())
-            );
-            var len = com.Bytes().Length;
-
-            var result = new DecryptedProtectedResponseApdu(
+            return new DecryptedProtectedResponseApdu(
                        new Cached(
                            new VerifiedProtectedResponseApdu(
                                new Cached(
                                    new ExecutedCommandApdu(
-                                       com,
+                                       new ProtectedCommandApdu(
+                                            new Cached(
+                                                new ReadBinaryCommandApdu(_startByteIntex, _bytesCountForRead)
+                                            ),
+                                            _kSenc,
+                                            _kSmac,
+                                            new Cached(_selfIncrementSsc.Bytes())
+                                        ),
                                        _reader
                                    )
                                ),
@@ -63,10 +59,8 @@ namespace HelloWord.SecureMessaging
                        _kSenc
                    )
                    .Bytes()
-                   .Take(_bytesCountForRead)
+                   .Take(_bytesCountForRead.Value())
                    .ToArray();
-          
-            return result;
         }
     }
 }

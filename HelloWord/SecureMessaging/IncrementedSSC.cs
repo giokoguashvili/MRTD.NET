@@ -17,6 +17,7 @@ namespace HelloWord.SecureMessaging
 
         public IBinary By(int count)
         {
+            
             // icnrement last 4 byte by 0x01
             return
                 new CombinedBinaries(

@@ -9,13 +9,8 @@ namespace HelloWord.DataGroups.DG
 {
     public class DGDataHexLength : INumber
     {
-        private readonly IBinary _applicationIdentifier;
-        private readonly IBinary _kSenc;
-        private readonly IBinary _kSmac;
-        private readonly IBinary _ssc;
-        private readonly IReader _reader;
-
-        private readonly INumber firstFourByteForDGStructureLength = new Number(5);
+        private readonly IBerTLV _berTlv;
+        private readonly INumber _minTlvHeaderLength = new Number(5);
 
         public DGDataHexLength(
                 IBinary applicationIdentifier,
@@ -25,37 +20,26 @@ namespace HelloWord.DataGroups.DG
                 IReader reader
             )
         {
-            _applicationIdentifier = applicationIdentifier;
-            _kSenc = kSenc;
-            _kSmac = kSmac;
-            _ssc = ssc;
-            _reader = reader;
+            _berTlv = new BerTLV(
+                        new Cached(
+                            new SecureMessagingPipe(
+                                applicationIdentifier,
+                                _minTlvHeaderLength,
+                                kSenc,
+                                kSmac,
+                                ssc,
+                                reader
+                            )
+                         )
+                    );
         }
 
         public int Value()
         {
-            var firstFourBytes = new SecureMessagingPipe(
-                        _applicationIdentifier,
-                        firstFourByteForDGStructureLength,
-                        _kSenc,
-                        _kSmac,
-                        _ssc,
-                        _reader
-                   );
-
-            var parsedBerTLV = new BerTLV(
-                                    firstFourBytes
-                                        .Bytes()
-                                        .Take(firstFourByteForDGStructureLength.Value())
-                                );
-
-            var tagBytesCount = new BytesCount(
-                                    parsedBerTLV
-                                        .T).Value();
-            var lenBytesCount = new BytesCount(parsedBerTLV.L).Value();
-
-            return new ValLength(parsedBerTLV.L)
-                                .Value() + tagBytesCount + lenBytesCount;
+            return new Sum(
+                        new BytesCount(_berTlv.TL),
+                        new ValLength(_berTlv.L)
+                    ).Value();
         }
     }
 }

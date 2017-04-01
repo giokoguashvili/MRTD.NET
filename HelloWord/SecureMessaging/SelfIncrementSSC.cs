@@ -17,6 +17,7 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             _incrementCount = _incrementCount + 1;
+            Console.WriteLine("SSC {0}", _incrementCount);
             return new IncrementedSSC(_ssc)
                 .By(_incrementCount)
                 .Bytes();

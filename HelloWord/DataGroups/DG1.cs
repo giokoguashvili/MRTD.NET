@@ -15,7 +15,7 @@ namespace HelloWord.DataGroups
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _ssc;
-        private readonly IBinary _FID = new BinaryHex("011E");
+        private readonly IBinary _FID = new BinaryHex("010B");
         public DG1(
                 IBinary kSenc,
                 IBinary kSmac,

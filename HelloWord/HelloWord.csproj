@@ -85,6 +85,8 @@
     <Compile Include="Infrastructure\INumber.cs" />
     <Compile Include="Infrastructure\BytesCount.cs" />
     <Compile Include="Infrastructure\Number.cs" />
+    <Compile Include="Infrastructure\Rem.cs" />
+    <Compile Include="Infrastructure\Sum.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\Lc.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
     <Compile Include="SecureMessaging\EncryptedProtectedResponseApdu.cs" />
     <Compile Include="SecureMessaging\ExtractedCC.cs" />
+    <Compile Include="SecureMessaging\Pipe\LastStapCount.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
@@ -155,8 +158,8 @@
     <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
-    <Compile Include="SecureMessaging\ReadedBytesRange.cs" />
-    <Compile Include="SecureMessaging\SecureMessagingPipe.cs" />
+    <Compile Include="SecureMessaging\Pipe\ReadedBytesRange.cs" />
+    <Compile Include="SecureMessaging\Pipe\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
     <Compile Include="SmartCard\BACReader.cs" />

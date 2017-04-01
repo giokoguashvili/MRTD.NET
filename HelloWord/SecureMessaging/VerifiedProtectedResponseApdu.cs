@@ -23,8 +23,7 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            //var result = _responseApdu.Bytes();
-            //return result;
+            //return _responseApdu.Bytes();
             var extractedCC = new ExtractedCC(
                                     _incrementedSsc,
                                     _kSmac,

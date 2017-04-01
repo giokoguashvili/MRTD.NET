@@ -7,6 +7,7 @@ using HelloWord.Commands;
 using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
+using HelloWord.SecureMessaging.Pipe;
 
 namespace HelloWord.SecureMessaging
 {
@@ -37,48 +38,61 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            new VerifiedProtectedResponseApdu(
+            var sscForSelect = new Cached(_selfIncrementSsc.Bytes());
+            var sscForVerify = new Cached(_selfIncrementSsc.Bytes());
+            var v = new VerifiedProtectedResponseApdu(
                 new Cached(
                     new ExecutedCommandApdu(
                         new ProtectedCommandApdu(
                             new SelectApplicationCommandApdu(_applicationIdentifier),
                             _kSenc,
                             _kSmac,
-                             new Cached(_selfIncrementSsc.Bytes())
+                            sscForSelect
                         ),
                         _reader
                     )
                 ),
-                new Cached(_selfIncrementSsc.Bytes()),
+                sscForVerify,
                 _kSmac
-            ).Bytes();
-
-            var step = 127;
+            );
+            v.Bytes();
+            var step = new Number(64);
             var range = Enumerable
                 .Range(0, _bytesCountForRead.Value())
-                .Where(index => index % step == 0)
+                .Where(index => index % step.Value() == 0)
                 .Select(index => new
                 {
-                    StartIndex = index,
-                    Count = index + step < _bytesCountForRead.Value() ? step : _bytesCountForRead.Value() % step
+                    StartIndex = new Number(index),
+                    Count = new StepBytesCount(step, _bytesCountForRead, new Number(index))
                 });
 
-            return range
+            //var r = new Hex(new ReadedBytesRange(
+            //                                    new Number(0),
+            //                                    new Number(5),
+            //                                    _kSenc,
+            //                                    _kSmac,
+            //                                    _selfIncrementSsc,
+            //                                    _reader
+            //                                )
+            //                                ).ToString();
+
+
+            var result =  range
                     .Aggregate(
                         new byte[0],
                         (prev, next) => prev.Concat(
                                             new ReadedBytesRange(
-                                                    next.StartIndex,
-                                                    next.Count,
-                                                    _kSenc,
-                                                    _kSmac,
-                                                    _selfIncrementSsc,
-                                                    _reader
-                                                )
-                                                .Bytes()
+                                                next.StartIndex,
+                                                next.Count,
+                                                _kSenc,
+                                                _kSmac,
+                                                _selfIncrementSsc,
+                                                _reader
+                                            )
+                                            .Bytes()
                                         ).ToArray()
                         );
-
+            return result;
             //var f1 = new DecryptedProtectedResponseApdu(
             //            new Cached(
             //                new VerifiedProtectedResponseApdu(
@@ -103,29 +117,29 @@ namespace HelloWord.SecureMessaging
             //        .Take(_bytesCountForRead)
             //        .ToArray();
 
-            var f2= new DecryptedProtectedResponseApdu(
-                        new Cached(
-                            new VerifiedProtectedResponseApdu(
-                                new Cached(
-                                    new ExecutedCommandApdu(
-                                        new ProtectedCommandApdu(
-                                            new ReadBinaryCommandApdu(0, 64),
-                                            _kSenc,
-                                            _kSmac,
-                                            new Cached(_selfIncrementSsc.Bytes())
-                                        ),
-                                        _reader
-                                    )
-                                ),
-                                new Cached(_selfIncrementSsc.Bytes()),
-                                _kSmac
-                            )
-                        ),
-                        _kSenc
-                    )
-                    .Bytes()
-                    .Take(127)
-                    .ToArray();
+            //var f2= new DecryptedProtectedResponseApdu(
+            //            new Cached(
+            //                new VerifiedProtectedResponseApdu(
+            //                    new Cached(
+            //                        new ExecutedCommandApdu(
+            //                            new ProtectedCommandApdu(
+            //                                new ReadBinaryCommandApdu(0, 64),
+            //                                _kSenc,
+            //                                _kSmac,
+            //                                new Cached(_selfIncrementSsc.Bytes())
+            //                            ),
+            //                            _reader
+            //                        )
+            //                    ),
+            //                    new Cached(_selfIncrementSsc.Bytes()),
+            //                    _kSmac
+            //                )
+            //            ),
+            //            _kSenc
+            //        )
+            //        .Bytes()
+            //        .Take(127)
+            //        .ToArray();
 
             //var f3 = new DecryptedProtectedResponseApdu(
             //                new Cached(
@@ -202,8 +216,6 @@ namespace HelloWord.SecureMessaging
             //        .Take(127)
             //        .ToArray();
 
-
-            return f2;
         }
     }
 }
