@@ -49,14 +49,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BER-TLV\BerTLV.cs" />
+    <Compile Include="BER-TLV\View\BerTLVView.cs" />
     <Compile Include="BER-TLV\ConstructedTLV.cs" />
+    <Compile Include="BER-TLV\View\PaddedSpace.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedLen.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedTag.cs" />
     <Compile Include="BER-TLV\TVL\Cached\CachedVal.cs" />
     <Compile Include="BER-TLV\IBerTLV.cs" />
     <Compile Include="BER-TLV\TVL\Len.cs" />
+    <Compile Include="BER-TLV\TVL\LenValue.cs" />
     <Compile Include="BER-TLV\TVL\LongLen.cs" />
     <Compile Include="BER-TLV\TVL\ShortLen.cs" />
+    <Compile Include="BER-TLV\View\ValView.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="Infrastructure\LinqExtensions.cs" />
@@ -76,7 +80,7 @@
     <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="Infrastructure\IMtBinary.cs" />
     <Compile Include="Infrastructure\INumber.cs" />
-    <Compile Include="Infrastructure\Length.cs" />
+    <Compile Include="Infrastructure\HexCount.cs" />
     <Compile Include="Infrastructure\Number.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />

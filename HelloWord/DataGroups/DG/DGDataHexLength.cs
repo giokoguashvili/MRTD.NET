@@ -2,10 +2,12 @@ using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
+using HelloWord.BER_TLV.TVL;
+using System;
 
 namespace HelloWord.DataGroups.DG
 {
-    public class DGDataHexLength : IBinary
+    public class DGDataHexLength : INumber
     {
         private readonly IBinary _applicationIdentifier;
         private readonly IBinary _kSenc;
@@ -13,7 +15,7 @@ namespace HelloWord.DataGroups.DG
         private readonly IBinary _ssc;
         private readonly IReader _reader;
 
-        private readonly int firstFourByteForDGStructureLength = 5;
+        private readonly INumber firstFourByteForDGStructureLength = new Number(5);
 
         public DGDataHexLength(
                 IBinary applicationIdentifier,
@@ -29,7 +31,8 @@ namespace HelloWord.DataGroups.DG
             _ssc = ssc;
             _reader = reader;
         }
-        public byte[] Bytes()
+
+        public int Value()
         {
             var firstFourBytes = new SecureMessagingPipe(
                         _applicationIdentifier,
@@ -38,25 +41,21 @@ namespace HelloWord.DataGroups.DG
                         _kSmac,
                         _ssc,
                         _reader
-                   ).Bytes();
+                   );
 
             var parsedBerTLV = new BerTLV(
                                     firstFourBytes
-                                       
-                                        .Take(firstFourByteForDGStructureLength)
+                                        .Bytes()
+                                        .Take(firstFourByteForDGStructureLength.Value())
                                 );
-            var tagBytesCount = parsedBerTLV.Tag.Length / 2;
-            var lenBytesCount = parsedBerTLV.Len.Length / 2;
 
-            var berTlvValueLength = new Hex(
-                                        new BinaryHex(
-                                            parsedBerTLV.Len
-                                        )
-                                    ).ToInt();
+            var tagBytesCount = new HexCount(
+                                    parsedBerTLV
+                                        .Tag).Value();
+            var lenBytesCount = new HexCount(parsedBerTLV.Len).Value();
 
-            return new HexInt(
-                       tagBytesCount + lenBytesCount + berTlvValueLength
-                   ).Bytes();
+            return new LenValue(parsedBerTLV.Len)
+                                .Value() + tagBytesCount + lenBytesCount;
         }
     }
 }

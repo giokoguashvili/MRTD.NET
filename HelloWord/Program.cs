@@ -171,7 +171,7 @@ namespace HelloWord
                     //).Content();
 
                     Console.Write(
-                           "\nDG1: {0}\n",
+                           "\nDG1: {0}\n\n",
                            new Hex(dg1)
                        );
                     Console.Write(

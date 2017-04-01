@@ -27,18 +27,15 @@ namespace HelloWord.DataGroups.DG
         }
         public byte[] Bytes()
         {
-            var len = new Hex(
-                new DGDataHexLength(
-                    _applicationIdentifier,
-                    _kSenc,
-                    _kSmac,
-                    _ssc,
-                    _reader
-                )
-            ).ToInt();
             return new SecureMessagingPipe(
                         _applicationIdentifier,
-                        len,
+                        new DGDataHexLength(
+                            _applicationIdentifier,
+                            _kSenc,
+                            _kSmac,
+                            _ssc,
+                            _reader
+                        ),
                         _kSenc,
                         _kSmac,
                         _ssc,

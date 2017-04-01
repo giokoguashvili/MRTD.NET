@@ -13,7 +13,7 @@ namespace HelloWord.SecureMessaging
     public class SecureMessagingPipe : IBinary
     {
         private readonly IBinary _applicationIdentifier;
-        private readonly int _bytesCountForRead;
+        private readonly INumber _bytesCountForRead;
         private readonly IBinary _kSenc;
         private readonly IBinary _kSmac;
         private readonly IBinary _selfIncrementSsc;
@@ -21,7 +21,7 @@ namespace HelloWord.SecureMessaging
 
         public SecureMessagingPipe(
                 IBinary applicationIdentifier,
-                int bytesCountForRead,
+                INumber bytesCountForRead,
                 IBinary kSenc,
                 IBinary kSmac,
                 IBinary selfIncrementSsc,
@@ -55,12 +55,12 @@ namespace HelloWord.SecureMessaging
 
             var step = 64;
             var range = Enumerable
-                .Range(0, _bytesCountForRead)
+                .Range(0, _bytesCountForRead.Value())
                 .Where(index => index % step == 0)
                 .Select(index => new
                 {
                     StartIndex = index,
-                    Count = index + step < _bytesCountForRead ? step : _bytesCountForRead % step
+                    Count = index + step < _bytesCountForRead.Value() ? step : _bytesCountForRead.Value() % step
                 });
 
             return range

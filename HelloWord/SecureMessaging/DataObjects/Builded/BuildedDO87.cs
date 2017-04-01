@@ -36,7 +36,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
             }
             
 
-            if (new Length(new Binary(data)).Is(0))
+            if (new HexCount(new Binary(data)).Is(0))
             {
                 return new Binary().Bytes();
             }
