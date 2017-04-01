@@ -5,12 +5,12 @@ using System.Text;
 
 namespace HelloWord.Infrastructure
 {
-    public class HexCount : INumber
+    public class BytesCount : INumber
     {
         private readonly IBinary _data;
-        public HexCount(string hexStr) : this(new BinaryHex(hexStr))
+        public BytesCount(string hexStr) : this(new BinaryHex(hexStr))
         {}
-        public HexCount(IBinary data)
+        public BytesCount(IBinary data)
         {
             _data = data;
         }

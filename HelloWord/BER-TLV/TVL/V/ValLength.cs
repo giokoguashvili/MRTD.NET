@@ -18,7 +18,7 @@ namespace HelloWord.BER_TLV.TVL
         }
         public int Value()
         {
-            var lenHex = new HexCount(_berLen).Is(1) 
+            var lenHex = new BytesCount(_berLen).Is(1) 
                                       ? (IBinary)new ShortLen(_berLen) 
                                       : new LongLen(_berLen);
             return new Hex(lenHex)

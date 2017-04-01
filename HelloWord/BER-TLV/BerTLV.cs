@@ -43,35 +43,8 @@ namespace HelloWord
         public string L { get { return new Hex(_cachedLen).ToString(); } } 
 
         public string V { get { return new Hex(_cachedVal).ToString(); } }
-        
 
         public IBerTLV[] Data { get { return HasConstructedData ? new ConstructedTLV(_cachedVal).Data() : new IBerTLV[0]; } }
-
-        public string TL
-        {
-            get
-            {
-                return new Hex(
-                            new CombinedBinaries(
-                                _cachedTag,
-                                _cachedLen
-                            )
-                       ).ToString();
-            }
-        }
-
-        public string LV
-        {
-            get
-            {
-                return new Hex(
-                            new CombinedBinaries(
-                                _cachedLen,
-                                _cachedVal
-                            )
-                       ).ToString();
-            }
-        }
 
         private bool HasConstructedData { get { return (_cachedTag.Bytes().First() & _b6_one) == _b6_one; } }
 

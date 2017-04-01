@@ -1,34 +1,40 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.BER_TLV.TVL;
+using System;
 
 namespace HelloWord.TVL
 {
   
-    public class Tag : IBinary
+    public class Tag : IRest, IBinary
     {
-        private readonly IBinary _berTvl;
-        private readonly byte _b5_b1_one = 0x1F; // 0b0001 0b1111
-        private readonly byte _b6_one = 0x40; // 0b0010 0b0000
-        public Tag(IBinary berTvl)
+        private readonly IBinary _berTlv;
+        private readonly IBinary _tag;
+        public Tag(IBinary berTlv)
         {
-            _berTvl = berTvl;
+            _berTlv = berTlv;
+            _tag = new CombinedBinaries(
+                        new Binary(berTlvFirstByte()),
+                        new TagSubsequentBytes(_berTlv)
+                    );
         }
         public byte[] Bytes()
         {
-            return new CombinedBinaries(
-                        new Binary(_berTvl.Bytes().First()),      
-                        new TagSubsequentBytes(_berTvl)
-                    ).Bytes();
+            return _tag.Bytes();
         }
 
         private byte berTlvFirstByte()
         {
-            return _berTvl.Bytes().FirstOrDefault();
+            return _berTlv.Bytes().First();
         }
 
-        public bool HasConstructedData()
+        public IBinary Rest()
         {
-            return (berTlvFirstByte() & _b6_one) == _b6_one;
+            return new Binary(
+                        _berTlv
+                            .Bytes()
+                            .Skip(new BytesCount(_tag).Value())
+                   );
         }
     }
 }

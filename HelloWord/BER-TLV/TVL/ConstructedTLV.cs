@@ -30,7 +30,7 @@ namespace HelloWord
 
         public IBerTLV[] Data()
         {
-            if (new HexCount(Rest()).IsEmpty())
+            if (new BytesCount(Rest()).IsEmpty())
             {
                 return First();
             }

@@ -32,7 +32,7 @@ namespace HelloWord.TVL
         }
         public byte[] Bytes()
         {
-            var tagAndLenBytesCount = new HexCount(
+            var tagAndLenBytesCount = new BytesCount(
                                          new CombinedBinaries(
                                              _tag,
                                              _len

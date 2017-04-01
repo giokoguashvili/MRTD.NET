@@ -30,10 +30,12 @@ namespace HelloWord.TVL
 
         public byte[] Bytes()
         {
-            var berTvlTagLength = _cachedTag.Bytes().Length;
             var berTlvWithoutTag = _berTlv
                                         .Bytes()
-                                        .Skip(berTvlTagLength);
+                                        .Skip(
+                                            new BytesCount(_cachedTag)
+                                                    .Value()
+                                        );
 
             var firstByte = berTlvWithoutTag.First();
 

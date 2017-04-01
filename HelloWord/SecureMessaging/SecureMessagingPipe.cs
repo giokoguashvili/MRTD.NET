@@ -53,7 +53,7 @@ namespace HelloWord.SecureMessaging
                 _kSmac
             ).Bytes();
 
-            var step = 64;
+            var step = 127;
             var range = Enumerable
                 .Range(0, _bytesCountForRead.Value())
                 .Where(index => index % step == 0)

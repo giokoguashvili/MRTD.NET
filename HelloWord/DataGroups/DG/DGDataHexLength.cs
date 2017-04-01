@@ -49,10 +49,10 @@ namespace HelloWord.DataGroups.DG
                                         .Take(firstFourByteForDGStructureLength.Value())
                                 );
 
-            var tagBytesCount = new HexCount(
+            var tagBytesCount = new BytesCount(
                                     parsedBerTLV
                                         .T).Value();
-            var lenBytesCount = new HexCount(parsedBerTLV.L).Value();
+            var lenBytesCount = new BytesCount(parsedBerTLV.L).Value();
 
             return new ValLength(parsedBerTLV.L)
                                 .Value() + tagBytesCount + lenBytesCount;

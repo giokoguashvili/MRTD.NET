@@ -18,7 +18,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             // PRotectedResponseAPDU Format: [DO87][DO99][DOE8][SW1SW2]
             // [87][EncDataLen][01][EncData] [99][02][SW1][SW2] [8E][CCLen][CC] [SW1][SW2]
 
-            if (new HexCount(new ExtractedDO87(_protectedResponseApdu)).IsEmpty())
+            if (new BytesCount(new ExtractedDO87(_protectedResponseApdu)).IsEmpty())
             {
                 return _protectedResponseApdu
                             .Bytes()
