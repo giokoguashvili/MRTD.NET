@@ -1,6 +1,8 @@
-﻿namespace HelloWord
+﻿using HelloWord.Infrastructure;
+
+namespace HelloWord
 {
-    public interface IBerTLV
+    public interface IBerTLV : IBinary
     {
         string T { get; }
         string L { get; }

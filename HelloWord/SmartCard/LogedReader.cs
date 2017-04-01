@@ -32,6 +32,7 @@ namespace HelloWord.SmartCard
                    );
 
             var claName = String.Empty;
+            var mode = "Unprotected";
             try
             {
                 var claNamesDictionary = ((InstructionCode[]) Enum.GetValues(typeof(InstructionCode)))
@@ -43,6 +44,10 @@ namespace HelloWord.SmartCard
 
                 var claValue = new Hex(new Binary(sendBuffer.Skip(1).Take(1).ToArray())).ToInt();
                 claName = claNamesDictionary[claValue];
+                if (sendBuffer.First() == 0x0C)
+                {
+                    mode = "Protected";
+                }
             }
             catch (Exception ex)
             {
@@ -56,7 +61,7 @@ namespace HelloWord.SmartCard
             try
             {
                 Console.WriteLine(
-                          "\n{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
+                          "\n{5}_{3}:\n CAPDU: {0}\n RAPDU: {2}\nSW1SW2: {4}\n    Le: {1}\n",
                           new Hex(
                               new Binary(sendBuffer)
                           ),
@@ -65,7 +70,8 @@ namespace HelloWord.SmartCard
                               new Binary(receiveBuffer)
                           ),
                           claName,
-                          new Hex(new Binary(receiveBuffer.Reverse().Take(2).Reverse()))
+                          new Hex(new Binary(receiveBuffer.Reverse().Take(2).Reverse())),
+                          mode
                       );
             }
             catch (Exception e)

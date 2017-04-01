@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.BER_TLV;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
@@ -15,23 +16,27 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
         public byte[] Bytes()
         {
 
-            var extractedDO87AsString = new Hex(
-                                    new ExtractedDO87(_protectedResponseApdu)
-                                ).ToString();
-            var extractedDO99AsString = new Hex(
-                                    new ExtractedDO99(_protectedResponseApdu)
-                                ).ToString();
+            //var extractedDO87AsString = new Hex(
+            //                        new ExtractedDO87(_protectedResponseApdu)
+            //                    ).ToString();
+            //var extractedDO99AsString = new Hex(
+            //                        new ExtractedDO99(_protectedResponseApdu)
+            //                    ).ToString();
 
-            return new BinaryHex(
-                String.Concat(
-                        new Hex(_protectedResponseApdu)
-                            .ToString()
-                            .Replace(String.Format("{0}{1}", extractedDO87AsString, extractedDO99AsString), String.Empty)
-                            .Reverse()
-                            .Skip(4)
-                            .Reverse()
-                    )
-            ).Bytes();
+            var wrapped = new WrapedBerTLV(_protectedResponseApdu);
+            var parsetBerTLV = new BerTLV(wrapped);
+            return parsetBerTLV.Data.Where(tlv => tlv.T == "8E").First().Bytes();
+
+            //return new BinaryHex(
+            //    String.Concat(
+            //            new Hex(_protectedResponseApdu)
+            //                .ToString()
+            //                .Replace(String.Format("{0}{1}", extractedDO87AsString, extractedDO99AsString), String.Empty)
+            //                .Reverse()
+            //                .Skip(4)
+            //                .Reverse()
+            //        )
+            //).Bytes();
         }
 
         public IBinary EncryptedData()

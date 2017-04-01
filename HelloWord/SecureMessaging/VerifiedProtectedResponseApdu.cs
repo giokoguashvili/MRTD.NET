@@ -24,6 +24,10 @@ namespace HelloWord.SecureMessaging
         public byte[] Bytes()
         {
             //return _responseApdu.Bytes();
+            if (_responseApdu.Bytes().Length == 0)
+            {
+                var gio = 6;
+            }
             var extractedCC = new ExtractedCC(
                                     _incrementedSsc,
                                     _kSmac,

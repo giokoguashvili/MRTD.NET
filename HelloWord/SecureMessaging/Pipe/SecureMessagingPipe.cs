@@ -38,25 +38,23 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            var sscForSelect = new Cached(_selfIncrementSsc.Bytes());
-            var sscForVerify = new Cached(_selfIncrementSsc.Bytes());
-            var v = new VerifiedProtectedResponseApdu(
+            new VerifiedProtectedResponseApdu(
                 new Cached(
                     new ExecutedCommandApdu(
                         new ProtectedCommandApdu(
                             new SelectApplicationCommandApdu(_applicationIdentifier),
                             _kSenc,
                             _kSmac,
-                            sscForSelect
+                            new Cached(_selfIncrementSsc.Bytes())
                         ),
                         _reader
                     )
                 ),
-                sscForVerify,
+                new Cached(_selfIncrementSsc.Bytes()),
                 _kSmac
-            );
-            v.Bytes();
-            var step = new Number(64);
+            ).Bytes();
+           
+            var step = new Number(255);
             var range = Enumerable
                 .Range(0, _bytesCountForRead.Value())
                 .Where(index => index % step.Value() == 0)
@@ -77,7 +75,7 @@ namespace HelloWord.SecureMessaging
             //                                ).ToString();
 
 
-            var result =  range
+            return range
                     .Aggregate(
                         new byte[0],
                         (prev, next) => prev.Concat(
@@ -92,7 +90,6 @@ namespace HelloWord.SecureMessaging
                                             .Bytes()
                                         ).ToArray()
                         );
-            return result;
             //var f1 = new DecryptedProtectedResponseApdu(
             //            new Cached(
             //                new VerifiedProtectedResponseApdu(

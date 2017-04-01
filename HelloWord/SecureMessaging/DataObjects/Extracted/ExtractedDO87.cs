@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
+using HelloWord.BER_TLV;
+using System;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
@@ -14,43 +16,77 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
         }
         public byte[] Bytes()
         {
-            if (new Hex(
-                    new Binary(
-                        _protectedResponseApdu
-                            .Bytes()
-                            .Take(1)
-                    )
-                ).ToString() != "87")
+            //if (new Hex(
+            //        new Binary(
+            //            _protectedResponseApdu
+            //                .Bytes()
+            //                .Take(1)
+            //        )
+            //    ).ToString() != "87")
+            //{
+            //    return new Binary().Bytes();
+            //}
+
+            //var L = _protectedResponseApdu
+            //    .Bytes()
+            //    .Skip(1)
+            //    .Take(1)
+            //    .First();
+
+            //var encDataLength = new Hex(
+            //                        new Binary(
+            //                            new[] { L }
+            //                        )
+            //                    ).ToInt() - 1;
+
+            if (_protectedResponseApdu.Bytes().Length == 0)
             {
-                return new Binary().Bytes();
+                var gio = 6;
             }
-
-            var L = _protectedResponseApdu
-                .Bytes()
-                .Skip(1)
-                .Take(1)
-                .First();
-
-            var encDataLength = new Hex(
-                                    new Binary(
-                                        new[] { L }
-                                    )
-                                ).ToInt() - 1;
-
-            return new Binary(
-                    _protectedResponseApdu
-                        .Bytes()
-                        .Take(_do87BytesCountWithoutEncryptedData + encDataLength)
-                        .ToArray()
-                ).Bytes();
+            try
+            {
+                var wrapped = new WrapedBerTLV(_protectedResponseApdu);
+              
+                var parsetBerTLV = new BerTLV(wrapped);
+                if (parsetBerTLV.Data.Where(tlv => tlv.T == "87").Count() == 0)
+                    return new Binary().Bytes();
+                return parsetBerTLV.Data.Where(tlv => tlv.T == "87").First().Bytes().ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(new Hex(new WrapedBerTLV(_protectedResponseApdu).Bytes()));
+                var gio = 5;
+            }
+            return new Binary().Bytes();
+            //return new Binary(
+            //        _protectedResponseApdu
+            //            .Bytes()
+            //            .Take(_do87BytesCountWithoutEncryptedData + encDataLength)
+            //            .ToArray()
+            //    ).Bytes();
         }
 
         public IBinary EncryptedData()
         {
-            return new Binary(
+            if (Bytes().Length == 0) return new Binary();
+           // var x = new Binary(new BinaryHex(new BerTLV(new Binary().Bytes()).V).Bytes().Skip(1));
+            return new Binary(new BinaryHex(new BerTLV(
                 Bytes()
-                    .Skip(_do87BytesCountWithoutEncryptedData)
-            );
+            ).V).Bytes().Skip(1));
+            //var str = new Hex(new BinaryHex(new BerTLV(
+            //    Bytes()
+            //).V).Bytes().Skip(1)).ToString();
+            //var str2 = new Hex(new Binary(
+            //    Bytes()
+            //        .Skip(_do87BytesCountWithoutEncryptedData)
+            //)).ToString();
+            //return new Binary(
+            //    Bytes()
+            //        .Skip(_do87BytesCountWithoutEncryptedData)
+            //);
+            //return new BinaryHex(new BerTLV(
+            //    Bytes()
+            //).V);
         }
     }
 }

@@ -25,12 +25,18 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
+            if (_protectedResponseApdu.Bytes().Length == 0)
+            {
+                var gio = 6;
+            }
+            var d87 = new ExtractedDO87(_protectedResponseApdu).Bytes();
+            var d99 = new ExtractedDO99(_protectedResponseApdu).Bytes();
             return new CC(
                 _incrementedSsc,
                 _kSmac,
                 new CombinedBinaries(
-                    new ExtractedDO87(_protectedResponseApdu),
-                    new ExtractedDO99(_protectedResponseApdu)
+                    d87,
+                    d99
                 )
             ).Bytes();
         }

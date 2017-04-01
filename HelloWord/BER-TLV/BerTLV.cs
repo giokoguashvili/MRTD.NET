@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
+using HelloWord.BER_TLV;
 
 namespace HelloWord
 {
-    public class BerTLV : IBerTLV, IBinary
+    public class BerTLV : IBerTLV
     {
         private readonly IBinary _cachedTag;
         private readonly IBinary _cachedLen;

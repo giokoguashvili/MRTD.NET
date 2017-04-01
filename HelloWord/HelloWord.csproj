@@ -63,6 +63,7 @@
     <Compile Include="BER-TLV\TVL\L\LongLen.cs" />
     <Compile Include="BER-TLV\TVL\L\ShortLen.cs" />
     <Compile Include="BER-TLV\View\ValView.cs" />
+    <Compile Include="BER-TLV\WrapedBerTLV.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
@@ -143,7 +144,7 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO87.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
-    <Compile Include="SecureMessaging\EncryptedProtectedResponseApdu.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedResponseApdu.cs" />
     <Compile Include="SecureMessaging\ExtractedCC.cs" />
     <Compile Include="SecureMessaging\Pipe\LastStapCount.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
