@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Commands;
-using HelloWord.DataGroups.DG;
+﻿using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging.Pipe;
 
-namespace HelloWord.SmartCard
+namespace HelloWord.SmartCard.Reader
 {
     public class BacReader : IBacReader
     {

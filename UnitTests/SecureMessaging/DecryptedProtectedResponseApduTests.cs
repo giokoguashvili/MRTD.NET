@@ -23,13 +23,7 @@ namespace UnitTests.SecureMessaging
         {
             NUnit.Framework.Assert.AreEqual(
                     // add padding on protectedrResponseApdu decrypted data
-                    new Hex(
-                        new Padded(
-                            new BinaryHex(
-                                act
-                            )
-                        )
-                    ).ToString(),
+                    act,
                     new Hex(
                         new DecryptedProtectedResponseApdu(
                             new BinaryHex(protectedResponseApdu),

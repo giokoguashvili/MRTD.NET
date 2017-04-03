@@ -2,6 +2,7 @@ using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SecureMessaging.Pipe;
 using HelloWord.SmartCard;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.DataGroups.DG
 {

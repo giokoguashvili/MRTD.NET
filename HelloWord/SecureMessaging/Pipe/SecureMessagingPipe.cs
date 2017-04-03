@@ -2,6 +2,7 @@
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.SecureMessaging.Pipe
 {

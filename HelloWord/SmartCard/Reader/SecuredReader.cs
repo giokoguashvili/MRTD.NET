@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HelloWord.Commands;
-using HelloWord.Cryptography;
-using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
-using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
-using PCSC;
 
-namespace HelloWord.SmartCard
+namespace HelloWord.SmartCard.Reader
 {
     public class SecuredReader : IReader
     {

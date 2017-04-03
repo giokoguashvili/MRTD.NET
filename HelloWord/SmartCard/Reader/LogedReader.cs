@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Text;
 using HelloWord.Infrastructure;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace HelloWord.SmartCard
+namespace HelloWord.SmartCard.Reader
 {
     public class LogedReader : ISCardReader
     {

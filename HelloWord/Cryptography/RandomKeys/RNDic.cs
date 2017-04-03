@@ -6,7 +6,9 @@ using System.Text;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
+using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.Cryptography.RandomKeys
 {

@@ -1,10 +1,7 @@
-﻿using System;
-using HelloWord.ISO7816.CommandAPDU;
-using HelloWord.SmartCard;
-using PCSC;
-using PCSC.Iso7816;
+﻿using HelloWord.Infrastructure;
+using HelloWord.SmartCard.Reader;
 
-namespace HelloWord.Infrastructure
+namespace HelloWord.SecureMessaging
 {
     public class ExecutedCommandApdu : IBinary
     {

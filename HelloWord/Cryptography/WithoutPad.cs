@@ -20,7 +20,7 @@ namespace HelloWord.Cryptography
             return _data
                 .Bytes()
                 .Reverse()
-                .SkipWhile(b => b == 0x80)
+                .SkipWhile(b => b == 0x00)
                 .Skip(1)
                 .Reverse()
                 .ToArray();

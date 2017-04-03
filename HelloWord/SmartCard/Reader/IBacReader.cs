@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.SmartCard
+namespace HelloWord.SmartCard.Reader
 {
     public interface IBacReader
     {

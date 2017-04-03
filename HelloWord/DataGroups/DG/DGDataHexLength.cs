@@ -4,6 +4,7 @@ using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
 using System;
 using HelloWord.SecureMessaging.Pipe;
+using HelloWord.SmartCard.Reader;
 using HelloWord.TVL.V;
 
 namespace HelloWord.DataGroups.DG

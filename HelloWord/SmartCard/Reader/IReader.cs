@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
-using PCSC;
+﻿using HelloWord.Infrastructure;
 
-namespace HelloWord.SmartCard
+namespace HelloWord.SmartCard.Reader
 {
     public interface IReader
     {

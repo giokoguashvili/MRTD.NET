@@ -80,10 +80,8 @@
     <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="DataGroups\DG\DG1Content.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
-    <Compile Include="Infrastructure\ChainedCommand.cs" />
     <Compile Include="Infrastructure\DevidedBinary.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
-    <Compile Include="Infrastructure\IChain.cs" />
     <Compile Include="Infrastructure\IMtBinary.cs" />
     <Compile Include="Infrastructure\INumber.cs" />
     <Compile Include="Infrastructure\BytesCount.cs" />

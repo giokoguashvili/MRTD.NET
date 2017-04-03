@@ -6,6 +6,7 @@ using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.DataGroups
 {

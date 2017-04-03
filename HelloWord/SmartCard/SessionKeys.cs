@@ -9,6 +9,7 @@ using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.SmartCard
 {
