@@ -130,8 +130,8 @@
     <Compile Include="Cryptography\Encrypted3DES.cs" />
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW1.cs" />
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW2.cs" />
-    <Compile Include="SecureMessaging\CC.cs" />
-    <Compile Include="SecureMessaging\ComputedCC.cs" />
+    <Compile Include="SecureMessaging\CC\CC.cs" />
+    <Compile Include="SecureMessaging\CC\ComputedCC.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\DataObjects\DO\DO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\DO\DO97.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
     <Compile Include="SecureMessaging\DecryptedProtectedResponseApdu.cs" />
-    <Compile Include="SecureMessaging\ExtractedCC.cs" />
+    <Compile Include="SecureMessaging\CC\ExtractedCC.cs" />
     <Compile Include="SecureMessaging\Pipe\LastStapCount.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduData.cs" />

@@ -97,8 +97,9 @@
     <Compile Include="EncryptedDataTests.cs" />
     <Compile Include="ISO7816\CommandHeaderTests.cs" />
     <Compile Include="Cryptography\IncrementedSSCTests.cs" />
+    <Compile Include="SecureMessaging\CC\ComputedCCTests.cs" />
     <Compile Include="SecureMessaging\NTests.cs" />
-    <Compile Include="SecureMessaging\CCTests.cs" />
+    <Compile Include="SecureMessaging\CC\CCTests.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApduTests.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduTests.cs" />
     <Compile Include="COMTests.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="DataObjects\ExtractedDO99Tests.cs" />
     <Compile Include="DataObjects\ExtractedDO8ETests.cs" />
     <Compile Include="SecureMessaging\DecryptedProtectedResponseApduTests.cs" />
-    <Compile Include="SecureMessaging\ExtractedCCTests.cs" />
+    <Compile Include="SecureMessaging\CC\ExtractedCCTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
