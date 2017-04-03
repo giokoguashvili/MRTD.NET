@@ -70,7 +70,6 @@
     <Compile Include="DataGroups\Content\DGContent.cs" />
     <Compile Include="DataGroups\DG12.cs" />
     <Compile Include="DataGroups\DG2.cs" />
-    <Compile Include="DataGroups\DG5.cs" />
     <Compile Include="DataGroups\DG11.cs" />
     <Compile Include="DataGroups\DG7.cs" />
     <Compile Include="DataGroups\DGDataView.cs" />
@@ -164,7 +163,6 @@
     <Compile Include="SecureMessaging\N.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
-    <Compile Include="SecureMessaging\Pipe\ReadedBytesRange.cs" />
     <Compile Include="SecureMessaging\Pipe\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
