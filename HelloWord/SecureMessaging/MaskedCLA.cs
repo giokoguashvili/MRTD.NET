@@ -17,7 +17,7 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return new byte[1] {(byte) (_cla.Bytes().First() | _claMaks)};
+            return new byte[] {(byte) (_cla.Bytes().First() | _claMaks)};
         }
     }
 }

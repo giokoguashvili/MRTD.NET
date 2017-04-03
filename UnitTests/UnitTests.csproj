@@ -110,6 +110,7 @@
     <Compile Include="DataObjects\ExtractedDO99Tests.cs" />
     <Compile Include="DataObjects\ExtractedDO8ETests.cs" />
     <Compile Include="SecureMessaging\DecryptedProtectedResponseApduTests.cs" />
+    <Compile Include="SecureMessaging\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,14 +9,14 @@
         {}
         public Cached(IBinary src)
         {
-            this._src = src;
+            _src = src;
         }
 
         public byte[] Bytes()
         {
             if (_cachedBytes.Length == 0)
             {
-                _cachedBytes = this._src.Bytes();
+                _cachedBytes = _src.Bytes();
             }
             return _cachedBytes;
         }

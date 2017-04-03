@@ -13,15 +13,15 @@ namespace HelloWord.Cryptography
         private readonly IBinary _s;
         public Eifd(IBinary s, IBinary kEnc)
         {
-            this._s = s;
-            this._kEnc = kEnc;
+            _s = s;
+            _kEnc = kEnc;
         }
 
         public byte[] Bytes()
         {
             return new TripleDES(
-                        this._kEnc,
-                        this._s
+                        _kEnc,
+                        _s
                    )
                    .Encrypted()
                    .Bytes();

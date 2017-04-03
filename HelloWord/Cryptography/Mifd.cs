@@ -12,14 +12,14 @@ namespace HelloWord.Cryptography
         private readonly IBinary _kMac;
         public Mifd(IBinary eIfd, IBinary kMac)
         {
-            this._eIfd = eIfd;
-            this._kMac = kMac;
+            _eIfd = eIfd;
+            _kMac = kMac;
         }
         public byte[] Bytes()
         {
             return new MAC3(
-                    this._eIfd,
-                    this._kMac
+                    _eIfd,
+                    _kMac
                 ).Bytes();
         }
     }

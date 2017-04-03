@@ -22,14 +22,14 @@ namespace HelloWord.Cryptography
         {}
         public Kenc(IBinary kSeed)
         {
-            this._kSeed = kSeed;
+            _kSeed = kSeed;
         }
 
         public byte[] Bytes()
         {
             return new DESKeys(
                         new SHA1(
-                            new D(this._kSeed, this._c)
+                            new D(_kSeed, _c)
                         )
                     )
                     .Key()

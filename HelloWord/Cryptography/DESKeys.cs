@@ -11,13 +11,13 @@ namespace HelloWord.Cryptography
         private readonly IBinary _binary;
         public DESKeys(IBinary binary)
         {
-            this._binary = binary;
+            _binary = binary;
         }
 
         public IBinary Ka()
         {
             return new AdjustedParity(
-                    this._binary
+                    _binary
                         .Bytes()
                         .Take(8)
                         .ToArray()
@@ -27,7 +27,7 @@ namespace HelloWord.Cryptography
         public IBinary Kb()
         {
             return new AdjustedParity(
-                    this._binary
+                    _binary
                         .Bytes()
                         .Skip(8)
                         .Take(8)
@@ -38,7 +38,7 @@ namespace HelloWord.Cryptography
         public IBinary Key()
         {
             return new AdjustedParity(
-                    this._binary
+                    _binary
                         .Bytes()
                         .Take(16)
                         .ToArray()  

@@ -11,7 +11,7 @@ namespace HelloWord.Cryptography.RandomKeys
         private readonly int _randomBytesCount = 16;
         public byte[] Bytes()
         {
-            return new RandomBytes(this._randomBytesCount)
+            return new RandomBytes(_randomBytesCount)
                  .Bytes();
         }
     }

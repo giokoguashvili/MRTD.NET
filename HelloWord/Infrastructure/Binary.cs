@@ -8,7 +8,7 @@ namespace HelloWord.Infrastructure
     {
         private readonly byte[] _bytes;
 
-        public Binary(byte _byte) : this(new byte[] { _byte }) { }
+        public Binary(byte _byte) : this(new [] { _byte }) { }
 
         public Binary() : this(new byte[0]) {}
 
@@ -17,11 +17,11 @@ namespace HelloWord.Infrastructure
 
         public Binary(byte[] bytes)
         {
-            this._bytes = bytes;
+            _bytes = bytes;
         }
         public byte[] Bytes()
         {
-            return this._bytes;
+            return _bytes;
         }
 
         public bool Is(int len)

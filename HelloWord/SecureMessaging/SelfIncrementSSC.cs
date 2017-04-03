@@ -9,7 +9,7 @@ namespace HelloWord.SecureMessaging
     public class SelfIncrementSSC : IBinary
     {
         private readonly IBinary _ssc;
-        private int _incrementCount = 0;
+        private int _incrementCount;
         public SelfIncrementSSC(IBinary ssc)
         {
             _ssc = ssc;

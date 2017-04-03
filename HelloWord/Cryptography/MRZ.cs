@@ -17,18 +17,18 @@ namespace HelloWord.Cryptography
                 DateTime dateOfExpiry
             )
         {
-            this._dateOfBirth = dateOfBirth;
-            this._dateOfExpiry = dateOfExpiry;
-            this._documentNumber = documentNumber;
+            _dateOfBirth = dateOfBirth;
+            _dateOfExpiry = dateOfExpiry;
+            _documentNumber = documentNumber;
         }
 
         public string Info()
         {
             return String.Format(
                     "{0}{1}{2}",
-                    this._documentNumber,
-                    this._dateOfBirth.ToString(),
-                    this._dateOfExpiry.ToString()
+                    _documentNumber,
+                    _dateOfBirth,
+                    _dateOfExpiry
                 );
         }
     }

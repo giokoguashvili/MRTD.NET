@@ -37,7 +37,7 @@ namespace HelloWord
         }
 
 
-        static void CardInsertEventHandler(object sender, PCSC.CardStatusEventArgs e)
+        static void CardInsertEventHandler(object sender, CardStatusEventArgs e)
         {
 
             var cardContext = ContextFactory.Instance.Establish(SCardScope.System);

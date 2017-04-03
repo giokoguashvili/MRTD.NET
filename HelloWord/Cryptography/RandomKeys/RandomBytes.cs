@@ -12,14 +12,14 @@ namespace HelloWord.Cryptography.RandomKeys
         private readonly byte[] _rndBytes;
         public RandomBytes(int bytesCount)
         {
-            this._rndBytes = new byte[bytesCount];
+            _rndBytes = new byte[bytesCount];
             rndGenerator.NextBytes(_rndBytes);
         }
 
 
         public byte[] Bytes()
         {
-            return this._rndBytes;
+            return _rndBytes;
         }
     }
 }

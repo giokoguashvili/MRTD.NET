@@ -33,9 +33,9 @@ namespace HelloWord.Cryptography
         //    MACTripleDES mac = new MACTripleDES();
         //    mac.Initialize();
         //    mac.Padding = PaddingMode.Zeros;
-        //    mac.Key = this._kMac.Bytes();
+        //    mac.Key = _kMac.Bytes();
 
-        //    var eIfd = this._eIfd.Bytes();
+        //    var eIfd = _eIfd.Bytes();
         //    var mIfd = mac.TransformFinalBlock(eIfd, 0, eIfd.Length);
         //    return mIfd;
         //}
@@ -47,8 +47,8 @@ namespace HelloWord.Cryptography
         /// <returns></returns>
         //public byte[] Bytes()
         //{
-        //    var kMAC = this._kMac.Bytes();
-        //    var eIfd = this._eIfd.Bytes();
+        //    var kMAC = _kMac.Bytes();
+        //    var eIfd = _eIfd.Bytes();
 
         //    // Split the 16 byte MAC key into two keys
         //    byte[] key1 = new byte[8];

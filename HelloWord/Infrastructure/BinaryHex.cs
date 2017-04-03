@@ -8,7 +8,7 @@ namespace HelloWord.Infrastructure
         private readonly string _str;
         public BinaryHex(string str)
         {
-            this._str = str;
+            _str = str;
         }
 
         public byte[] Bytes()

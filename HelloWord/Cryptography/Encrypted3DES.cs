@@ -21,8 +21,8 @@ namespace HelloWord.Cryptography
         }
         public byte[] Bytes()
         {
-            var textBytes = this._text.Bytes();
-            byte[] resultArray = this._cTransform.TransformFinalBlock(textBytes, 0, textBytes.Length);
+            var textBytes = _text.Bytes();
+            byte[] resultArray = _cTransform.TransformFinalBlock(textBytes, 0, textBytes.Length);
             return resultArray;
         }
     }

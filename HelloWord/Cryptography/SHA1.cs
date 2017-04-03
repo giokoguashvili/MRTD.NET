@@ -13,13 +13,13 @@ namespace HelloWord.Cryptography
 
         public SHA1(IBinary binary)
         {
-            this._binary = binary;
+            _binary = binary;
         }
 
         public byte[] Bytes()
         {
             return new SHA1Managed()
-                .ComputeHash(this._binary.Bytes());
+                .ComputeHash(_binary.Bytes());
         }
     }
 }

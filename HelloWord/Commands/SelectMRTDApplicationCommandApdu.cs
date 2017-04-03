@@ -14,7 +14,7 @@ namespace HelloWord.Commands
         private readonly IBinary _applicationIdentifier = new BinaryHex("A0000002471001");
         public byte[] Bytes()
         {
-            return new CommandApdu(this._isoCase, this._activeProtocol)
+            return new CommandApdu(_isoCase, _activeProtocol)
             {
                 CLA = 0x00,
                 Instruction = InstructionCode.SelectFile,

@@ -34,7 +34,7 @@ namespace HelloWord.Commands
             var offsetLSB = hexLen.Skip(1).Take(1).First(); //new HexInt(_offsetLength + _expectedDataLength).Bytes().First();
 
 
-            var comm  = new CommandApdu(this._isoCase, this._activeProtocol)
+            var comm  = new CommandApdu(_isoCase, _activeProtocol)
             {
                 CLA = 0x00,
                 Instruction = InstructionCode.ReadBinary,

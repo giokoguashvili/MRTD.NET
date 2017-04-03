@@ -87,7 +87,6 @@
     <Compile Include="Infrastructure\INumber.cs" />
     <Compile Include="Infrastructure\BytesCount.cs" />
     <Compile Include="Infrastructure\Number.cs" />
-    <Compile Include="Infrastructure\Rem.cs" />
     <Compile Include="Infrastructure\Sum.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduBody.cs" />
     <Compile Include="ISO7816\CommandAPDU\Body\CommandApduData.cs" />

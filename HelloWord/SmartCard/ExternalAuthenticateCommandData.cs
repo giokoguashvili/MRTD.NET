@@ -18,10 +18,10 @@ namespace HelloWord.SmartCard
             IBinary rndIfd, 
             IBinary kIfd)
         {
-            this._mrzInformation = mrzInformation;
-            this._rndIc = rndIc;
-            this._rndIfd = rndIfd;
-            this._kIfd = kIfd;
+            _mrzInformation = mrzInformation;
+            _rndIc = rndIc;
+            _rndIfd = rndIfd;
+            _kIfd = kIfd;
         }
    
 
@@ -29,14 +29,14 @@ namespace HelloWord.SmartCard
         {
             var kSeed = new Kseed(
                             new SHA1(
-                                new UTF8String(this._mrzInformation)
+                                new UTF8String(_mrzInformation)
                             )
                         );
             var eIfd = new Eifd(
                     new S(
-                        this._rndIfd,
-                        this._rndIc,
-                        this._kIfd
+                        _rndIfd,
+                        _rndIc,
+                        _kIfd
                     ),
                     new Kenc(kSeed)
                 );
@@ -57,8 +57,8 @@ namespace HelloWord.SmartCard
             private readonly IBinary _mIfd;
             public CmdData(IBinary eIfd, IBinary mIfd)
             {
-                this._eIfd = eIfd;
-                this._mIfd = mIfd;
+                _eIfd = eIfd;
+                _mIfd = mIfd;
             }
 
             public byte[] Bytes()

@@ -17,7 +17,7 @@ namespace HelloWord.Cryptography
 
         public byte Result()
         {
-            return (byte)(this._b | 1);
+            return (byte)(_b | 1);
         }
     }
 }

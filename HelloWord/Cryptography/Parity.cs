@@ -10,7 +10,7 @@ namespace HelloWord.Cryptography
         private readonly byte _b;
         public Parity(byte b)
         {
-            this._b = b;
+            _b = b;
         }
 
         public IParity Adjusted()
@@ -24,12 +24,12 @@ namespace HelloWord.Cryptography
                     .Where(item => item == true)
                     .Count() % 2 == 0;
             };
-            return isOddParity(this._b) ? (IParity)new AdjustedOddParity(this._b) : new AdjustedEvenParity(this._b);
+            return isOddParity(_b) ? (IParity)new AdjustedOddParity(_b) : new AdjustedEvenParity(_b);
         }
 
         public byte Result()
         {
-            return this.Adjusted().Result();
+            return Adjusted().Result();
         }
     }
 }

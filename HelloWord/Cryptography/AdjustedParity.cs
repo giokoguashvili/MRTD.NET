@@ -12,12 +12,12 @@ namespace HelloWord.Cryptography
 
         public AdjustedParity(byte[] bites)
         {
-            this._bites = bites;
+            _bites = bites;
         }
         public AdjustedParity(IBinary binary) : this(binary.Bytes()) { }
         public byte[] Bytes()
         {
-            return this._bites
+            return _bites
                .Select(b => new Parity(b).Adjusted().Result())
                .ToArray();
         }

@@ -14,11 +14,11 @@ namespace HelloWord.Infrastructure
         {}
         public Hex(IBinary binary)
         { 
-            this._binary = binary;
+            _binary = binary;
         }
         public override string ToString()
         {
-            return this._binary
+            return _binary
                 .Bytes()
                 .ToList()
                 .Aggregate(

@@ -12,13 +12,13 @@ namespace HelloWord.Commands
         private readonly IBinary _applicationIdentifier = new BinaryHex("011E");
         public byte[] Bytes()
         {
-            return new CommandApdu(this._isoCase, this._activeProtocol)
+            return new CommandApdu(_isoCase, _activeProtocol)
             {
                 CLA = 0x00,
                 Instruction = InstructionCode.SelectFile,
                 P1 = 0x02,
                 P2 = 0x0C,
-                Data = this._applicationIdentifier.Bytes()
+                Data = _applicationIdentifier.Bytes()
             }.ToArray();
         }
     }

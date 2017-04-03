@@ -12,8 +12,8 @@ namespace HelloWord.Cryptography
         private readonly IBinary _c;
         public D(IBinary kSeed, IBinary c)
         {
-            this._kSeed = kSeed;
-            this._c = c;
+            _kSeed = kSeed;
+            _c = c;
         }
 
         public byte[] Bytes()

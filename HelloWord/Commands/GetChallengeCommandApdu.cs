@@ -13,7 +13,7 @@ namespace HelloWord.Commands
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
         public byte[] Bytes()
         {
-            return new CommandApdu(this._isoCase, this._activeProtocol)
+            return new CommandApdu(_isoCase, _activeProtocol)
             {
                 CLA = 0x00,
                 Instruction = InstructionCode.GetChallenge,

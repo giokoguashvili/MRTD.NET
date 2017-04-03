@@ -17,9 +17,9 @@ namespace HelloWord.Cryptography.RandomKeys
                 IBinary kIfd
             )
         {
-            this._Kifd = kIfd;
-            this._RNDic = rndIc;
-            this._RNDifd = rndIfd;
+            _Kifd = kIfd;
+            _RNDic = rndIc;
+            _RNDifd = rndIfd;
         }
 
         public byte[] Bytes()

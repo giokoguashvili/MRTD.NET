@@ -16,7 +16,7 @@ namespace HelloWord.TVL
 
         private IBerTLV[] First()
         {
-            return new IBerTLV[1] { new BerTLV(_cachedFirstExistingTLV) };
+            return new IBerTLV[] { new BerTLV(_cachedFirstExistingTLV) };
         }
 
         private IBinary Rest()

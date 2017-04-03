@@ -11,11 +11,11 @@ namespace HelloWord.Cryptography
         private readonly IBinary _hash;
         public Kseed(IBinary hash)
         {
-            this._hash = hash;
+            _hash = hash;
         }
         public byte[] Bytes()
         {
-            return this._hash
+            return _hash
                 .Bytes()
                 .Take(16)
                 .ToArray();

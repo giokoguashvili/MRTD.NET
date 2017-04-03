@@ -16,7 +16,7 @@ namespace HelloWord.Cryptography.RandomKeys
         private readonly IReader _reader;
         private RNDic(IBinary executedGetChallengeCommand)
         {
-            this._executedGetChallengeCommand = executedGetChallengeCommand;
+            _executedGetChallengeCommand = executedGetChallengeCommand;
         }
 
         public RNDic(IReader reader)

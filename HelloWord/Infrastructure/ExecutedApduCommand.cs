@@ -24,7 +24,7 @@ namespace HelloWord.Infrastructure
         {
             var receiveBuffer = new byte[1024 + _responseApduTrailerLength];
             var receivePci = new SCardPCI();
-            var sendPci = SCardPCI.GetPci(this._reader.ActiveProtocol());
+            var sendPci = SCardPCI.GetPci(_reader.ActiveProtocol());
 
             var sc = _reader.Transmit(
                             sendPci,
