@@ -17,26 +17,16 @@ namespace HelloWord.SecureMessaging
 
         public IBinary By(int count)
         {
-            
             // icnrement last 4 byte by 0x01
             return
                 new CombinedBinaries(
                     new Binary(_ssc.Bytes().Take(4)),
-                    new Binary(
-                        BitConverter
-                            .GetBytes(
-                                BitConverter.ToInt32(
-                                    _ssc
-                                        .Bytes()
-                                        .Skip(4)
-                                        .Reverse()
-                                        .ToArray()
-                                    , 0
-                                ) + count
-                            )
-                            .Reverse()
-                            .ToArray()
-                    )
+                    new BinaryNumber(
+                        new Sum(
+                            new IntHex(_ssc.Bytes().Skip(4)),
+                            count
+                        )
+                    )  
                 );
         }
     }

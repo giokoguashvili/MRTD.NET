@@ -76,7 +76,9 @@
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="DataGroups\IDataGroup.cs" />
+    <Compile Include="Infrastructure\BinaryNumber.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
+    <Compile Include="Infrastructure\IntHex.cs" />
     <Compile Include="Infrastructure\LinqExtensions.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.cs" />
     <Compile Include="BER-TLV\TVL\T\Tag.cs" />
