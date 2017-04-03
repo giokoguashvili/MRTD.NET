@@ -1,16 +1,12 @@
-﻿using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV
+namespace HelloWord
 {
-    public class WrapedBerTLV : IBinary
+    public class WrappedBerTLV : IBinary
     {
         private readonly IBinary _berTlv;
-        public WrapedBerTLV(IBinary berTlv)
+        public WrappedBerTLV(IBinary berTlv)
         {
             _berTlv = berTlv;
         }

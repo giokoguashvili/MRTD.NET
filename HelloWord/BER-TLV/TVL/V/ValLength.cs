@@ -1,11 +1,7 @@
 ﻿using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HelloWord.TVL.L;
 
-namespace HelloWord.BER_TLV.TVL
+namespace HelloWord.TVL.V
 {
     public class ValLength : INumber
     {

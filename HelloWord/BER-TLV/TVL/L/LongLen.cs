@@ -1,11 +1,7 @@
-﻿using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using HelloWord.Infrastructure;
 
-namespace HelloWord.BER_TLV.TVL
+namespace HelloWord.TVL.L
 {
     public class LongLen : IBinary
     {

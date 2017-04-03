@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.TVL.Cached;
-using HelloWord.BER_TLV.TVL;
 
-namespace HelloWord.TVL
+namespace HelloWord.TVL.V
 {
     public class Val : IBinary
     {

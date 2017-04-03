@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
+﻿using System.Linq;
 using HelloWord.Commands;
-using HelloWord.DataGroups;
 using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
-using HelloWord.SecureMessaging.Pipe;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.Pipe
 {
     public class SecureMessagingPipe : IBinary
     {

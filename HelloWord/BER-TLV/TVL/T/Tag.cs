@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
-using HelloWord.BER_TLV.TVL;
-using System;
 
-namespace HelloWord.TVL
+namespace HelloWord.TVL.T
 {
   
     public class Tag : IRest, IBinary

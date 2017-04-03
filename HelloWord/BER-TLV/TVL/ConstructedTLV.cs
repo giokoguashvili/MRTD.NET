@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord
+namespace HelloWord.TVL
 {
     public class ConstructedTLV
     {

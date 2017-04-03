@@ -15,7 +15,6 @@ namespace HelloWord.Cryptography
 
         public IParity Adjusted()
         {
-
             Func<byte, bool> isOddParity = (b) =>
             {
                 var hightBit = (1 << 7);
@@ -25,7 +24,6 @@ namespace HelloWord.Cryptography
                     .Where(item => item == true)
                     .Count() % 2 == 0;
             };
-
             return isOddParity(this._b) ? (IParity)new AdjustedOddParity(this._b) : new AdjustedEvenParity(this._b);
         }
 

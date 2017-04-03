@@ -1,11 +1,6 @@
 ﻿using HelloWord.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HelloWord.BER_TLV.TVL
+namespace HelloWord.TVL
 {
     public interface IRest
     {

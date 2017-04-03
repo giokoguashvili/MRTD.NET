@@ -1,5 +1,6 @@
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
+using HelloWord.SecureMessaging.Pipe;
 using HelloWord.SmartCard;
 
 namespace HelloWord.DataGroups.DG

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 
-namespace HelloWord
+namespace HelloWord.TVL.T
 {
     // http://stackoverflow.com/questions/42450105/parsing-magtek-emv-tlv
     public class TagSubsequentBytes : IBinary

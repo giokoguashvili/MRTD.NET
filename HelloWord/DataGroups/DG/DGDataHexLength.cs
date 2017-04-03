@@ -2,8 +2,9 @@ using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
-using HelloWord.BER_TLV.TVL;
 using System;
+using HelloWord.SecureMessaging.Pipe;
+using HelloWord.TVL.V;
 
 namespace HelloWord.DataGroups.DG
 {

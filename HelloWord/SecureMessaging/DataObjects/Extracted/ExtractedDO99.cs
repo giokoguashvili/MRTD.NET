@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using HelloWord.Infrastructure;
-using HelloWord.BER_TLV;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
 {
@@ -27,7 +26,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             //                .ToArray();
             //}
 
-            var wrapped = new WrapedBerTLV(_protectedResponseApdu);
+            var wrapped = new WrappedBerTLV(_protectedResponseApdu);
             var parsetBerTLV = new BerTLV(wrapped);
             return parsetBerTLV.Data.Where(tlv => tlv.T == "99").First().Bytes();
             //return new BinaryHex(

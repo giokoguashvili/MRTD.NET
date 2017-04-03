@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
-using HelloWord.BER_TLV;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using HelloWord.View;
 
 namespace HelloWord.DataGroups.DG
 {

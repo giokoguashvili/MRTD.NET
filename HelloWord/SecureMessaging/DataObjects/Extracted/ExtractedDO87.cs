@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
-using HelloWord.BER_TLV;
 using System;
 
 namespace HelloWord.SecureMessaging.DataObjects.Extracted
@@ -45,7 +44,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             }
             try
             {
-                var wrapped = new WrapedBerTLV(_protectedResponseApdu);
+                var wrapped = new WrappedBerTLV(_protectedResponseApdu);
               
                 var parsetBerTLV = new BerTLV(wrapped);
                 if (parsetBerTLV.Data.Where(tlv => tlv.T == "87").Count() == 0)
@@ -54,7 +53,7 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
             }
             catch (Exception ex)
             {
-                Console.WriteLine(new Hex(new WrapedBerTLV(_protectedResponseApdu).Bytes()));
+                Console.WriteLine(new Hex(new WrappedBerTLV(_protectedResponseApdu).Bytes()));
                 var gio = 5;
             }
             return new Binary().Bytes();

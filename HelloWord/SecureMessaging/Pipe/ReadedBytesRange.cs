@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using HelloWord.Commands;
 using HelloWord.Infrastructure;
 using HelloWord.SmartCard;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.Pipe
 {
     public class ReadedBytesRange : IBinary
     {
