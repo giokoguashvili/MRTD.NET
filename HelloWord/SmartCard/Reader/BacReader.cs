@@ -6,7 +6,6 @@ namespace HelloWord.SmartCard.Reader
     public class BacReader : IBacReader
     {
         private readonly IReader _securedReader;
-
         public BacReader(IReader securedReader)
         {
             _securedReader = securedReader;

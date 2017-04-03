@@ -70,41 +70,30 @@ namespace HelloWord
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
-
-
                     var mrzInfo = "12IB34415792061602210089"; // + K
                     //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
                     //var mrzInfo = "13ID40308689022472402103";     // + Giorgio
-                    var _reader = new SecuredReader(
-                                        mrzInfo,
-                                        new WrReader(
-                                            new LogedReader(
-                                                reader
-                                            )
-                                        )
-                                   );
-                    var dg1 =
-                        new Cached(
-                            new DG1(
-                                _reader
-                            )
-                        );
+                    var _reader = new BacReader(
+                                        new SecuredReader(
+                                                mrzInfo,
+                                                new WrReader(
+                                                    new LogedReader(
+                                                        reader
+                                                    )
+                                                )
+                                         )
+                                  );
 
-                    //new DG12(
-                    //    new BACReader(
-                    //        new MRZInfo(cardID, birtDate, expireData)
-                    //    )
-                    //).Content();
-
+                    var dg1 = new DG1(_reader);
                     Console.Write(
                            "\nDG1: {0}\n\n",
                            new Hex(dg1)
                        );
                     Console.Write(
                            "\nDG1 Data: {0}\n",
-                           new DG1Content(dg1)
+                           dg1.Content()
                        );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);

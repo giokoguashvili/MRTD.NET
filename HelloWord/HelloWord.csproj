@@ -68,6 +68,7 @@
     <Compile Include="Cryptography\WithoutPad.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
+    <Compile Include="DataGroups\IDataGroup.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
     <Compile Include="Infrastructure\LinqExtensions.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.cs" />
@@ -76,9 +77,8 @@
     <Compile Include="Commands\SelectApplicationCommandApdu.cs" />
     <Compile Include="Commands\SelectEFCOMApplicationCommandApdu.cs" />
     <Compile Include="Cryptography\Padded.cs" />
-    <Compile Include="DataGroups\DG\COMData.cs" />
     <Compile Include="DataGroups\DG1.cs" />
-    <Compile Include="DataGroups\DG\DG1Content.cs" />
+    <Compile Include="DataGroups\Content\DG1Content.cs" />
     <Compile Include="Infrastructure\Bites.cs" />
     <Compile Include="Infrastructure\DevidedBinary.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
@@ -195,6 +195,7 @@
     <Compile Include="SmartCard\ISessionKeys.cs" />
     <Compile Include="SmartCard\Reader\LogedReader.cs" />
     <Compile Include="SmartCard\SessionKeys.cs" />
+    <Compile Include="SmartCard\SmartCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -24,26 +24,28 @@ namespace HelloWord.SmartCard.Reader
 
         public IBinary Transmit(IBinary rawCommandApdu)
         {
-            return new DecryptedProtectedResponseApdu(
-                       new Cached(
-                           new VerifiedProtectedResponseApdu(
-                                 new Cached(
-                                     new ExecutedCommandApdu(
-                                         new ProtectedCommandApdu(
-                                             rawCommandApdu,
-                                             _sessionKeys.KSenc(),
-                                             _sessionKeys.KSmac(),
-                                             new Cached(SelfIncrementedSSC.Bytes())
+            return new Binary(
+                        new DecryptedProtectedResponseApdu(
+                               new Cached(
+                                   new VerifiedProtectedResponseApdu(
+                                         new Cached(
+                                             new ExecutedCommandApdu(
+                                                 new ProtectedCommandApdu(
+                                                     rawCommandApdu,
+                                                     _sessionKeys.KSenc(),
+                                                     _sessionKeys.KSmac(),
+                                                     new Cached(SelfIncrementedSSC.Bytes())
+                                                 ),
+                                                 _reader
+                                             )
                                          ),
-                                         _reader
-                                     )
-                                 ),
-                                 new Cached(SelfIncrementedSSC.Bytes()),
-                                 _sessionKeys.KSmac()
-                           )
-                       ),
-                       _sessionKeys.KSenc()
-                  );
+                                         new Cached(SelfIncrementedSSC.Bytes()),
+                                         _sessionKeys.KSmac()
+                                   )
+                               ),
+                               _sessionKeys.KSenc()
+                          ).Bytes()
+                    );
         }
     }
 }

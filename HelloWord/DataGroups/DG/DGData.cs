@@ -8,28 +8,27 @@ namespace HelloWord.DataGroups.DG
 {
     public class DGData : IBinary
     {
-        private readonly IBinary _fid;
-        private readonly IReader _securedReader;
+
+        private readonly IBinary _cachedSecureMessagingPipe;
         public DGData(
                 IBinary fid,
                 IReader securedReader
             )
         {
-            _fid = fid;
-            _securedReader = securedReader;
+            _cachedSecureMessagingPipe = new Cached(
+                                            new SecureMessagingPipe(
+                                                    fid,
+                                                    new DGDataHexLength(
+                                                        fid,
+                                                        securedReader
+                                                    ),
+                                                    securedReader
+                                               )
+                                           );
         }
         public byte[] Bytes()
         {
-            var cachedLen = new DGDataHexLength(
-                _fid,
-                _securedReader
-            ).Value();
-            return new SecureMessagingPipe(
-                        _fid, 
-                        new Number(cachedLen), 
-                        _securedReader
-                   )
-                   .Bytes();
+            return _cachedSecureMessagingPipe.Bytes();
         }
     }
 }
