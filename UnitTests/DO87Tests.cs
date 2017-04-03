@@ -13,34 +13,19 @@ namespace UnitTests
     [TestFixture]
     public class DO87Tests
     {
-        //[Test]
-        //public void Build_DO87_from_UnprotectedCommandApdu()
-        //{
-        //    Assert.AreEqual(
-        //            "8709016375432908C044F6",
-        //            new Hex(
-        //                new DO87(
-        //                    new FkKSenc()
-        //                )
-        //                .FromUnprotectedCommandApdu(new BinaryHex("00A4020C02011E"))
-        //            ).ToString()
-        //        );
-        //}
-
-        //[Test]
-        //public void Extract_DO87_from_ProtectedResponseApdu()
-        //{
-        //    Assert.AreEqual(
-        //            "8709019FF0EC34F9922651",
-        //            new Hex(
-        //                new DO87(
-        //                    new FkKSenc()
-        //                ).FromProtectedResponseApdu(
-        //                    new BinaryHex("8709019FF0EC34F9922651990290008E08AD55CC17140B2DED9000")
-        //                )
-        //            ).ToString()
-        //        );
-        //}
+        [Test]
+        [TestCase("8709016375432908C044F6", "6375432908C044F6")]
+        public void Build_DO87_from_UnprotectedCommandApdu(string exc, string encryptedData)
+        {
+            Assert.AreEqual(
+                    exc,
+                    new Hex(
+                        new DO87(
+                           new BinaryHex(encryptedData) // encryptedData
+                        )
+                    ).ToString()
+                );
+        }
 
         [Test]
         [TestCase(
@@ -55,9 +40,13 @@ namespace UnitTests
         {
             Assert.AreEqual(
                     // add padding on protectedrResponseApdu decrypted data
-                    new Hex(new Padded(new BinaryHex(
-                        act
-                    ))).ToString(),
+                    new Hex(
+                        new Padded(
+                            new BinaryHex(
+                                act
+                            )
+                        )   
+                    ).ToString(),
                     new Hex(
                         new DecryptedProtectedResponseApdu(
                             new BinaryHex(protectedResponseApdu),
