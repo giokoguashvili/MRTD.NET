@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HelloWord.Infrastructure;
+using PCSC;
 
 namespace HelloWord.SmartCard
 {
-    public class BACReader
+    public interface IReader
     {
-        public BACReader(IBinary mrzInfo)
-        {
-            
-        }
-
-
+        IBinary Transmit(IBinary rawCommandApdu);
     }
 }

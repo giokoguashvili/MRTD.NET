@@ -9,33 +9,30 @@ using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
-using PCSC;
 
 namespace HelloWord.SmartCard
 {
-    public class AuthenticatedReader : IAuthenticatedReader
+    public class SessionKeys : ISessionKeys
     {
-        private readonly IReader _reader;
-        private readonly IBinary _selfIncrementSsc;
+        private readonly IBinary _ssc;
         private readonly IBinary _cachedKSenc;
         private readonly IBinary _cachedKSmac;
-        private readonly IBinary _selectedMRTDApplication;
+        private readonly IBinary _selectedMrtdApplication;
 
-        public AuthenticatedReader(
+        public SessionKeys(
                 string mrzInfo,
                 IReader reader
             )
         {
-            _reader = reader;
-            _selectedMRTDApplication = new Cached(
+            _selectedMrtdApplication = new Cached(
                                         new ExecutedCommandApdu(
                                             new SelectMRTDApplicationCommandApdu(),
-                                            _reader
+                                            reader
                                         )
                                     );
 
             var kIfd = new Cached(new Kifd());
-            var rndIc = new Cached(new RNDic(_reader));
+            var rndIc = new Cached(new RNDic(reader));
             var rndIfd = new Cached(new RNDifd());
             var externalAuthRespData = new ResponseApduData(
                                             new Cached(
@@ -48,7 +45,7 @@ namespace HelloWord.SmartCard
                                                             kIfd
                                                         )
                                                     ),
-                                                    _reader
+                                                    reader
                                                 )
                                             )
                                         );
@@ -65,47 +62,30 @@ namespace HelloWord.SmartCard
 
             _cachedKSenc = new Cached(new KSenc(kSeedIc));
             _cachedKSmac = new Cached(new KSmac(kSeedIc));
-            _selfIncrementSsc = new SelfIncrementSSC(
-                                    new Cached(
-                                        new SSC(
-                                            rndIc,
-                                            rndIfd
-                                        )
-                                    )
-                                );
+            _ssc = new Cached(
+                        new SSC(
+                            rndIc,
+                            rndIfd
+                        )
+                    );
         }
-        public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer)
-        {
-            return _reader.Transmit(
-                        sendPci,
-                        sendBuffer,
-                        receivePci,
-                        ref receiveBuffer
-                   );
-        }
-
-        public SCardProtocol ActiveProtocol()
-        {
-            _selectedMRTDApplication.Bytes();
-            return _reader.ActiveProtocol();
-        }
-
 
         public IBinary KSenc()
         {
-            _selectedMRTDApplication.Bytes();
+            _selectedMrtdApplication.Bytes();
             return _cachedKSenc;
         }
 
         public IBinary KSmac()
         {
-            _selectedMRTDApplication.Bytes();
+            _selectedMrtdApplication.Bytes();
             return _cachedKSmac;
         }
 
-        public IBinary SelfIncrementedSSC()
+        public IBinary SSC()
         {
-            return _selfIncrementSsc;
+            _selectedMrtdApplication.Bytes();
+            return _ssc;
         }
     }
 }

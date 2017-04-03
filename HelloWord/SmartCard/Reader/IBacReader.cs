@@ -7,10 +7,8 @@ using HelloWord.Infrastructure;
 
 namespace HelloWord.SmartCard
 {
-    public interface IAuthenticatedReader : IReader
+    public interface IBacReader
     {
-        IBinary KSenc();
-        IBinary KSmac();
-        IBinary SelfIncrementedSSC();
+        IBinary DGData(IBinary fid);
     }
 }

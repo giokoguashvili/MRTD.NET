@@ -7,40 +7,26 @@ namespace HelloWord.DataGroups.DG
 {
     public class DGData : IBinary
     {
-        private readonly IBinary _applicationIdentifier;
-        private readonly IReader _reader;
-        private readonly IBinary _kSenc;
-        private readonly IBinary _kSmac;
-        private readonly IBinary _ssc;
+        private readonly IBinary _fid;
+        private readonly IReader _securedReader;
         public DGData(
-                IBinary applicationIdentifier,
-                IBinary kSenc,
-                IBinary kSmac,
-                IBinary ssc,
-                IReader reader
+                IBinary fid,
+                IReader securedReader
             )
         {
-            _applicationIdentifier = applicationIdentifier;
-            _kSenc = kSenc;
-            _kSmac = kSmac;
-            _ssc = ssc;
-            _reader = reader;
+            _fid = fid;
+            _securedReader = securedReader;
         }
         public byte[] Bytes()
         {
+            var cachedLen = new DGDataHexLength(
+                _fid,
+                _securedReader
+            ).Value();
             return new SecureMessagingPipe(
-                        _applicationIdentifier,
-                        new DGDataHexLength(
-                            _applicationIdentifier,
-                            _kSenc,
-                            _kSmac,
-                            _ssc,
-                            _reader
-                        ),
-                        _kSenc,
-                        _kSmac,
-                        _ssc,
-                        _reader
+                        _fid, 
+                        new Number(cachedLen), 
+                        _securedReader
                    )
                    .Bytes();
         }

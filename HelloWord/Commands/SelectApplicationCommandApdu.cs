@@ -6,14 +6,14 @@ namespace HelloWord.Commands
 {
     public class SelectApplicationCommandApdu : IBinary
     {
+        private readonly IBinary _fid;
         private readonly IsoCase _isoCase = IsoCase.Case3Short;
         private readonly int _expectedDataLength = 0;
         private readonly SCardProtocol _activeProtocol = SCardProtocol.T1;
-        private readonly IBinary _applicationIdentifier;
 
-        public SelectApplicationCommandApdu(IBinary applicationIdentifier)
+        public SelectApplicationCommandApdu(IBinary fid)
         {
-            _applicationIdentifier = applicationIdentifier;
+            _fid = fid;
         }
         public byte[] Bytes()
         {
@@ -23,7 +23,7 @@ namespace HelloWord.Commands
                 Instruction = InstructionCode.SelectFile,
                 P1 = 0x02,
                 P2 = 0x0C,
-                Data = _applicationIdentifier.Bytes()
+                Data = _fid.Bytes()
             }.ToArray();
         }
     }

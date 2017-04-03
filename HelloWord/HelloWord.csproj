@@ -65,6 +65,7 @@
     <Compile Include="BER-TLV\TVL\L\ShortLen.cs" />
     <Compile Include="BER-TLV\View\ValView.cs" />
     <Compile Include="BER-TLV\WrappedBerTLV.cs" />
+    <Compile Include="Cryptography\WithoutPad.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
@@ -155,15 +156,14 @@
     <Compile Include="SecureMessaging\MaskedCLA.cs" />
     <Compile Include="SecureMessaging\MasketCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\N.cs" />
-    <Compile Include="SecureMessaging\PadedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="ISO7816\CommandAPDU\RawCommandAPDU.cs" />
     <Compile Include="SecureMessaging\Pipe\ReadedBytesRange.cs" />
     <Compile Include="SecureMessaging\Pipe\SecureMessagingPipe.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
-    <Compile Include="SmartCard\AuthenticatedReader.cs" />
-    <Compile Include="SmartCard\BACReader.cs" />
+    <Compile Include="SmartCard\Reader\SecuredReader.cs" />
+    <Compile Include="SmartCard\Reader\BacReader.cs" />
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
@@ -191,9 +191,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\ExternalAuthenticateCommandApdu.cs" />
     <Compile Include="Infrastructure\UTF8String.cs" />
-    <Compile Include="SmartCard\IAuthenticatedReader.cs" />
-    <Compile Include="SmartCard\IReader.cs" />
-    <Compile Include="SmartCard\LogedReader.cs" />
+    <Compile Include="SmartCard\Reader\WrReader.cs" />
+    <Compile Include="SmartCard\Reader\IBacReader.cs" />
+    <Compile Include="SmartCard\Reader\IReader.cs" />
+    <Compile Include="SmartCard\ISessionKeys.cs" />
+    <Compile Include="SmartCard\Reader\LogedReader.cs" />
+    <Compile Include="SmartCard\SessionKeys.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

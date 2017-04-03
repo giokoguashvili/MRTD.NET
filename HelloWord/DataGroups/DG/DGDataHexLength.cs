@@ -15,10 +15,7 @@ namespace HelloWord.DataGroups.DG
 
         public DGDataHexLength(
                 IBinary applicationIdentifier,
-                IBinary kSenc,
-                IBinary kSmac,
-                IBinary ssc,
-                IReader reader
+                IReader securedReader
             )
         {
             _berTlv = new BerTLV(
@@ -26,10 +23,7 @@ namespace HelloWord.DataGroups.DG
                             new SecureMessagingPipe(
                                 applicationIdentifier,
                                 _minTlvHeaderLength,
-                                kSenc,
-                                kSmac,
-                                ssc,
-                                reader
+                                securedReader
                             )
                          )
                     );

@@ -10,6 +10,7 @@ using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord
 {
@@ -58,6 +59,7 @@ namespace HelloWord
                                 out state,
                                 out proto,
                                 out atr);
+
                     sc = reader.BeginTransaction();
                     if (sc != SCardError.Success)
                     {
@@ -65,101 +67,27 @@ namespace HelloWord
                         Console.ReadKey();
                         return;
                     }
-
-                    var _reader = new LogedReader(reader);
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
-                    Console.WriteLine(
-                        new Hex(
-                            new ResponseApduData(
-                                new Cached(
-                                    new ExecutedCommandApdu(
-                                        new SelectMRTDApplicationCommandApdu(),
-                                        _reader
-                                    )
-                                )
-                            )
-                        )
-                    );
+
 
                     var mrzInfo = "12IB34415792061602210089"; // + K
                     //var mrzInfo = "15IC69034496112612606118"; // Bagdavadze
                     //var mrzInfo = "13ID37063295110732402055";     // + Shako
                     //var mrzInfo = "13IB90080296040761709252";   // + guka 
                     //var mrzInfo = "13ID40308689022472402103";     // + Giorgio
-
-                    var kIfd = new Cached(new Kifd());
-                    var rndIc = new Cached(new RNDic(_reader));
-                    var rndIfd = new Cached(new RNDifd());
-
-                    var externalAuthRespData = new ResponseApduData(
-                                                    new Cached(
-                                                        new ExecutedCommandApdu(
-                                                            new ExternalAuthenticateCommandApdu(
-                                                                new ExternalAuthenticateCommandData(
-                                                                    mrzInfo,
-                                                                    rndIc,
-                                                                    rndIfd,
-                                                                    kIfd
-                                                                )
-                                                            ),
-                                                            _reader
-                                                        )
-                                                    )
-                                                );
-
-
-                    var kSeedIc = new KseedIc(
-                                        kIfd,
-                                        new Kic(
-                                            new R(
-                                                externalAuthRespData,
-                                                mrzInfo
+                    var _reader = new SecuredReader(
+                                        mrzInfo,
+                                        new WrReader(
+                                            new LogedReader(
+                                                reader
                                             )
                                         )
-                                    );
-
-                    var kSenc = new KSenc(kSeedIc);
-                    var kSmac = new KSmac(kSeedIc);
-                    var selfIncrementSsc =
-                                new SelfIncrementSSC(
-                                    new Cached(
-                                        new SSC(
-                                            rndIc,
-                                            rndIfd
-                                        )
-                                    )
-                                );
-
-
-                    //var com =
-                    //    new Cached(
-                    //        new COM(
-                    //            kSenc,
-                    //            kSmac,
-                    //            ssc,
-                    //            _reader
-                    //        )
-                    //    );
-
-                    //Console.Write(
-                    //        "\nCOM: {0}\n",
-                    //        new Hex(
-                    //            com
-                    //        )
-                    //    );
-                    //Console.Write(
-                    //     "\nCOM Data: {0}\n",
-                    //     new COMData(com)
-                    // );
-
+                                   );
                     var dg1 =
                         new Cached(
                             new DG1(
-                                kSenc,
-                                kSmac,
-                                selfIncrementSsc,
                                 _reader
                             )
                         );

@@ -28,11 +28,10 @@ namespace HelloWord.SecureMessaging
             var des = new TripleDES(
                     _kSenc,
                     d
-                ).Decrypted()
-                .Bytes();
+                ).Decrypted();
 
             Console.WriteLine("Decrypred DATA: {0}", new Hex(des));
-            return des;
+            return new WithoutPad(des).Bytes();
         }
     }
 }

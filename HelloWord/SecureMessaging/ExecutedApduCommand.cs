@@ -10,7 +10,6 @@ namespace HelloWord.Infrastructure
     {
         private readonly IBinary _rawCommandApdu;
         private readonly IReader _reader;
-        private readonly int _responseApduTrailerLength = 2; // 0x02
         public ExecutedCommandApdu(
                 IBinary rawCommandApdu,
                 IReader reader
@@ -22,22 +21,9 @@ namespace HelloWord.Infrastructure
 
         public byte[] Bytes()
         {
-            var receiveBuffer = new byte[1024 + _responseApduTrailerLength];
-            var receivePci = new SCardPCI();
-            var sendPci = SCardPCI.GetPci(_reader.ActiveProtocol());
-
-            var sc = _reader.Transmit(
-                            sendPci,
-                            _rawCommandApdu.Bytes(),
-                            receivePci,
-                            ref receiveBuffer
-                        );
-
-            if (sc != SCardError.Success)
-            {
-                throw new Exception("Error: " + SCardHelper.StringifyError(sc));
-            }
-            return receiveBuffer;
+            return _reader
+                        .Transmit(_rawCommandApdu)
+                        .Bytes();
         }
     }
 }

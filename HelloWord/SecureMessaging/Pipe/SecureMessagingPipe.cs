@@ -7,46 +7,41 @@ namespace HelloWord.SecureMessaging.Pipe
 {
     public class SecureMessagingPipe : IBinary
     {
-        private readonly IBinary _applicationIdentifier;
+        private readonly IBinary _fid;
         private readonly INumber _bytesCountForRead;
-        private readonly IBinary _kSenc;
-        private readonly IBinary _kSmac;
-        private readonly IBinary _selfIncrementSsc;
-        private readonly IReader _reader;
+        private readonly IReader _securedReader;
 
         public SecureMessagingPipe(
-                IBinary applicationIdentifier,
+                IBinary fid,
                 INumber bytesCountForRead,
-                IBinary kSenc,
-                IBinary kSmac,
-                IBinary selfIncrementSsc,
-                IReader reader
+                IReader securedReader
             )
         {
-            _applicationIdentifier = applicationIdentifier;
+            _fid = fid;
             _bytesCountForRead = bytesCountForRead;
-            _kSenc = kSenc;
-            _kSmac = kSmac;
-            _selfIncrementSsc = selfIncrementSsc;
-            _reader = reader;
+            _securedReader = securedReader;
         }
         public byte[] Bytes()
         {
-            new VerifiedProtectedResponseApdu(
-                new Cached(
-                    new ExecutedCommandApdu(
-                        new ProtectedCommandApdu(
-                            new SelectApplicationCommandApdu(_applicationIdentifier),
-                            _kSenc,
-                            _kSmac,
-                            new Cached(_selfIncrementSsc.Bytes())
-                        ),
-                        _reader
-                    )
-                ),
-                new Cached(_selfIncrementSsc.Bytes()),
-                _kSmac
-            ).Bytes();
+            _securedReader
+                .Transmit(new SelectApplicationCommandApdu(_fid))
+                .Bytes();
+
+            //new VerifiedProtectedResponseApdu(
+            //    new Cached(
+            //        new ExecutedCommandApdu(
+            //            new ProtectedCommandApdu(
+            //                new SelectApplicationCommandApdu(_applicationIdentifier),
+            //                _kSenc,
+            //                _kSmac,
+            //                new Cached(_selfIncrementSsc.Bytes())
+            //            ),
+            //            _reader
+            //        )
+            //    ),
+            //    new Cached(_selfIncrementSsc.Bytes()),
+            //    _kSmac
+            //).Bytes();
            
             var step = new Number(255);
             var range = Enumerable
@@ -73,14 +68,7 @@ namespace HelloWord.SecureMessaging.Pipe
                     .Aggregate(
                         new byte[0],
                         (prev, next) => prev.Concat(
-                                            new ReadedBytesRange(
-                                                next.StartIndex,
-                                                next.Count,
-                                                _kSenc,
-                                                _kSmac,
-                                                _selfIncrementSsc,
-                                                _reader
-                                            )
+                                            _securedReader.Transmit(new ReadBinaryCommandApdu(next.StartIndex, next.Count))
                                             .Bytes()
                                         ).ToArray()
                         );
