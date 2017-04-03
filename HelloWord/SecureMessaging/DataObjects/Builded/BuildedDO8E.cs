@@ -18,8 +18,8 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
                 IBinary kSenc
             )
         {
-            _incrementedSsc = incrementedSsc;
             _rawCommandApdu = rawCommandApdu;
+            _incrementedSsc = incrementedSsc;
             _kSmac = kSmac;
             _kSenc = kSenc;
         }
