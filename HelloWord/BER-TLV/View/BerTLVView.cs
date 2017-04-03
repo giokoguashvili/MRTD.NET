@@ -7,7 +7,7 @@ namespace HelloWord.View
     {
         private readonly IBerTLV[] _berTlvs;
         private readonly int _depth;
-        public BerTLVView(IBerTLV[] berTlvs) : this (berTlvs, 0)
+        public BerTLVView(IBerTLV[] berTlvs) : this (berTlvs, 1)
         { }
         public BerTLVView(IBerTLV[] berTlvs, int depth)
         {

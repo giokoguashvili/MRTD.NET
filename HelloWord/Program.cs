@@ -11,6 +11,7 @@ using HelloWord.Infrastructure;
 using HelloWord.ISO7816.ResponseAPDU.Body;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard.Reader;
+using HelloWord.View;
 
 namespace HelloWord
 {
@@ -86,15 +87,40 @@ namespace HelloWord
                                          )
                                   );
 
+                    var com = new COM(_reader);
                     var dg1 = new DG1(_reader);
-                    Console.Write(
-                           "\nDG1: {0}\n\n",
-                           new Hex(dg1)
-                       );
-                    Console.Write(
-                           "\nDG1 Data: {0}\n",
-                           dg1.Content()
-                       );
+                    var dg2 = new DG2(_reader);
+                    var dg3 = new DG7(_reader);
+
+                    var comData = new Cached(com.Bytes());
+                    var dg1Data = new Cached(dg1.Bytes());
+                    var dg2Data = new Cached(dg2.Bytes());
+                    var dg3Data = new Cached(dg3.Bytes());
+
+                    var comContent = com.Content();
+                    var dg1Content = dg1.Content();
+                    Console.WriteLine("\nData Groups:\n");
+
+                    Console.WriteLine("\nCOM:");
+                    new DGDataView(comData).View();
+
+                    Console.WriteLine("\nDG1:");
+                    new DGDataView(dg1Data).View();
+
+                    Console.WriteLine("\nDG2:");
+                    new DGDataView(dg2Data).View();
+
+                    Console.WriteLine("\nDG3:");
+                    new DGDataView(dg3Data).View();
+
+                    //Console.Write(
+                    //       "\nDG1: {0}\n\n",
+                    //       new Hex(dg1)
+                    //   );
+                    //Console.Write(
+                    //       "\nDG1 Data: {0}\n",
+                    //       dg1.Content()
+                    //   );
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);

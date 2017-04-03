@@ -1,39 +1,29 @@
 ﻿using System;
+using HelloWord.DataGroups.Content;
+using HelloWord.DataGroups.DG;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using HelloWord.SmartCard;
+using HelloWord.SmartCard.Reader;
 
 namespace HelloWord.DataGroups
 {
-    //public class COM : IBinary
-    //{
-    //    private readonly IReader _reader;
-    //    private readonly IBinary _kSenc;
-    //    private readonly IBinary _kSmac;
-    //    private readonly IBinary _ssc;
-    //    private readonly IBinary _FID = new BinaryHex("011E");
-    //    public COM(
-    //            IBinary kSenc,
-    //            IBinary kSmac,
-    //            IBinary ssc,
-    //            IReader reader
-    //        )
-    //    {
-    //        _reader = reader;
-    //        _kSenc = kSenc;
-    //        _kSmac = kSmac;
-    //        _ssc = ssc;
-    //    }
-    //    public byte[] Bytes()
-    //    {
-    //        throw new NotImplementedException();
-    //        //return new SecureMessagingPipe(
-    //        //            _FID,
-    //        //            _kSenc,
-    //        //            _kSmac,
-    //        //            _ssc,
-    //        //            _reader
-    //        //       ).Bytes();
-    //    }
-    //}
+    public class COM : IDataGroup<COMContent>
+    {
+        private readonly IBinary _cachedDgData;
+        private readonly IBinary _fid = new BinaryHex("011E");
+        public COM(IBacReader bacReader)
+        {
+            _cachedDgData = new Cached(bacReader.DGData(_fid));
+        }
+        public byte[] Bytes()
+        {
+            return _cachedDgData.Bytes();
+        }
+
+        public COMContent Content()
+        {
+            return new COMContent(_cachedDgData);
+        }
+    }
 }

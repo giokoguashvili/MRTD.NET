@@ -66,6 +66,11 @@
     <Compile Include="BER-TLV\View\ValView.cs" />
     <Compile Include="BER-TLV\WrappedBerTLV.cs" />
     <Compile Include="Cryptography\WithoutPad.cs" />
+    <Compile Include="DataGroups\Content\COMContent.cs" />
+    <Compile Include="DataGroups\Content\DGContent.cs" />
+    <Compile Include="DataGroups\DG2.cs" />
+    <Compile Include="DataGroups\DG7.cs" />
+    <Compile Include="DataGroups\DGDataView.cs" />
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="DataGroups\IDataGroup.cs" />
