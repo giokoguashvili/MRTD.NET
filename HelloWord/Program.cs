@@ -90,37 +90,48 @@ namespace HelloWord
                     var com = new COM(_reader);
                     var dg1 = new DG1(_reader);
                     var dg2 = new DG2(_reader);
-                    var dg3 = new DG7(_reader);
+                    var dg5 = new DG5(_reader);
+                    var dg7 = new DG7(_reader);
+                    var dg11 = new DG11(_reader);
+                    var dg12 = new DG12(_reader);
+                    var dg13 = new DG13(_reader);
 
-                    var comData = new Cached(com.Bytes());
-                    var dg1Data = new Cached(dg1.Bytes());
-                    var dg2Data = new Cached(dg2.Bytes());
-                    var dg3Data = new Cached(dg3.Bytes());
+                    //var comData = new Cached(com.Bytes());
+                    //var dg1Data = new Cached(dg1.Bytes());
+                    //var dg2Data = new Cached(dg2.Bytes());
+                    //var dg5Data = new Cached(dg5.Bytes());
+                    //var dg7Data = new Cached(dg7.Bytes());
+                    //var dg11Data = new Cached(dg11.Bytes());
+                    var dg13Data = new Cached(dg13.Bytes());
+                    
+                    //var comContent = com.Content();
+                    //var dg1Content = dg1.Content();
 
-                    var comContent = com.Content();
-                    var dg1Content = dg1.Content();
                     Console.WriteLine("\nData Groups:\n");
 
-                    Console.WriteLine("\nCOM:");
-                    new DGDataView(comData).View();
+                    //Console.WriteLine("\nCOM:");
+                    //new DGDataView(comData).View();
 
-                    Console.WriteLine("\nDG1:");
-                    new DGDataView(dg1Data).View();
+                    //Console.WriteLine("\nDG1:");
+                    //new DGDataView(dg1Data).View();
 
-                    Console.WriteLine("\nDG2:");
-                    new DGDataView(dg2Data).View();
+                    //Console.WriteLine("\nDG2:");
+                    //new DGDataView(dg2Data).View();
 
-                    Console.WriteLine("\nDG3:");
-                    new DGDataView(dg3Data).View();
+                    //Console.WriteLine("\nDG5:");
+                    //new DGDataView(dg4Data).View();
 
-                    //Console.Write(
-                    //       "\nDG1: {0}\n\n",
-                    //       new Hex(dg1)
-                    //   );
-                    //Console.Write(
-                    //       "\nDG1 Data: {0}\n",
-                    //       dg1.Content()
-                    //   );
+                    //Console.WriteLine("\nDG7:");
+                    //new DGDataView(dg7Data).View();
+
+                    //Console.WriteLine("\nDG11:");
+                    //new DGDataView(dg11Data).View();
+
+                    //Console.WriteLine("\nDG12:");
+                    //new DGDataView(dg12Data).View();
+
+                    Console.WriteLine("\nDG13:");
+                    new DGDataView(dg13Data).View();
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);
                     reader.Disconnect(SCardReaderDisposition.Reset);
