@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging.DataObjects.Builded;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.CC
 {
     public class ComputedCC : IBinary
     {

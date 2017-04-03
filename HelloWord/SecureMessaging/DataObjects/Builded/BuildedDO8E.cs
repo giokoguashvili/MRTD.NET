@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Header;
+using HelloWord.SecureMessaging.CC;
 using HelloWord.SecureMessaging.DataObjects.DO;
 
 namespace HelloWord.SecureMessaging.DataObjects.Builded

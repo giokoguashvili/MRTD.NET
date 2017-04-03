@@ -1,11 +1,10 @@
-﻿
-using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging;
+﻿using HelloWord.Infrastructure;
+using HelloWord.SecureMessaging.CC;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace UnitTests.SecureMessaging
+namespace UnitTests.SecureMessaging.CC
 {
     [TestFixture]
     public class ComputedCCTests

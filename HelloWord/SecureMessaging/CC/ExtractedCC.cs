@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.DataObjects.Extracted;
 
-namespace HelloWord.SecureMessaging
+namespace HelloWord.SecureMessaging.CC
 {
     public class ExtractedCC : IBinary
     {

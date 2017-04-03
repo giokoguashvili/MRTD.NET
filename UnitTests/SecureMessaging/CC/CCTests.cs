@@ -1,10 +1,9 @@
 ﻿using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace UnitTests.SecureMessaging
+namespace UnitTests.SecureMessaging.CC
 {
     [TestFixture]
     public class CCTests
@@ -19,7 +18,7 @@ namespace UnitTests.SecureMessaging
             Assert.AreEqual(
                     exc,
                     new Hex(
-                        new CC(
+                        new HelloWord.SecureMessaging.CC.CC(
                             new BinaryHex(incrementedSSC), //_incrementedSsc,
                             new FkKSmac(), //_kSmac,
                             new BinaryHex(m) 

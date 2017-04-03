@@ -11,16 +11,19 @@ namespace UnitTests.SecureMessaging
     public class ProtectedCommandApduTests
     {
         [Test]
-        public void Generate_protected_APDU()
+        [TestCase("0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800", "00A4020C02011E", "887022120C06C227")]
+        [TestCase("0CB000000D9701048E08ED6705417E96BA5500", "00B0000004", "887022120C06C229")]
+        [TestCase("0CB000040D9701128E082EA28A70F3C7B53500", "00B0000412", "887022120C06C22B")]
+        public void Generate_protected_APDU(string exc, string commandApdu, string incrementedSsc)
         {
             Assert.AreEqual(
-                    "0CA4020C158709016375432908C044F68E08BF8B92D635FF24F800",
+                    exc,
                     new Hex(
                         new ProtectedCommandApdu(
-                            new SelectEFCOMApplicationCommandApdu(),
+                            new BinaryHex(commandApdu),
                             new FkKSenc(),
                             new FkKSmac(),
-                            new IncrementedSSC(new FkSSC()).By(1)
+                            new BinaryHex(incrementedSsc)
                         )
                     ).ToString()
                 );
