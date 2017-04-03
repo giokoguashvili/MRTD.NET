@@ -17,10 +17,9 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            return
-                new Padded(
-                    new MaskedCommandApduHeader(_commandApduHeader)
-                 ).Bytes();
+            return new Padded(
+                        new MaskedCommandApduHeader(_commandApduHeader)
+                     ).Bytes();
         }
     }
 }

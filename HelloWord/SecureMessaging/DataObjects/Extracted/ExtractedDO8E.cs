@@ -14,28 +14,11 @@ namespace HelloWord.SecureMessaging.DataObjects.Extracted
         }
         public byte[] Bytes()
         {
-
-            //var extractedDO87AsString = new Hex(
-            //                        new ExtractedDO87(_protectedResponseApdu)
-            //                    ).ToString();
-            //var extractedDO99AsString = new Hex(
-            //                        new ExtractedDO99(_protectedResponseApdu)
-            //                    ).ToString();
-
+            // ProtectedResponseAPDU Format: [DO87][DO99][DOE8][SW1SW2]
+            // [87][EncDataLen][01][EncData] [99][02][SW1][SW2] [8E][CCLen][CC] [SW1][SW2]
             var wrapped = new WrappedBerTLV(_protectedResponseApdu);
             var parsetBerTLV = new BerTLV(wrapped);
             return parsetBerTLV.Data.Where(tlv => tlv.T == "8E").First().Bytes();
-
-            //return new BinaryHex(
-            //    String.Concat(
-            //            new Hex(_protectedResponseApdu)
-            //                .ToString()
-            //                .Replace(String.Format("{0}{1}", extractedDO87AsString, extractedDO99AsString), String.Empty)
-            //                .Reverse()
-            //                .Skip(4)
-            //                .Reverse()
-            //        )
-            //).Bytes();
         }
 
         public IBinary EncryptedData()

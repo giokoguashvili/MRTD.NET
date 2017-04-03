@@ -4,8 +4,10 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
 {
     public class DO87 : IBinary
     {
-        private readonly IBinary _encryptedData;
 
+        private readonly IBinary _berTlvTag = new BinaryHex("87");
+        private readonly IBinary _berTlvValFirstByte = new BinaryHex("01");
+        private readonly IBinary _encryptedData;
         public DO87(IBinary encryptedData)
         {
             _encryptedData = encryptedData;
@@ -13,15 +15,17 @@ namespace HelloWord.SecureMessaging.DataObjects.DO
         public byte[] Bytes()
         {
             // DO87 Format: [87][EncryptedDataLength + 1][01][EncryptedData]
+            var berTlvVal = new CombinedBinaries(
+                                _berTlvValFirstByte,
+                                _encryptedData
+                             );
+            var berTlvLen = new HexInt(
+                                new BytesCount(berTlvVal)
+                            );
             return new CombinedBinaries(
-                        new BinaryHex("87"),
-                        new HexInt(
-                            _encryptedData
-                                .Bytes()
-                                .Length + 1
-                        ),
-                        new BinaryHex("01"),
-                        _encryptedData
+                        _berTlvTag,
+                        berTlvLen,
+                        berTlvVal
                     ).Bytes();
         }
     }

@@ -22,31 +22,19 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         public byte[] Bytes()
         {
             //If no Data is available, leave building DO ‘87’ out
-            byte[] data;
-            try
-            {
-                 data = new CommandApduData(
-                        new CommandApduBody(_rawCommandApdu)
-                    ).Bytes();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("kogoiaaaaaaaaaaaaaaaaaaa");
-                throw;
-            }
-            
-
-            if (new BytesCount(new Binary(data)).Is(0))
+            var data = new CommandApduData(
+                            new CommandApduBody(_rawCommandApdu)
+                        );
+            if (new BytesCount(data).Is(0))
             {
                 return new Binary().Bytes();
             }
-
-            var encryptedData = new EncryptedCommandApduData(
-                                    _kSenc,
-                                    new Padded(new Binary(data))
-                                );
-
-            return new DO87(encryptedData).Bytes();
+            return new DO87(
+                        new EncryptedCommandApduData(
+                            _kSenc,
+                            new Padded(data)
+                        )
+                   ).Bytes();
         }
     }
 }

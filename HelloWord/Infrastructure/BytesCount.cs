@@ -10,6 +10,8 @@ namespace HelloWord.Infrastructure
         private readonly IBinary _data;
         public BytesCount(string hexStr) : this(new BinaryHex(hexStr))
         {}
+        public BytesCount(byte[] bytes) : this(new Binary(bytes))
+        { }
         public BytesCount(IBinary data)
         {
             _data = data;

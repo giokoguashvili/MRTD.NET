@@ -31,21 +31,17 @@ namespace HelloWord.SecureMessaging
         }
         public byte[] Bytes()
         {
-            var d = new BuildedDO87(
-                                _rawCommandApdu,
-                                _kSenc
-                           ).Bytes();
-            var do87 = new Binary(d);
-
+            var do87 = new BuildedDO87(
+                            _rawCommandApdu,
+                            _kSenc
+                        );
             var do97 = new BuildedDO97(_rawCommandApdu);
-
             var do8e = new BuildedDO8E(
                             _rawCommandApdu,
                             _incrementedSsc,
                             _kSmac,
                             _kSenc
                        );
-
             return new ConstructedProtectedCommandApdu(
                     new MaskedCommandApduHeader(
                         new CommandApduHeader(_rawCommandApdu)

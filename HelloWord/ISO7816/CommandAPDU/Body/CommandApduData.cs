@@ -13,9 +13,9 @@ namespace HelloWord.ISO7816.CommandAPDU.Body
         }
         public byte[] Bytes()
         {
-            var commandDataLength = new Hex(
+            var commandDataLength = new IntHex(
                                         new Lc(_commandApduBody)
-                                    ).ToInt();
+                                    ).Value();
             return _commandApduBody
                 .Bytes()
                 .Skip(1)

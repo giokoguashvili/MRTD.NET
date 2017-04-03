@@ -13,12 +13,11 @@ namespace HelloWord.SecureMessaging.DataObjects.Builded
         }
         public byte[] Bytes()
         {
-            var exceptedDataLength = new Hex(
+            var exceptedDataLength = new IntHex(
                                         new Le(
                                             new CommandApduBody(_rawCommandApdu)
                                         )
-                                     ).ToInt();
-
+                                     ).Value();
             //  If Le is not available, leave building DO ‘97’ out. 
             if (exceptedDataLength == 0)
             {
