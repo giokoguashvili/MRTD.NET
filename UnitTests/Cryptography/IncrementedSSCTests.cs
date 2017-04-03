@@ -1,9 +1,8 @@
-﻿using System;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class IncrementedSSCTests

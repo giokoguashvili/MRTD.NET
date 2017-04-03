@@ -1,10 +1,9 @@
-﻿using System;
-using NUnit.Framework;
-using HelloWord.Cryptography;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class DTests

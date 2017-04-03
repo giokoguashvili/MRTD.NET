@@ -1,11 +1,9 @@
-﻿using System;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.DataObjects.Builded;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using UnitTests.FakeObjects;
 
-namespace UnitTests
+namespace UnitTests.DataObjects
 {
     [TestFixture]
     public class BuildedDO8ETests

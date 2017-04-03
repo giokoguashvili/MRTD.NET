@@ -1,10 +1,8 @@
-﻿using System;
-using NUnit.Framework;
-using HelloWord.Cryptography;
-using HelloWord.Cryptography.RandomKeys;
+﻿using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
+using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class RandomKeysTests

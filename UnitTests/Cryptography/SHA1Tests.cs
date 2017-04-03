@@ -1,10 +1,8 @@
-﻿using System;
-using NUnit.Framework;
-using HelloWord.Cryptography;
-using HelloWord;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class SHA1Tests

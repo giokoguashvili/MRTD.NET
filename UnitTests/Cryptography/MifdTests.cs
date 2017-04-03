@@ -1,24 +1,23 @@
-﻿using System;
-using NUnit.Framework;
-using HelloWord.Cryptography;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
+using NUnit.Framework;
 using UnitTests.FakeObjects;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
-    public class MAC3Tests
+    public class MifdTests
     {
         [Test]
-        public void Compute_MAC_Algorithm_3()
+        public void Mifd_generation_from_Eifd_Kmac_with_MAC3()
         {
             Assert.AreEqual(
                     "5F1448EEA8AD90A7",
                     new Hex(
-                        new MAC3(
+                        new Mifd(
                             new FkEifd(),
                             new FkKmac()
-                        )
+                        )           
                     ).ToString()
                 );
         }

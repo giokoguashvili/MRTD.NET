@@ -1,14 +1,10 @@
-﻿using System;
-using HelloWord.Infrastructure;
-using HelloWord.ISO7816.CommandAPDU.Header;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
-using HelloWord.SecureMessaging.DataObjects.Builded;
-using NUnit.Framework;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace UnitTests
+namespace UnitTests.SecureMessaging
 {
     [TestFixture]
     public class CCTests

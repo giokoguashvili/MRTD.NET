@@ -2,7 +2,7 @@
 using HelloWord.Infrastructure;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class KSencTests

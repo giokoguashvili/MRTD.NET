@@ -1,9 +1,8 @@
-﻿using System;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.DataObjects.Extracted;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.DataObjects
 {
     [TestFixture]
     public class ExtractedDO87Tests

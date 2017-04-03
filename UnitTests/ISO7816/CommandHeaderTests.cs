@@ -1,10 +1,8 @@
-﻿using System;
-using HelloWord.Cryptography;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.ISO7816
 {
     [TestFixture]
     public class CommandHeaderTests

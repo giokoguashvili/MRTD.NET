@@ -1,15 +1,9 @@
-﻿using System;
-using HelloWord.Cryptography;
-using HelloWord.Infrastructure;
-using HelloWord.SecureMessaging;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging.DataObjects.Builded;
-using HelloWord.SecureMessaging.DataObjects.Extracted;
-using NUnit.Framework.Internal;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
-using DO87 = HelloWord.SecureMessaging.DataObjects.DO.DO87;
 
-namespace UnitTests
+namespace UnitTests.DataObjects
 {
     [TestFixture]
     public class BuildedDO87Tests

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using HelloWord.Cryptography;
 using NUnit.Framework;
-using HelloWord.Cryptography;
 
-namespace UnitTests
+namespace UnitTests.Cryptography
 {
     [TestFixture]
     public class ParityTests

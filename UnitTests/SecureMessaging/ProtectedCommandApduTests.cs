@@ -1,14 +1,11 @@
-﻿using System;
-using System.CodeDom;
-using HelloWord.Commands;
+﻿using HelloWord.Commands;
 using HelloWord.Cryptography;
-using HelloWord.Cryptography.RandomKeys;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
 
-namespace UnitTests
+namespace UnitTests.SecureMessaging
 {
     [TestFixture]
     public class ProtectedCommandApduTests

@@ -1,13 +1,11 @@
-﻿using System;
-using HelloWord.Cryptography;
+﻿using HelloWord.Cryptography;
 using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using UnitTests.FakeObjects;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace UnitTests
+namespace UnitTests.SecureMessaging
 {
     [TestClass]
     public class DecryptedProtectedResponseApduTests

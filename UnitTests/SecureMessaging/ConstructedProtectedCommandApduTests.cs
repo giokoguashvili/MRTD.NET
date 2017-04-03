@@ -1,10 +1,9 @@
-﻿using System;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.ISO7816.CommandAPDU.Header;
 using HelloWord.SecureMessaging;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.SecureMessaging
 {
     [TestFixture]
     public class ConstructedProtectedCommandApduTests

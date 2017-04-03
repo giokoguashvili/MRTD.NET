@@ -1,12 +1,9 @@
-﻿using System;
-using NUnit.Framework;
-using HelloWord.Cryptography.RandomKeys;
-using UnitTests.FakeObjects;
-using HelloWord.Cryptography;
-using HelloWord.Infrastructure;
+﻿using HelloWord.Infrastructure;
 using HelloWord.SecureMessaging;
+using NUnit.Framework;
+using UnitTests.FakeObjects;
 
-namespace UnitTests
+namespace UnitTests.SecureMessaging
 {
     [TestFixture]
     public class DecryptedProtectedCommandDataTests
