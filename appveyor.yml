@@ -8,5 +8,5 @@ build:
 
 test:
   assemblies:
-    - UnitTests.dll
+    - SmartCardApiTests.dll
   
