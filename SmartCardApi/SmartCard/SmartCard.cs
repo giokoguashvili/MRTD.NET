@@ -11,10 +11,25 @@ namespace SmartCardApi.SmartCard
         {
             _bacReader = bacReader;
         }
-
         public DG1 DG1()
         {
             return new DG1(_bacReader);
+        }
+        public DG2 DG2()
+        {
+            return new DG2(_bacReader);
+        }
+        public DG7 DG7()
+        {
+            return new DG7(_bacReader);
+        }
+        public DG11 DG11()
+        {
+            return new DG11(_bacReader);
+        }
+        public DG12 DG12()
+        {
+            return new DG12(_bacReader);
         }
     }
 }
