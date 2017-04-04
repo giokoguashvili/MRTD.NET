@@ -13,24 +13,43 @@ namespace SmartCardApi.DataGroups.Content
 {
     public class DG7Content  
     {
-        [DllImport("kernel32.dll", EntryPoint = "GetConsoleWindow", SetLastError = true)]
-        private static extern IntPtr GetConsoleHandle();
-
-        private readonly IBerTLV _dg7DataBerTLV;
-        public DG7Content(IBinary comData)
+ 
+        private readonly DataElements _dataElements;
+        public DG7Content(IBinary dg7Data)
         {
-            _dg7DataBerTLV = new BerTLV(comData);
+            _dataElements = new DataElements(dg7Data);
         }
 
-        public void SaveImage()
+        public int NumberOfDisplaydImages
         {
-            byte[] bitmap = new BinaryHex(_dg7DataBerTLV.Data[1].V).Bytes();
-            //File.WriteAllBytes("output", bitmap);
-            var handler = GetConsoleHandle();
-
-            using (var graphics = Graphics.FromHwnd(handler))
-            using (var image = Image.FromStream(new MemoryStream(bitmap)))
-                graphics.DrawImage(image, 0, 0, 500, 500);
+            get
+            {
+                return new IntHex(
+                         _dataElements
+                                .List()["02"]
+                    ).Value();
+            }
         }
+        public byte[] DisplayedSignatureImageData
+        {
+            get
+            {
+                return new BinaryHex(
+                        _dataElements
+                            .List()["5F43"]
+                    ).Bytes();
+            }
+        }
+
+        //public void SaveImage()
+        //{
+        //    byte[] bitmap = new BinaryHex(_dg7DataBerTLV.Data[1].V).Bytes();
+        //    //File.WriteAllBytes("output", bitmap);
+        //    var handler = GetConsoleHandle();
+
+        //    using (var graphics = Graphics.FromHwnd(handler))
+        //    using (var image = Image.FromStream(new MemoryStream(bitmap)))
+        //        graphics.DrawImage(image, 0, 0, 500, 500);
+        //}
     }
 }

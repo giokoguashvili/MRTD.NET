@@ -8,7 +8,7 @@ namespace SmartCardApi.DataGroups
 {
     public class DGDataView
     {
-        private readonly IBerTLV[] _berTLVTree;
+        private readonly IBerTLV _berTLV;
         private readonly Dictionary<string, string> _dgTags = new Dictionary<string, string>()
         {
             { "60", "EF.COM" },
@@ -32,13 +32,13 @@ namespace SmartCardApi.DataGroups
         };
         public DGDataView(IBinary dgData)
         {
-            _berTLVTree = new IBerTLV[] { new BerTLV(dgData) };
+            _berTLV = new BerTLV(dgData);
         }
 
         public void View()
         {
-            Console.WriteLine("\n{0}:", _dgTags[_berTLVTree.First().T]);
-            new BerTLVView(_berTLVTree).View();
+            Console.WriteLine("\n{0}:", _dgTags[_berTLV.T]);
+            new BerTLVView(_berTLV).View();
         }
     }
 } 

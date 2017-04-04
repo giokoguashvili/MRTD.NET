@@ -6,20 +6,20 @@ namespace SmartCardApi.DataGroups
 {
     public class DG1 : IDataGroup<DG1Content>
     {
-        private readonly IBacReader _bacReader;
         private readonly IBinary _fid = new BinaryHex("0101");
+        private readonly IBinary _dgData;
         public DG1(IBacReader bacReader)
         {
-            _bacReader = bacReader;
+            _dgData = bacReader.DGData(_fid);
         }
         public byte[] Bytes()
         {
-            return _bacReader.DGData(_fid).Bytes();
+            return _dgData.Bytes();
         }
 
         public DG1Content Content()
         {
-            return new DG1Content(_bacReader.DGData(_fid));
+            return new DG1Content(_dgData);
         }
     }
 }

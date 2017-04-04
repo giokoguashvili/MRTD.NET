@@ -25,7 +25,9 @@ namespace DemoApp
             var contextFactory = ContextFactory.Instance;
             SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
             monitor.CardInserted += new CardInsertedEvent(CardInsertEventHandler);
-            monitor.Start("OMNIKEY CardMan 5x21-CL 0");
+
+            monitor.Start("ACS CCID USB Reader 0");
+            //monitor.Start("OMNIKEY CardMan 5x21-CL 0");
 
             Console.ReadKey();
         }
@@ -79,24 +81,23 @@ namespace DemoApp
                                          )
                                   );
 
-                    var com = new COM(_reader);
                     var dg1 = new DG1(_reader);
                     var dg2 = new DG2(_reader);
                     var dg7 = new DG7(_reader);
                     var dg11 = new DG11(_reader);
                     var dg12 = new DG12(_reader);
 
-                    //var comData = new Cached(com.Bytes());
-                    //var dg1Data = new Cached(dg1.Bytes());
-                    //var dg2Data = new Cached(dg2.Bytes());
-                    //var dg7Data = new Cached(dg7.Bytes());
-                    //var dg11Data = new Cached(dg11.Bytes());
-                    //var dg12Data = new Cached(dg12.Bytes());
+                    var dg1Data = new Cached(dg1.Bytes());
+                    var dg2Data = new Cached(dg2.Bytes());
+                    var dg7Data = new Cached(dg7.Bytes());
+                    var dg11Data = new Cached(dg11.Bytes());
+                    var dg12Data = new Cached(dg12.Bytes());
 
-                    //var comContent = com.Content();
-                    //var dg1Content = dg1.Content();
-                    dg7.Content().SaveImage();
-                    //dg2.Content().SaveImage();
+                    var dg1Content = dg1.Content();
+                    var dg2Content = dg2.Content();
+                    var dg7Content = dg7.Content();
+                    var dg11Content = dg11.Content();
+                    var dg12Content = dg12.Content();
 
 
                     Console.WriteLine("\nData Groups:\n");

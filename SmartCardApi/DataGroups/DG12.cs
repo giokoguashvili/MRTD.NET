@@ -4,22 +4,22 @@ using SmartCardApi.SmartCard.Reader;
 
 namespace SmartCardApi.DataGroups
 {
-    public class DG12 : IDataGroup<DGContent>
+    public class DG12 : IDataGroup<DG12Content>
     {
-        private readonly IBacReader _bacReader;
         private readonly IBinary _fid = new BinaryHex("010C");
+        private readonly IBinary _dgData;
         public DG12(IBacReader bacReader)
         {
-            _bacReader = bacReader;
+            _dgData = bacReader.DGData(_fid);
         }
         public byte[] Bytes()
         {
-            return _bacReader.DGData(_fid).Bytes();
+            return _dgData.Bytes();
         }
 
-        public DGContent Content()
+        public DG12Content Content()
         {
-            return new DGContent(); //_bacReader.DGData(_fid)
+            return new DG12Content(_dgData); //_bacReader.DGData(_fid)
         }
     }
 }

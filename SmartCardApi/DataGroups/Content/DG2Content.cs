@@ -6,26 +6,44 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Org.BouncyCastle.Crypto.Paddings;
+using SmartCardApi.BER_TLV.View;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.View;
 
 namespace SmartCardApi.DataGroups.Content
 {
     public class DG2Content
     {
-        private readonly IBerTLV _dg2DataBerTLV;
-        public DG2Content(IBinary comData)
+        private readonly DataElements _dataElements;
+        public DG2Content(IBinary dg2Data)
         {
-            _dg2DataBerTLV = new BerTLV(comData);
+            _dataElements = new DataElements(dg2Data);
         }
 
-        public void SaveImage()
+        public int BiometricInstacesNumber
         {
-            byte[] bitmap = new BinaryHex(_dg2DataBerTLV.Data[0].Data[1].Data[1].V).Bytes().Skip(46).ToArray();
-            File.WriteAllBytes("dg2.jpeg", bitmap);
-            //using (Image image = Image.FromStream(new MemoryStream(bitmap)))
-            //{
-            //    image.Save("output2.jpg", ImageFormat.Jpeg);  // Or Png
-            //}
+            get
+            {
+                return new IntHex(_dataElements.List()["02"])
+                    .Value();
+            }
+        }
+
+        public byte[] FaceImageData
+        {
+            get
+            {
+                var imageData = String.Empty;
+                if (_dataElements.List().ContainsKey("5F2E")) imageData = _dataElements.List()["5F2E"];
+                if (_dataElements.List().ContainsKey("7F2E")) imageData = _dataElements.List()["7F2E"];
+                return new BinaryHex(
+                            imageData
+                       )
+                       .Bytes()
+                       .Skip(46) // Data Element may recur as defined by DE 01
+                       .ToArray();
+            }
         }
     }
 }

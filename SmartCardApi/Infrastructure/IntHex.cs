@@ -9,6 +9,12 @@ namespace SmartCardApi.Infrastructure
         public IntHex(IEnumerable<byte> hexBytes) 
             : this(new Binary(hexBytes))
         { }
+
+        public IntHex(string hexString)
+            : this(new BinaryHex(hexString))
+        {
+                
+        }
         public IntHex(IBinary hexBinary)
         {
             _hexBinary = hexBinary;
