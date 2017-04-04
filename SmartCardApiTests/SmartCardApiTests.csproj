@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF93F1B9-1DB0-460A-940E-870BC3D5BE0C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartCardApiTests</RootNamespace>
+    <AssemblyName>SmartCardApiTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BER-TLV\LenTests.cs" />
+    <Compile Include="BER-TLV\SubsequentBytesTests.cs" />
+    <Compile Include="BER-TLV\TagTests.cs" />
+    <Compile Include="BER-TLV\TLVTests.cs" />
+    <Compile Include="BER-TLV\ValTests.cs" />
+    <Compile Include="COMTests.cs" />
+    <Compile Include="Cryptography\3DESTests.cs" />
+    <Compile Include="Cryptography\AddedPaddingTests.cs" />
+    <Compile Include="Cryptography\AdjustedParityTests.cs" />
+    <Compile Include="Cryptography\DTests.cs" />
+    <Compile Include="Cryptography\EicTests.cs" />
+    <Compile Include="Cryptography\EifdTests.cs" />
+    <Compile Include="Cryptography\IncrementedSSCTests.cs" />
+    <Compile Include="Cryptography\KencTests.cs" />
+    <Compile Include="Cryptography\KmacTests.cs" />
+    <Compile Include="Cryptography\KseedIcTests.cs" />
+    <Compile Include="Cryptography\KseedTests.cs" />
+    <Compile Include="Cryptography\KSencTests.cs" />
+    <Compile Include="Cryptography\KSmacTests.cs" />
+    <Compile Include="Cryptography\MAC3Tests.cs" />
+    <Compile Include="Cryptography\MifdTests.cs" />
+    <Compile Include="Cryptography\ParityTests.cs" />
+    <Compile Include="Cryptography\RandomKeysTests.cs" />
+    <Compile Include="Cryptography\SHA1Tests.cs" />
+    <Compile Include="Cryptography\SSCTests.cs" />
+    <Compile Include="Cryptography\STests.cs" />
+    <Compile Include="DataObjects\BuildedDO87Tests.cs" />
+    <Compile Include="DataObjects\BuildedDO8ETests.cs" />
+    <Compile Include="DataObjects\BuildedDO97Tests.cs" />
+    <Compile Include="DataObjects\ExtractedDO87Tests.cs" />
+    <Compile Include="DataObjects\ExtractedDO8ETests.cs" />
+    <Compile Include="DataObjects\ExtractedDO99Tests.cs" />
+    <Compile Include="DecryptedExternalAuthenticateResponseDataTests.cs" />
+    <Compile Include="EncryptedDataTests.cs" />
+    <Compile Include="ExternalAuthenticateCmdDataTests.cs" />
+    <Compile Include="FakeObjects\FkEifd.cs" />
+    <Compile Include="FakeObjects\FkKenc.cs" />
+    <Compile Include="FakeObjects\FkKifd.cs" />
+    <Compile Include="FakeObjects\FkKmac.cs" />
+    <Compile Include="FakeObjects\FkKseed.cs" />
+    <Compile Include="FakeObjects\FkKSenc.cs" />
+    <Compile Include="FakeObjects\FkKSmac.cs" />
+    <Compile Include="FakeObjects\FkMifd.cs" />
+    <Compile Include="FakeObjects\FkRNDic.cs" />
+    <Compile Include="FakeObjects\FkRNDifd.cs" />
+    <Compile Include="FakeObjects\FkS.cs" />
+    <Compile Include="FakeObjects\FkSSC.cs" />
+    <Compile Include="ISO7816\CommandHeaderTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureMessaging\CC\CCTests.cs" />
+    <Compile Include="SecureMessaging\CC\ComputedCCTests.cs" />
+    <Compile Include="SecureMessaging\CC\ExtractedCCTests.cs" />
+    <Compile Include="SecureMessaging\ConstructedProtectedCommandApduTests.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedCommandDataTests.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedResponseApduTests.cs" />
+    <Compile Include="SecureMessaging\NTests.cs" />
+    <Compile Include="SecureMessaging\ProtectedCommandApduTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartCardApi\SmartCardApi.csproj">
+      <Project>{3dfc395e-be42-423a-89b0-7a6eb8f18fbe}</Project>
+      <Name>SmartCardApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
