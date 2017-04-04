@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using PCSC;
 using SmartCardApi.DataGroups;
 using SmartCardApi.Infrastructure;
@@ -85,23 +86,26 @@ namespace DemoApp
                     var dg11 = new DG11(_reader);
                     var dg12 = new DG12(_reader);
 
-                    var comData = new Cached(com.Bytes());
-                    var dg1Data = new Cached(dg1.Bytes());
-                    var dg2Data = new Cached(dg2.Bytes());
-                    var dg7Data = new Cached(dg7.Bytes());
-                    var dg11Data = new Cached(dg11.Bytes());
-                    var dg12Data = new Cached(dg12.Bytes());
+                    //var comData = new Cached(com.Bytes());
+                    //var dg1Data = new Cached(dg1.Bytes());
+                    //var dg2Data = new Cached(dg2.Bytes());
+                    //var dg7Data = new Cached(dg7.Bytes());
+                    //var dg11Data = new Cached(dg11.Bytes());
+                    //var dg12Data = new Cached(dg12.Bytes());
 
-                    var comContent = com.Content();
-                    var dg1Content = dg1.Content();
+                    //var comContent = com.Content();
+                    //var dg1Content = dg1.Content();
+                    dg7.Content().SaveImage();
+                    //dg2.Content().SaveImage();
+
 
                     Console.WriteLine("\nData Groups:\n");
-                    new DGDataView(comData).View();
-                    new DGDataView(dg1Data).View();
-                    new DGDataView(dg2Data).View();
-                    new DGDataView(dg7Data).View();
-                    new DGDataView(dg11Data).View();
-                    new DGDataView(dg12Data).View();
+                    //new DGDataView(comData).View();
+                    //new DGDataView(dg1Data).View();
+                    //new DGDataView(dg2Data).View();
+                    //new DGDataView(dg7Data).View();
+                    //new DGDataView(dg11Data).View();
+                    //new DGDataView(dg12Data).View();
 
 
                     reader.EndTransaction(SCardReaderDisposition.Leave);

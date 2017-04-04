@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -109,6 +110,8 @@
     <Compile Include="DataGroups\COM.cs" />
     <Compile Include="DataGroups\Content\COMContent.cs" />
     <Compile Include="DataGroups\Content\DG1Content.cs" />
+    <Compile Include="DataGroups\Content\DG2Content.cs" />
+    <Compile Include="DataGroups\Content\DG7Content.cs" />
     <Compile Include="DataGroups\Content\DGContent.cs" />
     <Compile Include="DataGroups\DG1.cs" />
     <Compile Include="DataGroups\DG11.cs" />
@@ -158,7 +161,6 @@
     <Compile Include="ISO7816\ResponseAPDU\Trailer\ResponseApduTrailer.cs" />
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW1.cs" />
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW2.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureMessaging\CC\CC.cs" />
     <Compile Include="SecureMessaging\CC\ComputedCC.cs" />

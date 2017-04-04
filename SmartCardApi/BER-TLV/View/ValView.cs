@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using SmartCardApi.Infrastructure;
 
 namespace SmartCardApi.View
 {
@@ -15,7 +16,8 @@ namespace SmartCardApi.View
         {
             if (_str.Length > 50)
             {
-                return String.Concat(_str.Take(50)) + "...";
+                var strLen = new BytesCount(new BinaryHex(_str)).Value();
+                return String.Format("{0} ... (Hex: {1} - {2})", String.Concat(_str.Take(50)), new Hex(new HexInt(strLen)), strLen);
             }
             else
             {

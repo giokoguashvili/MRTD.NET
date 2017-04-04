@@ -28,10 +28,11 @@ namespace SmartCardApi.DataGroups.DG
 
         public int Value()
         {
-            return new Sum(
+            var sum = new Sum(
                         new BytesCount(_berTlv.TL),
                         new ValLength(_berTlv.L)
                     ).Value();
+            return sum;
         }
     }
 }

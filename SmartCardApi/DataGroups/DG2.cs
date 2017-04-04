@@ -4,7 +4,7 @@ using SmartCardApi.SmartCard.Reader;
 
 namespace SmartCardApi.DataGroups
 {
-    public class DG2 : IDataGroup<DGContent>
+    public class DG2 : IDataGroup<DG2Content>
     {
         private readonly IBacReader _bacReader;
         private readonly IBinary _fid = new BinaryHex("0102");
@@ -17,9 +17,9 @@ namespace SmartCardApi.DataGroups
             return _bacReader.DGData(_fid).Bytes();
         }
 
-        public DGContent Content()
+        public DG2Content Content()
         {
-            return new DGContent(); //_bacReader.DGData(_fid)
+            return new DG2Content(_bacReader.DGData(_fid)); //_bacReader.DGData(_fid)
         }
     }
 }
