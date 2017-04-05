@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using SmartCardApi.BER_TLV.View;
 
 namespace SmartCardApi.View
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SmartCardApi.BER_TLV.View;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.View;
 
 namespace SmartCardApi.DataGroups.Content
 {

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Paddings;
-using SmartCardApi.BER_TLV.View;
 using SmartCardApi.Infrastructure;
 using SmartCardApi.View;
 
