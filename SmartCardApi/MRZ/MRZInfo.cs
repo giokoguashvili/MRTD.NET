@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartCardApi.Infrastructure;
 
 namespace SmartCardApi.MRZ
 {
-    public class MRZInfo 
+    public class MRZInfo : ISymbols
     {
         private readonly string _serialNumber;
         private readonly DateTime _dateOfBirth;

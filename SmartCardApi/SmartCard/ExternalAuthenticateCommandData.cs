@@ -7,13 +7,13 @@ namespace SmartCardApi.SmartCard
 {
     public class ExternalAuthenticateCommandData : IBinary
     {
-        private readonly MRZInfo _mrzInformation;
+        private readonly ISymbols _mrzInformation;
         private readonly IBinary _rndIc;
         private readonly IBinary _rndIfd;
         private readonly IBinary _kIfd;
 
         public ExternalAuthenticateCommandData(
-            MRZInfo mrzInformation, 
+            ISymbols mrzInformation, 
             IBinary rndIc, 
             IBinary rndIfd, 
             IBinary kIfd)

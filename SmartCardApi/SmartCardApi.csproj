@@ -133,6 +133,8 @@
     <Compile Include="Infrastructure\BytesCount.cs" />
     <Compile Include="Infrastructure\CachedBinary.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
+    <Compile Include="Infrastructure\ISymbols.cs" />
+    <Compile Include="Infrastructure\Symbols.cs" />
     <Compile Include="Infrastructure\ZippedNumbers.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />

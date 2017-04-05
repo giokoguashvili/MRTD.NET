@@ -20,7 +20,7 @@ namespace SmartCardApiTests
                     new Hex(
                         new DecryptedExternalAuthenticateResponseData(
                             new BinaryHex(extAuthResData),
-                            mrzInfo
+                            new Symbols(mrzInfo)
                         )
                     ).ToString() 
                 );

@@ -40,7 +40,7 @@ namespace SmartCardApiTests.SecureMessaging
                                 new Kic(
                                     new R(
                                         new BinaryHex("46B9342A41396CD7386BF5803104D7CEDC122B9132139BAF2EEDC94EE178534F2F2D235D074D7449"), //exterbalAuthData
-                                        "L898902C<369080619406236"
+                                        new Symbols("L898902C<369080619406236")
                                     )
                                 )
                             );

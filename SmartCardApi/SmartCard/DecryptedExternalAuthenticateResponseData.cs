@@ -7,11 +7,11 @@ namespace SmartCardApi.SmartCard
     public class DecryptedExternalAuthenticateResponseData : IBinary
     {
         private readonly IBinary _externalAuthRespData;
-        private readonly MRZInfo _mrzInformation;
+        private readonly ISymbols _mrzInformation;
 
         public DecryptedExternalAuthenticateResponseData(
                 IBinary externalAuthRespData,
-                MRZInfo mrzInformation
+                ISymbols mrzInformation
             )
         {
             _externalAuthRespData = externalAuthRespData;

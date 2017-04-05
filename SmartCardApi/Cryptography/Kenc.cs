@@ -8,7 +8,7 @@ namespace SmartCardApi.Cryptography
         private readonly IBinary _c = new BinaryHex("00000001");
         private readonly IBinary _kSeed;
 
-        public Kenc(MRZInfo mrzInformation)
+        public Kenc(ISymbols mrzInformation)
             : this(
                   new Kseed(
                         new SHA1(

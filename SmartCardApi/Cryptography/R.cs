@@ -7,11 +7,11 @@ namespace SmartCardApi.Cryptography
     public class R : IBinary
     {
         private readonly IBinary _externalAuthRespData;
-        private readonly MRZInfo _mrzInformation;
+        private readonly ISymbols _mrzInformation;
 
         public R(
                 IBinary externalAuthRespData,
-                MRZInfo mrzInformation
+                ISymbols mrzInformation
             )
         {
             _externalAuthRespData = externalAuthRespData;

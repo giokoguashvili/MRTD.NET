@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 using SmartCardApiTests.FakeObjects;
 
 namespace SmartCardApiTests.Cryptography
@@ -28,7 +29,7 @@ namespace SmartCardApiTests.Cryptography
             Assert.AreEqual(
                     act,
                     new Hex(
-                        new Kenc(mrzInfo)
+                        new Kenc(new Symbols(mrzInfo))
                     ).ToString()
                 );
         }
