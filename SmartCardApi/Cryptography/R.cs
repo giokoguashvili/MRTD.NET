@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 using SmartCardApi.SmartCard;
 
 namespace SmartCardApi.Cryptography
@@ -6,11 +7,11 @@ namespace SmartCardApi.Cryptography
     public class R : IBinary
     {
         private readonly IBinary _externalAuthRespData;
-        private readonly string _mrzInformation;
+        private readonly MRZInfo _mrzInformation;
 
         public R(
                 IBinary externalAuthRespData,
-                string mrzInformation
+                MRZInfo mrzInformation
             )
         {
             _externalAuthRespData = externalAuthRespData;

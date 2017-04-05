@@ -3,6 +3,7 @@ using SmartCardApi.Cryptography;
 using SmartCardApi.Cryptography.RandomKeys;
 using SmartCardApi.Infrastructure;
 using SmartCardApi.ISO7816.ResponseAPDU.Body;
+using SmartCardApi.MRZ;
 using SmartCardApi.SecureMessaging;
 using SmartCardApi.SmartCard.Reader;
 
@@ -16,7 +17,7 @@ namespace SmartCardApi.SmartCard
         private readonly IBinary _selectedMrtdApplication;
 
         public SessionKeys(
-                string mrzInfo,
+                MRZInfo mrzInfo,
                 IReader reader
             )
         {

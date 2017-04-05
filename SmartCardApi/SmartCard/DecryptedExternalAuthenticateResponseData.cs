@@ -1,16 +1,17 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 
 namespace SmartCardApi.SmartCard
 {
     public class DecryptedExternalAuthenticateResponseData : IBinary
     {
         private readonly IBinary _externalAuthRespData;
-        private readonly string _mrzInformation;
+        private readonly MRZInfo _mrzInformation;
 
         public DecryptedExternalAuthenticateResponseData(
                 IBinary externalAuthRespData,
-                string mrzInformation
+                MRZInfo mrzInformation
             )
         {
             _externalAuthRespData = externalAuthRespData;

@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 
 namespace SmartCardApi.Cryptography
 {
@@ -7,11 +8,11 @@ namespace SmartCardApi.Cryptography
         private readonly IBinary _c = new BinaryHex("00000001");
         private readonly IBinary _kSeed;
 
-        public Kenc(string mrzInformation)
+        public Kenc(MRZInfo mrzInformation)
             : this(
                   new Kseed(
                         new SHA1(
-                            new UTF8String(mrzInformation)
+                            new UTF8String(mrzInformation.ToString())
                         )
                     )
                )

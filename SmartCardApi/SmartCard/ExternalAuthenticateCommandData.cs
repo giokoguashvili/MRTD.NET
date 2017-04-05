@@ -1,18 +1,19 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Cryptography.RandomKeys;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 
 namespace SmartCardApi.SmartCard
 {
     public class ExternalAuthenticateCommandData : IBinary
     {
-        private readonly string _mrzInformation;
+        private readonly MRZInfo _mrzInformation;
         private readonly IBinary _rndIc;
         private readonly IBinary _rndIfd;
         private readonly IBinary _kIfd;
 
         public ExternalAuthenticateCommandData(
-            string mrzInformation, 
+            MRZInfo mrzInformation, 
             IBinary rndIc, 
             IBinary rndIfd, 
             IBinary kIfd)
@@ -28,7 +29,7 @@ namespace SmartCardApi.SmartCard
         {
             var kSeed = new Kseed(
                             new SHA1(
-                                new UTF8String(_mrzInformation)
+                                new UTF8String(_mrzInformation.ToString())
                             )
                         );
             var eIfd = new Eifd(

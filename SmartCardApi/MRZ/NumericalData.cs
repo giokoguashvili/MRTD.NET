@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SmartCardApi.Infrastructure;
+
+namespace SmartCardApi.MRZ
+{
+    public class NumericalData : INumber
+    {
+        private readonly string _mrzDataElenemt;
+        private readonly Dictionary<string, int> _numericValues = new Dictionary<string, int>()
+        {
+            { "<", 0 },
+            { "0", 0 },
+            { "1", 1 },
+            { "2", 2 },
+            { "3", 3 },
+            { "4", 4 },
+            { "5", 5 },
+            { "6", 6 },
+            { "7", 7 },
+            { "8", 8 },
+            { "9", 9 },
+            { "A", 10 },
+            { "B", 11 },
+            { "C", 12 },
+            { "D", 13 },
+            { "E", 14 },
+            { "F", 15 },
+            { "G", 16 },
+            { "H", 17 },
+            { "I", 18 },
+            { "J", 19 },
+            { "K", 20 },
+            { "L", 21 },
+            { "M", 22 },
+            { "N", 23 },
+            { "O", 24 },
+            { "P", 25 },
+            { "Q", 26 },
+            { "R", 27 },
+            { "S", 28 },
+            { "T", 29 },
+            { "U", 30 },
+            { "V", 31 },
+            { "W", 32 },
+            { "X", 33 },
+            { "Y", 34 },
+            { "Z", 35 }
+        };
+
+        public NumericalData(char mrzDataElement)
+            : this(new string(new [] { mrzDataElement }))
+        {
+        }
+        public NumericalData(int mrzDataElement) 
+            : this(mrzDataElement.ToString())
+        {
+        }
+        public NumericalData(string mrzDataElenemt)
+        {
+            _mrzDataElenemt = mrzDataElenemt;
+        }
+        public int Value()
+        {
+            return _numericValues[_mrzDataElenemt];
+        }
+    }
+}

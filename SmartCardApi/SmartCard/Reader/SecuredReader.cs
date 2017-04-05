@@ -1,4 +1,5 @@
 using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 using SmartCardApi.SecureMessaging;
 
 namespace SmartCardApi.SmartCard.Reader
@@ -9,7 +10,7 @@ namespace SmartCardApi.SmartCard.Reader
         private readonly ISessionKeys _sessionKeys;
         private IBinary _selfIncrementedSSC;
         public SecuredReader(
-                string mrzInfo,
+                MRZInfo mrzInfo,
                 IReader reader
             )
         {
