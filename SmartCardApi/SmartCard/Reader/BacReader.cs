@@ -1,5 +1,6 @@
 ﻿using SmartCardApi.DataGroups.DG;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.USB;
 
 namespace SmartCardApi.SmartCard.Reader
 {
@@ -13,6 +14,8 @@ namespace SmartCardApi.SmartCard.Reader
 
         public IBinary DGData(IBinary fid)
         {
+ 
+            //new ConnectedReaders()
             return new DGData(
                     fid,
                     _securedReader

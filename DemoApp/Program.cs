@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using PCSC;
 using SmartCardApi.DataGroups;
@@ -6,22 +8,130 @@ using SmartCardApi.Infrastructure;
 using SmartCardApi.MRZ;
 using SmartCardApi.SmartCard;
 using SmartCardApi.SmartCard.Reader;
+using System.Management;
 
 namespace DemoApp
 {
+    public enum EventType
+    {
+        Inserted,
+        Removed
+    }
+    public class WMIReceiveEvent
+    {
+        public WMIReceiveEvent()
+        {
+            try
+            {
+                WqlEventQuery query = new WqlEventQuery(
+                    "SELECT * FROM __InstanceCreationEvent WITHIN 1");
+
+                ManagementEventWatcher watcher = new ManagementEventWatcher(query);
+                Console.WriteLine("Waiting for an event...");
+
+                watcher.EventArrived +=
+                    new EventArrivedEventHandler(
+                    HandleEvent);
+
+                // Start listening for events
+                watcher.Start();
+
+                //// Do something while waiting for events
+                //System.Threading.Thread.Sleep(1000);
+
+                //// Stop listening for events
+                //watcher.Stop();
+            }
+            catch (ManagementException err)
+            {
+                Console.WriteLine("An error occurred while trying to receive an event: " + err.Message);
+            }
+        }
+
+        private void HandleEvent(object sender,
+            EventArrivedEventArgs e)
+        {
+            Console.WriteLine("__InstanceCreationEvent event occurred.");
+        }
+
+    }
+
     class Program
     {
+
+        static void watcher_EventArrived(object sender, EventArrivedEventArgs e)
+        {
+            var gip = 5;
+            //string DriveName = e.NewEvent.Properties["DriveName"].Value.ToString();
+            //var Type = (EventType)(Convert.ToInt16(e.NewEvent.Properties["EventType"].Value));
+            Console.WriteLine("{0}", (gip++).ToString());
+        }
+        static ManagementEventWatcher mwe_creation = null;
         static void Main(string[] args)
         {
-            var contextFactory2 = ContextFactory.Instance;
-            var context = contextFactory2.Establish(SCardScope.System);
+            //var drives = DriveInfo.GetDrives()
+            //    .Where(drive => drive.IsReady && drive.DriveType == DriveType.Removable);
+            //WMIReceiveEvent receiveEvent = new WMIReceiveEvent();
+            //Console.ReadKey();
+
+            //Insert
+            WqlEventQuery q_creation = new WqlEventQuery();
+            q_creation.EventClassName = "__InstanceCreationEvent";
+            q_creation.WithinInterval = new TimeSpan(0, 0, 2);    //How often do you want to check it? 2Sec.
+            q_creation.Condition = @"TargetInstance ISA 'Win32_USBControllerDevice'";
+            mwe_creation = new ManagementEventWatcher(q_creation);
+            mwe_creation.EventArrived += new EventArrivedEventHandler(watcher_EventArrived);
+            mwe_creation.Start(); // Start listen for events
 
 
-            var readerNames = context.GetReaders();
-            foreach (var readerName in readerNames)
-            {
-                Console.WriteLine(readerName);
-            }
+            //ManagementEventWatcher watcher = new ManagementEventWatcher();
+            //WqlEventQuery query = new WqlEventQuery("SELECT * FROM Win32_VolumeChangeEvent WHERE EventType = 2 or EventType = 3");
+            //watcher.EventArrived += (s, e) =>
+            //{
+            //    string DriveName = e.NewEvent.Properties["DriveName"].Value.ToString();
+            //    var Type = (EventType)(Convert.ToInt16(e.NewEvent.Properties["EventType"].Value));
+            //};
+
+
+            //ManagementEventWatcher w = null;
+            //WqlEventQuery q;
+            //ManagementScope scope = new ManagementScope("root\\CIMV2");
+            //scope.Options.EnablePrivileges = true;
+            //    q = new WqlEventQuery();
+            //    q.EventClassName = "__InstanceCreationEvent";
+            //    q.WithinInterval = new TimeSpan(0, 0, 3);
+            //    q.Condition = @"TargetInstance ISA 'Win32_USBHub'";
+            //    w = new ManagementEventWatcher(scope, q);
+            //    w.EventArrived += new EventArrivedEventHandler(watcher_EventArrived);
+            //    w.Start();
+
+
+            //    ManagementEventWatcher watcher = new ManagementEventWatcher();
+            //WqlEventQuery query = new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WHERE EventType = 2");
+            //watcher.EventArrived += new EventArrivedEventHandler(watcher_EventArrived);
+            //watcher.Query = query;
+            //watcher.Start();
+            //watcher.WaitForNextEvent();
+
+            //var smartCard = new SmartCardFactory(
+            //    new MRZInfo(
+            //        "12IB34415",
+            //        new DateTime(1992, 06, 16),
+            //        new DateTime(2022, 10, 08)
+            //    )
+            //).SmartCard();
+
+            //var dg1Content = smartCard.DG1().Content();
+            //var gio = 5;
+            //var contextFactory2 = ContextFactory.Instance;
+            //var context = contextFactory2.Establish(SCardScope.System);
+
+
+            //var readerNames = context.GetReaders();
+            //foreach (var readerName in readerNames)
+            //{
+            //    Console.WriteLine(readerName);
+            //}
 
 
             var contextFactory = ContextFactory.Instance;
@@ -52,10 +162,11 @@ namespace DemoApp
                     byte[] atr;
 
                     var sc = reader.Status(
-                                out readerNames,
-                                out state,
-                                out proto,
-                                out atr);
+                                    out readerNames,
+                                    out state,
+                                    out proto,
+                                    out atr
+                                );
 
                     sc = reader.BeginTransaction();
                     if (sc != SCardError.Success)
@@ -64,6 +175,7 @@ namespace DemoApp
                         Console.ReadKey();
                         return;
                     }
+
                     Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
                     Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
 
@@ -81,13 +193,13 @@ namespace DemoApp
                     var smartCard = new SmartCard(
                                         new BacReader(
                                             new SecuredReader(
-                                                    mrzInfo,
-                                                    new WrReader(
-                                                        new LogedReader(
-                                                            reader
-                                                        )
+                                                mrzInfo,
+                                                new WrReader(
+                                                    new LogedReader(
+                                                        reader
                                                     )
                                                 )
+                                            )
                                         )
                                     );
     

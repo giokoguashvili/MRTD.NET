@@ -1,4 +1,5 @@
-﻿using SmartCardApi.DataGroups;
+﻿using PCSC;
+using SmartCardApi.DataGroups;
 using SmartCardApi.SmartCard.Reader;
 
 namespace SmartCardApi.SmartCard
@@ -9,6 +10,9 @@ namespace SmartCardApi.SmartCard
 
         public SmartCard(IBacReader bacReader)
         {
+            var contextFactory = ContextFactory.Instance;
+            SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
+
             _bacReader = bacReader;
         }
         public DG1 DG1()

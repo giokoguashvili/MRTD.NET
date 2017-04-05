@@ -213,6 +213,7 @@
     <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
     <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
     <Compile Include="SmartCard\ISessionKeys.cs" />
+    <Compile Include="SmartCard\ConnectedReader.cs" />
     <Compile Include="SmartCard\Reader\BacReader.cs" />
     <Compile Include="SmartCard\Reader\IBacReader.cs" />
     <Compile Include="SmartCard\Reader\IReader.cs" />
@@ -221,6 +222,12 @@
     <Compile Include="SmartCard\Reader\WrReader.cs" />
     <Compile Include="SmartCard\SessionKeys.cs" />
     <Compile Include="SmartCard\SmartCard.cs" />
+    <Compile Include="SmartCard\SmartCardFactory.cs" />
+    <Compile Include="SmartCard\SmartCardReader.cs" />
+    <Compile Include="USB\AuthenticatedReader.cs" />
+    <Compile Include="USB\ConnectedReaders.cs" />
+    <Compile Include="USB\ReaderFactory.cs" />
+    <Compile Include="USB\USB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
