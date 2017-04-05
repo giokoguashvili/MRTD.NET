@@ -17,7 +17,7 @@ namespace SmartCardApi.SmartCard
         private readonly IBinary _selectedMrtdApplication;
 
         public SessionKeys(
-                MRZInfo mrzInfo,
+                ISymbols mrzInfo,
                 IReader reader
             )
         {

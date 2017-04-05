@@ -10,7 +10,7 @@ namespace SmartCardApi.SmartCard.Reader
         private readonly ISessionKeys _sessionKeys;
         private IBinary _selfIncrementedSSC;
         public SecuredReader(
-                MRZInfo mrzInfo,
+                ISymbols mrzInfo,
                 IReader reader
             )
         {
