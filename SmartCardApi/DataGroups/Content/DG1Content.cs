@@ -1,6 +1,5 @@
-﻿using System.Linq;
-using System.Text;
-using SmartCardApi.Infrastructure;
+﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.MRZ;
 
 namespace SmartCardApi.DataGroups.Content
 {
@@ -12,13 +11,11 @@ namespace SmartCardApi.DataGroups.Content
             _dataElements = new DataElements(dg1Data);
         }
 
-        public string MRZ
+        public ParsedMRZ MRZ
         {
             get
             {
-                return Encoding.ASCII.GetString(
-                    new BinaryHex(_dataElements.List()["5F1F"]).Bytes()
-                );
+                return new ParsedMRZ(_dataElements.List()["5F1F"]);
             }
         }
     }

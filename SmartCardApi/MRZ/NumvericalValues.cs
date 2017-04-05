@@ -8,11 +8,11 @@ using SmartCardApi.Infrastructure;
 
 namespace SmartCardApi.MRZ
 {
-    public class NumvericalValues : IEnumerable<INumber>
+    public class NumericalValues : IEnumerable<INumber>
     {
         private readonly string _mrzInfoField;
 
-        public NumvericalValues(string mrzInfoField)
+        public NumericalValues(string mrzInfoField)
         {
             _mrzInfoField = mrzInfoField;
         }

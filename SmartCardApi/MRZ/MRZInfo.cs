@@ -11,8 +11,6 @@ namespace SmartCardApi.MRZ
         private readonly string _serialNumber;
         private readonly DateTime _dateOfBirth;
         private readonly DateTime _dateOfExpiry;
-        private readonly string _dateFormat = "yyMMdd";
-
         public MRZInfo(
                 string serialNumber,
                 DateTime dateOfBirth,
@@ -26,8 +24,8 @@ namespace SmartCardApi.MRZ
 
         public override string ToString()
         {
-            var formatedDateOfBirth = _dateOfBirth.ToString(_dateFormat);
-            var formatedDateOfExpiry = _dateOfExpiry.ToString(_dateFormat);
+            var formatedDateOfBirth = _dateOfBirth.ToString(new MRZDateFormat().ToString());
+            var formatedDateOfExpiry = _dateOfExpiry.ToString(new MRZDateFormat().ToString());
             return String.Concat(
                 _serialNumber,
                 new CheckedDigit(_serialNumber).Value(),

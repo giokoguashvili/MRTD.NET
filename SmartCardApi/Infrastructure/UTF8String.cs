@@ -14,5 +14,10 @@ namespace SmartCardApi.Infrastructure
         {
             return Encoding.UTF8.GetBytes(_str);
         }
+
+        public override string ToString()
+        {
+            return Encoding.UTF8.GetString(Bytes());
+        }
     }
 }

@@ -17,14 +17,13 @@ namespace SmartCardApi.MRZ
         }
         public int Value()
         {
-            var zipped = new ZippedNumbers(
-                new NumvericalValues(_mrzInfoField),
-                new WeightingFigures(_mrzInfoField),
-                (a, b) => new Product(a, b)
-            );
             return new Remainder(
                         new Sum(
-                           zipped
+                           new Zipped(
+                                new NumericalValues(_mrzInfoField),
+                                new WeightingFigures(_mrzInfoField),
+                                (a, b) => new Product(a, b)
+                            )
                         ),
                         _dividerNumber
                    ).Value();

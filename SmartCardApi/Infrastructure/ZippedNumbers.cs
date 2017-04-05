@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 namespace SmartCardApi.Infrastructure
 {
 
-    public class ZippedNumbers : IEnumerable<INumber>
+    public class Zipped : IEnumerable<INumber>
     {
         private readonly INumber[] _aNums;
         private readonly INumber[] _bNums;
         private readonly Func<INumber, INumber, INumber> _ziper;
 
-        public ZippedNumbers(IEnumerable<INumber> aNums, IEnumerable<INumber> bNums, Func<INumber, INumber, INumber> ziper)
+        public Zipped(IEnumerable<INumber> aNums, IEnumerable<INumber> bNums, Func<INumber, INumber, INumber> ziper)
             : this(aNums.ToArray(), bNums.ToArray(), ziper)
         {}
-        public ZippedNumbers(INumber[] aNums, INumber[] bNums, Func<INumber, INumber, INumber> ziper)
+        public Zipped(INumber[] aNums, INumber[] bNums, Func<INumber, INumber, INumber> ziper)
         {
             _aNums = aNums;
             _bNums = bNums;

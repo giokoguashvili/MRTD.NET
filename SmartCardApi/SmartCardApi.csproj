@@ -126,6 +126,7 @@
     <Compile Include="DataGroups\DG\DGData.cs" />
     <Compile Include="DataGroups\DG\DGDataHexLength.cs" />
     <Compile Include="DataGroups\IDataGroup.cs" />
+    <Compile Include="Infrastructure\ASCIIString.cs" />
     <Compile Include="Infrastructure\Binary.cs" />
     <Compile Include="Infrastructure\BinaryHex.cs" />
     <Compile Include="Infrastructure\BinaryNumber.cs" />
@@ -168,9 +169,12 @@
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW1.cs" />
     <Compile Include="ISO7816\ResponseAPDU\Trailer\SW2.cs" />
     <Compile Include="MRZ\CheckedDigit.cs" />
+    <Compile Include="MRZ\MRZDateFormat.cs" />
     <Compile Include="MRZ\MRZInfo.cs" />
     <Compile Include="MRZ\NumericalData.cs" />
     <Compile Include="MRZ\NumvericalValues.cs" />
+    <Compile Include="MRZ\ParsedMRZ.cs" />
+    <Compile Include="MRZ\Sex.cs" />
     <Compile Include="MRZ\WeightingFigure.cs" />
     <Compile Include="MRZ\WeightingFigures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
