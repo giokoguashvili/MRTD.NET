@@ -31,13 +31,18 @@ namespace DemoApp
             ); //"12IB34415792061602210089" K
 
 
-            new HandledSmartCardInsertEvent(
-                new SmartCardInsertEvents(
-                    mrzInfo,
-                    new SmartCardReaderConnectEvents()
-                )
-            ).Handle();
+            //new HandledSmartCardInsertEvents(
+            //    new SmartCardInsertEventsSource(
+            //        mrzInfo,
+            //        new SmartCardReaderConnectEventsSource()
+            //    )
+            //).Handle();
 
+            var dgContent = new SmartCardContent(mrzInfo)
+                                .Content()
+                                .Result;
+
+            Console.WriteLine(dgContent.MRZ.DocumentNumber);            
             Console.ReadKey();
         }
     }

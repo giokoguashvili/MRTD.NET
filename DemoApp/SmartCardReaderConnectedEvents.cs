@@ -5,7 +5,7 @@ using PCSC;
 
 namespace DemoApp
 {
-    public class SmartCardReaderConnectEvents : IObservable<ISCardReader>
+    public class SmartCardReaderConnectEventsSource : IObservable<ISCardReader>
     {
         private IObserver<ISCardReader> _observer;
         private void watcher_EventArrived(object sender, EventArrivedEventArgs e)

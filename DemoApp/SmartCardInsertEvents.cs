@@ -10,12 +10,12 @@ using SmartCardApi.SmartCard.Reader;
 
 namespace DemoApp
 {
-    public class SmartCardInsertEvents : IObservable<SmartCard>
+    public class SmartCardInsertEventsSource : IObservable<SmartCard>
     {
         private readonly ISymbols _mrzInfo;
         private readonly IObservable<ISCardReader> _smartCardReaderConnectEvents;
 
-        public SmartCardInsertEvents(
+        public SmartCardInsertEventsSource(
                 ISymbols mrzInfo,
                 IObservable<ISCardReader> smartCardReaderConnectEvents
             )

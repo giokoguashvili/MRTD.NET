@@ -4,11 +4,11 @@ using SmartCardApi.SmartCard;
 
 namespace DemoApp
 {
-    public class HandledSmartCardInsertEvent 
+    public class HandledSmartCardInsertEvents 
     {
         private readonly IObservable<SmartCard> _smartCardInsertEvents;
 
-        public HandledSmartCardInsertEvent(IObservable<SmartCard> smartCardInsertEvents)
+        public HandledSmartCardInsertEvents(IObservable<SmartCard> smartCardInsertEvents)
         {
             _smartCardInsertEvents = smartCardInsertEvents;
         }
