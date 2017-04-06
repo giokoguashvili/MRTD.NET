@@ -4,11 +4,14 @@
 
 ```cs
 var dg1Content = await new SmartCardContent(
-                          new MRZInfo(
-                              "29GJ27813",
-                              new DateTime(1998, 08, 14),
-                              new DateTime(2022, 12, 22)
-                          )
-                      ).Content();
-Console.WriteLine(dg1Content.MRZ.DocumentNumber)                          
+                            new MRZInfo(
+                                "29GJ27813",
+                                new DateTime(1998, 08, 14),
+                                new DateTime(2022, 12, 22)
+                            )
+                        ).Content();
+                        
+Console.WriteLine(
+            dg1Content.MRZ.DocumentNumber
+        );
 ```
