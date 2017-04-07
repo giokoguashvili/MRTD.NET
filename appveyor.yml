@@ -1,5 +1,5 @@
 version: 1.0.{build}
-clone_folder: C:\Projects\MRTD.NET\SmartCardApi
+clone_folder: C:\Projects\MRTD.NET
 build:
   verbosity: minimal
 before_test:
