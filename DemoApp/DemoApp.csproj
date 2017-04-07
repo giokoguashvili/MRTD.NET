@@ -84,65 +84,6 @@
     <Compile Include="SmartCardContent.cs" />
     <Compile Include="SmartCardInsertEvents.cs" />
     <Compile Include="SmartCardReaderConnectedEvents.cs" />
-    <Compile Include="Tests\BER-TLV\LenTests.cs" />
-    <Compile Include="Tests\BER-TLV\SubsequentBytesTests.cs" />
-    <Compile Include="Tests\BER-TLV\TagTests.cs" />
-    <Compile Include="Tests\BER-TLV\TLVTests.cs" />
-    <Compile Include="Tests\BER-TLV\ValTests.cs" />
-    <Compile Include="Tests\COMTests.cs" />
-    <Compile Include="Tests\Cryptography\3DESTests.cs" />
-    <Compile Include="Tests\Cryptography\AddedPaddingTests.cs" />
-    <Compile Include="Tests\Cryptography\AdjustedParityTests.cs" />
-    <Compile Include="Tests\Cryptography\DTests.cs" />
-    <Compile Include="Tests\Cryptography\EicTests.cs" />
-    <Compile Include="Tests\Cryptography\EifdTests.cs" />
-    <Compile Include="Tests\Cryptography\IncrementedSSCTests.cs" />
-    <Compile Include="Tests\Cryptography\KencTests.cs" />
-    <Compile Include="Tests\Cryptography\KmacTests.cs" />
-    <Compile Include="Tests\Cryptography\KseedIcTests.cs" />
-    <Compile Include="Tests\Cryptography\KseedTests.cs" />
-    <Compile Include="Tests\Cryptography\KSencTests.cs" />
-    <Compile Include="Tests\Cryptography\KSmacTests.cs" />
-    <Compile Include="Tests\Cryptography\MAC3Tests.cs" />
-    <Compile Include="Tests\Cryptography\MifdTests.cs" />
-    <Compile Include="Tests\Cryptography\ParityTests.cs" />
-    <Compile Include="Tests\Cryptography\RandomKeysTests.cs" />
-    <Compile Include="Tests\Cryptography\SHA1Tests.cs" />
-    <Compile Include="Tests\Cryptography\SSCTests.cs" />
-    <Compile Include="Tests\Cryptography\STests.cs" />
-    <Compile Include="Tests\DataObjects\BuildedDO87Tests.cs" />
-    <Compile Include="Tests\DataObjects\BuildedDO8ETests.cs" />
-    <Compile Include="Tests\DataObjects\BuildedDO97Tests.cs" />
-    <Compile Include="Tests\DataObjects\ExtractedDO87Tests.cs" />
-    <Compile Include="Tests\DataObjects\ExtractedDO8ETests.cs" />
-    <Compile Include="Tests\DataObjects\ExtractedDO99Tests.cs" />
-    <Compile Include="Tests\DecryptedExternalAuthenticateResponseDataTests.cs" />
-    <Compile Include="Tests\EncryptedDataTests.cs" />
-    <Compile Include="Tests\ExternalAuthenticateCmdDataTests.cs" />
-    <Compile Include="Tests\FakeObjects\FkEifd.cs" />
-    <Compile Include="Tests\FakeObjects\FkKenc.cs" />
-    <Compile Include="Tests\FakeObjects\FkKifd.cs" />
-    <Compile Include="Tests\FakeObjects\FkKmac.cs" />
-    <Compile Include="Tests\FakeObjects\FkKseed.cs" />
-    <Compile Include="Tests\FakeObjects\FkKSenc.cs" />
-    <Compile Include="Tests\FakeObjects\FkKSmac.cs" />
-    <Compile Include="Tests\FakeObjects\FkMifd.cs" />
-    <Compile Include="Tests\FakeObjects\FkRNDic.cs" />
-    <Compile Include="Tests\FakeObjects\FkRNDifd.cs" />
-    <Compile Include="Tests\FakeObjects\FkS.cs" />
-    <Compile Include="Tests\FakeObjects\FkSSC.cs" />
-    <Compile Include="Tests\Infrastructure\ProductTests.cs" />
-    <Compile Include="Tests\ISO7816\CommandHeaderTests.cs" />
-    <Compile Include="Tests\MRZ\CheckedDigitTests.cs" />
-    <Compile Include="Tests\MRZ\MRZInfoTests.cs" />
-    <Compile Include="Tests\SecureMessaging\CC\CCTests.cs" />
-    <Compile Include="Tests\SecureMessaging\CC\ComputedCCTests.cs" />
-    <Compile Include="Tests\SecureMessaging\CC\ExtractedCCTests.cs" />
-    <Compile Include="Tests\SecureMessaging\ConstructedProtectedCommandApduTests.cs" />
-    <Compile Include="Tests\SecureMessaging\DecryptedProtectedCommandDataTests.cs" />
-    <Compile Include="Tests\SecureMessaging\DecryptedProtectedResponseApduTests.cs" />
-    <Compile Include="Tests\SecureMessaging\NTests.cs" />
-    <Compile Include="Tests\SecureMessaging\ProtectedCommandApduTests.cs" />
     <Compile Include="USBDevices.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +95,9 @@
       <Project>{3dfc395e-be42-423a-89b0-7a6eb8f18fbe}</Project>
       <Name>SmartCardApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
