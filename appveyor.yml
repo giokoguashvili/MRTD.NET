@@ -1,7 +1,21 @@
 version: 1.0.{build}
-clone_folder: C:\Projects\MRTD.NET
+clone_folder: C:\Projects\MRTD.NET\SmartCardApi
 before_build:
   - nuget restore
+  - ps: >-
+      $source="C:\Projects\MRTD.NET\SmartCardApi"
+
+      $destination="C:\Projects\MRTD.NET\SmartCardApiTests"
+
+      $filter = "(.*?)\.(test.cs)$"
+
+      $bin = Get-ChildItem -Recurse -Path $source | Where-Object {$_.Name -match $filter}
+
+      foreach ($item in $bin) {
+          $newDir = $item.DirectoryName.replace($source,$destination)
+          md $newDir -ea 0
+          Copy-Item -Path $item.FullName -Destination $newDir
+      }
 build:
   verbosity: minimal
 before_test:
@@ -19,10 +33,6 @@ before_test:
         md $newDir -ea 0
         Copy-Item -Path $item.FullName -Destination $newDir
     }
-test:
-  assemblies:
-    only:
-    - SmartCardApiTests.dll
 notifications:
 - provider: GitHubPullRequest
   on_build_success: true
