@@ -1,18 +1,27 @@
-﻿using PCSC;
+﻿using System;
+using PCSC;
 using SmartCardApi.DataGroups;
+using SmartCardApi.Infrastructure;
 using SmartCardApi.SmartCard.Reader;
 
 namespace SmartCardApi.SmartCard
 {
-    public class SmartCard
+    public class SmartCard : IDisposable
     {
         private readonly IBacReader _bacReader;
 
+        public SmartCard(ISymbols mrzInfo, IReader connectedReader)
+        {
+            _bacReader = new BacReader(
+                            new SecuredReader(
+                                mrzInfo,
+                                connectedReader
+                            )
+                        );
+        }
+
         public SmartCard(IBacReader bacReader)
         {
-            var contextFactory = ContextFactory.Instance;
-            SCardMonitor monitor = new SCardMonitor(contextFactory, SCardScope.System);
-
             _bacReader = bacReader;
         }
         public DG1 DG1()
@@ -34,6 +43,11 @@ namespace SmartCardApi.SmartCard
         public DG12 DG12()
         {
             return new DG12(_bacReader);
+        }
+
+        public void Dispose()
+        {
+            //_bacReader.Dispose();
         }
     }
 }

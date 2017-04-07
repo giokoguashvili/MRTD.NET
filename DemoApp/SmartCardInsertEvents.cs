@@ -10,42 +10,29 @@ using SmartCardApi.SmartCard.Reader;
 
 namespace DemoApp
 {
-    public class SmartCardInsertEventsSource : IObservable<SmartCard>
+    public class SmartCardInsertEvents : ISource<SmartCard>
     {
         private readonly ISymbols _mrzInfo;
-        private readonly IObservable<ISCardReader> _smartCardReaderConnectEvents;
+        private readonly ISource<IReader> _smartCardReaderConnectEvents;
 
-        public SmartCardInsertEventsSource(
+        public SmartCardInsertEvents(
                 ISymbols mrzInfo,
-                IObservable<ISCardReader> smartCardReaderConnectEvents
+                ISource<IReader> smartCardReaderConnectEvents
             )
         {
             _mrzInfo = mrzInfo;
             _smartCardReaderConnectEvents = smartCardReaderConnectEvents;
         }
-        public IDisposable Subscribe(IObserver<SmartCard> observer)
+
+        public IObservable<SmartCard> Source()
         {
-            _smartCardReaderConnectEvents  
-                .Select(reader =>
-                {
-                    Console.WriteLine(reader.ReaderName);
-                    var smartCard = new SmartCard(
-                        new BacReader(
-                            new SecuredReader(
-                                _mrzInfo,
-                                new WrReader(
-                                    new LogedReader(
-                                        reader
-                                    )
-                                )
-                            )
-                        )
-                    );
-                    observer.OnNext(smartCard);
-                    return true;
-                }).Subscribe();
-           
-            return Disposable.Empty;
+            return _smartCardReaderConnectEvents
+                        .Source()
+                        .Select(connectedReader => new SmartCard(
+                                                        _mrzInfo,
+                                                        connectedReader
+                                                    )
+                        );
         }
     }
 }

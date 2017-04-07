@@ -24,6 +24,7 @@ namespace DemoApp
                     var dg11Content = smartCard.DG11().Content();
                     var dg12Content = smartCard.DG12().Content();
                     Console.WriteLine("done");
+                    smartCard.Dispose();
                     return false;
                 })
                 .Subscribe();

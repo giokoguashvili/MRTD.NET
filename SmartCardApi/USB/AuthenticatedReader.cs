@@ -27,7 +27,7 @@ namespace SmartCardApi.USB
         {
             foreach (var connectedReader in new ConnectedReaders())
             {
-                var wrappedReader = new WrReader(connectedReader);
+                var wrappedReader = new WrappedReader(connectedReader);
                 var _selectedMrtdApplication = new Cached(
                             new ExecutedCommandApdu(
                                 new SelectMRTDApplicationCommandApdu(),
@@ -49,7 +49,7 @@ namespace SmartCardApi.USB
                                     kIfd
                                 )
                             ),
-                            new WrReader(connectedReader)
+                            wrappedReader
                         )
                     )
                 ).Bytes();

@@ -48,5 +48,10 @@ namespace SmartCardApi.SmartCard.Reader
                           ).Bytes()
                     );
         }
+
+        public void Dispose()
+        {
+            //_reader.Dispose();
+        }
     }
 }

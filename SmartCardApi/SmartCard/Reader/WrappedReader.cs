@@ -4,13 +4,19 @@ using SmartCardApi.Infrastructure;
 
 namespace SmartCardApi.SmartCard.Reader
 {
-    public class WrReader : IReader
+    public class WrappedReader : IReader
     {
+
         private readonly ISCardReader _reader;
         private readonly int _responseApduTrailerLength = 2; // 0x02
-        public WrReader(ISCardReader reader)
+        public WrappedReader(ISCardReader reader)
         {
             _reader = reader;
+        }
+
+        public void Dispose()
+        {
+           // _reader.Dispose();
         }
 
         public IBinary Transmit(IBinary rawCommandApdu)
@@ -20,11 +26,11 @@ namespace SmartCardApi.SmartCard.Reader
             var sendPci = SCardPCI.GetPci(SCardProtocol.T1);
 
             var sc = _reader.Transmit(
-                            sendPci,
-                            rawCommandApdu.Bytes(),
-                            receivePci,
-                            ref receiveBuffer
-                        );
+                sendPci,
+                rawCommandApdu.Bytes(),
+                receivePci,
+                ref receiveBuffer
+            );
 
             if (sc != SCardError.Success)
             {
