@@ -1,5 +1,7 @@
 version: 1.0.{build}
 clone_folder: C:\Projects\MRTD.NET
+before_build:
+  - nuget restore
 build:
   verbosity: minimal
 before_test:
