@@ -66,6 +66,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectedReader.cs" />
+    <Compile Include="ConnectedReaderNames.cs" />
+    <Compile Include="ConnectedReaders.cs" />
+    <Compile Include="Infrastructure\Optional.cs" />
+    <Compile Include="Infrastructure\IOption.cs" />
+    <Compile Include="Infrastructure\Option.cs" />
+    <Compile Include="Infrastructure\Readers.cs" />
     <Compile Include="InsertedCardHandledEvent.cs" />
     <Compile Include="ISource.cs" />
     <Compile Include="Program.cs" />

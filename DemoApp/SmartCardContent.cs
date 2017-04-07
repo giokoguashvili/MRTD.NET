@@ -39,7 +39,7 @@ namespace DemoApp
                         new SmartCardReaderConnectEvents()
                     )
                     .Source()
-                    .Take(1)
+                   // .Take(2)
                     .Select(DgContent)
                     .ToTask();
         }

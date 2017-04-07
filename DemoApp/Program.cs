@@ -10,6 +10,7 @@ using SmartCardApi.SmartCard;
 using SmartCardApi.SmartCard.Reader;
 using System.Management;
 using System.Reactive.Linq;
+using DemoApp.Infrastructure;
 using PCSC.Reactive;
 using PCSC.Reactive.Events;
 using SmartCardApi.Commands;
@@ -28,6 +29,11 @@ namespace DemoApp
         }
         public static void Main()
         {
+            foreach (var item in new Readers())
+            {
+                Console.WriteLine(item);
+            }
+    
             //new HandledSmartCardInsertEvents(
             //    new SmartCardInsertEventsSource(
             //        mrzInfo,

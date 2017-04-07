@@ -17,10 +17,10 @@ namespace SmartCardApi.SmartCard.Reader
         {
             return new ConnectedReaderNames(_cardContext)
                         .Where(rn => !rn.Contains("JAVA"))
-                        .Select(connectedReaderName => new ConnectedReader(
-                                                            connectedReaderName,
-                                                            _cardContext
-                                                       ).Connected()
+                        .SelectMany(connectedReaderName => new ConnectedReader(
+                                                                connectedReaderName,
+                                                                _cardContext
+                                                           )
                         )
                         .ToList()
                         .GetEnumerator();

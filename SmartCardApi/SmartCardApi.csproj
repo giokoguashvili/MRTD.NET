@@ -222,13 +222,10 @@
     <Compile Include="SmartCard\ConnectedReader.cs" />
     <Compile Include="SmartCard\Reader\BacReader.cs" />
     <Compile Include="SmartCard\Reader\WrappedReader.cs" />
-    <Compile Include="SmartCard\Reader\ConnectedReaderNames.cs" />
-    <Compile Include="SmartCard\Reader\ConnectedReaders.cs" />
     <Compile Include="SmartCard\Reader\IBacReader.cs" />
     <Compile Include="SmartCard\Reader\IReader.cs" />
     <Compile Include="SmartCard\Reader\LogedReader.cs" />
     <Compile Include="SmartCard\Reader\SecuredReader.cs" />
-    <Compile Include="SmartCard\Reader\ConnectedReader.cs" />
     <Compile Include="SmartCard\SessionKeys.cs" />
     <Compile Include="SmartCard\SmartCard.cs" />
     <Compile Include="SmartCard\SmartCardFactory.cs" />
