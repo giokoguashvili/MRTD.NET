@@ -1,6 +1,7 @@
 # SmartCard API
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ki0q2h4ekc8wfttv?svg=true)](https://ci.appveyor.com/project/kogoia/smartcardsamples)
+[![Coverage Status](https://coveralls.io/repos/github/kogoia/MRTD.NET/badge.svg)](https://coveralls.io/github/kogoia/MRTD.NET)
 
 ```cs
 var dg1Content = await new SmartCardContent(
