@@ -3,7 +3,7 @@ clone_folder: C:\Projects\MRTD.NET\
 configuration: Release
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: 6UIN7mJom58Wnzky7MKf0JAcyXVgQngno
+    secure: LsMqkalPT99lt9mFVWa5grmzGshf5TGTz
 before_build:
   - nuget restore ".\MRTD.NET.sln"
 build:
