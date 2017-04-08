@@ -1,5 +1,6 @@
 version: 1.0.{build}
 clone_folder: C:\Projects\MRTD.NET\
+configuration: Release
 environment:
   COVERALLS_REPO_TOKEN:
     secure: LsMqkalPT99lt9mFVWa5grmzGshf5TGTz
@@ -20,5 +21,5 @@ test_script:
     $coveralls = (Resolve-Path "packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
 
     $env:APPVEYOR_BUILD_NUMBER    
-    
+
     & $coveralls --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --useRelativePaths --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
