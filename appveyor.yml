@@ -4,8 +4,9 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: LsMqkalPT99lt9mFVWa5grmzGshf5TGTz
 before_build:
-  - nuget restore
+  - nuget restore ".\MRTD.NET\MRTD.NET.sln"
 build:
+  project: .\MRTD.NET\MRTD.NET.sln
   verbosity: minimal
 notifications:
 - provider: GitHubPullRequest
