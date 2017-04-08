@@ -16,7 +16,7 @@ notifications:
   on_build_status_changed: true
 test_script:
 - ps: >-
-    .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console.exe "-targetargs:""SmartCardApi\bin\$env:CONFIGURATION\SmartCardApi.dll"" /noshadow" -filter:"+[SmartCardApi*]*" -output:opencoverCoverage.xml
+    .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:nunit3-console.exe "-targetargs:""SmartCardApi\bin\$env:CONFIGURATION\SmartCardApi.dll"" " -filter:"+[SmartCardApi*]*" -output:opencoverCoverage.xml
 
     $coveralls = (Resolve-Path "packages/coveralls.net.*/tools/csmacnz.coveralls.exe").ToString()
 
