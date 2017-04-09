@@ -75,6 +75,7 @@
     <Compile Include="Infrastructure\Optional.cs" />
     <Compile Include="Infrastructure\IOption.cs" />
     <Compile Include="Infrastructure\Option.cs" />
+    <Compile Include="Infrastructure\OptionEnumerator.cs" />
     <Compile Include="Infrastructure\Readers.cs" />
     <Compile Include="InsertedCardHandledEvent.cs" />
     <Compile Include="ISource.cs" />
