@@ -15,13 +15,16 @@ namespace DemoApp
         public DG11Content Dg11Content { get; }
         public DG12Content Dg12Content { get; }
 
+        public DataObjectsContent()
+        {
+        }
         public DataObjectsContent(
-            DG1Content dg1Content,
-            DG2Content dg2Content,
-            DG7Content dg7Content,
-            DG11Content dg11Content,
-            DG12Content dg12Content
-        )
+                    DG1Content dg1Content,
+                    DG2Content dg2Content,
+                    DG7Content dg7Content,
+                    DG11Content dg11Content,
+                    DG12Content dg12Content
+                )
         {
             Dg1Content = dg1Content;
             Dg2Content = dg2Content;

@@ -86,7 +86,7 @@ namespace SmartCardApi.SmartCard.Reader
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _reader.Dispose();
         }
 
         public SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol)

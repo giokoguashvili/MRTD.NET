@@ -28,9 +28,59 @@ namespace FormApp
             this.dateOfExpiryDateTimePicker.Value = new DateTime(2022, 10, 08);
         }
 
+        private void FillForm(DataObjectsContent dgsContent)
+        {
+            var firstName = dgsContent.Dg1Content.MRZ.NameOfHolder
+                .Replace("<", " ")
+                .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .Last();
+
+            var lastName = dgsContent.Dg1Content.MRZ.NameOfHolder
+                .Replace("<", " ")
+                .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .First();
+
+            this.firstNameTextBox.Text = firstName;
+            this.lastNameTextBox.Text = lastName;
+
+            faceImagePictureBox.Image = new Bitmap(
+                Image
+                    .FromStream(
+                        new MemoryStream(dgsContent.Dg2Content.FaceImageData)
+                    ),
+                128, 128
+            );
+            this.signatureImagePictureBox.Image = new Bitmap(
+                Image
+                    .FromStream(
+                        new MemoryStream(dgsContent.Dg7Content.DisplayedSignatureImageData)
+                    )
+            );
+            this.citTextBox.Text = dgsContent.Dg1Content.MRZ.Nationality;
+            this.sexTextBox.Text = dgsContent.Dg1Content.MRZ.Sex;
+            this.personalNumberTextBox.Text = dgsContent.Dg11Content.PersonalNumber;
+            this.dateOfBirthTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfBirth.ToShortDateString();
+            this.dateOfExpiryTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfExpiry.ToShortDateString();
+            this.cardNumberTextBox.Text = dgsContent.Dg1Content.MRZ.DocumentNumber;
+        }
+
+        private void ClearForm()
+        {
+            this.firstNameTextBox.Text = String.Empty;
+            this.lastNameTextBox.Text = String.Empty;
+            this.citTextBox.Text = String.Empty;
+            this.sexTextBox.Text = String.Empty;
+            this.personalNumberTextBox.Text = String.Empty;
+            this.dateOfBirthTextBox.Text = String.Empty;
+            this.dateOfExpiryTextBox.Text = String.Empty;
+            this.cardNumberTextBox.Text = String.Empty;
+            this.faceImagePictureBox.Image = null;
+            this.signatureImagePictureBox.Image = null;
+        }
         private async void button1_Click(object sender, EventArgs e)
         {
             this.readBtn.Enabled = false;
+            ClearForm();
             var mrzInfo = new MRZInfo(
                 this.cardNumberForMRZTexBox.Text,
                 this.dateOfBirthDateTimePicker.Value,
@@ -39,37 +89,7 @@ namespace FormApp
             var dgsContent = await new SmartCardContent(mrzInfo)
                 .Content();
 
-            var firstName = dgsContent.Dg1Content.MRZ.NameOfHolder
-                .Replace("<", " ")
-                .Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
-                .Last();
-            var lastName = dgsContent.Dg1Content.MRZ.NameOfHolder
-                .Replace("<", " ")
-                .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
-                .First();
-            faceImagePictureBox.Image = new Bitmap(
-                                    Image
-                                        .FromStream(
-                                            new MemoryStream(dgsContent.Dg2Content.FaceImageData)
-                                        ),
-                                    128, 128
-                                );
-            this.signatureImagePictureBox.Image = new Bitmap(
-                Image
-                    .FromStream(
-                        new MemoryStream(dgsContent.Dg7Content.DisplayedSignatureImageData)
-                    )
-            );
-
-            this.firstNameTextBox.Text = firstName;
-            this.lastNameTextBox.Text = lastName;
-            this.citTextBox.Text = dgsContent.Dg1Content.MRZ.Nationality;
-            this.sexTextBox.Text = dgsContent.Dg1Content.MRZ.Sex;
-            this.personalNumberTextBox.Text = dgsContent.Dg11Content.PersonalNumber;
-            this.dateOfBirthTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfBirth.ToShortDateString();
-            this.dateOfExpiryTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfExpiry.ToShortDateString();
-            this.cardNumberTextBox.Text = dgsContent.Dg1Content.MRZ.DocumentNumber;
-
+            FillForm(dgsContent);
 
             this.readBtn.Enabled = true;
         }
