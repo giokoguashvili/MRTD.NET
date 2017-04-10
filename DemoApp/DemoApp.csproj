@@ -69,12 +69,13 @@
     <Compile Include="ConnectedReader.cs" />
     <Compile Include="ConnectedReaderNames.cs" />
     <Compile Include="ConnectedReaders.cs" />
+    <Compile Include="DataObjectContent.cs" />
     <Compile Include="Infrastructure\Optional.cs" />
     <Compile Include="Infrastructure\IOption.cs" />
     <Compile Include="Infrastructure\Option.cs" />
     <Compile Include="Infrastructure\Readers.cs" />
     <Compile Include="InsertedCardHandledEvent.cs" />
-    <Compile Include="ISource.cs" />
+    <Compile Include="Infrastructure\ISource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Program1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
