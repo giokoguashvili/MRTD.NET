@@ -33,7 +33,6 @@ namespace DemoApp
                                 new DateTime(1992, 06, 16),
                                 new DateTime(2022, 10, 08)
                           );
-
             var dgsContent = new SmartCardContent(mrzInfo)
                                 .Content()
                                 .Result;

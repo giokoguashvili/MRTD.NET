@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DemoApp;
@@ -79,6 +81,7 @@ namespace FormApp
         }
         private async void button1_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("TreadID " + Thread.CurrentThread.ManagedThreadId);
             this.readBtn.Enabled = false;
             ClearForm();
             var mrzInfo = new MRZInfo(
@@ -87,7 +90,7 @@ namespace FormApp
                 this.dateOfExpiryDateTimePicker.Value
             );
             var dgsContent = await new SmartCardContent(mrzInfo)
-                .Content();
+                                            .Content();
             FillForm(dgsContent);
             this.readBtn.Enabled = true;
         }

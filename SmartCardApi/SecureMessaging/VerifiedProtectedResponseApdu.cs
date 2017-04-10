@@ -47,11 +47,11 @@ namespace SmartCardApi.SecureMessaging
             }
             else
             {
-                Console.WriteLine(
-                        "CC equal of DO‘8E’ of RAPDU\n{0} == {1}",
-                        new Hex(new Binary(extractedCC)),
-                        new Hex(new Binary(encryptedDO8E))
-                    );
+                //Console.WriteLine(
+                //        "CC equal of DO‘8E’ of RAPDU\n{0} == {1}",
+                //        new Hex(new Binary(extractedCC)),
+                //        new Hex(new Binary(encryptedDO8E))
+                //    );
                 return _responseApdu.Bytes();
             }
         }

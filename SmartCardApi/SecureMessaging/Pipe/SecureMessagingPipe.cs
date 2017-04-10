@@ -39,7 +39,7 @@ namespace SmartCardApi.SecureMessaging.Pipe
                     Count = new StepBytesCount(step, _bytesCountForRead, new Number(index))
                 });
             var lis = range.Select(x => new {start = x.StartIndex.Value(), count = x.Count.Value()});
-            Console.WriteLine("{0}", lis.Sum(x => x.count));
+            //Console.WriteLine("{0}", lis.Sum(x => x.count));
             return range
                     .Aggregate(
                         new byte[0],

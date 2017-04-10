@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using DemoApp.Infrastructure;
 using PCSC;
 using SmartCardApi.SmartCard.Reader;
@@ -12,6 +14,7 @@ namespace DemoApp
 
         public ConnectedReader(string readerName, ISCardContext cardContext)
         {
+            Debug.WriteLine("Create Reader TreadID " + Thread.CurrentThread.ManagedThreadId);
             _readerName = readerName;
             _reader = new SCardReader(cardContext);
         }
@@ -23,6 +26,7 @@ namespace DemoApp
 
         public override IOption<IReader> GetEnumerator()
         {
+            Debug.WriteLine("GetEnumerator Reader TreadID " + Thread.CurrentThread.ManagedThreadId);
             var cardError = _reader.Connect(_readerName, SCardShareMode.Shared, SCardProtocol.Any);
             SCardProtocol proto;
             SCardState state;
@@ -53,7 +57,9 @@ namespace DemoApp
 
             return new Option<IReader>(
                         new WrappedReader(
-                            new LogedReader(_reader)
+                            //new LogedReader(
+                                _reader
+                            //)
                         )
                     );
         }

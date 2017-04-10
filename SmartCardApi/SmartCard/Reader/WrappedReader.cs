@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using PCSC;
 using SmartCardApi.Infrastructure;
 
@@ -21,6 +23,7 @@ namespace SmartCardApi.SmartCard.Reader
 
         public IBinary Transmit(IBinary rawCommandApdu)
         {
+            Debug.WriteLine("Read TreadID " + Thread.CurrentThread.ManagedThreadId);
             var receiveBuffer = new byte[1024 + _responseApduTrailerLength];
             var receivePci = new SCardPCI();
             var sendPci = SCardPCI.GetPci(SCardProtocol.T1);

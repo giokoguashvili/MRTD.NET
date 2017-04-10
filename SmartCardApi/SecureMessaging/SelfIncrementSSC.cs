@@ -14,7 +14,7 @@ namespace SmartCardApi.SecureMessaging
         public byte[] Bytes()
         {
             _incrementCount = _incrementCount + 1;
-            Console.WriteLine("\n\n\nSSC {0}", _incrementCount);
+            //Console.WriteLine("\n\n\nSSC {0}", _incrementCount);
             return new IncrementedSSC(_ssc)
                 .By(_incrementCount)
                 .Bytes();

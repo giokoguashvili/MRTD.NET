@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Management;
+using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using System.Reactive.Threading.Tasks;
+using System.Threading;
+using System.Threading.Tasks;
 using DemoApp.Infrastructure;
 using PCSC;
 using SmartCardApi.SmartCard.Reader;
@@ -22,8 +26,9 @@ namespace DemoApp
                 )
                 .SelectMany(e => new ConnectedReaders(cardContext))
                 .Merge(
-                    new SmartCardConnectedEvent(cardContext)
-                            .Source()
+                        new ConnectedReaders(cardContext)
+                            .ToObservable()
+                            .ObserveOn(TaskPoolScheduler.Default) // in order to Read Data from another thread on Reader
                 );
         }
     }

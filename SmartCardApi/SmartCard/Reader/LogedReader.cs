@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using PCSC;
 using PCSC.Iso7816;
 using SmartCardApi.Infrastructure;
@@ -16,6 +18,7 @@ namespace SmartCardApi.SmartCard.Reader
         }
         public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer)
         {
+            Debug.WriteLine("TreadID " + Thread.CurrentThread.ManagedThreadId);
             var sce = _reader.Transmit(
                         sendPci,
                         sendBuffer,

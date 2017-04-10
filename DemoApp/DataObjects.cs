@@ -13,13 +13,13 @@ namespace DemoApp
     public class DataObjects : IDataObjectContent
     {
         private readonly ISource<ISmartCard> _smartCardInsertEvents;
-
+        private readonly int _onlyFirstEventCount = 1;
         public DataObjects(ISource<ISmartCard> smartCardInsertEvents)
         {
             _smartCardInsertEvents = smartCardInsertEvents;
         }
 
-        private DataObjectsContent DataObjectsContent(ISmartCard smartCard)
+        private DataObjectsContent AsDataObjectsContent(ISmartCard smartCard)
         {
             Console.WriteLine("start");
             var dg1Content = smartCard.DG1().Content();
@@ -40,8 +40,8 @@ namespace DemoApp
         {
             return await _smartCardInsertEvents
                             .Source()
-                            .Take(1)
-                            .Select(DataObjectsContent)
+                            .Take(_onlyFirstEventCount)
+                            .Select(AsDataObjectsContent)
                             .ToTask();
         }
         

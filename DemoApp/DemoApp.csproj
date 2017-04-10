@@ -84,7 +84,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartCard.cs" />
-    <Compile Include="SmartCardConnectedEvent.cs" />
     <Compile Include="SmartCardContent.cs" />
     <Compile Include="SmartCardInsertEvents.cs" />
     <Compile Include="SmartCardReaderConnectedEvents.cs" />
