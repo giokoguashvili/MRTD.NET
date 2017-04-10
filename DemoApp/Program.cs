@@ -72,10 +72,10 @@ namespace DemoApp
                                 new DateTime(2022, 10, 08)
                           );
 
-            var dgContent = new SmartCardContent(mrzInfo)
+            var dgsContent = new SmartCardContent(mrzInfo)
                                 .Content()
                                 .Result;
-            Console.WriteLine(dgContent.MRZ.DocumentNumber);
+            Console.WriteLine(dgsContent.Dg1Content.MRZ.DocumentNumber);
             Console.ReadKey();
         }
     }

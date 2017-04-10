@@ -17,21 +17,7 @@ namespace DemoApp
         {
             _mrzInfo = mrzInfo;
         }
-
-        private DG1Content DgContent(SmartCard smartCard)
-        {
-            Console.WriteLine("start");
-            var dg1Content = smartCard.DG1().Content();
-            var dg2Content = smartCard.DG2().Content();
-            var dg7Content = smartCard.DG7().Content();
-            var dg11Content = smartCard.DG11().Content();
-            var dg12Content = smartCard.DG12().Content();
-            Console.WriteLine("done");
-            //smartCard.Dispose();
-            return dg1Content;
-        }
-
-        public async Task<DG1Content> Content()
+        public async Task<DataObjectsContent> Content()
         {
             return
                 await new SmartCardInsertEvents(
@@ -39,8 +25,8 @@ namespace DemoApp
                         new SmartCardReaderConnectEvents()
                     )
                     .Source()
-                   // .Take(2)
-                    .Select(DgContent)
+                    .Take(1)
+                    .Select(sc => new DataObjects(sc).Content())
                     .ToTask();
         }
     }
