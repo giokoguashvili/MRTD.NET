@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCardApi", "SmartCardAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{B0CFB56D-8CCF-4B39-A256-2983E72DBCF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormApp", "FormApp\FormApp.csproj", "{1C5D0489-FE13-4548-A498-5BADF07E5748}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B0CFB56D-8CCF-4B39-A256-2983E72DBCF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0CFB56D-8CCF-4B39-A256-2983E72DBCF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0CFB56D-8CCF-4B39-A256-2983E72DBCF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5D0489-FE13-4548-A498-5BADF07E5748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5D0489-FE13-4548-A498-5BADF07E5748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5D0489-FE13-4548-A498-5BADF07E5748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5D0489-FE13-4548-A498-5BADF07E5748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
