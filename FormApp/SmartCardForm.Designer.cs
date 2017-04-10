@@ -118,7 +118,6 @@
             this.sexTextBox.ReadOnly = true;
             this.sexTextBox.Size = new System.Drawing.Size(120, 20);
             this.sexTextBox.TabIndex = 8;
-            this.sexTextBox.TextChanged += new System.EventHandler(this.sexTextBox_TextChanged);
             // 
             // citLabel
             // 
@@ -153,7 +152,6 @@
             this.personalNumberTextBox.ReadOnly = true;
             this.personalNumberTextBox.Size = new System.Drawing.Size(120, 20);
             this.personalNumberTextBox.TabIndex = 10;
-            this.personalNumberTextBox.TextChanged += new System.EventHandler(this.personalNumberTextBox_TextChanged);
             // 
             // dateOfExpiryLabel
             // 
