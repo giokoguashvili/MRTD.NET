@@ -33,6 +33,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="pcsc-sharp, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PCSC.3.6.0\lib\net40\pcsc-sharp.dll</HintPath>
     </Reference>
@@ -230,6 +233,64 @@
     <Compile Include="SmartCard\SmartCard.cs" />
     <Compile Include="SmartCard\SmartCardFactory.cs" />
     <Compile Include="SmartCard\SmartCardReader.cs" />
+    <Compile Include="BER-TLV\TVL\L\Len.test.cs" />
+    <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.test.cs" />
+    <Compile Include="BER-TLV\TVL\T\Tag.test.cs" />
+    <Compile Include="BER-TLV\BerTLV.test.cs" />
+    <Compile Include="BER-TLV\TVL\V\Val.test.cs" />
+    <Compile Include="Cryptography\3DES.test.cs" />
+    <Compile Include="Cryptography\Padded.test.cs" />
+    <Compile Include="Cryptography\AdjustedParity.test.cs" />
+    <Compile Include="Cryptography\D.test.cs" />
+    <Compile Include="Cryptography\Eic.test.cs" />
+    <Compile Include="Cryptography\Eifd.test.cs" />
+    <Compile Include="Cryptography\IncrementedSSC.test.cs" />
+    <Compile Include="Cryptography\Kenc.test.cs" />
+    <Compile Include="Cryptography\Kmac.test.cs" />
+    <Compile Include="Cryptography\Kseed.test.cs" />
+    <Compile Include="Cryptography\KseedIc.test.cs" />
+    <Compile Include="Cryptography\KSenc.test.cs" />
+    <Compile Include="Cryptography\KSmac.test.cs" />
+    <Compile Include="Cryptography\MAC3.test.cs" />
+    <Compile Include="Cryptography\Mifd.test.cs" />
+    <Compile Include="Cryptography\Parity.test.cs" />
+    <Compile Include="Cryptography\RandomKeys.test.cs" />
+    <Compile Include="Cryptography\S.test.cs" />
+    <Compile Include="Cryptography\SHA1.test.cs" />
+    <Compile Include="Cryptography\SSC.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO87.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO8E.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO97.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO87.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.test.cs" />
+    <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.test.cs" />
+    <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.test.cs" />
+    <Compile Include="SecureMessaging\EncryptedCommandApduData.test.cs" />
+    <Compile Include="SmartCard\ExternalAuthenticateCommandData.test.cs" />
+    <Compile Include="Cryptography\Eifd.Fk.cs" />
+    <Compile Include="Cryptography\Kenc.Fk.cs" />
+    <Compile Include="Cryptography\Kifd.Fk.cs" />
+    <Compile Include="Cryptography\Kmac.Fk.cs" />
+    <Compile Include="Cryptography\Kseed.Fk.cs" />
+    <Compile Include="Cryptography\KSenc.Fk.cs" />
+    <Compile Include="Cryptography\KSmac.Fk.cs" />
+    <Compile Include="Cryptography\Mifd.Fk.cs" />
+    <Compile Include="Cryptography\RNDic.Fk.cs" />
+    <Compile Include="Cryptography\RNDifd.Fk.cs" />
+    <Compile Include="Cryptography\S.Fk.cs" />
+    <Compile Include="Cryptography\SSC.Fk.cs" />
+    <Compile Include="Infrastructure\Product.test.cs" />
+    <Compile Include="ISO7816\CommandAPDU\CommandHeader.test.cs" />
+    <Compile Include="MRZ\CheckedDigit.test.cs" />
+    <Compile Include="MRZ\MRZInfo.test.cs" />
+    <Compile Include="SecureMessaging\CC\CC.test.cs" />
+    <Compile Include="SecureMessaging\CC\ComputedCC.test.cs" />
+    <Compile Include="SecureMessaging\CC\ExtractedCC.test.cs" />
+    <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.test.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedCommandData.test.cs" />
+    <Compile Include="SecureMessaging\DecryptedProtectedResponseApdu.test.cs" />
+    <Compile Include="SecureMessaging\N.test.cs" />
+    <Compile Include="SecureMessaging\ProtectedCommandApdu.test.cs" />
     <Compile Include="USB\AuthenticatedReader.cs" />
     <Compile Include="USB\ConnectedReaders.cs" />
     <Compile Include="USB\ReaderFactory.cs" />
@@ -237,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
