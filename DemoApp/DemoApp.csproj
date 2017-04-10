@@ -83,7 +83,6 @@
     <Compile Include="Infrastructure\Readers.cs" />
     <Compile Include="Infrastructure\ISource.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Program1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmartCard.cs" />
     <Compile Include="SmartCardConnectedEvent.cs" />
