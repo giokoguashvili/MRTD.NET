@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using SmartCardApi.Cryptography;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class ParityTests

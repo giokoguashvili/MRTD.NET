@@ -2,7 +2,7 @@
 using SmartCardApi.Infrastructure;
 using SmartCardApi.SecureMessaging;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class IncrementedSSCTests

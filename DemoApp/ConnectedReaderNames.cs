@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using PCSC;
 
-namespace SmartCardApi.SmartCard.Reader
+namespace DemoApp
 {
     public class ConnectedReaderNames : IEnumerable<string>
     {

@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SmartCard;
 
-namespace SmartCardApiTests
+namespace SmartCardApi.SmartCard
 {
     [TestFixture]
     public class DecryptedExternalAuthenticateResponseDataTests

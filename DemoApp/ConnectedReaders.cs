@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using PCSC;
+using SmartCardApi.SmartCard.Reader;
 
-namespace SmartCardApi.SmartCard.Reader
+namespace DemoApp
 {
     public class ConnectedReaders : IEnumerable<IReader>
     {
@@ -16,7 +17,6 @@ namespace SmartCardApi.SmartCard.Reader
         public IEnumerator<IReader> GetEnumerator()
         {
             return new ConnectedReaderNames(_cardContext)
-                        .Where(rn => !rn.Contains("JAVA"))
                         .SelectMany(connectedReaderName => new ConnectedReader(
                                                                 connectedReaderName,
                                                                 _cardContext

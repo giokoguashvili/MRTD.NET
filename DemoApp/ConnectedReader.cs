@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using DemoApp.Infrastructure;
 using PCSC;
-using SmartCardApi.Infrastructure;
+using SmartCardApi.SmartCard.Reader;
 
-namespace SmartCardApi.SmartCard.Reader
+namespace DemoApp
 {
     public class ConnectedReader : Optional<IReader>, IDisposable
     {

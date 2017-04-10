@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Cryptography.RandomKeys;
 using SmartCardApi.Infrastructure;
-using SmartCardApiTests.FakeObjects;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class STests

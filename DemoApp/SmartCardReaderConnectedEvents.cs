@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Management;
 using System.Reactive.Linq;
+using DemoApp.Infrastructure;
 using PCSC;
 using SmartCardApi.SmartCard.Reader;
 

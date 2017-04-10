@@ -2,7 +2,7 @@
 using SmartCardApi.Cryptography.RandomKeys;
 using SmartCardApi.Infrastructure;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class RandomKeysTests

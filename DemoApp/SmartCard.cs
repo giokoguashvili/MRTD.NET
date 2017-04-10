@@ -1,11 +1,10 @@
 ﻿using System;
 using DemoApp.Infrastructure;
-using PCSC;
 using SmartCardApi.DataGroups;
 using SmartCardApi.Infrastructure;
 using SmartCardApi.SmartCard.Reader;
 
-namespace SmartCardApi.SmartCard
+namespace DemoApp
 {
     public class SmartCard : ISmartCard, IDisposable
     {

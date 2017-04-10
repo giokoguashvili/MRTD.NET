@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
-using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class KseedTests

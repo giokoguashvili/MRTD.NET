@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SecureMessaging;
 
-namespace SmartCardApiTests.SecureMessaging
+namespace SmartCardApi.SecureMessaging
 {
     [TestFixture]
     public class NTests

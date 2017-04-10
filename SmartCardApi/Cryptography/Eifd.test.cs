@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
-using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
-using SmartCardApiTests.FakeObjects;
 
-namespace SmartCardApiTests.Cryptography
+namespace SmartCardApi.Cryptography
 {
     [TestFixture]
     public class EifdTests

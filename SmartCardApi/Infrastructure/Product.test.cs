@@ -1,9 +1,6 @@
-﻿using System;
-using NUnit.Framework.Internal;
-using NUnit.Framework;
-using SmartCardApi.Infrastructure;
+﻿using NUnit.Framework;
 
-namespace SmartCardApiTests.Infrastructure
+namespace SmartCardApi.Infrastructure
 {
     [TestFixture]
     public class ProductTests

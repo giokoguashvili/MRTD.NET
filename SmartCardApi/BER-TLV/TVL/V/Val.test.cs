@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.TVL.V;
 
-namespace SmartCardApiTests
+namespace SmartCardApi.TVL.V
 {
     [TestFixture]
     public class ValTests

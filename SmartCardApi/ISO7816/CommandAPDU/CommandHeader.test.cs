@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.ISO7816.CommandAPDU;
 
-namespace SmartCardApiTests.ISO7816
+namespace SmartCardApi.ISO7816.CommandAPDU
 {
     [TestFixture]
     public class CommandHeaderTests

@@ -1,6 +1,6 @@
 ﻿using SmartCardApi.Infrastructure;
 
-namespace SmartCardApiTests.FakeObjects
+namespace SmartCardApi.Cryptography
 {
     public class FkKSenc : IBinary
     {

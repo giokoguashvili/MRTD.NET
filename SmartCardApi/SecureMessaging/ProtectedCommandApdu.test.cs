@@ -2,10 +2,8 @@
 using SmartCardApi.Commands;
 using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SecureMessaging;
-using SmartCardApiTests.FakeObjects;
 
-namespace SmartCardApiTests.SecureMessaging
+namespace SmartCardApi.SecureMessaging
 {
     [TestFixture]
     public class ProtectedCommandApduTests

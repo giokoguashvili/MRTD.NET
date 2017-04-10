@@ -1,8 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using SmartCardApi.MRZ;
 
-namespace SmartCardApiTests.MRZ
+namespace SmartCardApi.MRZ
 {
     [TestFixture]
     public class MRZInfoTests

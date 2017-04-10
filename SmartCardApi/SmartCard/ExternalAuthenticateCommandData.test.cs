@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
+using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SmartCard;
-using SmartCardApiTests.FakeObjects;
 
-namespace SmartCardApiTests
+namespace SmartCardApi.SmartCard
 {
     [TestFixture]
     public class ExternalAuthenticateCmdDataTests

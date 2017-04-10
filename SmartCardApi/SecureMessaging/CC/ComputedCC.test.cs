@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
+using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SecureMessaging.CC;
-using SmartCardApiTests.FakeObjects;
 
-namespace SmartCardApiTests.SecureMessaging.CC
+namespace SmartCardApi.SecureMessaging.CC
 {
     [TestFixture]
     public class ComputedCCTests

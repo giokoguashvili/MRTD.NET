@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SecureMessaging.DataObjects.Builded;
 
-namespace SmartCardApiTests.DataObjects
+namespace SmartCardApi.SecureMessaging.DataObjects.Builded
 {
     [TestFixture]
     public class BuildedDO97Tests
