@@ -20,7 +20,7 @@ namespace SmartCardApi.SmartCard.Reader
 
         public void Dispose()
         {
-            //_reader.Dispose();
+            _reader.Dispose();
         }
 
         public override IOption<IReader> GetEnumerator()

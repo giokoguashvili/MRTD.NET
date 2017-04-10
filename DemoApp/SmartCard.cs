@@ -48,7 +48,7 @@ namespace SmartCardApi.SmartCard
 
         public void Dispose()
         {
-            //_bacReader.Dispose();
+            _bacReader.Dispose();
         }
     }
 }

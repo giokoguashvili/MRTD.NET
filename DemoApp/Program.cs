@@ -75,7 +75,12 @@ namespace DemoApp
             var dgsContent = new SmartCardContent(mrzInfo)
                                 .Content()
                                 .Result;
-            Console.WriteLine(dgsContent.Dg1Content.MRZ.DocumentNumber);
+            Console.WriteLine(
+                        dgsContent
+                            .Dg1Content
+                                .MRZ
+                                .DocumentNumber
+                    );
             Console.ReadKey();
         }
     }

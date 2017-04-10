@@ -19,15 +19,12 @@ namespace DemoApp
         }
         public async Task<DataObjectsContent> Content()
         {
-            return
-                await new SmartCardInsertEvents(
-                        _mrzInfo,
-                        new SmartCardReaderConnectEvents()
-                    )
-                    .Source()
-                    .Take(1)
-                    .Select(sc => new DataObjects(sc).Content())
-                    .ToTask();
+            return await new DataObjects(
+                            new SmartCardInsertEvents(
+                                _mrzInfo,
+                                new SmartCardReaderConnectEvents()
+                            )
+                        ).Content();
         }
     }
 }

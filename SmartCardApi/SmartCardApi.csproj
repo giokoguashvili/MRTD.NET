@@ -230,9 +230,6 @@
     <Compile Include="SmartCard\Reader\LogedReader.cs" />
     <Compile Include="SmartCard\Reader\SecuredReader.cs" />
     <Compile Include="SmartCard\SessionKeys.cs" />
-    <Compile Include="SmartCard\SmartCard.cs" />
-    <Compile Include="SmartCard\SmartCardFactory.cs" />
-    <Compile Include="SmartCard\SmartCardReader.cs" />
     <Compile Include="BER-TLV\TVL\L\Len.test.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.test.cs" />
     <Compile Include="BER-TLV\TVL\T\Tag.test.cs" />

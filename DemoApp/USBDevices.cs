@@ -38,7 +38,7 @@ namespace DemoApp
 
         public void Dispose()
         {
-            //_eventWatcher.Dispose();
+            _eventWatcher.Dispose();
         }
     }
 }

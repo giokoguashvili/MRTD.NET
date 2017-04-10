@@ -24,7 +24,7 @@ namespace SmartCardApi.SmartCard.Reader
 
         public void Dispose()
         {
-            //_securedReader.Dispose();
+            _securedReader.Dispose();
         }
     }
 }
