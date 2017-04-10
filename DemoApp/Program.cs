@@ -2,18 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using PCSC;
-using SmartCardApi.DataGroups;
-using SmartCardApi.Infrastructure;
 using SmartCardApi.MRZ;
-using SmartCardApi.SmartCard;
-using SmartCardApi.SmartCard.Reader;
-using System.Management;
-using System.Reactive.Linq;
-using DemoApp.Infrastructure;
-using PCSC.Reactive;
-using PCSC.Reactive.Events;
-using SmartCardApi.Commands;
 
 namespace DemoApp
 {

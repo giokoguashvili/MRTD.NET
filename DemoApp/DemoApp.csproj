@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>DemoApp</RootNamespace>
     <AssemblyName>DemoApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
