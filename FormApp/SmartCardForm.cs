@@ -88,20 +88,8 @@ namespace FormApp
             );
             var dgsContent = await new SmartCardContent(mrzInfo)
                 .Content();
-
             FillForm(dgsContent);
-
             this.readBtn.Enabled = true;
-        }
-
-        private void personalNumberTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sexTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
