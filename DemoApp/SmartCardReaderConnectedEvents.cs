@@ -14,16 +14,6 @@ namespace DemoApp
         public IObservable<IReader> Source()
         {
             var cardContext = ContextFactory.Instance.Establish(SCardScope.System);
-            
-            var obs = Observable
-                            .Create<IReader>(
-                                observer =>
-                                {
-                                    var reader = new ConnectedReaders(cardContext).FirstOrDefault();
-                                    if (reader != null)
-                                        observer.OnNext(reader);
-                                    return reader;
-                                });
             var usbDevices = new USBDevices();
             return Observable
                 .FromEventPattern<EventArrivedEventHandler, EventArrivedEventArgs>(
@@ -31,7 +21,10 @@ namespace DemoApp
                     h => usbDevices.DeviceConnectEvent -= h
                 )
                 .SelectMany(e => new ConnectedReaders(cardContext))
-                .Merge(obs);
+                .Merge(
+                    new SmartCardConnectedEvent(cardContext)
+                            .Source()
+                );
         }
     }
 }
