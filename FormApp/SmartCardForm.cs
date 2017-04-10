@@ -14,9 +14,9 @@ using SmartCardApi.MRZ;
 
 namespace FormApp
 {
-    public partial class Form1 : Form
+    public partial class SmartCardForm : Form
     {
-        public Form1()
+        public SmartCardForm()
         {
             InitializeComponent();
         }
@@ -38,7 +38,15 @@ namespace FormApp
             );
             var dgsContent = await new SmartCardContent(mrzInfo)
                 .Content();
-            
+
+            var firstName = dgsContent.Dg1Content.MRZ.NameOfHolder
+                .Replace("<", " ")
+                .Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
+                .Last();
+            var lastName = dgsContent.Dg1Content.MRZ.NameOfHolder
+                .Replace("<", " ")
+                .Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                .First();
             faceImagePictureBox.Image = new Bitmap(
                                     Image
                                         .FromStream(
@@ -53,12 +61,13 @@ namespace FormApp
                     )
             );
 
-            this.firstNameTextBox.Text = dgsContent.Dg11Content.FullNameOfDocumentHolder;
+            this.firstNameTextBox.Text = firstName;
+            this.lastNameTextBox.Text = lastName;
             this.citTextBox.Text = dgsContent.Dg1Content.MRZ.Nationality;
             this.sexTextBox.Text = dgsContent.Dg1Content.MRZ.Sex;
             this.personalNumberTextBox.Text = dgsContent.Dg11Content.PersonalNumber;
-            this.dateOfBirthTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfBirth.ToString();
-            this.dateOfExpiryTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfExpiry.ToString();
+            this.dateOfBirthTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfBirth.ToShortDateString();
+            this.dateOfExpiryTextBox.Text = dgsContent.Dg1Content.MRZ.DateOfExpiry.ToShortDateString();
             this.cardNumberTextBox.Text = dgsContent.Dg1Content.MRZ.DocumentNumber;
 
 

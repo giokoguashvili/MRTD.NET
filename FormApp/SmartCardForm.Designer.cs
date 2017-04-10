@@ -1,6 +1,6 @@
 ﻿namespace FormApp
 {
-    partial class Form1
+    partial class SmartCardForm
     {
         /// <summary>
         /// Required designer variable.
