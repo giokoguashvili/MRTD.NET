@@ -79,10 +79,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DemoApp\DemoApp.csproj">
-      <Project>{b0cfb56d-8ccf-4b39-a256-2983e72dbcf8}</Project>
-      <Name>DemoApp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SmartCardApi\SmartCardApi.csproj">
       <Project>{3dfc395e-be42-423a-89b0-7a6eb8f18fbe}</Project>
       <Name>SmartCardApi</Name>

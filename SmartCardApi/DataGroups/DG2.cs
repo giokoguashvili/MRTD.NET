@@ -1,6 +1,6 @@
 ﻿using SmartCardApi.DataGroups.Content;
 using SmartCardApi.Infrastructure;
-using SmartCardApi.SmartCard.Reader;
+using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.DataGroups
 {

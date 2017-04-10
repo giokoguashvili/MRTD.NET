@@ -1,6 +1,6 @@
 using SmartCardApi.Infrastructure;
 using SmartCardApi.SecureMessaging.Pipe;
-using SmartCardApi.SmartCard.Reader;
+using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.DataGroups.DG
 {

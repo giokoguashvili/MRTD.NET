@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using SmartCardApi.MRZ;
+using SmartCardApi.SmartCard;
 
 namespace DemoApp
 {

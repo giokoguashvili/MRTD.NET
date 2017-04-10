@@ -2,7 +2,7 @@
 using SmartCardApi.Infrastructure;
 using SmartCardApi.ISO7816.ResponseAPDU.Body;
 using SmartCardApi.SecureMessaging;
-using SmartCardApi.SmartCard.Reader;
+using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.Cryptography.RandomKeys
 {

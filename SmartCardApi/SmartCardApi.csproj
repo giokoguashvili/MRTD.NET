@@ -42,11 +42,18 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Reactive.Core, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Core.3.1.1\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Linq.3.1.1\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.PlatformServices.3.1.1\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -142,7 +149,13 @@
     <Compile Include="Infrastructure\BytesCount.cs" />
     <Compile Include="Infrastructure\CachedBinary.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
+    <Compile Include="Infrastructure\IOption.cs" />
+    <Compile Include="Infrastructure\ISmartCard.cs" />
+    <Compile Include="Infrastructure\ISource.cs" />
     <Compile Include="Infrastructure\ISymbols.cs" />
+    <Compile Include="Infrastructure\Option.cs" />
+    <Compile Include="Infrastructure\Optional.cs" />
+    <Compile Include="Infrastructure\OptionEnumerator.cs" />
     <Compile Include="Infrastructure\Symbols.cs" />
     <Compile Include="Infrastructure\ZippedNumbers.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
@@ -203,8 +216,8 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.cs" />
     <Compile Include="SecureMessaging\DataObjects\IDataObject.cs" />
-    <Compile Include="SecureMessaging\DecryptedProtectedCommandData.cs" />
-    <Compile Include="SecureMessaging\DecryptedProtectedResponseApdu.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedProtectedCommandData.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedProtectedResponseApdu.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.cs" />
     <Compile Include="SecureMessaging\ExecutedApduCommand.cs" />
     <Compile Include="SecureMessaging\IncrementedSSC.cs" />
@@ -219,17 +232,21 @@
     <Compile Include="SecureMessaging\ProtectedCommandApduHeader.cs" />
     <Compile Include="SecureMessaging\SelfIncrementSSC.cs" />
     <Compile Include="SecureMessaging\VerifiedProtectedResponseApdu.cs" />
-    <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.cs" />
-    <Compile Include="SmartCard\ExternalAuthenticateCommandData.cs" />
-    <Compile Include="SmartCard\ISessionKeys.cs" />
-    <Compile Include="SmartCard\ConnectedReader.cs" />
-    <Compile Include="SmartCard\Reader\BacReader.cs" />
-    <Compile Include="SmartCard\Reader\WrappedReader.cs" />
-    <Compile Include="SmartCard\Reader\IBacReader.cs" />
-    <Compile Include="SmartCard\Reader\IReader.cs" />
-    <Compile Include="SmartCard\Reader\LogedReader.cs" />
-    <Compile Include="SmartCard\Reader\SecuredReader.cs" />
-    <Compile Include="SmartCard\SessionKeys.cs" />
+    <Compile Include="SmartCardReader\ConnectedReader.cs" />
+    <Compile Include="SmartCardReader\ConnectedReaderNames.cs" />
+    <Compile Include="SmartCardReader\ConnectedReaders.cs" />
+    <Compile Include="DataGroups\DataGroupsContent.cs" />
+    <Compile Include="DataGroups\DataGroups.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedExternalAuthenticateResponseData.cs" />
+    <Compile Include="SecureMessaging\ExternalAuthenticateCommandData.cs" />
+    <Compile Include="SecureMessaging\ISessionKeys.cs" />
+    <Compile Include="SmartCardReader\BacReader.cs" />
+    <Compile Include="SmartCardReader\WrappedReader.cs" />
+    <Compile Include="SmartCardReader\IBacReader.cs" />
+    <Compile Include="SmartCardReader\IReader.cs" />
+    <Compile Include="SmartCardReader\LogedReader.cs" />
+    <Compile Include="SmartCardReader\SecuredReader.cs" />
+    <Compile Include="SecureMessaging\SessionKeys.cs" />
     <Compile Include="BER-TLV\TVL\L\Len.test.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.test.cs" />
     <Compile Include="BER-TLV\TVL\T\Tag.test.cs" />
@@ -261,9 +278,9 @@
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO87.test.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO8E.test.cs" />
     <Compile Include="SecureMessaging\DataObjects\Extracted\ExtractedDO99.test.cs" />
-    <Compile Include="SmartCard\DecryptedExternalAuthenticateResponseData.test.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedExternalAuthenticateResponseData.test.cs" />
     <Compile Include="SecureMessaging\EncryptedCommandApduData.test.cs" />
-    <Compile Include="SmartCard\ExternalAuthenticateCommandData.test.cs" />
+    <Compile Include="SecureMessaging\ExternalAuthenticateCommandData.test.cs" />
     <Compile Include="Cryptography\Eifd.Fk.cs" />
     <Compile Include="Cryptography\Kenc.Fk.cs" />
     <Compile Include="Cryptography\Kifd.Fk.cs" />
@@ -284,14 +301,15 @@
     <Compile Include="SecureMessaging\CC\ComputedCC.test.cs" />
     <Compile Include="SecureMessaging\CC\ExtractedCC.test.cs" />
     <Compile Include="SecureMessaging\ConstructedProtectedCommandApdu.test.cs" />
-    <Compile Include="SecureMessaging\DecryptedProtectedCommandData.test.cs" />
-    <Compile Include="SecureMessaging\DecryptedProtectedResponseApdu.test.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedProtectedCommandData.test.cs" />
+    <Compile Include="SecureMessaging\Decryption\DecryptedProtectedResponseApdu.test.cs" />
     <Compile Include="SecureMessaging\N.test.cs" />
     <Compile Include="SecureMessaging\ProtectedCommandApdu.test.cs" />
-    <Compile Include="USB\AuthenticatedReader.cs" />
-    <Compile Include="USB\ConnectedReaders.cs" />
-    <Compile Include="USB\ReaderFactory.cs" />
-    <Compile Include="USB\USB.cs" />
+    <Compile Include="SmartCard\SmartCard.cs" />
+    <Compile Include="SmartCard\SmartCardContent.cs" />
+    <Compile Include="SmartCard\Events\SmartCardInsertEvents.cs" />
+    <Compile Include="SmartCard\Events\SmartCardReaderConnectedEvents.cs" />
+    <Compile Include="SmartCard\Events\USBDevices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -299,5 +317,6 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

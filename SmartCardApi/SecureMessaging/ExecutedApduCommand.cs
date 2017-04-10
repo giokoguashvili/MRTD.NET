@@ -1,5 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
-using SmartCardApi.SmartCard.Reader;
+using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.SecureMessaging
 {
