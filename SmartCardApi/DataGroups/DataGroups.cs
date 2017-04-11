@@ -7,7 +7,7 @@ using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.DataGroups
 {
-    public class DataGroups : IDataObjectContent
+    public class DataGroups
     {
         private readonly ISource<ISmartCard> _smartCardInsertEvents;
         private readonly int _onlyFirstEventCount = 1;
@@ -16,7 +16,7 @@ namespace SmartCardApi.DataGroups
             _smartCardInsertEvents = smartCardInsertEvents;
         }
 
-        private DataGroupsContent AsDataObjectsContent(ISmartCard smartCard)
+        private DataGroupsContent AsDataGroupsContent(ISmartCard smartCard)
         {
             Console.WriteLine("start");
             var dg1Content = smartCard.DG1().Content();
@@ -38,7 +38,7 @@ namespace SmartCardApi.DataGroups
             return await _smartCardInsertEvents
                             .Source()
                             .Take(_onlyFirstEventCount)
-                            .Select(AsDataObjectsContent)
+                            .Select(AsDataGroupsContent)
                             .ToTask();
         }
         

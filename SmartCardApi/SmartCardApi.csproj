@@ -149,10 +149,10 @@
     <Compile Include="Infrastructure\BytesCount.cs" />
     <Compile Include="Infrastructure\CachedBinary.cs" />
     <Compile Include="Infrastructure\CombinedBinaries.cs" />
-    <Compile Include="Infrastructure\IOption.cs" />
-    <Compile Include="Infrastructure\ISmartCard.cs" />
-    <Compile Include="Infrastructure\ISource.cs" />
-    <Compile Include="Infrastructure\ISymbols.cs" />
+    <Compile Include="Infrastructure\Interfaces\IOption.cs" />
+    <Compile Include="Infrastructure\Interfaces\ISmartCard.cs" />
+    <Compile Include="Infrastructure\Interfaces\ISource.cs" />
+    <Compile Include="Infrastructure\Interfaces\ISymbols.cs" />
     <Compile Include="Infrastructure\Option.cs" />
     <Compile Include="Infrastructure\Optional.cs" />
     <Compile Include="Infrastructure\OptionEnumerator.cs" />
@@ -160,9 +160,8 @@
     <Compile Include="Infrastructure\ZippedNumbers.cs" />
     <Compile Include="Infrastructure\Hex.cs" />
     <Compile Include="Infrastructure\HexInt.cs" />
-    <Compile Include="Infrastructure\IBinary.cs" />
-    <Compile Include="Infrastructure\ICache.cs" />
-    <Compile Include="Infrastructure\If.cs" />
+    <Compile Include="Infrastructure\Interfaces\IBinary.cs" />
+    <Compile Include="Infrastructure\Interfaces\ICache.cs" />
     <Compile Include="Infrastructure\IntHex.cs" />
     <Compile Include="Infrastructure\IntString.cs" />
     <Compile Include="Infrastructure\INumber.cs" />
