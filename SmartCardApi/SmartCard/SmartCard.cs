@@ -44,6 +44,11 @@ namespace SmartCardApi.SmartCard
             return new DG12(_bacReader);
         }
 
+        public CardSecurity CardSecurity()
+        {
+            return new CardSecurity(_bacReader);
+        }
+
         public void Dispose()
         {
             _bacReader.Dispose();

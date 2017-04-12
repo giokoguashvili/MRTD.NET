@@ -125,6 +125,7 @@
     <Compile Include="Cryptography\SHA1.cs" />
     <Compile Include="Cryptography\SSC.cs" />
     <Compile Include="Cryptography\WithoutPad.cs" />
+    <Compile Include="DataGroups\CardSecurity.cs" />
     <Compile Include="DataGroups\COM.cs" />
     <Compile Include="DataGroups\Content\COMContent.cs" />
     <Compile Include="DataGroups\Content\DG12Content.cs" />

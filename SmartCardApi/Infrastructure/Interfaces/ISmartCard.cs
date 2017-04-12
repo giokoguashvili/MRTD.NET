@@ -9,5 +9,6 @@ namespace SmartCardApi.Infrastructure
         DG7 DG7();
         DG11 DG11();
         DG12 DG12();
+        CardSecurity CardSecurity();
     }
 }

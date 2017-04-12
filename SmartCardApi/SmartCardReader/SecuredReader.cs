@@ -26,6 +26,17 @@ namespace SmartCardApi.SmartCardReader
 
         public IBinary Transmit(IBinary rawCommandApdu)
         {
+            return
+                new Cached(
+                    new ExecutedCommandApdu(
+                        rawCommandApdu,
+                        _reader
+                    )
+                );
+
+             
+       
+
             return new Binary(
                         new DecryptedProtectedResponseApdu(
                                new Cached(

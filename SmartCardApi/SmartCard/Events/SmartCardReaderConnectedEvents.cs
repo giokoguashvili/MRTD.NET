@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Management;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
@@ -22,7 +23,7 @@ namespace SmartCardApi.SmartCard.Events
                 .SelectMany(e => new ConnectedReaders(cardContext))
                 .Merge(
                         new ConnectedReaders(cardContext)
-                            .ToObservable()
+                            .ToObservable(TaskPoolScheduler.Default) // in order to Read Data from another thread on Reader
                             .ObserveOn(TaskPoolScheduler.Default) // in order to Read Data from another thread on Reader
                 );
         }
