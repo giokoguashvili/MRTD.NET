@@ -19,6 +19,7 @@ namespace SmartCardApi.DataGroups
 
         public DG1Content Content()
         {
+            //var hex  = new Hex(_dgData).ToString();
             return new DG1Content(_dgData);
         }
     }

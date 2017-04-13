@@ -7,22 +7,30 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using AgentService.Modules.SmartCard;
+using WebSocketSharp.Server;
 
 namespace AgentService
 {
-    public partial class Service1 : ServiceBase
+    public partial class AgentService : ServiceBase
     {
-        public Service1()
+        private readonly WebSocketServer _wsServer;
+
+        public AgentService(WebSocketServer wsServer)
         {
+            _wsServer = wsServer;
             InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
+            _wsServer.AddWebSocketService<SmartCardModule>("/SmartCard");
+            _wsServer.Start();
         }
 
         protected override void OnStop()
         {
+            _wsServer.Stop();
         }
     }
 }

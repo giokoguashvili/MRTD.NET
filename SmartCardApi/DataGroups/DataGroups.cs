@@ -19,21 +19,21 @@ namespace SmartCardApi.DataGroups
         private DataGroupsContent AsDataGroupsContent(ISmartCard smartCard)
         {
             Console.WriteLine("start");
-            //var dg1Content = smartCard.DG1().Content();
-            //var dg2Content = smartCard.DG2().Content();
-            //var dg7Content = smartCard.DG7().Content();
-            //var dg11Content = smartCard.DG11().Content();
-            //var dg12Content = smartCard.DG12().Content();
-            var cardSecurity = smartCard.CardSecurity().Content();
+            var dg1Content = smartCard.DG1().Content();
+            var dg2Content = smartCard.DG2().Content();
+            var dg7Content = smartCard.DG7().Content();
+            var dg11Content = smartCard.DG11().Content();
+            var dg12Content = smartCard.DG12().Content();
+            //var cardSecurity = smartCard.CardSecurity().Content();
             Console.WriteLine("done");
-            return null;
-            //return new DataGroupsContent(
-            //    dg1Content,
-            //    dg2Content,
-            //    dg7Content,
-            //    dg11Content,
-            //    dg12Content
-            //);
+            //return null;
+            return new DataGroupsContent(
+                dg1Content,
+                dg2Content,
+                dg7Content,
+                dg11Content,
+                dg12Content
+            );
         }
         public async Task<DataGroupsContent> Content()
         {

@@ -15,6 +15,7 @@ namespace SmartCardApi.DataGroups.Content
         {
             get
             {
+
                 return new ParsedMRZ(_dataElements.List()["5F1F"]);
             }
         }

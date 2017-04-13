@@ -23,6 +23,12 @@ namespace DemoApp
                                 new DateTime(1992, 06, 16),
                                 new DateTime(2022, 10, 08)
                           );
+
+            //var mrzInfo = new MRZInfo(
+            //    "10BB53550",
+            //    new DateTime(1983, 05, 14),
+            //    new DateTime(2021, 11, 24)
+            //);
             var dgsContent = new SmartCardContent(mrzInfo)
                                 .Content()
                                 .Result;

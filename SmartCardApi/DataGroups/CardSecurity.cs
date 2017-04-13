@@ -12,7 +12,7 @@ namespace SmartCardApi.DataGroups
 {
     public class CardSecurity : IDataGroup<DG1Content>
     {
-        private readonly IBinary _fid = new BinaryHex("011D");
+        private readonly IBinary _fid = new BinaryHex("0101");
         private readonly IBinary _dgData;
         public CardSecurity(IBacReader bacReader)
         {
