@@ -10,9 +10,6 @@ namespace AgentService
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         static void Main()
         {
             var wssv = new WebSocketSharp.Server.WebSocketServer("wss://localhost:8181");
