@@ -285,10 +285,10 @@
             this.dateOfExpiryDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateOfExpiryDateTimePicker.Location = new System.Drawing.Point(244, 296);
             this.dateOfExpiryDateTimePicker.Name = "dateOfExpiryDateTimePicker";
-            this.dateOfExpiryDateTimePicker.Size = new System.Drawing.Size(88, 20);
+            this.dateOfExpiryDateTimePicker.Size = new System.Drawing.Size(84, 20);
             this.dateOfExpiryDateTimePicker.TabIndex = 28;
             // 
-            // Form1
+            // SmartCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +319,7 @@
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.faceImagePictureBox);
-            this.Name = "Form1";
+            this.Name = "SmartCardForm";
             this.Text = "Smart Card";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.faceImagePictureBox)).EndInit();
