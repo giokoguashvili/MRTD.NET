@@ -32,7 +32,7 @@ deploy:
   skip_symbols: false
   artifact: /.*\.nupkg/
 before_deploy:
-- ps: >-
+- ps:
     $projectName = "SmartCardApi"
     $csprojName = $projectName + ".csproj"
 
