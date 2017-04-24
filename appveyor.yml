@@ -1,7 +1,13 @@
 version: 1.0.{build}
 skip_tags: true
-clone_folder: C:\Projects\MRTD.NET\
 configuration: Release
+clone_folder: C:\Projects\MRTD.NET\
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
 environment:
   COVERALLS_REPO_TOKEN:
     secure: XWiL6LEQaVhFTVjsb0NUG37Zdv5uenF7aKl0Vhkre446M8zElJKfqL8R+RuvLGlp
