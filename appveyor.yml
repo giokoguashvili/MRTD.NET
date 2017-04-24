@@ -9,6 +9,7 @@ before_build:
   - nuget restore ".\MRTD.NET.sln"
 build:
   project: .\MRTD.NET.sln
+  publish_nuget: true
   verbosity: minimal
 test_script:
 - ps: >-
