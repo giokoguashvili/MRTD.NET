@@ -71,7 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-   <Compile Include="MRZ\MRZInfo.test.cs" />
+    <Compile Include="MRZ\MRZInfo.test.cs" />
     <Compile Include="BER-TLV\TVL\L\Len.test.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.test.cs" />
     <Compile Include="BER-TLV\TVL\T\Tag.test.cs" />
