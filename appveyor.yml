@@ -24,3 +24,35 @@ test_script:
     $env:APPVEYOR_BUILD_NUMBER
     
     & $coveralls --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --useRelativePaths --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
+
+deploy:
+  provider: NuGet
+  api_key:
+    secure: s3gihCN9WhquZpWxA5mLHS7FppnfthVRtjFpWSZAcetJyV4RvE8zRWzMM3pHia77
+  skip_symbols: false
+  artifact: /.*\.nupkg/
+before_deploy:
+- ps: >-
+    $projectName = "SmartCardApi"
+    $csprojName = $projectName + ".csproj"
+
+    function replaceSymbolsInFile($regex, $path) 
+    {   
+        (Get-Content $path) -replace $regex,'' | out-file $path 
+    }
+
+    $testCSFilesRegex = '<Compile Include="(\S+\.test\.cs)" />'
+    $csprojPath = "SmartCardApi\" + $csprojName
+    replaceSymbolsInFile $testCSFilesRegex $csprojPath
+
+    $pakageNames = @(
+        "Nunit",
+        "OpenCover",
+        "coveralls.net"
+    )
+    $packagesConfigPath = "SmartCardApi\packages.config"
+    Foreach($packageName in $pakageNames) {
+        $packagesRegexTemplate = '<package id="PACKAGE_NAME"(.{1,})'
+        $packagesRegex = $packagesRegexTemplate -replace "PACKAGE_NAME", $packageName
+        replaceSymbolsInFile $packagesRegex $packagesConfigPath
+    }
