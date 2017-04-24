@@ -1,7 +1,7 @@
 version: 1.0.{build}
 skip_tags: true
 clone_folder: C:\Projects\MRTD.NET\
-configuration: Release
+configuration: Debug
 environment:
   COVERALLS_REPO_TOKEN:
     secure: XWiL6LEQaVhFTVjsb0NUG37Zdv5uenF7aKl0Vhkre446M8zElJKfqL8R+RuvLGlp
