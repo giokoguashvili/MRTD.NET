@@ -100,6 +100,7 @@
     <Compile Include="Cryptography\S.test.cs" />
     <Compile Include="Cryptography\SHA1.test.cs" />
     <Compile Include="Cryptography\SSC.test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO87.test.cs" />
     <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO8E.test.cs" />
     <Compile Include="SecureMessaging\DataObjects\Builded\BuildedDO97.test.cs" />
@@ -258,7 +259,6 @@
     <Compile Include="MRZ\Sex.cs" />
     <Compile Include="MRZ\WeightingFigure.cs" />
     <Compile Include="MRZ\WeightingFigures.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureMessaging\CC\CC.cs" />
     <Compile Include="SecureMessaging\CC\ComputedCC.cs" />
     <Compile Include="SecureMessaging\CC\ExtractedCC.cs" />
