@@ -34,6 +34,7 @@ deploy:
 before_deploy:
 - ps:
     $projectName = "SmartCardApi"
+
     $csprojName = $projectName + ".csproj"
 
     function replaceSymbolsInFile($regex, $path) 
@@ -42,7 +43,9 @@ before_deploy:
     }
 
     $testCSFilesRegex = '<Compile Include="(\S+\.test\.cs)" />'
+
     $csprojPath = "SmartCardApi\" + $csprojName
+
     replaceSymbolsInFile $testCSFilesRegex $csprojPath
 
     $pakageNames = @(
@@ -50,9 +53,15 @@ before_deploy:
         "OpenCover",
         "coveralls.net"
     )
+
     $packagesConfigPath = "SmartCardApi\packages.config"
+
     Foreach($packageName in $pakageNames) {
+
         $packagesRegexTemplate = '<package id="PACKAGE_NAME"(.{1,})'
+
         $packagesRegex = $packagesRegexTemplate -replace "PACKAGE_NAME", $packageName
+
         replaceSymbolsInFile $packagesRegex $packagesConfigPath
+        
     }
