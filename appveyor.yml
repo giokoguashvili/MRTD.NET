@@ -22,7 +22,7 @@ test_script:
     & $coveralls --opencover -i opencoverCoverage.xml --repoToken $env:COVERALLS_REPO_TOKEN --useRelativePaths --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor
 
 before_package:
-- ps: "$projectName = \"SmartCardApi\"\n\n$csprojPathTemplate = \".\\PROJECT_NAME\\PROJECT_NAME.csproj\"\n$csprojPath = $csprojPathTemplate -replace \"PROJECT_NAME\", $projectName\n\nfunction replaceSymbolsInFile($regex, $path) \n{   \n    (Get-Content $path) -replace $regex,'' | out-file $path -encoding utf8\n}\n\n$testCSFilesRegex = '<Compile Include=\"(\\S+\\.test\\.cs)\" />\\r'\nreplaceSymbolsInFile $testCSFilesRegex $csprojPath"
+- ps: "$projectName = \"SmartCardApi\"\n\n$csprojPathTemplate = \".\\PROJECT_NAME\\PROJECT_NAME.csproj\"\n$csprojPath = $csprojPathTemplate -replace \"PROJECT_NAME\", $projectName\n\nfunction replaceSymbolsInFile($regex, $path) \n{   \n    (Get-Content $path) -replace $regex,'' | out-file $path -encoding utf8\n}\n\n$testCSFilesRegex = '<Compile Include=\"(\\S+\\.test\\.cs)\" />\\r'\nreplaceSymbolsInFile $testCSFilesRegex $csprojPath\n\n$pakageNames = @(\n    \"Nunit\",\n    \"OpenCover\",\n    \"coveralls.net\"\n)\n$packagesConfigPath = \".\\\" + $projectName + \"\\packages.config\"\nForeach($packageName in $pakageNames) {\n    $packagesRegexTemplate = '<package id=\"PACKAGE_NAME\"(.{1,})'\n    $packagesRegex = $packagesRegexTemplate -replace \"PACKAGE_NAME\", $packageName\n    replaceSymbolsInFile $packagesRegex $packagesConfigPath\n}"
 deploy:
 - provider: NuGet
   api_key:
