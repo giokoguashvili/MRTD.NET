@@ -7,6 +7,7 @@
     <authors>kogoia</authors>
     <owners>kogoia</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/kogoia/MRTD.NET</projectUrl>
     <description>MRTD.NET</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2017</copyright>
