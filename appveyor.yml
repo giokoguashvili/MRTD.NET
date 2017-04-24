@@ -30,7 +30,7 @@ deploy:
   api_key:
     secure: s3gihCN9WhquZpWxA5mLHS7FppnfthVRtjFpWSZAcetJyV4RvE8zRWzMM3pHia77
   skip_symbols: false
-  artifact: SmartCardApi\*.nupkg
+  artifact: .\SmartCardApi\*.nupkg
 before_deploy:
 - ps:
     $projectName = "SmartCardApi"
