@@ -2,6 +2,8 @@ version: 1.5.{build}
 skip_tags: true
 configuration: Release
 clone_folder: C:\Projects\MRTD.NET\
+cache:
+  - packages -> **\packages.config
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
