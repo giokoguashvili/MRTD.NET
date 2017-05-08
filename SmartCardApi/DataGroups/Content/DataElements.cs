@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SmartCardApi.Infrastructure;
 using SmartCardApi.Infrastructure.Interfaces;
@@ -8,29 +9,20 @@ namespace SmartCardApi.DataGroups.Content
 {
     public class DataElements
     {
-        private readonly BerTLVTree _dgDataTLV;
-        private Dictionary<string, string> _dataElements;
+        private readonly Lazy<Dictionary<string, string>> _dataElementsLazy;
         public DataElements(IBinary dgData)
         {
-                _dgDataTLV = new BerTLVTree(new BerTLV(dgData));
+            var dgDataTlv = new BerTLVTree(new BerTLV(dgData));
+            _dataElementsLazy = new Lazy<Dictionary<string, string>>(
+                    () => dgDataTlv
+                                .DFS()
+                                .ToDictionary(tlv => tlv.T, tlv => tlv.V)
+                );
         }
 
-        private Dictionary<string, string> DataElementsList
-        {
-            get
-            {
-                if (_dataElements == null)
-                {
-                    _dataElements = _dgDataTLV
-                                        .DFS()
-                                        .ToDictionary(tlv => tlv.T, tlv => tlv.V);
-                }
-                return _dataElements;
-            }
-        }
         public Dictionary<string, string> List()
         {
-            return DataElementsList;
+            return _dataElementsLazy.Value;
         }
     }
 }

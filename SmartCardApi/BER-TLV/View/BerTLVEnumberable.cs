@@ -20,7 +20,6 @@ namespace SmartCardApi.View
 
         public IEnumerator<IBerTLV> GetEnumerator()
         {
-            var tagMaxLen = _berTlvs.Max(t => t.T.Length);
             foreach (var tlv in _berTlvs)
             {
                 if (tlv.Data.Length == 0)
