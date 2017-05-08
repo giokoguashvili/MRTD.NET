@@ -4,7 +4,7 @@ using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.SecureMessaging
 {
-    public class SelfIncrementSSC : IBinary
+    public class SelfIncrementSSC : IState<IBinary>
     {
         private readonly IBinary _ssc;
         private int _incrementCount;
@@ -12,13 +12,16 @@ namespace SmartCardApi.SecureMessaging
         {
             _ssc = ssc;
         }
-        public byte[] Bytes()
+
+        public IBinary Next()
         {
             _incrementCount = _incrementCount + 1;
-            //Console.WriteLine("\n\n\nSSC {0}", _incrementCount);
-            return new IncrementedSSC(_ssc)
-                .By(_incrementCount)
-                .Bytes();
+            return
+                new Binary(
+                    new IncrementedSSC(_ssc)
+                        .By(_incrementCount)
+                        .Bytes()
+                );
         }
     }
 }

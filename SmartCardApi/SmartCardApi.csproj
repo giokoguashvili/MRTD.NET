@@ -74,6 +74,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Cache.cs" />
+    <Compile Include="Infrastructure\Interfaces\IState.cs" />
     <Compile Include="MRZ\MRZInfo.test.cs" />
     <Compile Include="BER-TLV\TVL\L\Len.test.cs" />
     <Compile Include="BER-TLV\TVL\T\TagSubsequentBytes.test.cs" />

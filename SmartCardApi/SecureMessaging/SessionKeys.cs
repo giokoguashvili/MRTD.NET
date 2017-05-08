@@ -21,11 +21,11 @@ namespace SmartCardApi.SecureMessaging
             )
         {
             _selectedMrtdApplication = new Cached(
-                                        new ExecutedCommandApdu(
-                                            new SelectMRTDApplicationCommandApdu(),
-                                            reader
-                                        )
-                                    );
+                                            new ExecutedCommandApdu(
+                                                new SelectMRTDApplicationCommandApdu(),
+                                                reader
+                                            )
+                                        );
 
             var kIfd = new Cached(new Kifd());
             var rndIc = new Cached(new RNDic(reader));

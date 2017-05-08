@@ -1,3 +1,4 @@
+using System;
 using SmartCardApi.Infrastructure;
 using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SecureMessaging;
@@ -10,19 +11,16 @@ namespace SmartCardApi.SmartCardReader
     {
         private readonly IReader _reader;
         private readonly ISessionKeys _sessionKeys;
-        private IBinary _selfIncrementedSSC;
+        private readonly IState<IBinary> _selfIncrementedSsc;
         public SecuredReader(
                 ISymbols mrzInfo,
                 IReader reader
             )
         {
+           
             _reader = reader;
             _sessionKeys = new SessionKeys(mrzInfo, reader);
-        }
-
-        private IBinary SelfIncrementedSSC
-        {
-            get { return _selfIncrementedSSC ?? (_selfIncrementedSSC = new SelfIncrementSSC(_sessionKeys.SSC())); }
+            _selfIncrementedSsc = new SelfIncrementSSC(_sessionKeys.SSC());
         }
 
         public IBinary Transmit(IBinary rawCommandApdu)
@@ -35,9 +33,6 @@ namespace SmartCardApi.SmartCardReader
             //        )
             //    );
 
-             
-       
-
             return new Binary(
                         new DecryptedProtectedResponseApdu(
                                new Cached(
@@ -48,12 +43,12 @@ namespace SmartCardApi.SmartCardReader
                                                      rawCommandApdu,
                                                      _sessionKeys.KSenc(),
                                                      _sessionKeys.KSmac(),
-                                                     new Cached(SelfIncrementedSSC.Bytes())
+                                                     _selfIncrementedSsc.Next()
                                                  ),
                                                  _reader
                                              )
                                          ),
-                                         new Cached(SelfIncrementedSSC.Bytes()),
+                                         _selfIncrementedSsc.Next(),
                                          _sessionKeys.KSmac()
                                    )
                                ),

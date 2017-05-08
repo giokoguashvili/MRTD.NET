@@ -2,7 +2,7 @@
 
 namespace SmartCardApi.Infrastructure.Option
 {
-    public interface IOption<out T> : IEnumerator<T>
+    public interface IOption<out T> : IEnumerator<T>, IEnumerable<T>
     {
     }
 }
