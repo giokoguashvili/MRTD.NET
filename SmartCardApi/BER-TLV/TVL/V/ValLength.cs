@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.TVL.L;
 
 namespace SmartCardApi.TVL.V

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SmartCardApi.DataGroups.Content;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SmartCardReader;
 using SmartCardApi.View;
 

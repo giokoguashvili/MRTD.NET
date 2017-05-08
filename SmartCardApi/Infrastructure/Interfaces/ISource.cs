@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartCardApi.Infrastructure
+namespace SmartCardApi.Infrastructure.Interfaces
 {
     public interface ISource<out TResult>
     {

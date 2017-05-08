@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using PCSC;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.SmartCardReader
 {

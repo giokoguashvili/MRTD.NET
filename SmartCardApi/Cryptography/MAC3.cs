@@ -3,6 +3,7 @@ using Org.BouncyCastle.Crypto.Macs;
 using Org.BouncyCastle.Crypto.Paddings;
 using Org.BouncyCastle.Crypto.Parameters;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.Cryptography
 {

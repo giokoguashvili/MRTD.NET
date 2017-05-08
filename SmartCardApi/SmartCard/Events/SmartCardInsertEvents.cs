@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reactive.Linq;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.SmartCard.Events
@@ -30,4 +31,6 @@ namespace SmartCardApi.SmartCard.Events
                         );
         }
     }
+
+
 }

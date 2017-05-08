@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.ISO7816.CommandAPDU.Header;
 
 namespace SmartCardApi.SecureMessaging

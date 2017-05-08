@@ -1,6 +1,6 @@
 ﻿using SmartCardApi.DataGroups;
 
-namespace SmartCardApi.Infrastructure
+namespace SmartCardApi.Infrastructure.Interfaces
 {
     public interface ISmartCard
     {

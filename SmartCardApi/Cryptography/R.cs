@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.MRZ;
 using SmartCardApi.SecureMessaging.Decryption;
 using SmartCardApi.SmartCard;

@@ -1,5 +1,6 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.ISO7816.CommandAPDU.Body;
 using SmartCardApi.SecureMessaging.DataObjects.DO;
 

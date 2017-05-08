@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SecureMessaging.CC;
 using SmartCardApi.SecureMessaging.DataObjects.DO;
 

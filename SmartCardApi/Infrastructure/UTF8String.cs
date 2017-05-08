@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.Infrastructure
 {

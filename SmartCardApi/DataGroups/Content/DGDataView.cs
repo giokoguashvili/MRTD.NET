@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.View;
 
 namespace SmartCardApi.DataGroups.Content

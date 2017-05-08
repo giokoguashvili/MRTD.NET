@@ -2,6 +2,7 @@
 using System.Linq;
 using SmartCardApi.Commands;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SmartCardReader;
 
 namespace SmartCardApi.SecureMessaging.Pipe

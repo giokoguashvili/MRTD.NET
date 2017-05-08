@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.Cryptography
 {

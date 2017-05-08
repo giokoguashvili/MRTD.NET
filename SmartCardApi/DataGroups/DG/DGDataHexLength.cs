@@ -1,4 +1,5 @@
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SecureMessaging.Pipe;
 using SmartCardApi.SmartCardReader;
 using SmartCardApi.TVL.V;

@@ -1,5 +1,6 @@
 using System.Linq;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.ISO7816.ResponseAPDU.Trailer
 {

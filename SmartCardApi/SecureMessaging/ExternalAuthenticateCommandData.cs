@@ -1,6 +1,7 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Cryptography.RandomKeys;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.SecureMessaging
 {

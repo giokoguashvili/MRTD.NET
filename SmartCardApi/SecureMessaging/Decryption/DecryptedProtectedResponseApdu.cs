@@ -1,5 +1,6 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SecureMessaging.DataObjects.Extracted;
 
 namespace SmartCardApi.SecureMessaging.Decryption

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using PCSC;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Option;
 
 namespace SmartCardApi.SmartCardReader
 {
@@ -23,10 +24,15 @@ namespace SmartCardApi.SmartCardReader
             _reader.Dispose();
         }
 
-        public override IOption<IReader> GetEnumerator()
+        public override IOption<IReader> Content()
         {
             Debug.WriteLine("GetEnumerator Reader TreadID " + Thread.CurrentThread.ManagedThreadId);
             var cardError = _reader.Connect(_readerName, SCardShareMode.Shared, SCardProtocol.Any);
+            if (cardError != SCardError.Success)
+            {
+                Console.WriteLine("Could not begin transaction. {0}", SCardHelper.StringifyError(cardError));
+                return new Option<IReader>();
+            }
             SCardProtocol proto;
             SCardState state;
             byte[] atr;
@@ -40,14 +46,14 @@ namespace SmartCardApi.SmartCardReader
 
             if (sc != SCardError.Success)
             {
-                Console.WriteLine("Could not begin transaction. {0}", SCardHelper.StringifyError(cardError));
+                Console.WriteLine("Could not begin transaction. {0}", SCardHelper.StringifyError(sc));
                 return new Option<IReader>();
             }
 
             sc = _reader.BeginTransaction();
-            if (cardError != SCardError.Success)
+            if (sc != SCardError.Success)
             {
-                Console.WriteLine("Could not begin transaction. {0}", SCardHelper.StringifyError(cardError));
+                Console.WriteLine("Could not begin transaction. {0}", SCardHelper.StringifyError(sc));
                 return new Option<IReader>();
             }
 

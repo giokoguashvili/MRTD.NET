@@ -5,6 +5,7 @@ using System.Threading;
 using PCSC;
 using PCSC.Iso7816;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.SmartCardReader
 {

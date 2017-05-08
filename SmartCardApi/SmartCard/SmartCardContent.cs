@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using SmartCardApi.DataGroups;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.SmartCard.Events;
 
 namespace SmartCardApi.SmartCard

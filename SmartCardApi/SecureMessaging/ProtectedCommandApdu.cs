@@ -1,4 +1,5 @@
 ﻿using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.ISO7816.CommandAPDU.Header;
 using SmartCardApi.SecureMessaging.DataObjects.Builded;
 

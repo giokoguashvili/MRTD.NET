@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Paddings;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.View;
 
 namespace SmartCardApi.DataGroups.Content

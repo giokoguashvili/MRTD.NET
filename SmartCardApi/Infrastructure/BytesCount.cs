@@ -1,4 +1,6 @@
-﻿namespace SmartCardApi.Infrastructure
+﻿using SmartCardApi.Infrastructure.Interfaces;
+
+namespace SmartCardApi.Infrastructure
 {
     public class BytesCount : INumber
     {

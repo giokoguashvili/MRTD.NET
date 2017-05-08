@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 using SmartCardApi.TVL.Cached;
 
 namespace SmartCardApi.TVL.V

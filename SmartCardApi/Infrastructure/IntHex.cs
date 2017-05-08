@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.Infrastructure
 {

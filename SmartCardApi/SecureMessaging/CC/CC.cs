@@ -1,5 +1,6 @@
 ﻿using SmartCardApi.Cryptography;
 using SmartCardApi.Infrastructure;
+using SmartCardApi.Infrastructure.Interfaces;
 
 namespace SmartCardApi.SecureMessaging.CC
 {
